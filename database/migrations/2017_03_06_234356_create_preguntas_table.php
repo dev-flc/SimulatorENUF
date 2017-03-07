@@ -14,8 +14,14 @@ class CreatePreguntasTable extends Migration
     public function up()
     {
         Schema::create('preguntas', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('PRE_id');
+            $table->string('PRE_nombre')->nullable();
+            $table->integer('EXA_id')->unsigned()->nullable();
             $table->timestamps();
+            
+            #llave foranea examen
+            $table->foreign('EXA_id')->references('EXA_id')->on('examens');
+            
         });
     }
 

@@ -14,13 +14,13 @@ class CreateDireccionsTable extends Migration
     public function up()
     {
         Schema::create('direccions', function (Blueprint $table) {
-            $table->increments('DRI_id');
-            $table->string('DRI_calle');
-            $table->string('DRI_colonia');
-            $table->string('DRI_estado');
-            $table->string('DRI_ciudad');
-            $table->string('DRI_pais');
-            $table->integer('DRI_cp');
+            $table->increments('DIR_id');
+            $table->string('DIR_calle')->nullable();
+            $table->string('DIR_colonia')->nullable();
+            $table->string('DIR_estado')->nullable();
+            $table->string('DIR_ciudad')->nullable();
+            $table->string('DIR_pais')->nullable();
+            $table->integer('DIR_cp')->nullable();
             $table->timestamps();
         });
     }

@@ -14,8 +14,17 @@ class CreateRespuestasTable extends Migration
     public function up()
     {
         Schema::create('respuestas', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('RES_id');
+            $table->string('RES_nombre')->nullable();
+            $table->integer('PRE_id')->unsigned()->nullable();
+            $table->integer('TIP_id')->unsigned()->nullable();
             $table->timestamps();
+            
+            #llave foranea pregunta
+            $table->foreign('PRE_id')->references('PRE_id')->on('preguntas');
+            #llave foranea tipo
+            $table->foreign('TIP_id')->references('TIP_id')->on('tipos');
+            
         });
     }
 

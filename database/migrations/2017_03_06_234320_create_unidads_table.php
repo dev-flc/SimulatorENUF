@@ -14,8 +14,14 @@ class CreateUnidadsTable extends Migration
     public function up()
     {
         Schema::create('unidads', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('UNI_id');
+            $table->string('UNI_nombre')->nullable();
+            $table->date('UNI_fecha_final')->nullable();
+            $table->integer('CUR_id')->unsigned()->nullable();
             $table->timestamps();
+            
+            #llave foranea curso
+            $table->foreign('CUR_id')->references('CUR_id')->on('cursos');
         });
     }
 

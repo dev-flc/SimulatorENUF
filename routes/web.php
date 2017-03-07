@@ -16,5 +16,5 @@ Route::get('/', function () {
 });
 
 Route::get('administrador', function () {
-    return view('administrador.index');
+    return view('Administrador.Perfil.index');
 });
