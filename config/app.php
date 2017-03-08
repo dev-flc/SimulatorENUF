@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 return [
 
@@ -172,11 +172,13 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        SimulatorENUF\Providers\AppServiceProvider::class,
+        SimulatorENUF\Providers\AuthServiceProvider::class,
+        // SimulatorENUF\Providers\BroadcastServiceProvider::class,
+        SimulatorENUF\Providers\EventServiceProvider::class,
+        SimulatorENUF\Providers\RouteServiceProvider::class,
+        //Collective
+        Collective\Html\HtmlServiceProvider::class,
 
     ],
 
@@ -225,6 +227,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        //collective
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
     ],
 

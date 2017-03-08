@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/*
 Route::get('administrador', function () {
     return view('Administrador.Perfil.index');
 });
+*/
+
+Route::resource('curso','CursoController');

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace SimulatorENUF;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -26,4 +26,23 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    #uno a uno Administrador
+    public function administrador()
+    {
+        return $this->belongsTo('SimulatorENUF\Models\Administrador');
+    }
+
+    #uno a uno Profesor
+    public function profesor()
+    {
+        return $this->belongsTo('SimulatorENUF\Models\Profesor');
+    }
+
+    #uno a uno Profesor
+    public function alumno()
+    {
+        return $this->belongsTo('SimulatorENUF\Models\Alumno');
+    }
+
 }

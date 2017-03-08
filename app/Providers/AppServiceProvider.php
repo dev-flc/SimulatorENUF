@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace SimulatorENUF\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
