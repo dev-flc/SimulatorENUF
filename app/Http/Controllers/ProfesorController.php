@@ -3,6 +3,9 @@
 namespace SimulatorENUF\Http\Controllers;
 
 use Illuminate\Http\Request;
+use SimulatorENUF\Models\Profesor;
+use SimulatorENUF\Models\Direccion;
+use SimulatorENUF\User;
 
 class ProfesorController extends Controller
 {
@@ -13,7 +16,8 @@ class ProfesorController extends Controller
      */
     public function index()
     {
-        //
+        $profesor=Profesor::all();
+        return view('Administrador.Profesor.index')->with('profesor',$profesor);
     }
 
     /**
@@ -23,7 +27,7 @@ class ProfesorController extends Controller
      */
     public function create()
     {
-        //
+        return view('Administrador.Profesor.create');
     }
 
     /**
@@ -34,7 +38,34 @@ class ProfesorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $dir=new Direccion;
+        $dir->save();
+        $idd= Direccion::find($dir->DIR_id);
+        
+        
+        #nuevo usuario
+        $user=new User;
+        $user->name=($request->usuario);
+        $user->password=bcrypt($request->usuario);
+        $user->type="profesor";
+        $user->save();
+        $iduser= User::find($user->id);
+       
+        
+        /*register Profesor */
+        $pro=new Profesor;
+        $pro->PRO_nombre=($request->nombre);
+        $pro->PRO_apellido_p=($request->apellido_p);
+        $pro->PRO_apellido_m=($request->apellido_m);
+        $pro->PRO_sexo=($request->sex);
+        $pro->USE_id=($iduser->id);
+        $pro->DIR_id=($idd->DIR_id);
+        $pro->save();
+        
+        
+        return redirect()->route('profesor.index');
+        
     }
 
     /**

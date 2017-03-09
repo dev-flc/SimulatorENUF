@@ -16,6 +16,9 @@ class CursoController extends Controller
     public function index()
     {
         $curso=Curso::all();
+
+         $curso=Curso::join('profesors','profesors.PRO_id','=','cursos.PRO_id')
+        ->get();
         return view("Administrador.Curso.index")->with('curso',$curso);
     }
 
@@ -26,7 +29,8 @@ class CursoController extends Controller
      */
     public function create()
     {
-        return view('Administrador.Curso.create');
+        $profesor=Profesor::all();
+        return view('Administrador.Curso.create')->with('profesor',$profesor);
 
     }
 
@@ -44,7 +48,7 @@ class CursoController extends Controller
         $curso->CUR_nombre=($request->nombre);
         $curso->CUR_cupos=($request->cupos);
         $curso->CUR_fecha=$fecha;
-        $curso->PRO_id=null;
+        $curso->PRO_id=($request->profesor);;
         $curso->save();
         
         return redirect()->route('curso.index');

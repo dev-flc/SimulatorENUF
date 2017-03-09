@@ -22,3 +22,5 @@ Route::get('administrador', function () {
 */
 
 Route::resource('curso','CursoController');
+
+Route::resource('profesor','ProfesorController');

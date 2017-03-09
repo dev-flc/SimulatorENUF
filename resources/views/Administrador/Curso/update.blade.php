@@ -17,18 +17,12 @@
     </div>
 	<label for="profesor">Profesor</label>
     <select  name="asesor" class="form-control" required>
-        @if($curso->PRO_id==null)
-		<option value="">Seleccione una opcion</option>
-		@foreach ($profesores as $pro)
-        <option value="{{ $pro->PRO_id}}">{{ $pro->PRO_nombre}}  </option>
-        @endforeach
-		@else
-        <option value="{{ $profesor->PRO_id}}">{{ $profesor->PRO_nombre}}  </option>
+        <option value="">Seleccione un profesor</option>
         @foreach ($profesores as $pro)
-        <option value="{{ $pro->PRO_id}}">{{ $pro->PRO_nombre}}  </option>
+        <option value="{{ $pro->PRO_id}}">{{ $pro->PRO_nombre}} {{ $pro->PRO_apellido_p}} {{ $pro->PRO_apellido_m}} </option>
         @endforeach
-        @endif
     </select>
+
 
 	<div class="form-group">
     {{ Form::button('<span class="glyphicon glyphicon-ok"></span> Registrar', array('class'=>'btn btn-success pull-right', 'type'=>'submit')) }}

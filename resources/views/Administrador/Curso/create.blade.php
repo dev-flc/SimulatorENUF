@@ -15,6 +15,14 @@
 		{!! Form::label('cupos','Cupos') !!}
 		{!! Form::number('cupos',null,['class'=>'form-control','required'])!!}
 	</div>
+	<select  name="profesor" class="form-control" required>
+		<option value="">Seleccione un profesor</option>
+		@foreach ($profesor as $pro)
+        <option value="{{ $pro->PRO_id}}">{{ $pro->PRO_nombre}}  </option>
+        @endforeach
+    </select>
+
+
 	<div class="form-group">
     {{ Form::button('<span class="glyphicon glyphicon-ok"></span> Registrar', array('class'=>'btn btn-success pull-right', 'type'=>'submit')) }}
     </div>
