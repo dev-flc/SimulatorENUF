@@ -12,6 +12,10 @@
 		{!! Form::text('nombre',null,['class'=>'form-control','required'])!!}
 	</div>
 	<div class="form-group">
+		{!! Form::label('cupos','Cupos') !!}
+		{!! Form::number('cupos',null,['class'=>'form-control','required'])!!}
+	</div>
+	<div class="form-group">
     {{ Form::button('<span class="glyphicon glyphicon-ok"></span> Registrar', array('class'=>'btn btn-success pull-right', 'type'=>'submit')) }}
     </div>
     {!! Form::close() !!}

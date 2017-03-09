@@ -3,6 +3,8 @@
 namespace SimulatorENUF\Http\Controllers;
 
 use Illuminate\Http\Request;
+use SimulatorENUF\Models\Curso;
+use SimulatorENUF\Models\Profesor;
 
 class CursoController extends Controller
 {
@@ -13,7 +15,8 @@ class CursoController extends Controller
      */
     public function index()
     {
-        //
+        $curso=Curso::all();
+        return view("Administrador.Curso.index")->with('curso',$curso);
     }
 
     /**
@@ -35,7 +38,16 @@ class CursoController extends Controller
      */
     public function store(Request $request)
     {
-        dd("guardar");
+
+        $fecha=date('Y-m-d');
+        $curso=new Curso;
+        $curso->CUR_nombre=($request->nombre);
+        $curso->CUR_cupos=($request->cupos);
+        $curso->CUR_fecha=$fecha;
+        $curso->PRO_id=null;
+        $curso->save();
+        
+        return redirect()->route('curso.index');
     }
 
     /**
@@ -46,7 +58,7 @@ class CursoController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -57,7 +69,17 @@ class CursoController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        
+        $curso=Curso::find($id); 
+        $idprofesor=$curso->PRO_id;
+        $profesor=Profesor::find($idprofesor); 
+        $profesores=Profesor::all();
+
+        return view("Administrador.Curso.update")
+        ->with('curso',$curso)
+        ->with('profesor',$profesor)
+        ->with('profesores',$profesores);
     }
 
     /**
@@ -69,7 +91,7 @@ class CursoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd("ya estoy aqui update");
     }
 
     /**

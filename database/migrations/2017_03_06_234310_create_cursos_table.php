@@ -16,6 +16,8 @@ class CreateCursosTable extends Migration
         Schema::create('cursos', function (Blueprint $table) {
             $table->increments('CUR_id');
             $table->string('CUR_nombre')->nullable();
+            $table->integer('CUR_cupos')->nullable();
+            $table->date('CUR_fecha')->nullable();
             $table->integer('PRO_id')->unsigned()->nullable();
             $table->timestamps();
             
