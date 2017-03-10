@@ -15,12 +15,30 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/*
-Route::get('administrador', function () {
-    return view('Administrador.Perfil.index');
+#Route::group(['prefix'=>'admin','middleware'=>['admin','auth']], function(){
+
+//middleware Administrador Inicio
+
+Route::group(['prefix'=>'admin'], function(){
+
+Route::resource('curso','AdminCursoController');
+
+Route::resource('profesor','AdminProfesorController');
 });
-*/
+//middleware Administrador Inicio
 
-Route::resource('curso','CursoController');
 
-Route::resource('profesor','ProfesorController');
+//middleware Profesor Inicio
+
+Route::group(['prefix'=>'profesor'], function(){
+
+Route::resource('curso','ProCursoController');
+
+Route::resource('alumno','ProAlumnoController');
+});
+
+
+//middleware Profesor Fin
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
