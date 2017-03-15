@@ -6,8 +6,14 @@
 </head>
 <body>
 <h1>Crear nuevo profesor</h1>
-	
-	{!! Form::open(['route'=>'profesor.store','method'=>'POST']) !!}
+ <ul>
+    <li><a href="{{ route('cursos.index') }}">cursos</a></li>
+    <li><a href="{{ route('cursos.create') }}">Crear cursos</a></li>
+    <li><a href="{{ route('profesores.index') }}">profesores</a></li>
+    <li><a href="{{ route('profesores.create') }}">Create profesores</a></li>
+  </ul>
+
+	{!! Form::open(['route'=>'profesores.store','method'=>'POST']) !!}
 	<div class="form-group">
 		{!! Form::label('nombre','Nombre') !!}
 		{!! Form::text('nombre',null,['class'=>'form-control','id'=>'nombre','required'])!!}
@@ -25,7 +31,7 @@
     {{ Form::radio('sex', 'hombre', true) }} Hombre  {{ Form::radio('sex', 'mujer') }} Mujer
   </div>
 	<hr>
-	
+
 	<div class="form-group">
 		{!! Form::label('usuario','Usuario') !!}
 		{!! Form::text('usuario',null,['class'=>'form-control','id'=>'usuario','required','readonly'=>'readonly'])!!}
@@ -47,23 +53,23 @@
 
         //Validar campos
         var verificar = true;
-        expresion=/^([a-z ñáéíóú]{2,60})$/i; 
+        expresion=/^([a-z ñáéíóú]{2,60})$/i;
         //validar nombre
-        if ($("#nombre").val() == "" || !expresion.test($("#nombre").val())) 
-        { 
+        if ($("#nombre").val() == "" || !expresion.test($("#nombre").val()))
+        {
           $( "#nombre" ).focus();
           verificar=false;
-        } 
-        else if ($("#apellido_p").val() == "" || !expresion.test($("#apellido_p").val())) 
-        { 
+        }
+        else if ($("#apellido_p").val() == "" || !expresion.test($("#apellido_p").val()))
+        {
           $( "#apellido_p" ).focus();
           verificar=false;
-        } 
-        else if ($("#apellido_m").val() == "" || !expresion.test($("#apellido_m").val())) 
-        { 
+        }
+        else if ($("#apellido_m").val() == "" || !expresion.test($("#apellido_m").val()))
+        {
           $( "#apellido_m" ).focus();
           verificar=false;
-        } 
+        }
 
 
         if(verificar==true)

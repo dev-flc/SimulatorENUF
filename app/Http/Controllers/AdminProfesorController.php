@@ -16,7 +16,8 @@ class AdminProfesorController extends Controller
      */
     public function index()
     {
-        $profesor=Profesor::all();
+        $profesor=Profesor::join('users','users.id','=','profesors.USE_id')->get();
+
         return view('Administrador.Profesor.index')->with('profesor',$profesor);
     }
 
@@ -41,8 +42,8 @@ class AdminProfesorController extends Controller
         $dir=new Direccion;
         $dir->save();
         $idd= Direccion::find($dir->DIR_id);
-        
-        
+
+
         #nuevo usuario
         $user=new User;
         $user->name=($request->usuario);
@@ -50,8 +51,8 @@ class AdminProfesorController extends Controller
         $user->type="profesor";
         $user->save();
         $iduser= User::find($user->id);
-       
-        
+
+
         /*register Profesor */
         $pro=new Profesor;
         $pro->PRO_nombre=($request->nombre);
@@ -61,9 +62,9 @@ class AdminProfesorController extends Controller
         $pro->USE_id=($iduser->id);
         $pro->DIR_id=($idd->DIR_id);
         $pro->save();
-        
-        
-        return redirect()->route('profesor.index');
+
+
+        return redirect()->route('profesores.index');
     }
 
     /**
@@ -85,7 +86,8 @@ class AdminProfesorController extends Controller
      */
     public function edit($id)
     {
-        //
+         $profesor=Profesor::find($id);
+         return view("Administrador.Profesor.update")->with('profesor',$profesor);
     }
 
     /**
@@ -97,7 +99,13 @@ class AdminProfesorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $pro=Profesor::find($id);
+      $pro->PRO_nombre=($request->nombre);
+      $pro->PRO_apellido_p=($request->apellido_p);
+      $pro->PRO_apellido_m=($request->apellido_m);
+      $pro->PRO_sexo=($request->sex);
+      $pro->save();
+      return redirect()->route('profesores.index');
     }
 
     /**

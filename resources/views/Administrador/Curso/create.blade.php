@@ -5,8 +5,14 @@
 	<title>Crear curso</title>
 </head>
 <body>
-	<h1>Crear Curso</h1>
-	{!! Form::open(['route'=>'curso.store','method'=>'POST']) !!}
+	 <ul>
+    <li><a href="{{ route('cursos.index') }}">cursos</a></li>
+    <li><a href="{{ route('cursos.create') }}">Crear cursos</a></li>
+    <li><a href="{{ route('profesores.index') }}">profesores</a></li>
+    <li><a href="{{ route('profesores.create') }}">Create profesores</a></li>
+  </ul>
+
+	{!! Form::open(['route'=>'cursos.store','method'=>'POST']) !!}
 	<div class="form-group">
 		{!! Form::label('nombre','Nombre ') !!}
 		{!! Form::text('nombre',null,['class'=>'form-control','required'])!!}

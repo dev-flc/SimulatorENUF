@@ -21,9 +21,9 @@ Route::get('/', function () {
 
 Route::group(['prefix'=>'admin'], function(){
 
-Route::resource('curso','AdminCursoController');
+Route::resource('cursos','AdminCursoController');
 
-Route::resource('profesor','AdminProfesorController');
+Route::resource('profesores','AdminProfesorController');
 });
 //middleware Administrador Inicio
 

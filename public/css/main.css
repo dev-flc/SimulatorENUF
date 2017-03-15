@@ -1,6 +1,6 @@
 
 .panelhistoria
-{	
+{
 	z-index: 4;
 	position: relative;
 	height: auto;
@@ -10,15 +10,12 @@
 .subpanelhistoria
 {
 	background: rgb(255,255,255);
-	height: auto;	
+	height: auto;
 	position: relative;
 	z-index: 2;
-	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);  
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
-.subpanelhistoria h2
-{
-	font-family: 'Poiret One', cursive;
-}
+
 .subpanelhistoria p{
 	font-size: 20px;
 	text-align: justify;
@@ -26,16 +23,23 @@
 }
 .contenerdor1
 {
-	background: rgb(192, 57, 43);
-	z-index: 3;	
+	background: rgb(52, 152, 219); /* colores no me gusta */
+	z-index: 3;
 	position: relative;
 	height: auto;
 	top: -40px;
 }
-h1
+
+h1,h2
 {
-	color: red;
 	font-family: 'Poiret One', cursive;
+}
+h1{
+  font-size: 60px;
+}
+#centradop
+{
+  text-align: center;
 }
 #divimg
 {
@@ -44,7 +48,8 @@ h1
 }
 .panelimg
 {
-	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);  
+
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 
 }
 
@@ -56,7 +61,7 @@ h1
 ::-webkit-scrollbar-track {
       background-color: rgb(242, 243, 244);
        border-radius: 10px;
-} 
+}
 ::-webkit-scrollbar-thumb {
       background-color: rgb(93, 173, 226);
        border-radius: 10px;

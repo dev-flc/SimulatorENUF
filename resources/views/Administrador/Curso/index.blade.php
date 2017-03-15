@@ -6,6 +6,13 @@
 </head>
 <body>
 	<h1>Lista de cursos</h1>
+  <ul>
+    <li><a href="{{ route('cursos.index') }}">cursos</a></li>
+    <li><a href="{{ route('cursos.create') }}">Crear cursos</a></li>
+    <li><a href="{{ route('profesores.index') }}">profesores</a></li>
+    <li><a href="{{ route('profesores.create') }}">Create profesores</a></li>
+  </ul>
+
 	<table>
 		<tr>
 			<th>#</th>
@@ -23,7 +30,7 @@
 			<td>{{ $cursos->CUR_cupos }}</td>
 			<td>{{ $cursos->CUR_fecha }}</td>
 			<td>{{ $cursos->PRO_nombre }} {{ $cursos->PRO_apellido_p }} {{ $cursos->PRO_apellido_m }}</td>
-			<td><a href="{{ route('curso.edit', $cursos->CUR_id) }}">Editar</a></td>
+			<td><a href="{{ route('cursos.edit', $cursos->CUR_id) }}">Editar</a></td>
 			<td><a href="{{ route('curso.edit', $cursos->CUR_id) }}">Eliminar</a></td>
 		</tr>
 		@endforeach

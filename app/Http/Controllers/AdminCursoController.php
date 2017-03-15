@@ -17,6 +17,8 @@ class AdminCursoController extends Controller
     public function index()
     {
         #$curso=Curso::all();
+
+
         $curso=Curso::join('profesors','profesors.PRO_id','=','cursos.PRO_id')
         ->get();
         return view("Administrador.Curso.index")->with('curso',$curso);
@@ -41,15 +43,14 @@ class AdminCursoController extends Controller
      */
     public function store(Request $request)
     {
-        $fecha=date('Y-m-d');
-        $curso=new Curso;
-        $curso->CUR_nombre=($request->nombre);
-        $curso->CUR_cupos=($request->cupos);
-        $curso->CUR_fecha=$fecha;
-        $curso->PRO_id=($request->profesor);;
-        $curso->save();
-        
-        return redirect()->route('curso.index');
+      $fecha=date('Y-m-d');
+      $curso=new Curso;
+      $curso->CUR_nombre=($request->nombre);
+      $curso->CUR_cupos=($request->cupos);
+      $curso->CUR_fecha=$fecha;
+      $curso->PRO_id=($request->profesor);;
+      $curso->save();
+      return redirect()->route('cursos.index');
     }
 
     /**
@@ -71,9 +72,9 @@ class AdminCursoController extends Controller
      */
     public function edit($id)
     {
-        $curso=Curso::find($id); 
+        $curso=Curso::find($id);
         $idprofesor=$curso->PRO_id;
-        $profesor=Profesor::find($idprofesor); 
+        $profesor=Profesor::find($idprofesor);
         $profesores=Profesor::all();
 
         return view("Administrador.Curso.update")
@@ -91,7 +92,16 @@ class AdminCursoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd("ya estoy aqui update");
+        $fecha=date('Y-m-d');
+        $curso=Curso::find($id);
+        $curso->CUR_nombre=($request->nombre);
+        $curso->CUR_cupos=($request->cupos);
+        $curso->CUR_fecha=$fecha;
+        $curso->PRO_id=($request->profesor);;
+        $curso->save();
+
+        //flash('Presidente modificado correctamente', 'info')->important();
+        return redirect()->route('cursos.index');
     }
 
     /**

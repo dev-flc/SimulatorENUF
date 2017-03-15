@@ -9,10 +9,11 @@
 	<link rel="stylesheet" href="{{ asset('css/main.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+  @yield('styles')
 </head>
 
 <header>
-	@include('Profesor.Principal.nav')	
+	@include('Profesor.Principal.nav')
 </header>
 <body>
 <br>
@@ -24,7 +25,7 @@
 
 <div class="container panelhistoria">
   <div class="container-fluid subpanelhistoria">
-    
+
    	@yield('content')
     <br>
   </div>
@@ -93,96 +94,23 @@
             <h3>Contactanos</h3>
           <p id="pfooter">Telefono:  01 747 472 5227</p>
           <p id="pfooter">Correo:   enufrr@hotmail.com</p>
-            
+
          </div>
        </div>
            </div>
+      <!--
       <button type="button" data-toggle="modal" data-target="#myModal" id="fixedbutton" class="btn btn-danger btn-circle btn-lg">
         <span class="glyphicon glyphicon-info-sign"></span>
       </button>
+      -->
 </footer>
+@yield('modal')
 
-<!-- Modal -->
-<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h3 class="modal-title colordiv" id="myModalLabel"> Inicia Sesión</h3>
-      </div>
-      <div class="modal-body">
-        <center>
-        <div class="logo1" >
-          <img src="img/logo.png" id="logo1" class="slideUp" alt="">
-        </div>
-        </center><br>
 
-       <div class="form-group has-default">
-        <center>
-          <label class="control-label" for="email">Email</label>
-          <input type="text" class="form-control" id="email">
-        </center>
-      </div>
-
-      <div class="form-group has-default">
-        <center>
-          <label class="control-label" for="pass">Contraseña</label>
-          <input type="password" class="form-control" id="pass">
-        </center>
-      </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Acceder <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></button>
-        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal Final -->
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h3 class="modal-title colordiv" id="myModalLabel">Caracteristicas de la plataforma</h3>
-      </div>
-      <div class="modal-body">
-                <label for="Diseño">Diseño Responsivo</label>
-        <p id="text-justify">
-          La plataforma es capaz de adaptarse en cualquier dispositivo, ya sea movil,tablet,lap-top y PC, lo cual proporciona una ventaja para las personas que menipularan dicha plataforma. En la actualudad los sistemas responsivos se an buelto populares y efectivos, esto a ayudado a que las personas puedan acceder al sistema ó plataformas desde cualquier dispositivo.
-        </p>
-        <div class="container-fluid">
-          <img src="img/responsive1.png" alt="Plataformas" >
-        </div>
-        <label for="Navegadores">Navegadores soportados</label>
-        <p id="text-justify">
-          Para octener una funcionalidad de la plataforma a un 100% de su rendimiento se recomienda utilizar los siguientes navegadores web.
-        </p>
-         <div class="container-fluid">
-          <center>
-            <img src="img/navegadores.png" alt="Plataformas">
-          </center>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal Final -->
 <script  src="{{ asset('plugins/jQuery/jquery-3.1.1.js') }}"></script>
 <script  src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 <script>
-  $(window).scroll(function() { 
+  $(window).scroll(function() {
     $('#logo').each(function(){
     var imagePos = $(this).offset().top;
 
@@ -195,7 +123,6 @@
     });
   });
 </script>
-	
-
+	@yield('script')
 </body>
 </html>
