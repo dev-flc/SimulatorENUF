@@ -22,7 +22,7 @@
         {!! Form::number('cupos',$curso->CUR_cupos,['class'=>'form-control','required'])!!}
     </div>
     <label for="profesor">Profesor</label>
-    <select  name="asesor" class="form-control" required>
+    <select  name="profesor" class="form-control" required>
         <option value="{{ $profesor->PRO_id}}">{{ $profesor->PRO_nombre }} {{ $profesor->PRO_apellido_p }} {{ $profesor->PRO_apellido_m }}*</option>
         @foreach ($profesores as $pro)
         @if($profesor->PRO_id==$pro->PRO_id)

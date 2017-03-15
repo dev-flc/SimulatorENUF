@@ -141,10 +141,10 @@ span{
   z-index: 1000;
   padding: 8px;
   width: 160px;
-  background-color: red;
-  background-color: red;/*Color de fondo*/
+  border: 1px solid rgb(93, 109, 126);;
+ /* background-color: rgb(93, 109, 126);Color de fondo*/
   border-radius: 5px;
-  color: #fff;
+  color: rgb(52, 152, 219);
   content: attr(data-tooltip);
   font-size: 14px;
   line-height: 1.2;
@@ -258,7 +258,7 @@ span{
   margin-bottom: 0;
   margin-left: -11px;
   border-top-color: transparent;
-  border-right-color: red; /*Color pikito*/
+  border-right-color: rgb(93, 109, 126);; /*Color pikito*/
 }
 
 .tooltip-right:hover:before,

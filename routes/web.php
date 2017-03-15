@@ -35,6 +35,8 @@ Route::group(['prefix'=>'profesor'], function(){
 Route::resource('curso','ProCursoController');
 
 Route::resource('alumno','ProAlumnoController');
+
+Route::resource('unidad','ProUnidadController');
 });
 
 

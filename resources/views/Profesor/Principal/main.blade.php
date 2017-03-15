@@ -27,77 +27,62 @@
   <div class="container-fluid subpanelhistoria">
 
    	@yield('content')
-    <br>
   </div>
 
 </div>
 <div class="container-fluid contenerdor1">
-<br>
-<br>
-<br>
-<center>
-  <h2>EN LA ENUF NOS GUSTARÍA ESCUCHARTE Y PODER RESOLVER TUS DUDAS PARA QUE TOMES LA MEJOR DECISIÓN PARA CONTINUAR CON TUS ESTUDIOS</h2>
-  <br><br>
-</center>
-<br>
+@yield('subcontenido')
 </div>
-
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-4">
-    <center><br>
+    <div class="col-sm-4 subfinal">
+    <center>
     <div class="container-fluid panelimg">
-      <img src="img/diploma.png" alt="" id="divimg">
-      <p><label for="">Certificada</label></p>
+      <br>
+      <img src="/img/diploma.png" alt="" id="divimg">
+      <h2>Unidades Aprobadas</h2>
     </div>
     </center>
     </div>
 
-    <div class="col-sm-4">
-    <center><br>
+    <div class="col-sm-4 subfinal">
+    <center>
     <div class="container-fluid panelimg">
-      <img src="img/logo.png" alt="" id="divimg">
-      <p><label for=""></label></p>
+      <br>
+      <img src="/img/reloj.png" alt="" id="divimg">
+      <h2>Fechas Y Horas</h2>
     </div>
     </center>
     </div>
 
-    <div class="col-sm-4">
-    <center><br>
+    <div class="col-sm-4 subfinal">
+    <center>
     <div class="container-fluid panelimg">
-      <img src="img/logo.png" alt="" id="divimg">
-      <p><label for=""></label></p>
+      <br>
+      <img src="/img/024-colaboracion.png" alt="" id="divimg">
+      <h2>Examenes Aleatorios</h2>
     </div>
     </center>
     </div>
-  </div><br>
+  </div><br><br>
 </div>
 
 
 <footer class="footer">
-      <div class="container-fluid">
-       <div class="row">
-         <div class="col-sm-4">
-         <h3>Dirección</h3>
-          <p id="pfooter">Avenida: Encinos 3  </p>
-          <p id="pfooter">Colonia: Jardines del Sur  </p>
-          <p id="pfooter">Ciudad: Chilpancingo de los Bravo</p>
-          <p id="pfooter">Cp: 39074   </p>
-         </div>
-         <div class="col-sm-4"><br><br>
-            <h3>Redes sociales</h3>
-            <a href=""><img src="img/facebook.png" alt="" id="redes"></a>
-            <a href=""><img src="img/twiter.png" alt="" id="redes"></a>
-           <a href=""> <img src="img/google-plus.png" alt="" id="redes"></a>
-          </div>
-         <div class="col-sm-4">
-            <h3>Contactanos</h3>
-          <p id="pfooter">Telefono:  01 747 472 5227</p>
-          <p id="pfooter">Correo:   enufrr@hotmail.com</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-4">
+    </div>
+    <div class="col-sm-4">
+    <center><br>
+      <p>Escuela Normal Urbana Federal Profesor Rafael Ramirez. | 2017</p>
+    </center>
+    </div>
+    <div class="col-sm-4">
+    </div>
+  </div>
+</div>
 
-         </div>
-       </div>
-           </div>
       <!--
       <button type="button" data-toggle="modal" data-target="#myModal" id="fixedbutton" class="btn btn-danger btn-circle btn-lg">
         <span class="glyphicon glyphicon-info-sign"></span>

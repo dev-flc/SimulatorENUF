@@ -3,11 +3,9 @@
 namespace SimulatorENUF\Http\Controllers;
 
 use Illuminate\Http\Request;
-use SimulatorENUF\Models\Profesor;
-use SimulatorENUF\Models\Curso;
+use SimulatorENUF\Models\Unidad;
 
-
-class AdminCursoController extends Controller
+class ProUnidadController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +14,7 @@ class AdminCursoController extends Controller
      */
     public function index()
     {
-      #$curso=Curso::all();
-      $curso=Curso::join('profesors','profesors.PRO_id','=','cursos.PRO_id')->get();
-      return view("Administrador.Curso.index")->with('curso',$curso);
+        //
     }
 
     /**
@@ -28,8 +24,7 @@ class AdminCursoController extends Controller
      */
     public function create()
     {
-      $profesor=Profesor::all();
-      return view('Administrador.Curso.create')->with('profesor',$profesor);
+        //
     }
 
     /**
@@ -40,14 +35,13 @@ class AdminCursoController extends Controller
      */
     public function store(Request $request)
     {
-      $fecha=date('Y-m-d');
-      $curso=new Curso;
-      $curso->CUR_nombre=($request->nombre);
-      $curso->CUR_cupos=($request->cupos);
-      $curso->CUR_fecha=$fecha;
-      $curso->PRO_id=($request->profesor);;
-      $curso->save();
-      return redirect()->route('cursos.index');
+      $unidad=new Unidad;
+      $unidad->UNI_nombre=($request->nombre);
+      $unidad->UNI_fecha_final=($request->fecha);
+      $unidad->CUR_id=($request->curso);
+      $unidad->save();
+      return redirect()->route('curso.show', ($request->curso));
+
     }
 
     /**
@@ -69,15 +63,7 @@ class AdminCursoController extends Controller
      */
     public function edit($id)
     {
-      $curso=Curso::find($id);
-      $idprofesor=$curso->PRO_id;
-      $profesor=Profesor::find($idprofesor);
-      $profesores=Profesor::all();
-
-      return view("Administrador.Curso.update")
-      ->with('curso',$curso)
-      ->with('profesor',$profesor)
-      ->with('profesores',$profesores);
+        //
     }
 
     /**
@@ -89,16 +75,7 @@ class AdminCursoController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $fecha=date('Y-m-d');
-      $curso=Curso::find($id);
-      $curso->CUR_nombre=($request->nombre);
-      $curso->CUR_cupos=($request->cupos);
-      $curso->CUR_fecha=$fecha;
-      $curso->PRO_id=($request->profesor);;
-      $curso->save();
-
-      //flash('Presidente modificado correctamente', 'info')->important();
-      return redirect()->route('cursos.index');
+        //
     }
 
     /**

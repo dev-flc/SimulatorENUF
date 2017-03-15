@@ -5,6 +5,7 @@ namespace SimulatorENUF\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use SimulatorENUF\Models\Curso;
+use SimulatorENUF\Models\unidad;
 use SimulatorENUF\Models\Profesor;
 
 
@@ -58,9 +59,11 @@ class ProCursoController extends Controller
      */
     public function show($id)
     {
-        $curso=Curso::find($id);
-
-        return view('Profesor.Curso.show')->with('curso',$curso);
+      $curso=Curso::find($id);
+      $unidad = Unidad::select('*')->where('CUR_id','=',$id)->get();
+      return view('Profesor.Curso.show')
+      ->with('curso',$curso)
+      ->with('unidad',$unidad);
     }
 
     /**

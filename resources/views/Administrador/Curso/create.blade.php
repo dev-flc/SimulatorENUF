@@ -11,7 +11,6 @@
     <li><a href="{{ route('profesores.index') }}">profesores</a></li>
     <li><a href="{{ route('profesores.create') }}">Create profesores</a></li>
   </ul>
-
 	{!! Form::open(['route'=>'cursos.store','method'=>'POST']) !!}
 	<div class="form-group">
 		{!! Form::label('nombre','Nombre ') !!}
@@ -24,14 +23,12 @@
 	<select  name="profesor" class="form-control" required>
 		<option value="">Seleccione un profesor</option>
 		@foreach ($profesor as $pro)
-        <option value="{{ $pro->PRO_id}}">{{ $pro->PRO_nombre}}  </option>
+        <option value="{{ $pro->PRO_id}}">{{ $pro->PRO_nombre}} {{ $pro->PRO_apellido_p}} {{ $pro->PRO_apellido_m }}  </option>
         @endforeach
     </select>
-
-
 	<div class="form-group">
     {{ Form::button('<span class="glyphicon glyphicon-ok"></span> Registrar', array('class'=>'btn btn-success pull-right', 'type'=>'submit')) }}
-    </div>
-    {!! Form::close() !!}
+  </div>
+  {!! Form::close() !!}
 </body>
 </html>

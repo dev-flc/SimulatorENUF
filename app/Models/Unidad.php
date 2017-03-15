@@ -1,5 +1,3 @@
-
-
 <?php
 
 namespace SimulatorENUF\Models;
@@ -15,7 +13,7 @@ class Unidad extends Model
         'UNI_fecha_final',
         'CUR_id'
     ];
-    
+
     public function examen()
     {
         return $this->belongsTo('SimulatorENUF\Models\Examen');

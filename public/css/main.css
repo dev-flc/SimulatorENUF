@@ -7,6 +7,12 @@
 	top: -20px;
 
 }
+.seccionone
+{
+  height: 300px;
+  background: rgb(142, 68, 173);
+ /* background: url(/img/desing/11.png);*/
+}
 .subpanelhistoria
 {
 	background: rgb(255,255,255);
@@ -23,10 +29,10 @@
 }
 .contenerdor1
 {
-	background: rgb(52, 152, 219); /* colores no me gusta */
+	background: rgb(46, 204, 113); /* colores no me gusta */
 	z-index: 3;
 	position: relative;
-	height: auto;
+	height: 300px;
 	top: -40px;
 }
 
@@ -48,10 +54,16 @@ h1{
 }
 .panelimg
 {
-
+  background: rgb(242, 243, 244);
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-
 }
+.panelcursos
+{
+  background: rgb(242, 243, 244);
+  margin: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
 
 
 ::-webkit-scrollbar {
@@ -70,3 +82,5 @@ h1{
 ::-webkit-scrollbar-corner {
       background-color: black;
 }
+
+
