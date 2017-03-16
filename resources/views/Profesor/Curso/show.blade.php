@@ -1,5 +1,5 @@
 
-@extends('Profesor.Principal.main')
+@extends('Main.main')
 @section('title', 'Curso')
 @section('styles')
   <link rel="stylesheet" href="{{ asset('css/button-menu.css') }}">
@@ -75,7 +75,7 @@
     <center><h2>Unidades</h2></center>
     <div class="row">
     @foreach ($unidad as $uni)
-      <a href="hola.php">
+      <a href="{{ route('unidad.show', $uni->UNI_id) }}">
       <div class="col-sm-12 cuadro">
         <div class="col-sm-2">
           <img id="alumnosimg" src="/img/book1.png" alt="">

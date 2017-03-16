@@ -16,12 +16,12 @@ class CreatePreguntasTable extends Migration
         Schema::create('preguntas', function (Blueprint $table) {
             $table->increments('PRE_id');
             $table->string('PRE_nombre')->nullable();
-            $table->integer('EXA_id')->unsigned()->nullable();
+            $table->integer('UNI_id')->unsigned()->nullable();
             $table->timestamps();
-            
+
             #llave foranea examen
-            $table->foreign('EXA_id')->references('EXA_id')->on('examens');
-            
+            $table->foreign('UNI_id')->references('UNI_id')->on('unidads');
+
         });
     }
 

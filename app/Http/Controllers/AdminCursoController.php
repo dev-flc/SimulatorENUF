@@ -45,7 +45,10 @@ class AdminCursoController extends Controller
       $curso->CUR_nombre=($request->nombre);
       $curso->CUR_cupos=($request->cupos);
       $curso->CUR_fecha=$fecha;
-      $curso->PRO_id=($request->profesor);;
+      $curso->CUR_clave=($request->clave);
+      $curso->CUR_foto="cusro.png";
+      $curso->CUR_estatus="habilitado";
+      $curso->PRO_id=($request->profesor);
       $curso->save();
       return redirect()->route('cursos.index');
     }
@@ -94,6 +97,8 @@ class AdminCursoController extends Controller
       $curso->CUR_nombre=($request->nombre);
       $curso->CUR_cupos=($request->cupos);
       $curso->CUR_fecha=$fecha;
+      $curso->CUR_clave=($request->clave);
+      $curso->CUR_estatus=($request->estatus);
       $curso->PRO_id=($request->profesor);;
       $curso->save();
 

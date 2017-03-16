@@ -10,6 +10,8 @@ class Unidad extends Model
 	protected $primaryKey = 'UNI_id';
     protected $fillable = [
         'UNI_nombre',
+        'UNI_foto',
+        'UNI_material_apoyo',
         'UNI_fecha_final',
         'CUR_id'
     ];
@@ -23,5 +25,9 @@ class Unidad extends Model
     public function curso()
     {
         return $this->hasMany('SimulatorENUF\Models\Curso');
+    }
+    public function pregunta()
+    {
+        return $this->belongsTo('SimulatorENUF\Models\Pregunta');
     }
 }

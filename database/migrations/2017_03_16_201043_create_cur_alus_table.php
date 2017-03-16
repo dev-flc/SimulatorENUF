@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUnidadsTable extends Migration
+class CreateCurAlusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreateUnidadsTable extends Migration
      */
     public function up()
     {
-        Schema::create('unidads', function (Blueprint $table) {
-            $table->increments('UNI_id');
-            $table->string('UNI_nombre')->nullable();
-            $table->string('UNI_foto')->nullable();
-            $table->string('UNI_material_apoyo')->nullable();
-            $table->date('UNI_fecha_final')->nullable();
+        Schema::create('cur_alus', function (Blueprint $table) {
+            $table->increments('CUAL_id');
+            $table->enum('CUAL_estatus',['aprobado','pendiente'])->default('pendiente');
             $table->integer('CUR_id')->unsigned()->nullable();
+            $table->integer('ALU_id')->unsigned()->nullable();
             $table->timestamps();
-
             #llave foranea curso
             $table->foreign('CUR_id')->references('CUR_id')->on('cursos');
+            #llave foranea alumno
+            $table->foreign('ALU_id')->references('ALU_id')->on('alumnos');
         });
     }
 
@@ -34,6 +33,6 @@ class CreateUnidadsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('unidads');
+        Schema::dropIfExists('cur_alus');
     }
 }

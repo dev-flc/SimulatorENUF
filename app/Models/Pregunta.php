@@ -10,7 +10,7 @@ class Pregunta extends Model
 	protected $primaryKey = 'PRE_id';
     protected $fillable = [
         'PRE_nombre',
-        'EXA_id'
+        'UNI_id'
     ];
 
 
@@ -20,8 +20,8 @@ class Pregunta extends Model
     }
 
      #uno a muchos examen
-    public function examen()
+    public function unidad()
     {
-    	return $this->hasMany('SimulatorENUF\Models\Examen');
+    	return $this->hasMany('SimulatorENUF\Models\Unidad');
     }
 }

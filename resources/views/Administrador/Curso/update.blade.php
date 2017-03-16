@@ -21,6 +21,14 @@
         {!! Form::label('cupos','Cupos') !!}
         {!! Form::number('cupos',$curso->CUR_cupos,['class'=>'form-control','required'])!!}
     </div>
+    <div class="form-group">
+        {!! Form::label('clave','Clave') !!}
+        {!! Form::number('clave',$curso->CUR_clave,['class'=>'form-control','required'])!!}
+    </div>
+    <div class="form-group">
+      {{ Form::radio('estatus', 'habilitado', true) }} habilitado
+      {{ Form::radio('estatus', 'deshabilitado') }} deshabilitar
+    </div>
     <label for="profesor">Profesor</label>
     <select  name="profesor" class="form-control" required>
         <option value="{{ $profesor->PRO_id}}">{{ $profesor->PRO_nombre }} {{ $profesor->PRO_apellido_p }} {{ $profesor->PRO_apellido_m }}*</option>

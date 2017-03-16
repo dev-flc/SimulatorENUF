@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Examen extends Model
 {
-    protected $table = 'examens';
-	protected $primaryKey = 'EXA_id';
+  protected $table = 'examens';
+  protected $primaryKey = 'EXA_id';
     protected $fillable = [
         'EXA_nombre',
         'EXA_fecha',
@@ -16,13 +16,11 @@ class Examen extends Model
         'EXA_tiempo',
         'EXA_intento',
         'UNI_id',
-        'TIP_id'
+        'TIP_id',
+        'ALU_id',
     ];
 
-    public function pregunta()
-    {
-        return $this->belongsTo('SimulatorENUF\Models\Pregunta');
-    }
+
 
     #uno a muchos examen
     public function unidad()
@@ -30,10 +28,15 @@ class Examen extends Model
         return $this->hasMany('SimulatorENUF\Models\Unidad');
     }
 
+    #uno a muchos alumnos
+    public function alumno()
+    {
+        return $this->hasMany('SimulatorENUF\Models\Alumno');
+    }
+
     #uno a uno  tipo
     public function tipo()
     {
         return $this->hasOne('SimulatorENUF\Models\Tipo');
     }
-
 }

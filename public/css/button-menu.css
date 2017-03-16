@@ -13,7 +13,8 @@
   height:60px;
   border-radius:100%;
   background:#F44336;
-  right:0;
+  right:0px;
+  top: 210px;
   bottom:0;
   position:absolute;
   margin-right:16px;
@@ -46,6 +47,7 @@ span{
   position:absolute;
   right:0;
   bottom:0;
+
   margin-right:26px;
   transform:scale(0);
 }
@@ -53,11 +55,13 @@ span{
   background:#2196F3;
   margin-bottom:85px;
   transition:0.5s;
+  top:160px;
 }
 .botonF3{
   background:#673AB7;
   margin-bottom:130px;
   transition:0.7s;
+  top:110px;
 }
 .botonF4{
   background:#009688;

@@ -20,6 +20,10 @@
 		{!! Form::label('cupos','Cupos') !!}
 		{!! Form::number('cupos',null,['class'=>'form-control','required'])!!}
 	</div>
+  <div class="form-group">
+    {!! Form::label('clave','Clave') !!}
+    {!! Form::number('clave',null,['class'=>'form-control','required'])!!}
+  </div>
 	<select  name="profesor" class="form-control" required>
 		<option value="">Seleccione un profesor</option>
 		@foreach ($profesor as $pro)

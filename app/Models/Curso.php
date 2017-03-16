@@ -6,18 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Curso extends Model
 {
-    protected $table = 'cursos';
+  protected $table = 'cursos';
 	protected $primaryKey = 'CUR_id';
-    protected $fillable = [
+  protected $fillable = [
         'CUR_nombre',
         'CUR_cupos',
+        'CUR_fecha',
+        'CUR_clave',
+        'CUR_foto',
+        'CUR_estatus',
         'PRO_id'
     ];
 
-    public function alumno()
-    {
-        return $this->belongsTo('SimulatorENUF\Models\Alumno');
-    }
+
 
     public function unidad()
     {
@@ -27,5 +28,10 @@ class Curso extends Model
      public function profesor()
     {
         return $this->belongsTo('SimulatorENUF\Models\Profesor');
+    }
+
+    public function curalu()
+    {
+        return $this->belongsTo('SimulatorENUF\Models\CurAlu');
     }
 }

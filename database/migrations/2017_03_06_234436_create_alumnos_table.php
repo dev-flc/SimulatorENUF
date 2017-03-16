@@ -23,15 +23,12 @@ class CreateAlumnosTable extends Migration
             $table->integer('ALU_metricula')->nullable();
             $table->integer('USE_id')->unsigned()->nullable();
             $table->integer('DIR_id')->unsigned()->nullable();
-            $table->integer('CUR_id')->unsigned()->nullable();
             $table->timestamps();
 
             #llave foranea users
             $table->foreign('USE_id')->references('id')->on('users');
             #llave foranea direccion
             $table->foreign('DIR_id')->references('DIR_id')->on('direccions');
-            #llave foranea curso
-            $table->foreign('CUR_id')->references('CUR_id')->on('cursos');
         });
     }
 

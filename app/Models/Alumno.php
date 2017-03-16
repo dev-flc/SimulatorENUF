@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Alumno extends Model
 {
     protected $table = 'alumnos';
-	protected $primaryKey = 'ADM_id';
+	protected $primaryKey = 'ALU_id';
     protected $fillable = [
         'ALU_nombre',
         'ALU_apellido_p',
@@ -16,8 +16,7 @@ class Alumno extends Model
         'ALU_sexo',
         'ALU_matricula',
         'USE_id',
-        'DIR_id',
-        'CUR_id'
+        'DIR_id'
     ];
     #uno a uno  usuario
     public function user()
@@ -31,9 +30,13 @@ class Alumno extends Model
         return $this->hasOne('SimulatorENUF\Direccion');
     }
 
-     #uno a muchos curso
-    public function curso()
+    public function examen()
     {
-        return $this->hasMany('SimulatorENUF\Models\Curso');
+        return $this->belongsTo('SimulatorENUF\Models\Examen');
+    }
+
+    public function curalu()
+    {
+        return $this->belongsTo('SimulatorENUF\Models\CurAlu');
     }
 }

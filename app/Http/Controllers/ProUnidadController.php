@@ -4,6 +4,7 @@ namespace SimulatorENUF\Http\Controllers;
 
 use Illuminate\Http\Request;
 use SimulatorENUF\Models\Unidad;
+use SimulatorENUF\Models\Curso;
 
 class ProUnidadController extends Controller
 {
@@ -52,7 +53,14 @@ class ProUnidadController extends Controller
      */
     public function show($id)
     {
-        //
+
+      $unidad=Unidad::find($id);
+      $idcurso=$unidad->CUR_id;
+      $curso=Curso::find($idcurso);
+
+      return view("Profesor.Unidad.show")
+      ->with('curso',$curso)
+      ->with('unidad',$unidad);
     }
 
     /**

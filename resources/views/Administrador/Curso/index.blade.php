@@ -15,20 +15,22 @@
 
 	<table>
 		<tr>
-			<th>#</th>
+			<th>clave</th>
 			<th>Nombre</th>
 			<th>Cupos</th>
-			<th>fecha</th>
+      <th>fecha</th>
+			<th>estatus</th>
 			<th>Profesor</th>
 			<th>editar</th>
 			<th>Eliminar</th>
 		</tr>
 		@foreach ($curso as $cursos)
 		<tr>
-			<td>{{ $cursos->CUR_id }}</td>
+			<td>{{ $cursos->CUR_clave }}</td>
 			<td>{{ $cursos->CUR_nombre }}</td>
 			<td>{{ $cursos->CUR_cupos }}</td>
-			<td>{{ $cursos->CUR_fecha }}</td>
+      <td>{{ $cursos->CUR_fecha }}</td>
+			<td>{{ $cursos->CUR_estatus }}</td>
 			<td>{{ $cursos->PRO_nombre }} {{ $cursos->PRO_apellido_p }} {{ $cursos->PRO_apellido_m }}</td>
 			<td><a href="{{ route('cursos.edit', $cursos->CUR_id) }}">Editar</a></td>
 			<td><a href="{{ route('curso.edit', $cursos->CUR_id) }}">Eliminar</a></td>

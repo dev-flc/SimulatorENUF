@@ -1,4 +1,4 @@
-@extends('Profesor.Principal.main')
+@extends('Main.main')
 
 @section('title', 'Cursos')
 @section('imagenprincipal')
