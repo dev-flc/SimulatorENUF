@@ -38,6 +38,8 @@ class ProUnidadController extends Controller
     {
       $unidad=new Unidad;
       $unidad->UNI_nombre=($request->nombre);
+      $unidad->UNI_foto="unidad.png";
+      $unidad->UNI_material_apoyo="apoyo.pdf";
       $unidad->UNI_fecha_final=($request->fecha);
       $unidad->CUR_id=($request->curso);
       $unidad->save();

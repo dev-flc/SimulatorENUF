@@ -204,6 +204,10 @@
           <center><h2>{{ $curso->CUR_nombre }}</h2></center>
         </div>
         <div class="form-group">
+        <p>pendiente foto</p>
+        <p>pendiente material apoyo</p>
+        </div>
+        <div class="form-group">
           {!! Form::label('nombre','Nombre de unidad') !!}
           {!! Form::text('nombre',null,['class'=>'form-control','required'])!!}
           <p>Solo puede contener 34 caracteres A-Z | 0-9</p>
