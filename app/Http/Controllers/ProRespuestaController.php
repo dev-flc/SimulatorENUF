@@ -3,12 +3,8 @@
 namespace SimulatorENUF\Http\Controllers;
 
 use Illuminate\Http\Request;
-use SimulatorENUF\Models\Unidad;
-use SimulatorENUF\Models\Curso;
-use SimulatorENUF\Models\Pregunta;
-use SimulatorENUF\Models\Respuesta;
 
-class ProUnidadController extends Controller
+class ProRespuestaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -38,15 +34,7 @@ class ProUnidadController extends Controller
      */
     public function store(Request $request)
     {
-      $unidad=new Unidad;
-      $unidad->UNI_nombre=($request->nombre);
-      $unidad->UNI_foto="unidad.png";
-      $unidad->UNI_material_apoyo="apoyo.pdf";
-      $unidad->UNI_fecha_final=($request->fecha);
-      $unidad->CUR_id=($request->curso);
-      $unidad->save();
-      return redirect()->route('curso.show', ($request->curso));
-
+        //
     }
 
     /**
@@ -57,18 +45,7 @@ class ProUnidadController extends Controller
      */
     public function show($id)
     {
-
-      $unidad=Unidad::find($id);
-      $idcurso=$unidad->CUR_id;
-      $curso=Curso::find($idcurso);
-
-      $pregunta=Pregunta::select('*')->where('UNI_id','=',$id)->get();
-      $respuesta=Respuesta::all();
-      return view("Profesor.Unidad.show")
-      ->with('curso',$curso)
-      ->with('pregunta',$pregunta)
-      ->with('respuesta',$respuesta)
-      ->with('unidad',$unidad);
+        //
     }
 
     /**

@@ -18,5 +18,5 @@ class Tipo extends Model
 
     public function respuesta()
     {
-        return $this->belongsTo('SimulatorENUF\Models\Resspuesta');
+        return $this->belongsTo('SimulatorENUF\Models\Respuesta');
     }

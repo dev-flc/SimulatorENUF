@@ -37,6 +37,11 @@ Route::resource('curso','ProCursoController');
 Route::resource('alumno','ProAlumnoController');
 
 Route::resource('unidad','ProUnidadController');
+
+Route::resource('pregunta','ProPreguntaController');
+
+Route::resource('respuesta','ProRespuestaController');
+
 });
 
 

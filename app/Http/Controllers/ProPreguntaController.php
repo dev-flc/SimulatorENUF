@@ -8,7 +8,8 @@ use SimulatorENUF\Models\Curso;
 use SimulatorENUF\Models\Pregunta;
 use SimulatorENUF\Models\Respuesta;
 
-class ProUnidadController extends Controller
+
+class ProPreguntaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -38,15 +39,28 @@ class ProUnidadController extends Controller
      */
     public function store(Request $request)
     {
-      $unidad=new Unidad;
-      $unidad->UNI_nombre=($request->nombre);
-      $unidad->UNI_foto="unidad.png";
-      $unidad->UNI_material_apoyo="apoyo.pdf";
-      $unidad->UNI_fecha_final=($request->fecha);
-      $unidad->CUR_id=($request->curso);
-      $unidad->save();
-      return redirect()->route('curso.show', ($request->curso));
 
+      $pregunta=new Pregunta;
+      $pregunta->PRE_nombre=($request->pregunta);
+      $pregunta->UNI_id=($request->unidad);
+      $pregunta->save();
+      $idpre= Pregunta::find($pregunta->PRE_id);
+
+      for($i=1; $i<=4; $i++)
+      {
+      $res="respuesta".$i;
+      $tipo="tipo".$i;
+      $tipoo=($request->$tipo);
+      $tipoo=(int)$tipoo;
+      echo $tipoo;
+      $respuesta=new Respuesta;
+      $respuesta->RES_nombre=($request->$res);
+      $respuesta->PRE_id=($idpre->PRE_id);
+      $respuesta->TIP_id=$tipoo;
+      $respuesta->save();
+      };
+
+      return redirect()->route('unidad.show', ($request->unidad));
     }
 
     /**
@@ -57,18 +71,7 @@ class ProUnidadController extends Controller
      */
     public function show($id)
     {
-
-      $unidad=Unidad::find($id);
-      $idcurso=$unidad->CUR_id;
-      $curso=Curso::find($idcurso);
-
-      $pregunta=Pregunta::select('*')->where('UNI_id','=',$id)->get();
-      $respuesta=Respuesta::all();
-      return view("Profesor.Unidad.show")
-      ->with('curso',$curso)
-      ->with('pregunta',$pregunta)
-      ->with('respuesta',$respuesta)
-      ->with('unidad',$unidad);
+        //
     }
 
     /**

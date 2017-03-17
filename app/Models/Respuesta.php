@@ -13,7 +13,7 @@ class Respuesta extends Model
         'PRE_id',
         'TIP_id'
     ];
-    
+
     #uno a muchos pregunta
     public function pregunta()
     {

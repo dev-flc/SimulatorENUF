@@ -1,6 +1,6 @@
 @extends('Main.main')
 
-@section('title', 'Preguntas')
+@section('title', 'Unidad')
 
 @section('styles')
   <link rel="stylesheet" href="{{ asset('css/button-menu.css') }}">
@@ -10,61 +10,63 @@
     {
       border: 1px solid rgb(230,230,230);
     }
-/* hide input */
-input.radio:empty {
-  margin-left: -999px;
-}
-
-/* style label */
-input.radio:empty ~ label {
-  position: relative;
-  float: left;
-  line-height: 2.5em;
-  text-indent: 3.25em;
-  margin-top: 2em;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-input.radio:empty ~ label:before {
-  position: absolute;
-  display: block;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  content: '';
-  width: 2.5em;
-  background: #D1D3D4;
-  border-radius: 3px 0 0 3px;
-}
-
-/* toggle hover */
-input.radio:hover:not(:checked) ~ label:before {
-  content:'\2714';
-  text-indent: .9em;
-  color: #C2C2C2;
-}
-
-input.radio:hover:not(:checked) ~ label {
-  color: #888;
-}
-
-/* toggle on */
-input.radio:checked ~ label:before {
-  content:'\2714';
-  text-indent: .9em;
-  color: #9CE2AE;
-  background-color: #4DCB6D;
-}
-
-input.radio:checked ~ label {
-  color: #777;
-}
-
-/* radio focus */
+    #respuestaid
+    {
+      width: 100%;
+    }
+    .btn-pre
+    {
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      border: none;
+      margin: 2px;
+    }
+    .btn-editar
+    {
+      color: rgb(128, 139, 150);
+      border: 1px solid rgb(52, 152, 219);
+      background: rgb(255,255,255);
+      transition: .2s;
+    }
+    .btn-eliminar
+    {
+      color: rgb(128, 139, 150);
+      border: 1px solid rgb(231, 76, 60);
+      background: rgb(255,255,255);
+      transition: .2s;
+    }
+    .btn-eliminar:hover
+    {
+      color: rgb(255,255,255);
+      background: rgb(231, 76, 60);
+    }
+     .btn-editar:hover
+    {
+      color: rgb(255,255,255);
+      background: rgb(52, 152, 219);
+    }
+    #ress
+    {
+      width: 4%;
+    }
+    #separador
+    {
+      width: 1%;
+      color: rgb(191, 201, 202);
+    }
+    .si
+    {
+      color: rgb(130, 224, 170);
+    }
+    .no
+    {
+      color: rgb(241, 148, 138);
+    }
+    table
+    {
+      width: 100%;
+    }
   </style>
 @endsection
 
@@ -143,16 +145,63 @@ input.radio:checked ~ label {
     <br>
     <div class=" container-fluid cuadro">
       <div class="row">
-        <div class="col-sm-6">Pregunta <br>
 
+        <div class="col-sm-6">
+          <center><p>Preguntas:</p></center>
         </div>
-        <div class="col-sm-3">Respuestas</div>
-        <div class="col-sm-3">
-          <a href=""><button class="btn btn-danger">eliminar</button></a>
-          <a href=""><button class="btn btn-primary">Editar</button></a>
+        <div class="col-sm-5">
+          <center><p>Respuestas:</p></center>
+        </div>
+        <div class="col-sm-1">
+          <center><p>Opción</p></center>
         </div>
       </div>
     </div>
+    @foreach($pregunta as $pre)
+    <div class=" container-fluid cuadro">
+      <div class="row">
+
+        <div class="col-sm-6">
+          <p>
+            {{ $pre->PRE_nombre}}
+          </p>
+        </div>
+      <div class="col-sm-5">
+        <div class="table-responsive">
+          <table>
+          @foreach($respuesta as $res)
+            @if($res->PRE_id == $pre->PRE_id)
+            @if($res->TIP_id==1)
+          <tr>
+            <td id="separador">|</td>
+            <td id="ress">
+              <span class="glyphicon glyphicon glyphicon-ok si" aria-hidden="true"></span>
+            </td>
+            @else
+            <td id="separador">|</td>
+            <td id="ress">
+              <span class="glyphicon glyphicon glyphicon-remove no" aria-hidden="true"></span>
+            </td>
+            @endif
+            <td >{{$res->RES_nombre}}</td>
+            <td id="separador">|</td>
+            @endif
+          </tr>
+          @endforeach
+          </table>
+        </div>
+      </div>
+
+        <div class="col-sm-1">
+        <center>
+          <a href=""><button class="btn-eliminar btn-pre"><span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span></button></a>
+          <a href=""><button class="btn-editar btn-pre"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></a>
+          </center>
+        </div>
+
+      </div>
+    </div>
+       @endforeach
   </div>
   </div>
 </div>
@@ -186,14 +235,19 @@ input.radio:checked ~ label {
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h3 class="modal-title colordiv" id="myModalLabel">Alumnos</h3>
+        <h3 class="modal-title colordiv" id="myModalLabel">Registro de Pregunta</h3>
       </div>
       <div class="modal-body">
-      {!! Form::open(['route'=>'profesores.store','method'=>'POST']) !!}
+      {!! Form::open(['route'=>'pregunta.store','method'=>'POST']) !!}
+        <div class="form-group">
+          {!! Form::label('unidad','unidad') !!}
+          {!! Form::text('unidad',$unidad->UNI_id,['class'=>'form-control','id'=>'pregunta','required'])!!}
+        </div>
         <div class="form-group">
           {!! Form::label('pregunta','Pregunta') !!}
           {!! Form::text('pregunta',null,['class'=>'form-control','id'=>'pregunta','required'])!!}
         </div>
+
 
         <div class="row">
           <div class="col-sm-8">
@@ -205,8 +259,8 @@ input.radio:checked ~ label {
           <div class="col-sm-4">
             <div class="form-group">
               <br>
-              {{ Form::radio('tipo1', 'falsa', true) }} Falsa
-              {{ Form::radio('tipo1', 'correcta') }} Correcta
+              {{ Form::radio('tipo1', '2', true) }} Falsa
+              {{ Form::radio('tipo1', '1') }} Correcta
             </div>
           </div>
           <div class="col-sm-8">
@@ -218,8 +272,8 @@ input.radio:checked ~ label {
           <div class="col-sm-4">
             <div class="form-group">
               <br>
-              {{ Form::radio('tipo2', 'falsa', true) }} Falsa
-              {{ Form::radio('tipo2', 'correcta') }} Correcta
+              {{ Form::radio('tipo2', '2', true) }} Falsa
+              {{ Form::radio('tipo2', '1') }} Correcta
             </div>
           </div>
           <div class="col-sm-8">
@@ -232,8 +286,8 @@ input.radio:checked ~ label {
 
             <div class="form-group">
               <br><!-- estoy aqui -->
-              {{ Form::radio('tipo3', 'falsa',true) }} Falsa
-              {{ Form::radio('tipo3', 'correcta') }} Correcta
+              {{ Form::radio('tipo3', '2',true) }} Falsa
+              {{ Form::radio('tipo3', '1') }} Correcta
             </div>
           </div>
           <div class="col-sm-8">
@@ -245,8 +299,8 @@ input.radio:checked ~ label {
           <div class="col-sm-4">
             <div class="form-group">
               <br>
-              {{ Form::radio('tipo4', 'falsa', true) }} Falsa
-              {{ Form::radio('tipo4', 'correcta') }} Correcta
+              {{ Form::radio('tipo4', '2', true) }} Falsa
+              {{ Form::radio('tipo4', '1') }} Correcta
             </div>
           </div>
         </div>
