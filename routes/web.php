@@ -43,9 +43,19 @@ Route::resource('pregunta','ProPreguntaController');
 Route::resource('respuesta','ProRespuestaController');
 
 });
-
-
 //middleware Profesor Fin
+
+//middleware Alumno Inicio
+Route::group(['prefix'=>'alumno'], function(){
+
+Route::resource('principal','AlumnoPrincipalController');
+});
+//middleware Alumno Fin
+
 Auth::routes();
+
+Route::get('/registro', 'AlumnoRegistroController@registro');
+
+Route::post('/register', 'AlumnoRegistroController@registeruser');
 
 Route::get('/home', 'HomeController@index');
