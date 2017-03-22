@@ -1,4 +1,21 @@
+/* modal login */
 
+.user, .pass
+{
+  width: 80%;
+  outline: none;
+  padding: 15px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid rgb(220,220,220);
+}
+.user:focus, .user:active ,.pass:focus, .pass:active
+{
+  outline: none;
+  border-bottom: 2px solid pink;
+}
+
+/* modal login fin */
 h1.responsive{
      word-wrap: break-word;
      -webkit-hyphens: auto;

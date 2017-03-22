@@ -60,4 +60,20 @@ class AlumnoRegistroController extends Controller
           #return Redirect::intended('principal.index');
       }
     }
+    public function loginuser(Request $request)
+    {
+      // Obtenemos los datos del formulario
+        $login=[
+            'name' =>($request->user),
+            'password' => ($request->password)
+        ];
+
+        // Verificamos los datos
+        if (Auth::attempt($login))
+        {
+            return Redirect::route('principal.index');
+        }
+
+        return Redirect::back()->with('error_message', 'Invalid data')->withInput();
+    }
 }

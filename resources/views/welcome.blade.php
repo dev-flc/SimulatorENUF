@@ -85,7 +85,7 @@
   </div>
 -->
 
-
+<!--
   <center><h2>Ubicanos</h2></center><hr>
 <style type="text/css">
 .scrolloff iframe   {
@@ -97,14 +97,23 @@
 
 
 <div id="map" class="scrolloff" onclick="scrollOn()" onmouseleave="scrollOff()" ><iframe style="width: 100%; height: 400px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2755299.0271340064!2d-100.56028020220437!3d17.49532668602591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc9b249daa8e540fc!2sEscuela+Normal+Urbana+Federal+Profesor+Rafael+Ram%C3%ADrez!5e0!3m2!1ses!2smx!4v1477103528443" frameborder="0" style="border:0" allowfullscreen ></iframe></div>
-
+-->
 <br>
 @endsection
 
 
 <!-- subcontenido -->
 @section('subcontenido')
-
+<center>
+<style type="text/css">
+  #networkglobal
+  {
+    width: 400px;
+    height: 300px;
+  }
+</style>
+  <img id="networkglobal" src="/img/global-network.png" alt="">
+</center>
 @endsection
 
 <!-- Modals-->
@@ -184,15 +193,24 @@
         </button>
         <h3 class="modal-title colordiv" id="myModalLabel">login</h3>
       </div>
-      <div class="modal-body">
-
+       <div class="modal-body">
+        {!! Form::open(['route'=>'loginuser','method'=>'POST']) !!}
+        <center>
+        <div class="form-group">
+          {{ Form::text('user',null,['class'=>'user','placeholder'=>'Nombre','required'])}}
+        </div>
+        <div class="form-group">
+          {{ Form::password('password', ['class' => 'pass','placeholder'=>'Contraseña','required']) }}
+        </div>
+        </center>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">
           Cancelar
           <span class="glyphicon glyphicon-remove"></span>
         </button>
-
+        {{ Form::button('Acceder <span class="glyphicon glyphicon-ok"></span> ', array('class'=>'btn btn-success pull-right', 'type'=>'submit')) }}
+        {!! Form::close() !!}
       </div>
     </div>
   </div>

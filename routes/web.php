@@ -56,10 +56,14 @@ Auth::routes();
 
 Route::get('/registro', 'AlumnoRegistroController@registro');
 
-
 Route::post('/registroalumno',[
     'uses' => 'AlumnoRegistroController@registeruser',
     'as' => 'registroalumno.registeruser'
+    ]);
+
+Route::post('/loginuser',[
+    'uses' => 'AlumnoRegistroController@loginuser',
+    'as' => 'loginuser'
     ]);
 
 //Route::post('/register', 'AlumnoRegistroController@registeruser');
