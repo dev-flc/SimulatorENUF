@@ -19,7 +19,7 @@
 <div class="row">
 <div class="col-sm-2"></div>
 <div class="col-sm-8">
-  {!! Form::open(['route'=>'register','method'=>'POST']) !!}
+  {!! Form::open(['route'=>'registroalumno.registeruser','method'=>'POST']) !!}
   <div class="form-group">
     {{ Form::text('nombre',null,['class'=>'form-control','placeholder'=>'Nombre','required'])}}
   </div>

@@ -14,12 +14,11 @@ class AlumnoRegistroController extends Controller
 {
     public function registro()
     {
-      return view('Alumno.registro.index');
+      return view('Alumno.Registro.index');
     }
 
     public function registeruser(Request $request)
     {
-
       #nueva direccion
       $direccion=new Direccion;
       $direccion->save();
@@ -60,6 +59,5 @@ class AlumnoRegistroController extends Controller
           return Redirect::route('principal.index');
           #return Redirect::intended('principal.index');
       }
-
     }
 }

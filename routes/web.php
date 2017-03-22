@@ -56,6 +56,17 @@ Auth::routes();
 
 Route::get('/registro', 'AlumnoRegistroController@registro');
 
-Route::post('/register', 'AlumnoRegistroController@registeruser');
+
+Route::post('/registroalumno',[
+    'uses' => 'AlumnoRegistroController@registeruser',
+    'as' => 'registroalumno.registeruser'
+    ]);
+
+//Route::post('/register', 'AlumnoRegistroController@registeruser');
+
+//Route::resource('crearalumno','AlumnoRegisterController');
+
+
+
 
 Route::get('/home', 'HomeController@index');
