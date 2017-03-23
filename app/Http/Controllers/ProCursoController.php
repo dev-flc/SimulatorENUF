@@ -5,7 +5,7 @@ namespace SimulatorENUF\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use SimulatorENUF\Models\Curso;
-use SimulatorENUF\Models\unidad;
+use SimulatorENUF\Models\Unidad;
 use SimulatorENUF\Models\Profesor;
 
 

@@ -44,5 +44,19 @@ class User extends Authenticatable
     {
         return $this->belongsTo('SimulatorENUF\Models\Alumno');
     }
+    #$table->'alumno','profesor','administrador';
+
+    public function alumnologin()
+    {
+        return $this->type === 'alumno';
+    }
+    public function profesorlogin()
+    {
+        return $this->type === 'profesor';
+    }
+    public function adminlogin()
+    {
+        return $this->type === 'administrador';
+    }
 
 }

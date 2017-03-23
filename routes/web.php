@@ -19,7 +19,8 @@ Route::get('/', function () {
 
 //middleware Administrador Inicio
 
-Route::group(['prefix'=>'admin'], function(){
+#Route::group(['prefix'=>'admin'], function(){
+Route::group(['prefix'=>'admin','middleware'=>['admin','auth']], function(){
 
 Route::resource('cursos','AdminCursoController');
 
@@ -30,7 +31,8 @@ Route::resource('profesores','AdminProfesorController');
 
 //middleware Profesor Inicio
 
-Route::group(['prefix'=>'profesor'], function(){
+#Route::group(['prefix'=>'profesor'], function(){
+Route::group(['prefix'=>'profesor','middleware'=>['profesor','auth']], function(){
 
 Route::resource('curso','ProCursoController');
 
@@ -40,20 +42,26 @@ Route::resource('unidad','ProUnidadController');
 
 Route::resource('pregunta','ProPreguntaController');
 
+Route::resource('principalprofesor','ProPrincipalController');
+
 Route::resource('respuesta','ProRespuestaController');
 
 });
 //middleware Profesor Fin
 
 //middleware Alumno Inicio
-Route::group(['prefix'=>'alumno'], function(){
+#Route::group(['prefix'=>'alumno'], function(){
+Route::group(['prefix'=>'alumno','middleware'=>['alumno','auth']], function(){
 
 Route::resource('principal','AlumnoPrincipalController');
 });
 //middleware Alumno Fin
 
-Auth::routes();
-
+//Auth::routes();
+Route::get('logout', function (){
+Auth::logout();
+return redirect('/');
+});
 Route::get('/registro', 'AlumnoRegistroController@registro');
 
 Route::post('/registroalumno',[

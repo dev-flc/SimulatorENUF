@@ -37,6 +37,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"  data-toggle="modal" data-target="#login">Inisiar Sesión <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
+        <li><a href="{{ url('/logout') }}" >cerrar <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
         <!--
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>

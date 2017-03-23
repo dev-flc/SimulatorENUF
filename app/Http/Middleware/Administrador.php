@@ -1,10 +1,13 @@
 <?php
 
 namespace SimulatorENUF\Http\Middleware;
-use Illuminate\Contracts\Auth\Guard;
 
+use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Support\Facades\Auth;
 
 use Closure;
+
+
 
 class Administrador
 {
@@ -23,6 +26,20 @@ class Administrador
      */
     public function handle($request, Closure $next)
     {
+      /* Admin */
+      if($this->auth->user()->adminlogin())
+      {
         return $next($request);
+      }
+      /* Profesor */
+      elseif($this->auth->user()->profesorlogin())
+      {
+        return redirect()->route('principalprofesor.index');
+      }
+      /* Alumno */
+      elseif($this->auth->user()->alumnologin())
+      {
+        return redirect()->route('principal.index');
+      }
     }
 }

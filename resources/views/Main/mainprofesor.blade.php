@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
-	<title>@yield('title','Default')</title>
-	<link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.min.css') }}">
-	<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
- 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
-	<link rel="stylesheet" href="{{ asset('css/main.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+  <meta charset="UTF-8">
+  <title>@yield('title','Default')</title>
+  <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.min.css') }}">
+  <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
   @yield('styles')
 </head>
 
 <header>
-	@include('Profesor.Principal.nav')
+  @include('Main.navprofesor')
 </header>
 <body>
 <br>
@@ -26,7 +26,7 @@
 <div class="container panelhistoria">
   <div class="container-fluid subpanelhistoria">
 
-   	@yield('content')
+    @yield('content')
   </div>
 
 </div>
@@ -108,6 +108,6 @@
     });
   });
 </script>
-	@yield('script')
+  @yield('script')
 </body>
 </html>

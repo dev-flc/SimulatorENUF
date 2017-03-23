@@ -3,9 +3,8 @@
 namespace SimulatorENUF\Http\Controllers;
 
 use Illuminate\Http\Request;
-use SimulatorENUF\Models\Curso;
 
-class AlumnoPrincipalController extends Controller
+class ProPrincipalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class AlumnoPrincipalController extends Controller
      */
     public function index()
     {
-      $curso=Curso::all();
-      return view('Alumno.Principal.index')->with('curso',$curso);;
+        return view('Profesor.Principal.index');
     }
 
     /**

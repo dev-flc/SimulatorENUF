@@ -52,5 +52,8 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \SimulatorENUF\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'admin' => \SimulatorENUF\Http\Middleware\Administrador::class,
+        'profesor' => \SimulatorENUF\Http\Middleware\Profesor::class,
+        'alumno' => \SimulatorENUF\Http\Middleware\Alumno::class,
     ];
 }
