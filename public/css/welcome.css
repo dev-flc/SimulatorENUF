@@ -35,7 +35,8 @@ h1.responsive{
 .seccionone
 {
   height: 300px;
- background: rgb(52, 73, 94);
+ /*background: rgb(52, 73, 94);*/
+ background: url(/img/pri1.jpg);
 
 }
 .subpanelhistoria

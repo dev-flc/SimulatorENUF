@@ -10,8 +10,7 @@
 .seccionone
 {
   height: 300px;
-  background: rgb(142, 68, 173);
- /* background: url(/img/desing/11.png);*/
+  background: rgb(255,255,255);
 }
 .subpanelhistoria
 {
@@ -29,7 +28,7 @@
 }
 .contenerdor1
 {
-	background: rgb(46, 204, 113); /* colores no me gusta */
+	background: rgb(52, 152, 219); /* colores no me gusta */
 	z-index: 3;
 	position: relative;
 	height: 300px;

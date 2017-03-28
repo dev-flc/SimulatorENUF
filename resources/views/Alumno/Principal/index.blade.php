@@ -160,7 +160,7 @@
         </center>
       </div>
       <div class="col-sm-10">
-        <p>jkaskajsd</p>
+        <p>PEndiente</p>
       </div>
       </div>
     </div>
@@ -172,7 +172,7 @@
         </center>
       </div>
       <div class="col-sm-10">
-        <p>jkaskajsd</p>
+        <p>Aceptado</p>
       </div>
       </div>
     </div>
@@ -184,7 +184,7 @@
         </center>
       </div>
       <div class="col-sm-10">
-        <p>jkaskajsd</p>
+        <p>Rechazado</p>
       </div>
       </div>
     </div>
@@ -192,6 +192,7 @@
   <div class="col-sm-4">
     <center><h2>Cursos disponibles</h2></center>
     @foreach ($curso as $cur)
+    <a href="{{ route('curos_registro.show', $cur->CUR_id) }}"">
     <div class="cursos">
     <div class="row">
       <div class="col-sm-2">
@@ -204,6 +205,7 @@
       </div>
       </div>
     </div>
+    </a>
     @endforeach
   </div>
 </div>

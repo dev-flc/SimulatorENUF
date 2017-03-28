@@ -54,6 +54,7 @@ Route::resource('respuesta','ProRespuestaController');
 Route::group(['prefix'=>'alumno','middleware'=>['alumno','auth']], function(){
 
 Route::resource('principal','AlumnoPrincipalController');
+Route::resource('curos_registro','AlumnoRegistroCursoController');
 });
 //middleware Alumno Fin
 
