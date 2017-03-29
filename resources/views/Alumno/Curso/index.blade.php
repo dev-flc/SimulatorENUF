@@ -65,6 +65,46 @@
   border-bottom: 2px solid rgb(52, 152, 219);
   color: rgb(52, 152, 219);
 }
+.curse
+{
+  border: 1px solid rgb(220,220,220);
+  padding: 10px;
+}
+#vertical-bar {
+  border-left: 5px solid #ccc;
+  height:auto;
+  left: 50px;
+  position: relative;
+
+}
+.btn-circle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border: 1px solid rgb(133, 193, 233);
+  background: rgb(255,255,255);
+  text-align: center;
+  margin: 5px;
+  padding: 3px;
+  font-size: 12px;
+  line-height: 1.328571429;
+  border-radius: 50%;
+  left: -37px;
+}
+.starr
+{
+  color: rgb(133, 193, 233);
+  font-size: 20px;
+}
+#profe
+{
+  width: 150px;
+  height: 200px;
+}
+.star
+{
+  color: rgb(245, 176, 65);
+}
 </style>
 <div class="row">
   <div class="col-sm-4">
@@ -75,19 +115,67 @@
       </center>
     </div>
   </div>
+  <div class="col-sm-8 ">
+    <br>
+    <div class="curse">
+    <center><h1>{{ $curso->CUR_nombre }} <img src="/img/foto.png" alt=""></h1></center>
+  </div>
+  <div class="col-sm-12">
+    <h2>Descripción</h2>
+      <p>Se trata de un curso de nivel avanzado y dirigido fundamentalmente a alumnos de posgrados (maestría y doctorado) y post-doctorados cuyos trabajos de tesis estén directamente relacionados con inmunidad innata y su papel en la defensa de los patógenos o que necesiten una formación complementaria en este tema.
+      </p>
+    <hr>
+  </div>
   <div class="col-sm-8">
-    <center><h1>{{ $curso->CUR_nombre }}</h1></center>
-    <hr><br><br>
+    <h2>Contenido</h2>
+    @foreach($unidad as $uni)
+    <div id="vertical-bar">
+        <table>
+          <tr>
+            <td>
+              <div class="btn-circle"><br>
+                <span class="glyphicon glyphicon-star starr" aria-hidden="true"></span>
+              </div>
+            </td>
+            <td class="separador"></td>
+            <td><p>{{ $uni->UNI_nombre }}</p></td>
+          </tr>
+        </table>
+      </div>
+      @endforeach
+    </div>
+  <div class="col-sm-4">
+  <h2>Profesor</h2>
+    <div class="thumbnail">
+      <img src="/img/profesor.jpg" id="profe" alt="...">
+      <div class="caption">
+        <center>
+          <h3>Nombre Profesor Ahora</h3>
+          <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
+          <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
+          <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
+          <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
+          <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
+        </center>
+      </div>
+    </div>
+
+  </div>
+    <br>
+    <div class="col-sm-12">
+    <hr>
+    <h2>Registrarme</h2>
     {!! Form::open(['route'=>'curos_registro.store','method'=>'POST']) !!}
       {{ Form::hidden('idcurso',$curso->CUR_id)}}
+      {{ Form::hidden('idalumno',$alumno->ALU_id)}}
       {{ Form::text('clave',null,['class'=>'clave','placeholder'=>'Ingrese la cleve del curso','required'])}}<br><br>
       <center>
-      {{ Form::button('Registrarme', array('class'=>'btn-registro', 'type'=>'submit')) }}
+      {{ Form::button('Registrarme', array('class'=>'btn-registro', 'type'=>'submit')) }}<br><br>
       </center>
     {!! Form::close() !!}
+    </div>
   </div>
 </div>
-<br>
 @endsection
 
 <!-- subcontenido -->

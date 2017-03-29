@@ -15,7 +15,7 @@ class CreateCurAlusTable extends Migration
     {
         Schema::create('cur_alus', function (Blueprint $table) {
             $table->increments('CUAL_id');
-            $table->enum('CUAL_estatus',['aprobado','pendiente'])->default('pendiente');
+            $table->enum('CUAL_estatus',['aprobado','pendiente','denegado'])->default('pendiente');
             $table->integer('CUR_id')->unsigned()->nullable();
             $table->integer('ALU_id')->unsigned()->nullable();
             $table->timestamps();

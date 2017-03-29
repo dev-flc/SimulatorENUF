@@ -4,6 +4,11 @@ namespace SimulatorENUF\Http\Controllers;
 
 use Illuminate\Http\Request;
 use SimulatorENUF\Models\Curso;
+use SimulatorENUF\Models\Unidad;
+use SimulatorENUF\Models\CurAlu;
+use SimulatorENUF\Models\Alumno;
+use Auth;
+
 
 
 class AlumnoRegistroCursoController extends Controller
@@ -36,7 +41,16 @@ class AlumnoRegistroCursoController extends Controller
      */
     public function store(Request $request)
     {
-      dd($request);
+      #verificar si la clave es correcta
+      ##registro correcto
+        $curso=new CurAlu;
+        $curso->CUAL_estatus="pendiente";
+        $curso->CUR_id=($request->idcurso);
+        $curso->ALU_id=($request->idalumno);
+        $curso->save();
+        return redirect()->route('curos_registro.show', ($request->idcurso));
+
+
     }
 
     /**
@@ -47,8 +61,14 @@ class AlumnoRegistroCursoController extends Controller
      */
     public function show($id)
     {
+      $iduseralumno = Auth::user()->id;
+      $alumno=Alumno::where('USE_id', $iduseralumno)->first();
       $curso=Curso::find($id);
-      return view('Alumno.Curso.index')->with('curso',$curso);
+      $unidad=Unidad::select('*')->where('CUR_id','=',$id)->get();
+      return view('Alumno.Curso.index')
+      ->with('curso',$curso)
+      ->with('alumno',$alumno)
+      ->with('unidad',$unidad);
     }
 
     /**
