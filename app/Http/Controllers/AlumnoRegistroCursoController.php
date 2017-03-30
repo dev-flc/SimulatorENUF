@@ -8,6 +8,7 @@ use SimulatorENUF\Models\Unidad;
 use SimulatorENUF\Models\CurAlu;
 use SimulatorENUF\Models\Alumno;
 use Auth;
+use Laracasts\Flash\Flash;
 
 
 
@@ -41,16 +42,24 @@ class AlumnoRegistroCursoController extends Controller
      */
     public function store(Request $request)
     {
-      #verificar si la clave es correcta
-      ##registro correcto
-        $curso=new CurAlu;
-        $curso->CUAL_estatus="pendiente";
-        $curso->CUR_id=($request->idcurso);
-        $curso->ALU_id=($request->idalumno);
-        $curso->save();
-        return redirect()->route('curos_registro.show', ($request->idcurso));
-
-
+        $valida=Curso::find($request->idcurso);
+        if($valida->CUR_clave==($request->clave))
+        {
+          $curso=new CurAlu;
+          $curso->CUAL_estatus="pendiente";
+          $curso->CUR_id=($request->idcurso);
+          $curso->ALU_id=($request->idalumno);
+          $curso->save();
+          flash('Registro exitoso', 'success')->important();
+          return redirect()->route('principal.index');
+        }
+        else
+        {
+          flash('Clave incorrecta intente de nuevo o pongance en contacto con el profesor para que le proporcione la clave correcta...', 'danger')->important();
+          #Flash::error('Whoops! There were some problems with your input.')->important();
+          #flash('Presidente agregado correctamente', 'info')
+          return redirect()->route('curos_registro.show', ($request->idcurso));
+        }
     }
 
     /**

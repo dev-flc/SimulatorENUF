@@ -163,6 +163,9 @@
   </div>
     <br>
     <div class="col-sm-12">
+      <div class="container-fluid">
+        @include('flash::message')
+      </div>
     <hr>
     <h2>Registrarme</h2>
     {!! Form::open(['route'=>'curos_registro.store','method'=>'POST']) !!}

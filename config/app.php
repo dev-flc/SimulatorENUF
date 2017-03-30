@@ -179,6 +179,8 @@ return [
         SimulatorENUF\Providers\RouteServiceProvider::class,
         //Collective
         Collective\Html\HtmlServiceProvider::class,
+        //flash
+        Laracasts\Flash\FlashServiceProvider::class,
 
     ],
 

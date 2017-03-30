@@ -131,6 +131,9 @@
   </div>
   <div class="col-sm-8">
   <br>
+  <div class="container-fluid">
+    @include('flash::message')
+  </div>
   <div class="row">
     <div class="col-sm-4">
       <div id="colora">
@@ -151,19 +154,49 @@
   </div>
   <div class="col-sm-4">
     <center><h2>Mis cursos</h2></center>
-
-    <div class="cursop">
-    <div class="row">
-      <div class="col-sm-2">
-        <center>
-          <img id="imgcursosp" src="/img/reloj.png" alt="">
-        </center>
-      </div>
-      <div class="col-sm-10">
-        <p>PEndiente</p>
-      </div>
-      </div>
-    </div>
+    @foreach($inscrito as $ins)
+      @if($ins->CUAL_estatus=="aprobado")
+        <div class="cursoa">
+          <div class="row">
+            <div class="col-sm-2">
+              <center>
+                <img id="imgcursosp" src="/img/reloj.png" alt="">
+              </center>
+            </div>
+            <div class="col-sm-10">
+              <p>{{$ins->CUR_nombre}}</p>
+            </div>
+          </div>
+        </div>
+      @elseif($ins->CUAL_estatus=="pendiente")
+        <div class="cursop">
+          <div class="row">
+            <div class="col-sm-2">
+              <center>
+                <img id="imgcursosp" src="/img/reloj.png" alt="">
+              </center>
+            </div>
+            <div class="col-sm-10">
+              <p>{{$ins->CUR_nombre}}</p>
+            </div>
+          </div>
+        </div>
+      @elseif($ins->CUAL_estatus=="denegado")
+        <div class="cursop">
+          <div class="row">
+            <div class="col-sm-2">
+              <center>
+                <img id="imgcursosp" src="/img/reloj.png" alt="">
+              </center>
+            </div>
+            <div class="col-sm-10">
+              <p>{{$ins->CUR_nombre}}</p>
+            </div>
+          </div>
+        </div>
+      @endif
+    @endforeach
+<!--
     <div class="cursoa">
     <div class="row">
       <div class="col-sm-2">
@@ -187,7 +220,7 @@
         <p>Rechazado</p>
       </div>
       </div>
-    </div>
+    </div> -->
   </div>
   <div class="col-sm-4">
     <center><h2>Cursos disponibles</h2></center>
