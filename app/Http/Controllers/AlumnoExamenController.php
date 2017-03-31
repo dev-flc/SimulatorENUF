@@ -3,13 +3,14 @@
 namespace SimulatorENUF\Http\Controllers;
 
 use Illuminate\Http\Request;
-use SimulatorENUF\Models\Curso;
-use SimulatorENUF\Models\Alumno;
-use SimulatorENUF\Models\CurAlu;
 use Auth;
-use DB;
+use Laracasts\Flash\Flash;
+use SimulatorENUF\Models\Curso;
+use SimulatorENUF\Models\Unidad;
+use SimulatorENUF\Models\CurAlu;
+use SimulatorENUF\Models\Alumno;
 
-class AlumnoPrincipalController extends Controller
+class AlumnoExamenController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,20 +19,7 @@ class AlumnoPrincipalController extends Controller
      */
     public function index()
     {
-      $iduseralumno = Auth::user()->id;
-      $alumno=Alumno::where('USE_id', $iduseralumno)->first();
-
-      $inscrito=CurAlu::where('ALU_id', $alumno->ALU_id)->join('cursos','cursos.CUR_id','=','cur_alus.CUR_id')->get();
-
-      $curso=Curso::whereNotExists(function($inscrito)
-            {
-            $inscrito->select(DB::raw(1))->from('cur_alus')->whereRaw('cur_alus.CUR_id = cursos.CUR_id');
-            })
-            ->get();
-      return view('Alumno.Principal.index')
-      ->with('alumno',$alumno)
-      ->with('inscrito',$inscrito)
-      ->with('curso',$curso);
+        //
     }
 
     /**
@@ -63,7 +51,14 @@ class AlumnoPrincipalController extends Controller
      */
     public function show($id)
     {
-        //
+      $iduseralumno = Auth::user()->id;
+      $alumno=Alumno::where('USE_id', $iduseralumno)->first();
+      $curso=Curso::find($id);
+      $unidad=Unidad::select('*')->where('CUR_id','=',$id)->get();
+      return view('Alumno.Curso.show')
+      ->with('curso',$curso)
+      ->with('alumno',$alumno)
+      ->with('unidad',$unidad);
     }
 
     /**

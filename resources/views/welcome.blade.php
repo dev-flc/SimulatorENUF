@@ -5,13 +5,14 @@
 <!-- Contenido Principal -->
 @section('imagenprincipal')
   <div class="seccionone">
-    <br>
-    <br>
-    <br>
-    <br>
-    <center>
-        <h1 style="color: rgb(255,255,255);" class="responsive">[ SimuladorENUF ]</h1>
-    </center>
+   <style type="text/css">
+    #pri1
+    {
+      height: 350px;
+      width: 100%;
+    }
+  </style>
+  <img id="pri1" src="/img/pri2.png" alt="">
 
   </div>
 @endsection
@@ -105,16 +106,7 @@
 
 <!-- subcontenido -->
 @section('subcontenido')
-<center>
-<style type="text/css">
-  #networkglobal
-  {
-    width: 400px;
-    height: 300px;
-  }
-</style>
-  <img id="networkglobal" src="/img/global-network.png" alt="">
-</center>
+
 @endsection
 
 <!-- Modals-->

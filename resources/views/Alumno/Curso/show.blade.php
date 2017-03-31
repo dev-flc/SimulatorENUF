@@ -1,6 +1,6 @@
 @extends('Main.main')
 
-@section('title', 'Registro')
+@section('title', 'Examenes')
 
 <!-- Contenido Principal -->
 @section('imagenprincipal')
@@ -70,26 +70,14 @@
   border: 1px solid rgb(220,220,220);
   padding: 10px;
 }
-#vertical-bar {
-  border-left: 5px solid #ccc;
-  height:auto;
-  left: 50px;
-  position: relative;
-
-}
-.btn-circle {
-  position: relative;
-  width: 60px;
-  height: 60px;
-  border: 1px solid rgb(133, 193, 233);
-  background: rgb(255,255,255);
-  text-align: center;
+.unidad
+{
+  border: 1px solid rgb(220,220,220);
+  width: 100%;
+  height: 70px;
+  padding: 15px;
   margin: 5px;
-  padding: 3px;
-  font-size: 12px;
-  line-height: 1.328571429;
-  border-radius: 50%;
-  left: -37px;
+  font-size: 17px;
 }
 .starr
 {
@@ -104,6 +92,9 @@
 .star
 {
   color: rgb(245, 176, 65);
+}
+#uninom{
+  width: 100%;
 }
 </style>
 <div class="row">
@@ -129,19 +120,18 @@
   <div class="col-sm-8">
     <h2>Contenido</h2>
     @foreach($unidad as $uni)
-    <div id="vertical-bar">
-        <table>
-          <tr>
-            <td>
-              <div class="btn-circle"><br>
-                <span class="glyphicon glyphicon-star starr" aria-hidden="true"></span>
-              </div>
-            </td>
-            <td class="separador"></td>
-            <td><p>{{ $uni->UNI_nombre }}</p></td>
-          </tr>
-        </table>
+      <a href="">
+      <div class="unidad">
+       <table>
+        <td>
+          <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+        </td>
+        <td id="uninom"><p><center>{{ $uni->UNI_nombre }}</center></p></td>
+        <td><span class="badge">42</span></td>
+       </table>
       </div>
+      </a>
+
       @endforeach
     </div>
   <div class="col-sm-4">
@@ -159,24 +149,7 @@
         </center>
       </div>
     </div>
-
   </div>
-    <br>
-    <div class="col-sm-12">
-      <div class="container-fluid">
-        @include('flash::message')
-      </div>
-    <hr>
-    <h2>Registrarme</h2>
-    {!! Form::open(['route'=>'curos_registro.store','method'=>'POST']) !!}
-      {{ Form::hidden('idcurso',$curso->CUR_id)}}
-      {{ Form::hidden('idalumno',$alumno->ALU_id)}}
-      {{ Form::text('clave',null,['class'=>'clave','placeholder'=>'Ingrese la cleve del curso','required'])}}<br><br>
-      <center>
-      {{ Form::button('Registrarme', array('class'=>'btn-registro', 'type'=>'submit')) }}<br><br>
-      </center>
-    {!! Form::close() !!}
-    </div>
   </div>
 </div>
 @endsection

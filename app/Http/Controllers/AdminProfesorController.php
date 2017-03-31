@@ -117,6 +117,6 @@ class AdminProfesorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd("Hola soy las destruccion");
     }
 }

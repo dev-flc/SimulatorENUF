@@ -10,12 +10,17 @@
     <li><a href="{{ route('cursos.create') }}">Crear cursos</a></li>
     <li><a href="{{ route('profesores.index') }}">profesores</a></li>
     <li><a href="{{ route('profesores.create') }}">Create profesores</a></li>
+    <li><a href="{{ url('/logout') }}" >cerrar <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
   </ul>
 	{!! Form::open(['route'=>'cursos.store','method'=>'POST']) !!}
 	<div class="form-group">
 		{!! Form::label('nombre','Nombre ') !!}
-		{!! Form::text('nombre',null,['class'=>'form-control','required'])!!}
+		{{ Form::text('nombre',null,['class'=>'form-control','required']) }}
 	</div>
+  <div class="form-group">
+    {{ Form::label('Descripcion','Descripcion ') }}
+    {{ Form::textarea('descripcion', null, ['class' => 'field','placeholder'=>'Descripcion']) }}
+  </div>
 	<div class="form-group">
 		{!! Form::label('cupos','Cupos') !!}
 		{!! Form::number('cupos',null,['class'=>'form-control','required'])!!}
