@@ -122,11 +122,12 @@
   </div>
   <div class="col-sm-12">
     <h2>Descripción</h2>
-      <p>Se trata de un curso de nivel avanzado y dirigido fundamentalmente a alumnos de posgrados (maestría y doctorado) y post-doctorados cuyos trabajos de tesis estén directamente relacionados con inmunidad innata y su papel en la defensa de los patógenos o que necesiten una formación complementaria en este tema.
+      <p>{{ $curso->CUR_descripcion }}
       </p>
     <hr>
   </div>
   <div class="col-sm-8">
+@if ($unidad->count())
     <h2>Contenido</h2>
     @foreach($unidad as $uni)
     <div id="vertical-bar">
@@ -143,6 +144,12 @@
         </table>
       </div>
       @endforeach
+@else
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert">×</button>
+  <strong>Lo sentimos!</strong> Por el momento el curso no tiene contenido
+</div>
+@endif
     </div>
   <div class="col-sm-4">
   <h2>Profesor</h2>

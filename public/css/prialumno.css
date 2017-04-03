@@ -1,0 +1,117 @@
+#pri1
+    {
+      height: 350px;
+      width: 100%;
+    }
+.perfildiv
+  {
+    background: rgb(244, 246, 246);
+    height: 500px;
+  }
+  #imgcursos
+  {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid rgb(52, 152, 219);
+    background: rgb(255,255,255);
+  }
+  #imgcursosr
+  {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid rgb(231, 76, 60);
+    background: rgb(255,255,255);
+  }
+  #imgcursosa
+  {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid rgb(46, 204, 113);
+    background: rgb(255,255,255);
+  }
+  #imgcursosp
+  {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid rgb(243, 156, 18);
+    background: rgb(255,255,255);
+  }
+  #imgperfil
+  {
+    width: 175px;
+    height: 250px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  }
+  .cursos
+  {
+    border: 1px solid rgb(52, 152, 219);
+    padding: 5px;
+    margin: 5px;
+    transition: .7s;
+  }
+  .cursos:hover
+  {
+    background: rgb(214, 234, 248);
+    color: black;
+  }
+  .cursop
+  {
+    border: 1px solid rgb(243, 156, 18);/* pendiente */
+    padding: 5px;
+    margin: 5px;
+  }
+  .cursor
+  {
+    border: 1px solid rgb(231, 76, 60);/* rechazado */
+    padding: 5px;
+    margin: 5px;
+    transition: .7s;
+  }
+  .cursor:hover
+  {
+    background: rgb(250, 219, 216);
+    color: black;
+  }
+  .cursoa
+  {
+    border: 1px solid rgb(46, 204, 113);/* aceptado */
+    padding: 5px;
+    margin: 5px;
+    transition: .7s;
+  }
+  .cursoa:hover
+  {
+    background: rgb(213, 245, 227);
+    color: black;
+  }
+  .cursop:hover
+  {
+    background: rgb(253, 235, 208);
+    color: black;
+  }
+  #colora
+  {
+    font-size: 20px;
+    color: rgb(46, 204, 113);
+    text-align: center;
+  }
+  #colorp
+  {
+    font-size: 20px;
+    color: rgb(243, 156, 18);
+    text-align: center;
+  }
+  #colorr
+  {
+    font-size: 20px;
+    color: rgb(231, 76, 60);
+    text-align: center;
+  }
+  .estatus
+  {
+    border: 1px solid rgb(200,200,200);
+  }

@@ -55,6 +55,7 @@ Route::group(['prefix'=>'alumno','middleware'=>['alumno','auth']], function(){
 
 Route::resource('principal','AlumnoPrincipalController');
 Route::resource('curos_registro','AlumnoRegistroCursoController');
+Route::resource('cursos_examen','AlumnoExamenController');
 });
 //middleware Alumno Fin
 

@@ -71,7 +71,7 @@
                 <img src="/img/error.png" alt="">
                 <div>
                   <p>
-                    <a href="{{ route('principalprofesor.index') }}">ir a pagina principal</a>
+                    <a href="{{ url('/') }}">ir a pagina principal</a>
                   </p>
                 </div>
             </div>

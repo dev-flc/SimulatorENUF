@@ -7,6 +7,7 @@ use SimulatorENUF\Models\Curso;
 use SimulatorENUF\Models\Alumno;
 use SimulatorENUF\Models\CurAlu;
 use Auth;
+use DB;
 
 class AlumnoPrincipalController extends Controller
 {
@@ -19,8 +20,14 @@ class AlumnoPrincipalController extends Controller
     {
       $iduseralumno = Auth::user()->id;
       $alumno=Alumno::where('USE_id', $iduseralumno)->first();
+
       $inscrito=CurAlu::where('ALU_id', $alumno->ALU_id)->join('cursos','cursos.CUR_id','=','cur_alus.CUR_id')->get();
-      $curso=Curso::all();
+
+      $curso=Curso::whereNotExists(function($inscrito)
+            {
+            $inscrito->select(DB::raw(1))->from('cur_alus')->whereRaw('cur_alus.CUR_id = cursos.CUR_id');
+            })
+            ->get();
       return view('Alumno.Principal.index')
       ->with('alumno',$alumno)
       ->with('inscrito',$inscrito)

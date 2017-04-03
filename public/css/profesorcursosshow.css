@@ -5,7 +5,11 @@
   height: 0px;
   border: none;
 }
-
+#pri1
+{
+  height: 350px;
+  width: 100%;
+}
 #alumnosimg
 {
   width: 50px;

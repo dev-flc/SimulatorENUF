@@ -7,6 +7,7 @@
 @endsection
 @section('imagenprincipal')
   <div class="seccionone">
+    <img id="pri1" src="/img/pri2.png" alt="">
   </div>
 @endsection
 <!-- Inicio Section Contenido -->
@@ -74,6 +75,7 @@
   <div class="container-fluid">
     <center><h2>Unidades</h2></center>
     <div class="row">
+    @if ($unidad->count())
     @foreach ($unidad as $uni)
       <a href="{{ route('unidad.show', $uni->UNI_id) }}">
       <div class="col-sm-12 cuadro">
@@ -89,6 +91,12 @@
       </div>
       </a>
     @endforeach
+    @else
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>Porfavor!</strong> agrege una unidad al curso
+      </div>
+    @endif
     </div>
   </div>
   </div>
@@ -101,15 +109,11 @@
   <br>
 
 <div class="contenedor">
-<button class="botonF1">
+<button class="botonF1" data-toggle="modal" data-target="#unidad"  data-tooltip="Nueva Unidad">
   <span>+</span>
 </button>
-<button class="btn-m botonF2 tooltip-right tooltip-right1" data-toggle="modal" data-target="#alumno"  data-tooltip="Nuevo Alumno">
-  <span class="glyphicon glyphicon-user" aria-hidden="true" style="font-size: 18px"></span>
-</button>
-<button class="btn-m botonF3 tooltip-right tooltip-right2" data-toggle="modal" data-target="#unidad"  data-tooltip="Nueva Unidad">
-  <span class="glyphicon glyphicon-book" aria-hidden="true" style="font-size: 18px"></span>
-</button>
+
+
 <!--
 <button class="btn-m botonF4 tooltip-right tooltip-right3" data-toggle="modal" data-target="#login"  data-tooltip="ffff">
   <span>+</span>
@@ -134,57 +138,7 @@
 <!-- Inicio Section Modal -->
 
 @section('modal')
-<!-- Modal Alumnos -->
-<div class="modal fade" id="alumno" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h3 class="modal-title colordiv" id="myModalLabel">Alumnos</h3>
-      </div>
-      <div class="modal-body">
-      {!! Form::open(['route'=>'profesores.store','method'=>'POST']) !!}
-        <div class="form-group">
-          {!! Form::label('nombre','Nombre') !!}
-          {!! Form::text('nombre',null,['class'=>'form-control','id'=>'nombrealumno','required'])!!}
-        </div>
-        <div class="form-group">
-          {!! Form::label('apellido_p','Apellido Paterno') !!}
-          {!! Form::text('apellido_p',null,['class'=>'form-control','id'=>'apellido_p','required'])!!}
-        </div>
-        <div class="form-group">
-          {!! Form::label('apellido_m','Apellido Materno') !!}
-          {!! Form::text('apellido_m',null,['class'=>'form-control','id'=>'apellido_m','required'])!!}
-        </div>
-        <div class="form-group">
-          {!! Form::label('sexo','Sexo ') !!}
-          {{ Form::radio('sex', 'hombre', true) }} Hombre  {{ Form::radio('sex', 'mujer') }} Mujer
-        </div>
-        <hr>
-        <div class="form-group">
-          {!! Form::label('usuario','Usuario') !!}
-          {!! Form::text('usuario',null,['class'=>'form-control','id'=>'usuario','required','readonly'=>'readonly'])!!}
-        </div>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">
-          Cancelar
-          <span class="glyphicon glyphicon-remove"></span>
-        </button>
-
-          {{ Form::button('<span class="glyphicon glyphicon-ok"></span> Generar usuario', array('class'=>'btn btn-warning','id'=>'generar', 'type'=>'button')) }}
-
-        {{ Form::button('<span class="glyphicon glyphicon-ok"></span> Registrar', array('class'=>'btn btn-success pull-right','id'=>'registrar','style'=>'display:none', 'type'=>'submit')) }}
-
-      {!! Form::close() !!}
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal Final Alumnos -->
 
 <!-- Modal Unidad -->
 <div class="modal" id="unidad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -249,53 +203,7 @@
 
 <!-- Fin Section Script -->
 
-<!-- Inicio script Ventana Alumnos modal -->
-<script type="text/javascript">
-    $(document).ready(function(){
-     // $('#registrar').hide();
-    $("#generar").click(function(){
-        //Validar campos
-        var verificar = true;
-        expresion=/^([a-z ñáéíóú]{2,60})$/i;
-        //validar nombre
-        if ($("#nombrealumno").val() == "" || !expresion.test($("#nombrealumno").val()))
-        {
-          $( "#nombrealumno" ).focus();
-          verificar=false;
-        }
-        else if ($("#apellido_p").val() == "" || !expresion.test($("#apellido_p").val()))
-        {
-          $( "#apellido_p" ).focus();
-          verificar=false;
-        }
-        else if ($("#apellido_m").val() == "" || !expresion.test($("#apellido_m").val()))
-        {
-          $( "#apellido_m" ).focus();
-          verificar=false;
-        }
 
-
-        if(verificar==true)
-        {
-        var nombre = $('#nombrealumno').val().substring(3, 1);
-        var no = $('#nombrealumno').val().charAt(0).toUpperCase();
-        var ap = $('#apellido_p').val().substring(3, 1);
-        var ap_p = $('#apellido_p').val().charAt(0).toUpperCase();
-        var am = $('#apellido_m').val().substring(3, 1);
-        var am_m = $('#apellido_m').val().charAt(0).toUpperCase();
-        var max=10000;
-        var min=5;
-        var num = Math.round(Math.random() * (max - min) + min);
-       // return string.charAt(0).toUpperCase() + string.slice(1);
-        $("#usuario").val(ap_p+ap+am_m+am+no+nombre+"_"+num);
-        $('#generar').hide(1000);
-        $('#registrar').show(1000);
-      }
-
-    });
-    });
-  </script>
-<!-- Fin script Ventana Alumnos modal -->
 @endsection
 
 

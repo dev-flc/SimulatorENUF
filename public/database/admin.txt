@@ -1,0 +1,7 @@
+$f = new  SimulatorENUF\User;
+$f->name="admin";
+$f->foto="foto.png";
+$f->email="admin@gmail.com";
+$f->password=bcrypt("123");
+$f->type="administrador";
+$f->save();

@@ -11,6 +11,7 @@
     <li><a href="{{ route('cursos.create') }}">Crear cursos</a></li>
     <li><a href="{{ route('profesores.index') }}">profesores</a></li>
     <li><a href="{{ route('profesores.create') }}">Create profesores</a></li>
+    <a href="{{ url('/logout') }}" >cerrar <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
   </ul>
 
 	<table>

@@ -43,6 +43,7 @@ class AdminCursoController extends Controller
       $fecha=date('Y-m-d');
       $curso=new Curso;
       $curso->CUR_nombre=($request->nombre);
+      $curso->CUR_descripcion=($request->descripcion);
       $curso->CUR_cupos=($request->cupos);
       $curso->CUR_fecha=$fecha;
       $curso->CUR_clave=($request->clave);

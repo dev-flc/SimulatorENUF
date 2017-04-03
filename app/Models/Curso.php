@@ -10,6 +10,7 @@ class Curso extends Model
 	protected $primaryKey = 'CUR_id';
   protected $fillable = [
         'CUR_nombre',
+        'CUR_descripcion',
         'CUR_cupos',
         'CUR_fecha',
         'CUR_clave',
