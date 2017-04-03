@@ -9,6 +9,8 @@ use SimulatorENUF\Models\Curso;
 use SimulatorENUF\Models\Unidad;
 use SimulatorENUF\Models\CurAlu;
 use SimulatorENUF\Models\Alumno;
+use SimulatorENUF\Models\Pregunta;
+use SimulatorENUF\Models\Respuesta;
 
 class AlumnoExamenController extends Controller
 {
@@ -40,7 +42,7 @@ class AlumnoExamenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->cantidad);
     }
 
     /**
@@ -55,12 +57,35 @@ class AlumnoExamenController extends Controller
       $alumno=Alumno::where('USE_id', $iduseralumno)->first();
       $curso=Curso::find($id);
       $unidad=Unidad::select('*')->where('CUR_id','=',$id)->get();
+
       return view('Alumno.Curso.show')
       ->with('curso',$curso)
       ->with('alumno',$alumno)
       ->with('unidad',$unidad);
     }
+    public function examenfinal($id)
+    {
+      dd("Final",$id);
+    }
+    public function examenprueba($id)
+    {
+      $iduseralumno = Auth::user()->id;
+      $alumno=Alumno::where('USE_id', $iduseralumno)->first();
+      $unidad=Unidad::find($id);
+      $i=1;
+      $p=1;
+      $pregunta=Pregunta::inRandomOrder()->select('*')->where('UNI_id','=',$id)->limit(10)->get();
+      $respuesta=Respuesta::all();
 
+
+      return view('Alumno.Curso.prueba')
+      ->with('alumno',$alumno)
+      ->with('pregunta',$pregunta)
+      ->with('i',$i)
+      ->with('p',$p)
+      ->with('respuesta',$respuesta)
+      ->with('unidad',$unidad);
+    }
     /**
      * Show the form for editing the specified resource.
      *

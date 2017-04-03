@@ -137,8 +137,53 @@
 }
 .ancho
 {
-  width: 65%;
+  width: 75%;
 }
+.table
+{
+  width: 100%;
+}
+
+    #respuestaid
+    {
+      width: 100%;
+    }
+
+    #ress
+    {
+      width: 4%;
+    }
+    #separador
+    {
+      width: 1%;
+      color: rgb(191, 201, 202);
+    }
+    .si
+    {
+      color: rgb(130, 224, 170);
+    }
+    .no
+    {
+      color: rgb(241, 148, 138);
+    }
+    table
+    {
+      width: 100%;
+    }
+    .cuadro
+{
+  border-radius: 6px;
+  border: 1px solid rgb(220,220,220);
+  background: rgb(255,255,255);
+  margin: 5px;
+  transition: .7s;
+}
+.cuadro:hover
+{
+  background: rgb(255,255,255);
+  border: 1px solid rgb(200,200,200);
+}
+  </style>
 </style>
 <div class="row">
   <div class="col-sm-4">
@@ -152,63 +197,61 @@
   <div class="col-sm-8 ">
     <br>
     <div class="curse">
-    <center><h1>{{ $curso->CUR_nombre }} <img src="/img/foto.png" alt=""></h1></center>
+    <center><h1>{{ $unidad->UNI_nombre }}</h1></center>
   </div>
   <div class="col-sm-12">
-    <h2>Descripción</h2>
-      <p>{{ $curso->CUR_descripcion }}
-      </p>
-    <hr>
-  </div>
-  <div class="col-sm-8">
-    <h2>Unidades</h2>
-    @foreach($unidad as $uni)
-      <div class="unidad">
-       <table>
-<tr>
-        <td class="separar ancho">
-          <p><center>{{ $uni->UNI_nombre }}</center></p>
-        </td>
-        <td class="separar">
-          <center>
-            <h2>7</h2>
-          </center>
-        </td>
-        </tr>
-        <tr>
-        <td class="separar ancho">
-          <a href="{{ route('examenprueba', $uni->UNI_id) }}">
-            <button class="prueba">Examen de preuba</button>
-          </a>
-        </td>
-        <td class="separar">
-          <a href="{{ route('examenfinal', $uni->UNI_id) }}">
-            <button class="final">Examen de Final</button>
-          </a>
-        </td>
-        </tr>
-       </table>
+ <!-- ini -->
+@if ($pregunta->count())
+  {!! Form::open(['route'=>'cursos_examen.store','method'=>'POST']) !!}
+@foreach($pregunta as $pre)
+    <div class=" container-fluid cuadro">
+      <div class="row">
+
+        <div class="col-sm-6">
+          <label for="">{{$p++}}.- Pregunta:</label>
+          <p>
+            {{ $pre->PRE_nombre}}
+          </p>
+        </div>
+      <div class="col-sm-5">
+        <div class="table-responsive">
+          <table>
+          <tr>
+            <td></td>
+            <td><label> Respuestas</label></td>
+            <td><label>Opción</label></td>
+          </tr>
+          <tr>
+          @foreach($respuesta as $res)
+            @if($res->PRE_id == $pre->PRE_id)
+            <td id="separador">|</td>
+            <td >{{$res->RES_nombre}}</td>
+            <td id="separador">|</td>
+            <td><input type="checkbox" name="res{{$i++}}" value="{!!$res->RES_id!!}"></td>
+
+            @endif
+          </tr>
+          @endforeach
+          </table>
+        </div>
       </div>
-      @endforeach
-      <br>
-    </div>
-  <div class="col-sm-4">
-  <h2>Profesor</h2>
-    <div class="thumbnail">
-      <img src="/img/profesor.jpg" id="profe" alt="...">
-      <div class="caption">
-        <center>
-          <h3>Nombre Profesor Ahora</h3>
-          <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
-          <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
-          <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
-          <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
-          <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
-        </center>
+        <div class="col-sm-1">
+        </div>
       </div>
     </div>
+    @endforeach
+    <input type="hidden" name="cantidad" value="{{$p-1}}">
+    <button type="submit" class="btn btn-primary">Enviar </button>
+  {!! Form::close() !!}
+@else
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert">×</button>
+  <strong>Porfavor!</strong> agrege una pregunta como minimo
+</div>
+@endif
+ <!-- fin -->
   </div>
-  </div>
+</div>
 </div>
 @endsection
 

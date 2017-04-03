@@ -55,7 +55,7 @@
 @if ($inscrito->count())
     @foreach($inscrito as $ins)
       @if($ins->CUAL_estatus=="aprobado")
-       <a href="{{ route('cursos_examen.show', $ins->CUR_id) }}"">
+       <a href="{{ route('cursos_examen.show', $ins->CUR_id) }}">
         <div class="cursoa">
           <div class="row">
             <div class="col-sm-2">

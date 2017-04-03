@@ -56,6 +56,18 @@ Route::group(['prefix'=>'alumno','middleware'=>['alumno','auth']], function(){
 Route::resource('principal','AlumnoPrincipalController');
 Route::resource('curos_registro','AlumnoRegistroCursoController');
 Route::resource('cursos_examen','AlumnoExamenController');
+
+/* Examen final */
+Route::get('/examenfinal/{id}',[
+    'uses' => 'AlumnoExamenController@examenfinal',
+    'as' => 'examenfinal'
+    ]);
+/* Examen de prueba  */
+Route::get('/examenprueba/{id}',[
+    'uses' => 'AlumnoExamenController@examenprueba',
+    'as' => 'examenprueba'
+    ]);
+
 });
 //middleware Alumno Fin
 
