@@ -83,7 +83,7 @@
           </div>
         </div>
       @elseif($ins->CUAL_estatus=="denegado")
-        <div class="cursop">
+        <div class="cursor">
           <div class="row">
             <div class="col-sm-2">
               <center>

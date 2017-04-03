@@ -127,6 +127,7 @@
     <hr>
   </div>
   <div class="col-sm-8">
+@if ($unidad->count())
     <h2>Contenido</h2>
     @foreach($unidad as $uni)
     <div id="vertical-bar">
@@ -143,6 +144,12 @@
         </table>
       </div>
       @endforeach
+@else
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert">×</button>
+  <strong>Lo sentimos!</strong> Por el momento el curso no tiene contenido
+</div>
+@endif
     </div>
   <div class="col-sm-4">
   <h2>Profesor</h2>

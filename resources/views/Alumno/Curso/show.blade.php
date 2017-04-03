@@ -118,7 +118,7 @@
     <hr>
   </div>
   <div class="col-sm-8">
-    <h2>Contenido</h2>
+    <h2>Con</h2>
     @foreach($unidad as $uni)
       <a href="">
       <div class="unidad">

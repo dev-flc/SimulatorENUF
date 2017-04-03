@@ -4,6 +4,14 @@
 @section('imagenprincipal')
 
 	<div class="seccionone">
+  <style type="text/css">
+    #pri1
+    {
+      height: 350px;
+      width: 100%;
+    }
+  </style>
+  <img id="pri1" src="/img/pri2.png" alt="">
 	</div>
 @endsection
 
