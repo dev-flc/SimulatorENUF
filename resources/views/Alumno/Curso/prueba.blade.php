@@ -149,6 +149,7 @@
       width: 100%;
     }
 
+
     #ress
     {
       width: 4%;
@@ -166,10 +167,15 @@
     {
       color: rgb(241, 148, 138);
     }
-    table
+    table td
     {
-      width: 100%;
+      border-bottom: 1px solid rgb(220,220,220);
     }
+     table td:hover
+    {
+      border-bottom: 1px solid rgb(52, 152, 219);
+    }
+
     .cuadro
 {
   border-radius: 6px;
@@ -183,7 +189,20 @@
   background: rgb(255,255,255);
   border: 1px solid rgb(200,200,200);
 }
-  </style>
+input[type=checkbox]
+{
+
+  background: rgb(52, 152, 219);
+  color: red;
+
+  width: 22px;
+    height: 22px;
+}
+input[type=checkbox]:checked{
+  color: red;
+  background: rgb(52, 152, 219);
+
+}
 </style>
 <div class="row">
   <div class="col-sm-4">
@@ -208,26 +227,26 @@
       <div class="row">
 
         <div class="col-sm-6">
-          <label for="">{{$p++}}.- Pregunta:</label>
+          <label for="">#.- Pregunta:</label>
           <p>
             {{ $pre->PRE_nombre}}
+            <input type="hidden" name="pre{{$p++}}" value="{{ $pre->PRE_id}}">
           </p>
         </div>
-      <div class="col-sm-5">
+      <div class="col-sm-6">
         <div class="table-responsive">
           <table>
           <tr>
-            <td></td>
-            <td><label> Respuestas</label></td>
+            <td><label>Respuestas</label></td>
             <td><label>Opción</label></td>
+
           </tr>
           <tr>
           @foreach($respuesta as $res)
             @if($res->PRE_id == $pre->PRE_id)
-            <td id="separador">|</td>
             <td >{{$res->RES_nombre}}</td>
-            <td id="separador">|</td>
-            <td><input type="checkbox" name="res{{$i++}}" value="{!!$res->RES_id!!}"></td>
+            <td id="separador"><input type="checkbox" name="res{{$i++}}" value="{!!$res->RES_id!!}"></td>
+
 
             @endif
           </tr>
@@ -239,6 +258,7 @@
         </div>
       </div>
     </div>
+
     @endforeach
     <input type="hidden" name="cantidad" value="{{$p-1}}">
     <button type="submit" class="btn btn-primary">Enviar </button>

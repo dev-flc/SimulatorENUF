@@ -5,3 +5,7 @@ $f->email="admin@gmail.com";
 $f->password=bcrypt("123");
 $f->type="administrador";
 $f->save();
+
+curso
+
+$table->enum('CUAL_estatus',['aprobado','pendiente','denegado'])->
