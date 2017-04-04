@@ -44,71 +44,54 @@ class AlumnoExamenController extends Controller
      */
     public function store(Request $request)
     {
-      $valor=0;
-      $calificacion=0;
-      $cantidadres=(int)($request->cantidad)*4;
-     $cantidad=(int)($request->cantidad);
 
+      $b=4;
+      $c=1;
+      $vv=0;
+      $cal=0;
+      $rescorrecta=0;
+      $cantidadres=(int)($request->cantidad)*4;
+      #echo $cantidadres;
+      $cantidad=(int)($request->cantidad);
       #echo "cantidad=".$cantidad."<br>";
       for($i=1;$i<=$cantidad;$i++)
       {
         $pre="pre".$i;
         $pregunta=Respuesta::select('*')->where('PRE_id','=',$request->$pre)->where('TIP_id','=',1)->get();
-        $cantidadcorrectas=count($pregunta); #cantidad de respuestas
-        echo $cantidadcorrectas."<br>";
+        $cantidadcorrectas=count($pregunta); #cantidad de respuestas correctas
 
-/*
-        for($a=1; $a<=$cantidadres; $a++) {
-          $res="res".$a;
 
-          $respuesta=($request->$res);
+        for ($a=$c; $a<=$cantidadres; $a++)
+        {
+            $res="res".$a;
+            $respuesta=($request->$res);
             if(isset($respuesta))
             {
-            echo $respuesta."<br>";
+                $verificar=Respuesta::find($respuesta);
+                if ($verificar->TIP_id==1) {
+                  $vv=$vv+1;
+                }
+                else
+                {
+                  $vv=$vv-1;
+                }
             }
 
-          if(isset($respuesta))
-          {
-            $re=Respuesta::find($respuesta);
-            $ress=($re->TIP_id);
-            if($ress==1)
+            if($a==$b)
             {
-              $valor=$valor+1;
-              if($valor==$cantidadcorrectas)
-              {
-                $calificacion=$calificacion+1;
-                #echo "Calificacion".$calificacion."<br>";
+              if ($vv==$cantidadcorrectas) {
+                $cal=$cal+1;
               }
+              $b=$b+4;
+              $c=$a+1;
+              $vv=0;
+              break;
             }
-
-
-          }
-        }*/
-
-      }
-      #echo $calificacion;
-      /*
-      $contador = ($request->cantidad*4);
-            $valor=0;
-
-      for($i=1;$i<=$contador;$i++)
-      {
-        $res="res".$i;
-        $respuesta=($request->$res);
-        if(isset($respuesta))
-        {
-          $re=Respuesta::find($respuesta);
-          $ress=($re->TIP_id);
-          if($ress==1)
-          {
-            $valor=$valor+$ress;
-          }
         }
+
+
       }
-      dd($valor);
-      */
-
-
+      echo "<h1>".$cal."</h1";
     }
 
     /**
@@ -140,8 +123,9 @@ class AlumnoExamenController extends Controller
       $unidad=Unidad::find($id);
       $i=1;
       $p=1;
-      $pregunta=Pregunta::inRandomOrder()->select('*')->where('UNI_id','=',$id)->limit(2)->get();
-      $respuesta=Respuesta::all();
+      $num=1;
+      $pregunta=Pregunta::inRandomOrder()->select('*')->where('UNI_id','=',$id)->limit(10)->get();
+      $respuesta=Respuesta::inRandomOrder()->get();
 
 
       return view('Alumno.Curso.prueba')
@@ -149,6 +133,7 @@ class AlumnoExamenController extends Controller
       ->with('pregunta',$pregunta)
       ->with('i',$i)
       ->with('p',$p)
+      ->with('num',$num)
       ->with('respuesta',$respuesta)
       ->with('unidad',$unidad);
     }

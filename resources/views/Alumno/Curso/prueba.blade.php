@@ -227,7 +227,7 @@ input[type=checkbox]:checked{
       <div class="row">
 
         <div class="col-sm-6">
-          <label for="">#.- Pregunta:</label>
+          <label for="">{{$num++}}.- Pregunta:</label>
           <p>
             {{ $pre->PRE_nombre}}
             <input type="hidden" name="pre{{$p++}}" value="{{ $pre->PRE_id}}">
