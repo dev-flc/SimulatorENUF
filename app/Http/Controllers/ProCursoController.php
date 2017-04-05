@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 use Auth;
 use SimulatorENUF\Models\Curso;
 use SimulatorENUF\Models\Unidad;
+use SimulatorENUF\Models\CurAlu;
+use SimulatorENUF\Models\Alumno;
 use SimulatorENUF\Models\Profesor;
+use DB;
+
 
 
 class ProCursoController extends Controller
@@ -60,9 +64,33 @@ class ProCursoController extends Controller
     public function show($id)
     {
       $curso=Curso::find($id);
+      $aprobado=CurAlu::select('*')
+      ->where('CUR_id','=',$curso->CUR_id)
+      ->where('CUAL_estatus','=','aprobado')
+      ->join('alumnos','alumnos.ALU_id','=','cur_alus.ALU_id')
+      ->join('users','users.id','=','alumnos.USE_id')
+      ->get();
+      $pendiente=CurAlu::select('*')
+      ->where('CUR_id','=',$curso->CUR_id)
+      ->where('CUAL_estatus','=','pendiente')
+      ->join('alumnos','alumnos.ALU_id','=','cur_alus.ALU_id')
+      ->join('users','users.id','=','alumnos.USE_id')
+      ->get();
+
+      $denegado=CurAlu::select('*')
+      ->where('CUR_id','=',$curso->CUR_id)
+      ->where('CUAL_estatus','=','denegado')
+      ->join('alumnos','alumnos.ALU_id','=','cur_alus.ALU_id')
+      ->join('users','users.id','=','alumnos.USE_id')
+      ->get();
+
+
       $unidad = Unidad::select('*')->where('CUR_id','=',$id)->get();
       return view('Profesor.Curso.show')
       ->with('curso',$curso)
+      ->with('pendiente',$pendiente)
+      ->with('denegado',$denegado)
+      ->with('aprobado',$aprobado)
       ->with('unidad',$unidad);
     }
 

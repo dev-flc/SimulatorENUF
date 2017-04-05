@@ -70,29 +70,22 @@ Route::get('/examenprueba/{id}',[
 
 });
 //middleware Alumno Fin
-
 //Auth::routes();
-Route::get('logout', function (){
+//Route Cerrar sesion
+Route::post('logout', function (){
 Auth::logout();
 return redirect('/');
 });
+
 Route::get('/registro', 'AlumnoRegistroController@registro');
 
 Route::post('/registroalumno',[
     'uses' => 'AlumnoRegistroController@registeruser',
     'as' => 'registroalumno.registeruser'
     ]);
-
 Route::post('/loginuser',[
     'uses' => 'AlumnoRegistroController@loginuser',
     'as' => 'loginuser'
     ]);
-
-//Route::post('/register', 'AlumnoRegistroController@registeruser');
-
-//Route::resource('crearalumno','AlumnoRegisterController');
-
-
-
 
 Route::get('/home', 'HomeController@index');

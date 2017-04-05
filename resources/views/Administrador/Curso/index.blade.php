@@ -11,7 +11,12 @@
     <li><a href="{{ route('cursos.create') }}">Crear cursos</a></li>
     <li><a href="{{ route('profesores.index') }}">profesores</a></li>
     <li><a href="{{ route('profesores.create') }}">Create profesores</a></li>
-    <a href="{{ url('/logout') }}" >cerrar <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+    <a href="{{ url('/logout') }}" onclick="event.preventDefault();   document.getElementById('logout-form').submit();" >
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span> Cerrar sesión
+              </a>
+              <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+              </form>
   </ul>
 
 	<table>

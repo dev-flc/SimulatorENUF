@@ -7,7 +7,6 @@ use Auth;
 use Laracasts\Flash\Flash;
 use SimulatorENUF\Models\Curso;
 use SimulatorENUF\Models\Unidad;
-use SimulatorENUF\Models\CurAlu;
 use SimulatorENUF\Models\Alumno;
 use SimulatorENUF\Models\Pregunta;
 use SimulatorENUF\Models\Respuesta;
@@ -44,7 +43,6 @@ class AlumnoExamenController extends Controller
      */
     public function store(Request $request)
     {
-
       $b=4;
       $c=1;
       $vv=0;
@@ -59,37 +57,34 @@ class AlumnoExamenController extends Controller
         $pre="pre".$i;
         $pregunta=Respuesta::select('*')->where('PRE_id','=',$request->$pre)->where('TIP_id','=',1)->get();
         $cantidadcorrectas=count($pregunta); #cantidad de respuestas correctas
-
-
         for ($a=$c; $a<=$cantidadres; $a++)
         {
-            $res="res".$a;
-            $respuesta=($request->$res);
-            if(isset($respuesta))
+          $res="res".$a;
+          $respuesta=($request->$res);
+          if(isset($respuesta))
+          {
+            $verificar=Respuesta::find($respuesta);
+            if ($verificar->TIP_id==1)
             {
-                $verificar=Respuesta::find($respuesta);
-                if ($verificar->TIP_id==1) {
-                  $vv=$vv+1;
-                }
-                else
-                {
-                  $vv=$vv-1;
-                }
+              $vv=$vv+1;
             }
-
-            if($a==$b)
+            else
             {
-              if ($vv==$cantidadcorrectas) {
-                $cal=$cal+1;
-              }
+              $vv=$vv-1;
+            }
+          }
+          if($a==$b)
+          {
+            if ($vv==$cantidadcorrectas)
+            {
+              $cal=$cal+1;
+            }
               $b=$b+4;
               $c=$a+1;
               $vv=0;
               break;
-            }
+          }
         }
-
-
       }
       echo "<h1>".$cal."</h1";
     }

@@ -13,6 +13,9 @@ class Unidad extends Model
         'UNI_foto',
         'UNI_material_apoyo',
         'UNI_fecha_final',
+        'UNI_tiempo',
+        'UNI_calificacion',
+        'UNI_numero_pregunta',
         'CUR_id'
     ];
 

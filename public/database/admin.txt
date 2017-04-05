@@ -6,6 +6,12 @@ $f->password=bcrypt("123");
 $f->type="administrador";
 $f->save();
 
-curso
+
+tipo
+INSERT INTO `simulator`.`tipos` (`TIP_nombre`) VALUES ('correcta');
+INSERT INTO `simulator`.`tipos` (`TIP_nombre`) VALUES ('incorrecta');
+
+
+cursos
 
 $table->enum('CUAL_estatus',['aprobado','pendiente','denegado'])->

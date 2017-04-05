@@ -1,5 +1,5 @@
+@extends('Main.mainprofesor')
 
-@extends('Main.main')
 @section('title', 'Curso')
 @section('styles')
   <link rel="stylesheet" href="{{ asset('css/button-menu.css') }}">
@@ -53,21 +53,69 @@
   <div class="container-fluid">
     <center><h2>Alumnos</h2></center>
     <div class="row">
+      <!-- Alumnos inicio -->
+      @foreach($pendiente as $pen)
+      <h3>Alumnos Pendientes</h3>
+      <hr>
+      <!-- Alumnos pendiente -->
       <div class="col-sm-12 cuadro">
-        <div class="col-sm-2">
-          <img id="alumnosimg" src="http://www.imagenes-bonitas.net/wp-content/uploads/2013/12/fotos-de-caras-bonitas-1024x819.jpg" alt="">
+        <div class="col-sm-1">
+          <img id="alumnosimg" src="/img/{{ $pen->foto }}" alt="">
         </div>
-        <div class="col-sm-6">
-         <center> <p id="textcenter">Fernando Lucena Calixto hernandez</p></center>
+        <div class="col-sm-5">
+         <center> <p id="textcenter">{{ $pen->ALU_nombre }} {{ $pen->ALU_apellido_p }} {{ $pen->ALU_apellido_m }}</p></center>
         </div>
-        <div class="col-sm-4"><br>
-          <span class="glyphicon glyphicon-star aprobada" aria-hidden="true"></span>
-          <span class="glyphicon glyphicon-star aprobada" aria-hidden="true"></span>
-          <span class="glyphicon glyphicon-star-empty pendiente" aria-hidden="true"></span>
-          <span class="glyphicon glyphicon-star-empty pendiente" aria-hidden="true"></span>
-          <span class="glyphicon glyphicon-star-empty pendiente" aria-hidden="true"></span>
+        <div class="col-sm-3">
+          <button class="btn-denegar">Denegar <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        </div>
+        <div class="col-sm-3">
+          <button class="btn-aprobar">Aprobar <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
         </div>
       </div>
+      <!-- pendiente fin -->
+      @endforeach
+
+      @foreach($aprobado as $apro)
+      <h3>Alumnos Aprobados</h3>
+      <hr>
+      <!-- Alumnos aprobado -->
+
+      <div class="col-sm-12 cuadro">
+        <div class="col-sm-1">
+          <img id="alumnosimg" src="/img/{{ $apro->foto }}" alt="">
+        </div>
+        <div class="col-sm-5">
+         <center> <p id="textcenter">{{ $apro->ALU_nombre }} {{ $apro->ALU_apellido_p }} {{ $apro->ALU_apellido_m }}</p></center>
+        </div>
+        <div class="col-sm-3">
+          <button class="btn-denegar">Denegar <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        </div>
+        <div class="col-sm-3">
+          <button class="btn-ver">Ver... <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button>
+        </div>
+      </div>
+      <!-- fin aprobado -->
+      @endforeach
+
+      @foreach($denegado as $dene)
+      <!-- alumno denegado -->
+      <h3>Alumnos Rechazados</h3>
+      <hr>
+
+      <div class="col-sm-12 cuadro">
+        <div class="col-sm-1">
+          <img id="alumnosimg" src="/img/{{ $dene->foto }}" alt="">
+        </div>
+        <div class="col-sm-7">
+         <center> <p id="textcenter">{{ $dene->ALU_nombre }} {{ $dene->ALU_apellido_p }} {{ $dene->ALU_apellido_m }}</p></center>
+        </div>
+        <div class="col-sm-4">
+          <button class="btn-aprobar">Aprobar</button>
+        </div>
+      </div>
+      <!-- fin denegado -->
+      @endforeach
+      <!-- Alumnos fin -->
     </div>
   </div>
   </div>
@@ -151,15 +199,13 @@
 
       </div>
       <div class="modal-body">
-        {!! Form::open(['route'=>'unidad.store','method'=>'POST']) !!}
+        {!! Form::open(['route'=>'unidad.store','method'=>'POST','files' => true]) !!}
         <div class="form-group">
-          {!! Form::label('curso','Curso') !!}
           {!! Form::text('curso',$curso->CUR_id,['class'=>'inputoculto','readonly'])!!}
-          <center><h2>{{ $curso->CUR_nombre }}</h2></center>
         </div>
         <div class="form-group">
-        <p>pendiente foto</p>
-        <p>pendiente material apoyo</p>
+        {!! Form::label('file','Material de apoyo') !!}
+        {!! Form::file('file',['class'=>'form-control','onchange'=>'previewFile()']) !!}</p>
         </div>
         <div class="form-group">
           {!! Form::label('nombre','Nombre de unidad') !!}
@@ -167,8 +213,16 @@
           <p>Solo puede contener 34 caracteres A-Z | 0-9</p>
         </div>
         <div class="form-group">
-          {!! Form::label('fecha','Fecha de examen') !!}
+          {!! Form::label('fecha','Fecha de examen final') !!}
           {!! Form::date('fecha',null,['class'=>'form-control','required'])!!}
+        </div>
+        <div class="form-group">
+          {!! Form::label('tiempo','Duración de examen final') !!}
+          {!! Form::time('tiempo',null,['class'=>'form-control','required'])!!}
+        </div>
+        <div class="form-group">
+          {!! Form::label('numero','Numero de preguntas de examen final') !!}
+          {!! Form::number('numero',null,['class'=>'form-control','required'])!!}
         </div>
       </div>
       <div class="modal-footer">

@@ -38,11 +38,23 @@ class ProUnidadController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->file('file'))
+        {
+            $file=$request->file('file');
+            $nombreapoyo = 'documento_'.time().'.'.$file->getClientOriginalExtension();
+            $path=public_path().'/files/documents';
+            $file->move($path, $nombreapoyo);
+        }
+        else
+        {
+            $nombreapoyo=null;
+        }
       $unidad=new Unidad;
       $unidad->UNI_nombre=($request->nombre);
-      $unidad->UNI_foto="unidad.png";
-      $unidad->UNI_material_apoyo="apoyo.pdf";
+      $unidad->UNI_material_apoyo=$nombreapoyo;
       $unidad->UNI_fecha_final=($request->fecha);
+      $unidad->UNI_tiempo=($request->tiempo);
+      $unidad->UNI_numero_pregunta=($request->numero);
       $unidad->CUR_id=($request->curso);
       $unidad->save();
       return redirect()->route('curso.show', ($request->curso));
