@@ -76,14 +76,18 @@ class ProCursoController extends Controller
       ->join('alumnos','alumnos.ALU_id','=','cur_alus.ALU_id')
       ->join('users','users.id','=','alumnos.USE_id')
       ->get();
-
+      $verificar=CurAlu::select('*')
+      ->where('CUR_id','=',$curso->CUR_id)
+      ->join('alumnos','alumnos.ALU_id','=','cur_alus.ALU_id')
+      ->join('users','users.id','=','alumnos.USE_id')
+      ->get();
       $denegado=CurAlu::select('*')
       ->where('CUR_id','=',$curso->CUR_id)
       ->where('CUAL_estatus','=','denegado')
       ->join('alumnos','alumnos.ALU_id','=','cur_alus.ALU_id')
       ->join('users','users.id','=','alumnos.USE_id')
       ->get();
-
+      $a=1;
 
       $unidad = Unidad::select('*')->where('CUR_id','=',$id)->get();
       return view('Profesor.Curso.show')
@@ -91,6 +95,8 @@ class ProCursoController extends Controller
       ->with('pendiente',$pendiente)
       ->with('denegado',$denegado)
       ->with('aprobado',$aprobado)
+      ->with('verificar',$verificar)
+      ->with('a',$a)
       ->with('unidad',$unidad);
     }
 
@@ -114,7 +120,10 @@ class ProCursoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cur= CurAlu::find($id);
+        $cur ->CUAL_estatus=($request->status);
+        $cur->save();
+        return redirect()->route('curso.show', ($request->curso));
     }
 
     /**

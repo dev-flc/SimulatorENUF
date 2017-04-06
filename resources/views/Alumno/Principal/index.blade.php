@@ -127,7 +127,7 @@
 @else
 <div class="alert alert-dismissable alert-danger">
   <button type="button" class="close" data-dismiss="alert">×</button>
-  <h4>Lo sentimos!</h4>
+  <strong>Lo sentimos!</strong>
   <p> por el momento no hay cursos disponibles</p>
 </div>
 @endif

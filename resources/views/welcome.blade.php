@@ -216,10 +216,9 @@
 @section('script')
 <script type="text/javascript">
 function scrollOn() {
-    $('#map').removeClass('scrolloff'); // set the pointer events true on click
+    $('#map').removeClass('scrolloff');
 
 }
-
 function scrollOff() {
     $('#map').addClass('scrolloff');
 

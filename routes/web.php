@@ -12,7 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    // Verificamos que el usuario no esta autenticado
+    if (Auth::check())
+    {
+        return redirect()->route('principal.index');
+
+    }
+    else
+    {
+      return view('welcome');
+    }
 });
 
 #Route::group(['prefix'=>'admin','middleware'=>['admin','auth']], function(){

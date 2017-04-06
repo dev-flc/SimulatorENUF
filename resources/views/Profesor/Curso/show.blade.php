@@ -1,5 +1,4 @@
 @extends('Main.mainprofesor')
-
 @section('title', 'Curso')
 @section('styles')
   <link rel="stylesheet" href="{{ asset('css/button-menu.css') }}">
@@ -51,11 +50,18 @@
 <div class="row">
   <div class="col-sm-6">
   <div class="container-fluid">
-    <center><h2>Alumnos</h2></center>
     <div class="row">
+    @if ($verificar->count())
+    @else
+        <div class="alert alert-dismissable alert-danger">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          <strong>Lo sentinos !</strong> por el momento no hay alumnos inscritos en el curso
+        </div>
+      @endif
       <!-- Alumnos inicio -->
-      @foreach($pendiente as $pen)
+    @if ($pendiente->count())
       <h3>Alumnos Pendientes</h3>
+      @foreach($pendiente as $pen)
       <hr>
       <!-- Alumnos pendiente -->
       <div class="col-sm-12 cuadro">
@@ -66,20 +72,30 @@
          <center> <p id="textcenter">{{ $pen->ALU_nombre }} {{ $pen->ALU_apellido_p }} {{ $pen->ALU_apellido_m }}</p></center>
         </div>
         <div class="col-sm-3">
-          <button class="btn-denegar">Denegar <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        {{Form::open(['route'=>['curso.update',$pen->CUAL_id],'method'=>'PUT'])}}
+          {!! Form::hidden('status','denegado',['reloady','readonly'])!!}
+          {!! Form::hidden('curso',$pen->CUR_id,['reloady','readonly'])!!}
+          {{ Form::button('Denegar <span class="glyphicon glyphicon-remove"></span>', array('class'=>'btn-denegar', 'type'=>'submit')) }}
+        {!! Form::close() !!}
         </div>
+
         <div class="col-sm-3">
-          <button class="btn-aprobar">Aprobar <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+        {{Form::open(['route'=>['curso.update',$pen->CUAL_id],'method'=>'PUT'])}}
+          {!! Form::hidden('status','aprobado',['reloady','readonly'])!!}
+          {!! Form::hidden('curso',$pen->CUR_id,['reloady','readonly'])!!}
+          {{ Form::button('Aprobar <span class="glyphicon glyphicon-ok"></span>', array('class'=>'btn-aprobar', 'type'=>'submit')) }}
+        {!! Form::close() !!}
         </div>
       </div>
-      <!-- pendiente fin -->
       @endforeach
+      @endif
+      <!-- pendiente fin -->
 
-      @foreach($aprobado as $apro)
+      <!-- Alumnos aprobado -->
+    @if ($aprobado->count())
       <h3>Alumnos Aprobados</h3>
       <hr>
-      <!-- Alumnos aprobado -->
-
+      @foreach($aprobado as $apro)
       <div class="col-sm-12 cuadro">
         <div class="col-sm-1">
           <img id="alumnosimg" src="/img/{{ $apro->foto }}" alt="">
@@ -88,19 +104,25 @@
          <center> <p id="textcenter">{{ $apro->ALU_nombre }} {{ $apro->ALU_apellido_p }} {{ $apro->ALU_apellido_m }}</p></center>
         </div>
         <div class="col-sm-3">
-          <button class="btn-denegar">Denegar <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+          {{Form::open(['route'=>['curso.update',$apro->CUAL_id],'method'=>'PUT'])}}
+          {!! Form::hidden('status','denegado',['reloady','readonly'])!!}
+          {!! Form::hidden('curso',$apro->CUR_id,['reloady','readonly'])!!}
+          {{ Form::button('Denegar <span class="glyphicon glyphicon-remove"></span>', array('class'=>'btn-denegar', 'type'=>'submit')) }}
+        {!! Form::close() !!}
         </div>
         <div class="col-sm-3">
           <button class="btn-ver">Ver... <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button>
         </div>
       </div>
-      <!-- fin aprobado -->
       @endforeach
+      @endif
+      <!-- fin aprobado -->
 
-      @foreach($denegado as $dene)
       <!-- alumno denegado -->
-      <h3>Alumnos Rechazados</h3>
+    @if ($denegado->count())
+    <h3>Alumnos Rechazados</h3>
       <hr>
+      @foreach($denegado as $dene)
 
       <div class="col-sm-12 cuadro">
         <div class="col-sm-1">
@@ -110,31 +132,39 @@
          <center> <p id="textcenter">{{ $dene->ALU_nombre }} {{ $dene->ALU_apellido_p }} {{ $dene->ALU_apellido_m }}</p></center>
         </div>
         <div class="col-sm-4">
-          <button class="btn-aprobar">Aprobar</button>
+          {{Form::open(['route'=>['curso.update',$dene->CUAL_id],'method'=>'PUT'])}}
+          {!! Form::hidden('status','aprobado',['reloady','readonly'])!!}
+          {!! Form::hidden('curso',$dene->CUR_id,['reloady','readonly'])!!}
+          {{ Form::button('Aprobar <span class="glyphicon glyphicon-ok"></span>', array('class'=>'btn-aprobar', 'type'=>'submit')) }}
+        {!! Form::close() !!}
         </div>
       </div>
-      <!-- fin denegado -->
       @endforeach
+      @endif
+      <!-- fin denegado -->
       <!-- Alumnos fin -->
     </div>
   </div>
   </div>
   <div class="col-sm-6">
   <div class="container-fluid">
-    <center><h2>Unidades</h2></center>
+      <h3>Unidades del curso</h3>
+      <hr>
     <div class="row">
     @if ($unidad->count())
     @foreach ($unidad as $uni)
       <a href="{{ route('unidad.show', $uni->UNI_id) }}">
       <div class="col-sm-12 cuadro">
         <div class="col-sm-2">
-          <img id="alumnosimg" src="/img/book1.png" alt="">
+          <div class="numero">
+            {{$a++}}
+          </div>
         </div>
-        <div class="col-sm-7"><br>
+        <div class="col-sm-6"><br>
           <p id="textcenterunidad">{{ $uni->UNI_nombre }}</p>
         </div>
-        <div class="col-sm-3"><br>
-          <p id="textcenterunidad">{{ $uni->UNI_fecha_final }}</p>
+        <div class="col-sm-4"><br>
+          <p id="textcenterunidad"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{ $uni->UNI_fecha_final }}</p>
         </div>
       </div>
       </a>

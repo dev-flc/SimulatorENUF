@@ -20,17 +20,22 @@ class AlumnoPrincipalController extends Controller
     {
       $iduseralumno = Auth::user()->id;
       $alumno=Alumno::where('USE_id', $iduseralumno)->first();
-
+      $idalumno=$alumno->ALU_id;
       $inscrito=CurAlu::where('ALU_id', $alumno->ALU_id)->join('cursos','cursos.CUR_id','=','cur_alus.CUR_id')->get();
 
-      $curso=Curso::whereNotExists(function($inscrito)
+      $curso=Curso::whereNotExists(function($inscrito)use ($idalumno)
             {
-            $inscrito->select(DB::raw(1))->from('cur_alus')->whereRaw('cur_alus.CUR_id = cursos.CUR_id');
+            $inscrito->select(DB::raw(1))
+            ->from('cur_alus')
+            ->whereRaw('cur_alus.CUR_id = cursos.CUR_id')
+            ->where('ALU_id', '=', $idalumno);
             })
             ->get();
+
       return view('Alumno.Principal.index')
       ->with('alumno',$alumno)
       ->with('inscrito',$inscrito)
+      ->with('idalumno',$alumno->ALU_id)
       ->with('curso',$curso);
     }
 
