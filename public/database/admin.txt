@@ -10,6 +10,8 @@ $f->save();
 tipo
 INSERT INTO `simulator`.`tipos` (`TIP_nombre`) VALUES ('correcta');
 INSERT INTO `simulator`.`tipos` (`TIP_nombre`) VALUES ('incorrecta');
+INSERT INTO `simulator`.`tipos` (`TIP_id`, `TIP_nombre`) VALUES ('3', 'prueba');
+INSERT INTO `simulator`.`tipos` (`TIP_nombre`) VALUES ('final');
 
 
 cursos

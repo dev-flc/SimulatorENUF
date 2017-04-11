@@ -10,6 +10,7 @@ use SimulatorENUF\Models\Unidad;
 use SimulatorENUF\Models\Alumno;
 use SimulatorENUF\Models\Pregunta;
 use SimulatorENUF\Models\Respuesta;
+use SimulatorENUF\Models\Examen;
 use DB;
 
 
@@ -43,6 +44,10 @@ class AlumnoExamenController extends Controller
      */
     public function store(Request $request)
     {
+      $iduseralumno = Auth::user()->id;
+      $alumno=Alumno::where('USE_id', $iduseralumno)->first();
+      $idalumno=$alumno->ALU_id;
+
       $b=4;
       $c=1;
       $vv=0;
@@ -86,7 +91,32 @@ class AlumnoExamenController extends Controller
           }
         }
       }
-      echo "<h1>".$cal."</h1";
+
+      $hora= date("H:i:s");
+      $fecha=date('Y-m-d');
+      $examen=new Examen;
+      $examen->EXA_nombre=($request->nombre);
+      $examen->EXA_fecha=$fecha;
+      $examen->EXA_hora=$hora;
+      $examen->EXA_calificacion=$cal;
+      $examen->EXA_tiempo=$hora;//pendiente tiempo del examen
+      $examen->EXA_intento=1;//pendiente intentos
+      $examen->UNI_id=($request->unidadid);
+      $examen->TIP_id=3;
+      $examen->ALU_id=$idalumno;
+      $examen->save();
+
+      if($examen){
+        $unidad=Unidad::find($request->unidadid);;
+        $unidad->UNI_calificacion=$cal;
+        $unidad->save();
+        if($unidad){
+          return view('Alumno.Curso.resultado')
+          ->with('cal',$cal);
+        }
+      }
+
+
     }
 
     /**

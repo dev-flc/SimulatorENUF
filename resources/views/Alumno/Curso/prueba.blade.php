@@ -261,6 +261,8 @@ input[type=checkbox]:checked{
 
     @endforeach
     <input type="hidden" name="cantidad" value="{{$p-1}}">
+    <input type="hidden" name="unidadid" value="{{ $unidad->UNI_id }}">
+    <input type="hidden" name="nombre" value="{{ $unidad->UNI_nombre }}">
     <button type="submit" class="btn btn-primary">Enviar </button>
   {!! Form::close() !!}
 @else

@@ -139,6 +139,14 @@
 {
   width: 65%;
 }
+.aprobado
+{
+  color: rgb(46, 204, 113);
+}
+.reprobado
+{
+  color: rgb(231, 76, 60);
+}
 </style>
 <div class="row">
   <div class="col-sm-4">
@@ -171,7 +179,15 @@
         </td>
         <td class="separar">
           <center>
-            <h2>7</h2>
+              @if($uni->UNI_calificacion)
+                @if($uni->UNI_calificacion>=7)
+                  <h2 class="aprobado">{{$uni->UNI_calificacion}}</h2>
+                @else
+                  <h2 class="reprobado">{{$uni->UNI_calificacion}}</h2>
+                @endif
+              @else
+                <h2>Pendiente</h2>
+              @endif
           </center>
         </td>
         </tr>
