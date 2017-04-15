@@ -15,6 +15,7 @@ class Unidad extends Model
         'UNI_fecha_final',
         'UNI_tiempo',
         'UNI_calificacion',
+        'UNI_intento',
         'UNI_numero_pregunta',
         'CUR_id'
     ];

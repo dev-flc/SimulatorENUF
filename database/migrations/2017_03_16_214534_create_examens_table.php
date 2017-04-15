@@ -20,7 +20,6 @@ class CreateExamensTable extends Migration
             $table->time('EXA_hora')->nullable();
             $table->float('EXA_calificacion')->nullable();
             $table->time('EXA_tiempo')->nullable();
-            $table->integer('EXA_intento')->nullable();
             $table->integer('UNI_id')->unsigned()->nullable();
             $table->integer('TIP_id')->unsigned()->nullable();
             $table->integer('ALU_id')->unsigned()->nullable();

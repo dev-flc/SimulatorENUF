@@ -175,11 +175,30 @@
     {
       border-bottom: 1px solid rgb(52, 152, 219);
     }
+.msj-time
+{
+  border: 1px solid rgb(46, 204, 113);
+  width: 30%;
 
-    .cuadro
+}
+.msj-time-error
+{
+  border: 1px solid rgb(231, 76, 60);
+  width: 30%;
+
+}
+.cuadro
 {
   border-radius: 6px;
-  border: 1px solid rgb(220,220,220);
+  border: 3px solid rgb(220,220,220);
+  background: rgb(255,255,255);
+  margin: 5px;
+  transition: .7s;
+}
+.cuadro-success
+{
+  border-radius: 6px;
+  border: 3px solid rgb(46, 204, 113);
   background: rgb(255,255,255);
   margin: 5px;
   transition: .7s;
@@ -187,7 +206,15 @@
 .cuadro:hover
 {
   background: rgb(255,255,255);
-  border: 1px solid rgb(200,200,200);
+  border: 3px solid rgb(52, 152, 219);
+}
+.cuadro-error
+{
+  border-radius: 6px;
+  border: 3px solid rgb(231, 76, 60);;
+  background: rgb(255,255,255);
+  margin: 5px;
+  transition: .7s;
 }
 input[type=checkbox]
 {
@@ -203,6 +230,24 @@ input[type=checkbox]:checked{
   background: rgb(52, 152, 219);
 
 }
+.success{
+  color: rgb(46, 204, 113);
+}
+.danger
+{
+  color: rgb(231, 76, 60);
+}
+#mensajeerror
+{
+  text-align: center;
+
+}
+.btn-finalizar
+{
+  width: 100%;
+  height: 45px;
+  font-size: 17px;
+}
 </style>
 <div class="row">
   <div class="col-sm-4">
@@ -216,14 +261,21 @@ input[type=checkbox]:checked{
   <div class="col-sm-8 ">
     <br>
     <div class="curse">
-    <center><h1>{{ $unidad->UNI_nombre }}</h1></center>
+    <center><h1>{{ $unidad->UNI_nombre }}
+
+    </h1>
+
+    </center>
+
   </div>
   <div class="col-sm-12">
+
  <!-- ini -->
 @if ($pregunta->count())
-  {!! Form::open(['route'=>'cursos_examen.store','method'=>'POST']) !!}
+  {!! Form::open(['route'=>'cursos_examen.store','method'=>'POST','id'=>'examenfinal']) !!}
 @foreach($pregunta as $pre)
-    <div class=" container-fluid cuadro">
+    <div id="div{{$div++}}" class="container-fluid cuadro" >
+    <br>
       <div class="row">
 
         <div class="col-sm-6">
@@ -245,30 +297,34 @@ input[type=checkbox]:checked{
           @foreach($respuesta as $res)
             @if($res->PRE_id == $pre->PRE_id)
             <td >{{$res->RES_nombre}}</td>
-            <td id="separador"><input type="checkbox" name="res{{$i++}}" value="{!!$res->RES_id!!}"></td>
-
-
+            <td id="separador"><input type="checkbox" name="res{{$i++}}" id="res{{$iddd++}}" value="{!!$res->RES_id!!}"></td>
             @endif
           </tr>
           @endforeach
           </table>
+          <br>
         </div>
       </div>
-        <div class="col-sm-1">
-        </div>
+
       </div>
     </div>
 
     @endforeach
-    <input type="hidden" name="cantidad" value="{{$p-1}}">
+    <input type="hidden" name="cantidad" id="cantidad" value="{{$p-1}}">
     <input type="hidden" name="unidadid" value="{{ $unidad->UNI_id }}">
     <input type="hidden" name="nombre" value="{{ $unidad->UNI_nombre }}">
-    <button type="submit" class="btn btn-primary">Enviar </button>
+    <br>
+    <input type="hidden" name="tiempoexamen" id="tiempoexamen" value="{{ $unidad->UNI_tiempo }}">
+    <button type="button" id="enviar" class="btn btn-primary btn-finalizar">Finalizar Examen</button>
+    <br>
+    <br>
+    <br>
+      <p id="pintar"></p>
   {!! Form::close() !!}
 @else
 <div class="alert alert-dismissable alert-danger">
   <button type="button" class="close" data-dismiss="alert">×</button>
-  <strong>Porfavor!</strong> agrege una pregunta como minimo
+  <strong>Lo sentimos!</strong> por el momento no hay contenido disponible
 </div>
 @endif
  <!-- fin -->
@@ -289,6 +345,63 @@ input[type=checkbox]:checked{
 
 <!--Script -->
 @section('script')
+<script type="text/javascript">
+
+$("#enviar").click(function(){
+   var canti =$("#cantidad").val();
+   var respuestas=canti*4;
+   var c=1;
+   var confirmar=0;
+   var b=4;
+   var verificar=0;
+
+  for(i=1; i<=canti;i++)
+  {
+
+    for(a=c;a<=respuestas;a++)
+    {
+
+      if($("#res"+a).is(':checked')) {
+      verificar=verificar+1;
+      //console.log("activado");
+      }
+
+      if(a==b)
+      {
+        if(verificar>=1)
+        {
+
+          confirmar=confirmar+1;
+        }
+        else{
+          //console.log(i);
+          $("#div"+i).addClass("container-fluid cuadro-error");
+        }
+        b=b+4;
+        c=a+1;
+        if(verificar>=1)
+    {
+        $("#div"+i).removeClass("container-fluid cuadro-error").addClass( "container-fluid cuadro-success" );
+
+    }
+        verificar=0;
+        //console.log("--------");
+        break;
+      }
+    }
+
+  }
+
+if(confirmar==canti)
+{
+  $("#examenfinal").submit();
+}
+else {
+  alert("te faltan");
+}
+
+});
+</script>
 
 @endsection
 

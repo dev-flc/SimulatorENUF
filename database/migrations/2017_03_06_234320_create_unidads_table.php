@@ -20,6 +20,7 @@ class CreateUnidadsTable extends Migration
             $table->date('UNI_fecha_final')->nullable();
             $table->string('UNI_tiempo')->nullable();
             $table->string('UNI_calificacion')->nullable();
+            $table->string('UNI_intento')->nullable();
             $table->string('UNI_numero_pregunta')->nullable();
             $table->integer('CUR_id')->unsigned()->nullable();
             $table->timestamps();

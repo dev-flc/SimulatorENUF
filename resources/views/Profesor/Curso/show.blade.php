@@ -247,8 +247,8 @@
           {!! Form::date('fecha',null,['class'=>'form-control','required'])!!}
         </div>
         <div class="form-group">
-          {!! Form::label('tiempo','Duración de examen final') !!}
-          {!! Form::time('tiempo',null,['class'=>'form-control','required'])!!}
+          {!! Form::label('tiempo','ingrese los minutos de examen final') !!}
+          {!! Form::number('tiempo',null,['class'=>'form-control','placeholder'=>'ejemplo 30','required'])!!}
         </div>
         <div class="form-group">
           {!! Form::label('numero','Numero de preguntas de examen final') !!}

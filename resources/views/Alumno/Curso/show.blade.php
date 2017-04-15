@@ -2,6 +2,10 @@
 
 @section('title', 'Examenes')
 
+@section('styles')
+  <link rel="stylesheet" href="{{ asset('plugins/confirm/sweetalert.css') }}">
+@endsection
+
 <!-- Contenido Principal -->
 @section('imagenprincipal')
   <div class="seccionone">
@@ -160,7 +164,7 @@
   <div class="col-sm-8 ">
     <br>
     <div class="curse">
-    <center><h1>{{ $curso->CUR_nombre }} <img src="/img/foto.png" alt=""></h1></center>
+    <center><h1>{{ $curso->CUR_nombre }}<img src="/img/foto.png" alt=""></h1></center>
   </div>
   <div class="col-sm-12">
     <h2>Descripción</h2>
@@ -168,64 +172,87 @@
       </p>
     <hr>
   </div>
-  <div class="col-sm-8">
+  <div class="col-sm-12">
     <h2>Unidades</h2>
     @foreach($unidad as $uni)
-      <div class="unidad">
-       <table>
-<tr>
-        <td class="separar ancho">
-          <p><center>{{ $uni->UNI_nombre }}</center></p>
-        </td>
-        <td class="separar">
-          <center>
-              @if($uni->UNI_calificacion)
-                @if($uni->UNI_calificacion>=7)
-                  <h2 class="aprobado">{{$uni->UNI_calificacion}}</h2>
-                @else
-                  <h2 class="reprobado">{{$uni->UNI_calificacion}}</h2>
-                @endif
-              @else
-                <h2>Pendiente</h2>
-              @endif
-          </center>
-        </td>
-        </tr>
-        <tr>
-        <td class="separar ancho">
-          <a href="{{ route('examenprueba', $uni->UNI_id) }}">
-            <button class="prueba">Examen de preuba</button>
-          </a>
-        </td>
-        <td class="separar">
-          <a href="{{ route('examenfinal', $uni->UNI_id) }}">
-            <button class="final">Examen de Final</button>
-          </a>
-        </td>
-        </tr>
-       </table>
-      </div>
-      @endforeach
+<div class="unidad">
+<div class="table-responsive">
+<table  style="width: 100%;">
+  <tr>
+    <td><center><h3>Nombre</h3></center></td>
+    <td><center><h3>Intentos</h3></center></td>
+    <td><center><h3>Fecha</h3></center></td>
+    <td><center><h3>Calificación</h3></center></td>
+    <td><center><h3>Tiempo</h3></center></td>
+  </tr>
+  <tr>
+    <td>
+      <center>{{$uni->UNI_nombre}}</center>
+    </td>
+    <td>
+      <center>
+        @if($uni->UNI_intento=="")
+        0
+        @else
+        {{$uni->UNI_intento}}
+        @endif
+      </center>
+    </td>
+    <td>
+      <center>{{$uni->UNI_fecha_final}}</center>
+    </td>
+    <td>
+      <center>
+        @if($uni->UNI_calificacion=="")
+          Pendiente
+        @elseif($uni->UNI_calificacion>=7)
+           <h2 class="aprobado">{{$uni->UNI_calificacion}}</h2>
+        @elseif($uni->UNI_calificacion<=6)
+           <h2 class="reprobado">{{$uni->UNI_calificacion}}</h2>
+
+        @endif
+      </center>
+    </td>
+    <td>
+       <center>{{$uni->UNI_tiempo}} minutos</center>
+    </td>
+  </tr>
+</table>
+</div>
+<hr>
+<center>
+  @if($uni->UNI_fecha_final>$fecha)
+  <a href="{{ route('examenprueba', $uni->UNI_id) }}" style="text-decoration: none;">
+    <span class="label label-success">Examen de prueba</span>
+  </a>
+  @else
+  <span class="label label-default">Examen de prueba</span>
+  @endif
+
+  @if($uni->UNI_intento>=3)
+  <span class="label label-default">Examen final</span>
+  @else
+    @if($uni->UNI_fecha_final==$fecha )
+       <span class="label label-success" style="cursor:pointer" onclick="Envio({{$uni->UNI_id}});">Examen finall</span>
+
+    @else
+  <span class="label label-default">Examen final</span>
+
+    @endif
+  @endif
+  <a href="{{ route('detalleunidad', $uni->UNI_id) }}">
+    <span class="label label-primary">Ver detalles</span>
+  </a>
+
+</center>
+   </div>
+@endforeach
+      <br>
       <br>
     </div>
-  <div class="col-sm-4">
-  <h2>Profesor</h2>
-    <div class="thumbnail">
-      <img src="/img/profesor.jpg" id="profe" alt="...">
-      <div class="caption">
-        <center>
-          <h3>Nombre Profesor Ahora</h3>
-          <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
-          <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
-          <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
-          <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
-          <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
-        </center>
-      </div>
-    </div>
-  </div>
   </div>
 </div>
+<!--  AQUI ESTOY-->
 @endsection
 
 <!-- subcontenido -->
@@ -240,6 +267,35 @@
 
 <!--Script -->
 @section('script')
+<script  src="{{ asset('plugins/confirm/sweetalert.min.js') }}"></script>
+<!--  AQUI tambien -->
 
+<script type="text/javascript">
+
+var Envio=function(id){
+
+  swal({
+                title: "Relizar Examen?",
+                text: "empezar ahora!",
+                type: "success",
+                showCancelButton: true,
+                confirmButtonColor: '#2ECC71',
+                confirmButtonText: 'Confirmar',
+                cancelButtonText: "Cancelar!",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            },
+            function(isConfirm) {
+                if (isConfirm) {
+
+                         window.location.href = "{{url('alumno/examenfinal')}}/"+id+"";
+
+
+                } else {
+                    swal("Cancelado", ":)", "error");
+                }
+            });
+}
+</script>
 @endsection
 

@@ -77,7 +77,16 @@ Route::get('/examenprueba/{id}',[
     'uses' => 'AlumnoExamenController@examenprueba',
     'as' => 'examenprueba'
     ]);
+/* Detalle de unidad*/
+Route::get('/detalleunidad/{id}',[
+    'uses' => 'AlumnoExamenController@detalleunidad',
+    'as' => 'detalleunidad'
+    ]);
 
+  Route::post('finalexamen',[
+    'uses' => 'AlumnoExamenController@finalExamen',
+    'as' => 'finalexamen'
+    ]);
 });
 //middleware Alumno Fin
 //Auth::routes();

@@ -137,7 +137,116 @@
 }
 .ancho
 {
-  width: 65%;
+  width: 75%;
+}
+.table
+{
+  width: 100%;
+}
+
+    #respuestaid
+    {
+      width: 100%;
+    }
+
+
+    #ress
+    {
+      width: 4%;
+    }
+    #separador
+    {
+      width: 1%;
+      color: rgb(191, 201, 202);
+    }
+    .si
+    {
+      color: rgb(130, 224, 170);
+    }
+    .no
+    {
+      color: rgb(241, 148, 138);
+    }
+    table td
+    {
+      border-bottom: 1px solid rgb(220,220,220);
+    }
+     table td:hover
+    {
+      border-bottom: 1px solid rgb(52, 152, 219);
+    }
+.msj-time
+{
+  border: 1px solid rgb(46, 204, 113);
+  width: 30%;
+
+}
+.msj-time-error
+{
+  border: 1px solid rgb(231, 76, 60);
+  width: 30%;
+
+}
+.cuadro
+{
+  border-radius: 6px;
+  border: 3px solid rgb(220,220,220);
+  background: rgb(255,255,255);
+  margin: 5px;
+  transition: .7s;
+}
+.cuadro-success
+{
+  border-radius: 6px;
+  border: 3px solid rgb(46, 204, 113);
+  background: rgb(255,255,255);
+  margin: 5px;
+  transition: .7s;
+}
+.cuadro:hover
+{
+  background: rgb(255,255,255);
+  border: 3px solid rgb(52, 152, 219);
+}
+.cuadro-error
+{
+  border-radius: 6px;
+  border: 3px solid rgb(231, 76, 60);;
+  background: rgb(255,255,255);
+  margin: 5px;
+  transition: .7s;
+}
+input[type=checkbox]
+{
+
+  background: rgb(52, 152, 219);
+  color: red;
+
+  width: 22px;
+    height: 22px;
+}
+input[type=checkbox]:checked{
+  color: red;
+  background: rgb(52, 152, 219);
+
+}
+.success{
+  color: rgb(46, 204, 113);
+}
+.danger
+{
+  color: rgb(231, 76, 60);
+}
+#mensajeerror
+{
+  text-align: center;
+
+}
+.btn-finalizar
+{
+  width: 100%;
+  height: 45px;
+  font-size: 17px;
 }
 </style>
 <div class="row">
@@ -152,63 +261,87 @@
   <div class="col-sm-8 ">
     <br>
     <div class="curse">
-    <center><h1>{{ $curso->CUR_nombre }} <img src="/img/foto.png" alt=""></h1></center>
+    <center><h1>{{ $unidad->UNI_nombre }}
+
+    </h1>
+
+    </center>
+
   </div>
   <div class="col-sm-12">
-    <h2>Descripción</h2>
-      <p>{{ $curso->CUR_descripcion }}
-      </p>
-    <hr>
-  </div>
-  <div class="col-sm-8">
-    <h2>Unidades</h2>
-    @foreach($unidad as $uni)
-      <div class="unidad">
-       <table>
-<tr>
-        <td class="separar ancho">
-          <p><center>{{ $uni->UNI_nombre }}</center></p>
-        </td>
-        <td class="separar">
-          <center>
-            <h2>7</h2>
-          </center>
-        </td>
-        </tr>
-        <tr>
-        <td class="separar ancho">
-          <a href="{{ route('examenprueba', $uni->UNI_id) }}">
-            <button class="prueba">Examen de preuba</button>
-          </a>
-        </td>
-        <td class="separar">
-          <a href="{{ route('examenfinal', $uni->UNI_id) }}">
-            <button class="final">Examen de Final</button>
-          </a>
-        </td>
-        </tr>
-       </table>
+  <br>
+@if ($pregunta->count())
+
+<div id="rojo" class="container-fluid msj-time">
+  <center>
+  <h2 id="reloj" class="success"><label id="hour">00</label>:<label id="minute">00</label>:<label id="second">00</label></h2>
+  <p id="mensajeerror" class="danger"></p>
+</center>
+</div>
+@endif
+<br>
+ <!-- ini -->
+@if ($pregunta->count())
+  {!! Form::open(['route'=>'finalexamen','method'=>'POST','id'=>'examenfinal']) !!}
+@foreach($pregunta as $pre)
+    <div id="div{{$div++}}" class="container-fluid cuadro" >
+    <br>
+      <div class="row">
+
+        <div class="col-sm-6">
+          <label for="">{{$num++}}.- Pregunta:</label>
+          <p>
+            {{ $pre->PRE_nombre}}
+            <input type="hidden" name="pre{{$p++}}" value="{{ $pre->PRE_id}}">
+          </p>
+        </div>
+      <div class="col-sm-6">
+        <div class="table-responsive">
+          <table>
+          <tr>
+            <td><label>Respuestas</label></td>
+            <td><label>Opción</label></td>
+
+          </tr>
+          <tr>
+          @foreach($respuesta as $res)
+            @if($res->PRE_id == $pre->PRE_id)
+            <td >{{$res->RES_nombre}}</td>
+            <td id="separador"><input type="checkbox" name="res{{$i++}}" id="res{{$iddd++}}" value="{!!$res->RES_id!!}"></td>
+
+
+            @endif
+          </tr>
+          @endforeach
+          </table>
+          <br>
+        </div>
       </div>
-      @endforeach
-      <br>
-    </div>
-  <div class="col-sm-4">
-  <h2>Profesor</h2>
-    <div class="thumbnail">
-      <img src="/img/profesor.jpg" id="profe" alt="...">
-      <div class="caption">
-        <center>
-          <h3>Nombre Profesor Ahora</h3>
-          <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
-          <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
-          <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
-          <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
-          <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
-        </center>
+
       </div>
     </div>
+
+    @endforeach
+    <input type="hidden" name="cantidad" id="cantidad" value="{{$p-1}}">
+    <input type="hidden" name="unidadid" value="{{ $unidad->UNI_id }}">
+    <input type="hidden" name="nombre" value="{{ $unidad->UNI_nombre }}">
+    <br>
+    <input type="hidden" name="tiempoexamen" id="tiempoexamen" value="{{ $unidad->UNI_tiempo }}">
+    <button type="button" id="enviar" class="btn btn-primary btn-finalizar">Finalizar Examen</button>
+    <br>
+    <br>
+    <br>
+      <p id="pintar"></p>
+  {!! Form::close() !!}
+@else
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert">×</button>
+  <strong>Lo sentimos!</strong> por el momento no hay contenido disponible
+</div>
+@endif
+ <!-- fin -->
   </div>
-  </div>
+</div>
 </div>
 @endsection
 
@@ -224,6 +357,118 @@
 
 <!--Script -->
 @section('script')
+<script type="text/javascript">
+  $(document).ready(function(){
+
+
+    var tiempo = {
+        hora: 0,
+        minuto: 0,
+        minuto1: 0,
+        segundo: 0
+    };
+    //var tiempoexamen=$("#tiempoexamen").val();
+    var tiempoexamen=4;
+
+
+    var alerta=tiempoexamen-3;
+
+    var tiempo_corriendo = null;
+            tiempo_corriendo = setInterval(function(){
+
+                // Segundos
+                tiempo.segundo++;
+                if(tiempo.segundo >= 60)
+                {
+                    tiempo.segundo = 0;
+                    tiempo.minuto++;
+                    tiempo.minuto1++;
+                }
+
+                // Minutos
+                if(tiempo.minuto >= 60)
+                {
+                    tiempo.minuto = 0;
+                    tiempo.hora++;
+                }
+
+
+                $("#hour").text(tiempo.hora < 10 ? '0' + tiempo.hora : tiempo.hora);
+                $("#minute").text(tiempo.minuto < 10 ? '0' + tiempo.minuto : tiempo.minuto);
+                $("#second").text(tiempo.segundo < 10 ? '0' + tiempo.segundo : tiempo.segundo);
+
+                if(tiempo.minuto1==tiempoexamen)
+                {
+                  clearInterval(tiempo_corriendo);
+                  $("#examenfinal").submit();
+                  //console.log("yoa me pare");
+                }
+                if(alerta==tiempo.minuto1){
+                $( "#reloj" ).addClass( "danger" );
+                $("#mensajeerror").text("Quedan 3 minutos");
+                $("#rojo").addClass("container-fluid msj-time-error");
+              }
+
+
+            }, 1000);
+
+    })
+
+$("#enviar").click(function(){
+   var canti =$("#cantidad").val();
+   var respuestas=canti*4;
+   var c=1;
+   var confirmar=0;
+   var b=4;
+   var verificar=0;
+
+  for(i=1; i<=canti;i++)
+  {
+
+    for(a=c;a<=respuestas;a++)
+    {
+
+      if($("#res"+a).is(':checked')) {
+      verificar=verificar+1;
+      //console.log("activado");
+      }
+
+      if(a==b)
+      {
+        if(verificar>=1)
+        {
+
+          confirmar=confirmar+1;
+        }
+        else{
+          //console.log(i);
+          $("#div"+i).addClass("container-fluid cuadro-error");
+        }
+        b=b+4;
+        c=a+1;
+        if(verificar>=1)
+    {
+        $("#div"+i).removeClass("container-fluid cuadro-error").addClass( "container-fluid cuadro-success" );
+
+    }
+        verificar=0;
+        //console.log("--------");
+        break;
+      }
+    }
+
+  }
+
+if(confirmar==canti)
+{
+  $("#examenfinal").submit();
+}
+else {
+  alert("te faltan");
+}
+
+});
+</script>
 
 @endsection
 

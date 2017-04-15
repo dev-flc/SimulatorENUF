@@ -14,7 +14,6 @@ class Examen extends Model
         'EXA_hora',
         'EXA_calificacion',
         'EXA_tiempo',
-        'EXA_intento',
         'UNI_id',
         'TIP_id',
         'ALU_id',
