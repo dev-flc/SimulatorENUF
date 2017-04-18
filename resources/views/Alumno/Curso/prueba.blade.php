@@ -345,6 +345,8 @@ input[type=checkbox]:checked{
 
 <!--Script -->
 @section('script')
+
+<script  src="{{ asset('plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
 <script type="text/javascript">
 
 $("#enviar").click(function(){
@@ -397,7 +399,13 @@ if(confirmar==canti)
   $("#examenfinal").submit();
 }
 else {
-  alert("te faltan");
+  $.notify({
+  icon: 'glyphicon glyphicon-question-sign',
+  title: "<strong>Error!</strong> ",
+  message: "faltan preguntas por responder"
+  },{
+  type: 'danger'
+  });
 }
 
 });

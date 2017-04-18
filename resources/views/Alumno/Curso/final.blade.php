@@ -357,6 +357,7 @@ input[type=checkbox]:checked{
 
 <!--Script -->
 @section('script')
+<script  src="{{ asset('plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
 <script type="text/javascript">
   $(document).ready(function(){
 
@@ -407,6 +408,14 @@ input[type=checkbox]:checked{
                 $( "#reloj" ).addClass( "danger" );
                 $("#mensajeerror").text("Quedan 3 minutos");
                 $("#rojo").addClass("container-fluid msj-time-error");
+                $.notify({
+                  icon: 'glyphicon glyphicon-question-time',
+                  title: "<strong>Restan</strong> ",
+                  message: "solo 3 minutos"
+                  },{
+                  type: 'danger'
+                  });
+                alerta=0;
               }
 
 
@@ -464,7 +473,13 @@ if(confirmar==canti)
   $("#examenfinal").submit();
 }
 else {
-  alert("te faltan");
+   $.notify({
+  icon: 'glyphicon glyphicon-question-sign',
+  title: "<strong>Error!</strong> ",
+  message: "faltan preguntas por responder"
+  },{
+  type: 'danger'
+  });
 }
 
 });

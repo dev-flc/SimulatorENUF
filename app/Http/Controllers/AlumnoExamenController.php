@@ -11,6 +11,8 @@ use SimulatorENUF\Models\Alumno;
 use SimulatorENUF\Models\Pregunta;
 use SimulatorENUF\Models\Respuesta;
 use SimulatorENUF\Models\Examen;
+use SimulatorENUF\Models\CurAlu;
+
 use DB;
 
 
@@ -44,6 +46,7 @@ class AlumnoExamenController extends Controller
      */
      public function finalExamen(Request $request)
     {
+
       $iduseralumno = Auth::user()->id;
       $alumno=Alumno::where('USE_id', $iduseralumno)->first();
       $idalumno=$alumno->ALU_id;
@@ -92,14 +95,14 @@ class AlumnoExamenController extends Controller
           }
         }
       }
-
-      $hora= date("H:i:s");
+      $calfinal=round($cal*10/$cantidad);
+      $hora= date("h:i:s a");
       $fecha=date('Y-m-d');
       $examen=new Examen;
       $examen->EXA_nombre=($request->nombre);
       $examen->EXA_fecha=$fecha;
       $examen->EXA_hora=$hora;
-      $examen->EXA_calificacion=$cal;
+      $examen->EXA_calificacion=$calfinal;
       $examen->EXA_tiempo=$hora;//pendiente tiempo del examen
       $examen->UNI_id=($request->unidadid);
       $examen->TIP_id=4;
@@ -115,12 +118,15 @@ class AlumnoExamenController extends Controller
         }
 
         $unidad=Unidad::find($request->unidadid);;
-        $unidad->UNI_calificacion=$cal;
+        $unidad->UNI_calificacion=$calfinal;
         $unidad->UNI_intento=$intent;
         $unidad->save();
         if($unidad){
+
+          $idcurso=($request->unidadid);
           return view('Alumno.Curso.resultado')
-          ->with('cal',$cal);
+          ->with('cal',$calfinal)
+          ->with('id',$idcurso);
 
         }
       }
@@ -176,7 +182,7 @@ class AlumnoExamenController extends Controller
         }
       }
 
-      $hora= date("H:i:s");
+      $hora= date('h:i:s a');
       $fecha=date('Y-m-d');
       $examen=new Examen;
       $examen->EXA_nombre=($request->nombre);
@@ -190,8 +196,10 @@ class AlumnoExamenController extends Controller
       $examen->save();
 
       if($examen){
+          $idcurso=($request->unidadid);
           return view('Alumno.Curso.resultado')
-          ->with('cal',$cal);
+          ->with('cal',$cal)
+          ->with('id',$idcurso);
       }
 
 
@@ -221,13 +229,15 @@ class AlumnoExamenController extends Controller
       $iduseralumno = Auth::user()->id;
       $alumno=Alumno::where('USE_id', $iduseralumno)->first();
       $unidad=Unidad::find($id);
+      $pre=$unidad->UNI_numero_pregunta;
       $i=1;
       $p=1;
       $iddd=1;
       $num=1;
       $div=1;
-      $pregunta=Pregunta::inRandomOrder()->select('*')->where('UNI_id','=',$id)->limit(10)->get();
+      $pregunta=Pregunta::inRandomOrder()->select('*')->where('UNI_id','=',$id)->limit($pre)->get();
       $respuesta=Respuesta::inRandomOrder()->get();
+
 
 
       return view('Alumno.Curso.final')
@@ -301,6 +311,19 @@ class AlumnoExamenController extends Controller
 
     public function detalleunidad($id)
     {
-      return view('Alumno.Curso.detalleunidad');
+      $iduseralumno = Auth::user()->id;
+      $alumno=Alumno::where('USE_id', $iduseralumno)->first();
+
+      $idalum=($alumno->ALU_id);
+
+      $final=Examen::where('ALU_id','=',$idalum)->where('TIP_id','=',4)->get();
+      $prueba=Examen::where('ALU_id','=',$idalum)->where('TIP_id','=',3)->get();
+      $p=1;
+      $f=1;
+      return view('Alumno.Curso.detalleunidad')
+      ->with('final',$final)
+      ->with('f',$f)
+      ->with('p',$p)
+      ->with('prueba',$prueba);
     }
 }

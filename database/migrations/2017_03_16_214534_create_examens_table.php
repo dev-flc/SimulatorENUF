@@ -15,11 +15,11 @@ class CreateExamensTable extends Migration
     {
       Schema::create('examens', function (Blueprint $table) {
             $table->increments('EXA_id');
-            $table->string('EXA_nombre')->nullable();
+            $table->string('EXA_nombre',35)->nullable();
             $table->date('EXA_fecha')->nullable();
-            $table->time('EXA_hora')->nullable();
+            $table->string('EXA_hora')->nullable();
             $table->float('EXA_calificacion')->nullable();
-            $table->time('EXA_tiempo')->nullable();
+            $table->string('EXA_tiempo')->nullable();
             $table->integer('UNI_id')->unsigned()->nullable();
             $table->integer('TIP_id')->unsigned()->nullable();
             $table->integer('ALU_id')->unsigned()->nullable();
