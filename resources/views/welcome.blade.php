@@ -87,8 +87,7 @@
 
 -->
 
-  <center><h2>Ubicanos soy la prueva de eli ...</h2></center><hr>
-  <center><h2>Prueba ed GitHub </h2></center><hr>
+  <center><h2>Ubicanos</h2></center><hr>
 <style type="text/css">
 .scrolloff iframe   {
     pointer-events: none ;
