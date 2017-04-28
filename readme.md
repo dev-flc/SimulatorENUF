@@ -84,7 +84,6 @@ php artisan serv
 Developing
 
 ![alt text](https://cdn2.tnwcdn.com/wp-content/blogs.dir/1/files/2015/10/designer-developer-1200x616.jpg)
-![alt text](https://cdn.elegantthemes.com/blog/wp-content/uploads/2015/12/Web-Designers-Collaborate-with-WordPress-Developers-1.png)
 
 ## Collaborators
 ##### Elizabeth Gonzalez Javier
