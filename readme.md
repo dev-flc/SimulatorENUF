@@ -5,12 +5,13 @@
 This project is practically aimed at helping students by taking tests and providing simulated tests of their final exam, as well as obtaining the results of each of them.
 
 ### Install
-1.- install composer
+
+1.- Install composer
 ```
 cd /directory/project
 Composer install
 ```
-2.- create database
+2.- Create database
 ```
 mysql -u root -p
 password: ?
@@ -62,7 +63,7 @@ php artisan key:generate
 ```
 php artisan migrate
 ```
-6.- create user admin
+6.- Create user admin
 ```
 php artisan tinker
 
@@ -73,7 +74,7 @@ $user->password=bcrypt("123");
 $user->type="administrador";
 $user->save();
 ```
-7.- compile project
+7.- Compile project
 ```
 php artisan serv
 
@@ -81,3 +82,4 @@ php artisan serv
 ```
 
 ## Screenshot
+![alt text](http://www.itchilpancingo.edu.mx/images/logoitchaux.jpg)
