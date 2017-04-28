@@ -83,6 +83,8 @@ php artisan serv
 
 ## Collaborators
 <img src="http://www.itchilpancingo.edu.mx/images/logoitchaux.jpg" align="right" />
-Elizabeth Gonzalez Javier
-Fernando Lucena Calixto
+##### Elizabeth Gonzalez Javier
+* Instituto tecnologico de chilpancingo
+##### Fernando Lucena Calixto
+* Instituto tecnologico de chilpancingo
 
