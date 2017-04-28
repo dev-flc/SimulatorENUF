@@ -82,9 +82,10 @@ php artisan serv
 ## Screenshot
 
 ## Collaborators
-<img src="http://www.itchilpancingo.edu.mx/images/logoitchaux.jpg" align="right" />
 ##### Elizabeth Gonzalez Javier
 * Instituto tecnologico de chilpancingo
 ##### Fernando Lucena Calixto
 * Instituto tecnologico de chilpancingo
+<img src="http://www.itchilpancingo.edu.mx/images/logoitchaux.jpg" align="right" />
+
 
