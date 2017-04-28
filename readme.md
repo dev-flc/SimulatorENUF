@@ -1,3 +1,9 @@
-#ForeverTuCode.com
+# ForeverTuCode.com
 
-###Project Simulator - Enuf Chilpancingo
+### Project Simulator - Enuf Chilpancingo
+
+```
+$(document).ready(function(){
+  console.log('Saludos colegas');
+});
+```
