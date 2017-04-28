@@ -1,6 +1,4 @@
-# ForeverTuCode.com
-
-## Project Simulator - Enuf Chilpancingo
+# Project Simulator Enuf Chilpancingo
 
 This project is practically aimed at helping students by taking tests and providing simulated tests of their final exam, as well as obtaining the results of each of them.
 
@@ -82,4 +80,9 @@ php artisan serv
 ```
 
 ## Screenshot
-![alt text](http://www.itchilpancingo.edu.mx/images/logoitchaux.jpg)
+
+## Collaborators
+<img src="http://www.itchilpancingo.edu.mx/images/logoitchaux.jpg" align="right" />
+Elizabeth Gonzalez Javier
+Fernando Lucena Calixto
+
