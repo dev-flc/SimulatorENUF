@@ -4,6 +4,8 @@ This project is practically aimed at helping students by taking tests and provid
 
 ## Directory Project
 ```
+$ tree -L 1 -a
+
 ├── app
 ├── artisan
 ├── bootstrap
@@ -38,19 +40,19 @@ This project is practically aimed at helping students by taking tests and provid
 
 1.- Install composer
 ```
-cd /directory/project
-Composer install
+$ cd /directory/project
+$ Composer install
 ```
 2.- Create database
 ```
-mysql -u root -p
+$ mysql -u root -p
 password: ?
-create database simulator? 
-use database simulator
+mysql-> create database simulator? 
+mysql-> use database simulator
 ```
 3.- Create .env
 ```
-vim .env
+$ vim .env
 
 APP_ENV=local
 APP_KEY=
@@ -87,15 +89,15 @@ PUSHER_SECRET=
 ```
 4.- Key Generate project
 ```
-php artisan key:generate
+$ php artisan key:generate
 ```
 5.- Migrate models->database
 ```
-php artisan migrate
+$ php artisan migrate
 ```
 6.- Create user admin
 ```
-php artisan tinker
+$ php artisan tinker
 
 $user->name="admin";
 $user->foto="foto.png";
@@ -106,9 +108,9 @@ $user->save();
 ```
 7.- Compile project
 ```
-php artisan serv
+$ php artisan serv
 
-127.0.0.1:800
+127.0.0.1:800 -> Url
 ```
 
 ## Screenshot
