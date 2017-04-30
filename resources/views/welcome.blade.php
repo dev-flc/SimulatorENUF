@@ -71,22 +71,6 @@
   <img src="/img/ICT-horizontal.png" style="width: 100%" class="img-responsive" alt="">
 </div>
 </div>
-<!--
-  <div class="row">
-    <div class="col-sm-6">
-    <center>
-      <img src="/img/innovation.png" alt="">
-    </center>
-    </div>
-    <div class="col-sm-6">
-    <center>
-      <img src="/img/EnterpriseMobile.png" alt="">
-    </center>
-    </div>
-  </div>
-
--->
-
   <center><h2>Ubicanos</h2></center><hr>
 <style type="text/css">
 .scrolloff iframe   {
