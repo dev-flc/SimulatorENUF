@@ -1,11 +1,36 @@
 footer
 {
-  z-index: 30;
-  height: 50px;
-  background: rgb(236, 112, 99);
-  text-align: center;
+    z-index: 30;
+    height: auto;
+    background: rgb(23, 32, 42);
+    text-align: center;
 }
-footer p
+#pfooter{
+    color: rgb(255,255,255);
+}
+#redes
 {
-  color: rgb(255,255,255);
+    width: 40px;
+}
+#guerrero
+{
+    width: 280px;
+    height: 80px;
+}
+#fixedbutton {
+    position: fixed;
+    bottom:30px;
+    right: 10px; 
+    border-radius: 50%;
+    z-index: 9;
+}
+
+.btn-circle.btn-lg {
+    width: 60px;
+    height: 60px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }

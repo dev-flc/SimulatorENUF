@@ -13,7 +13,7 @@
 </head>
 
 <header>
-  @include('Main.navprofesor')
+  @include('Main.navadmin')
 </header>
 <body>
 <br>
@@ -92,6 +92,7 @@
       </button>
       -->
 </footer>
+      
 @yield('modal')
 
 

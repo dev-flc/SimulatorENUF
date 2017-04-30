@@ -183,7 +183,10 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h3 class="modal-title colordiv" id="myModalLabel">login</h3>
+        <h2 class="modal-title colordiv" id="myModalLabel">Iniciar sesión</h2>
+        <div class="logo" >
+          <center><img src="img/escudo.jpg" width="250" height="250" id="logo" class="slideUp" alt=""></center>
+        </div>
       </div>
        <div class="modal-body">
         {!! Form::open(['route'=>'loginuser','method'=>'POST']) !!}
