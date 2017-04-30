@@ -1,0 +1,29 @@
+.
+├── app
+├── artisan
+├── bootstrap
+├── composer.json
+├── composer.lock
+├── config
+├── database
+├── .editorconfig
+├── .env
+├── .env.example
+├── getStatusCode())
+├── .git
+├── .gitattributes
+├── .gitignore
+├── gulpfile.js
+├── package.json
+├── phpunit.xml
+├── public
+├── RamaPrincipal.txt
+├── readme.md
+├── resources
+├── routes
+├── server.php
+├── storage
+├── tests
+└── vendor
+
+11 directories, 15 files
