@@ -4,7 +4,6 @@ This project is practically aimed at helping students by taking tests and provid
 
 ## Directory Project
 ```
-.
 ├── app
 ├── artisan
 ├── bootstrap
@@ -33,7 +32,7 @@ This project is practically aimed at helping students by taking tests and provid
 └── vendor
 
 11 directories, 15 files
-´´´
+```
 
 ## Install
 
