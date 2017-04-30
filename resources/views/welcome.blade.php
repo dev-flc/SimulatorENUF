@@ -47,7 +47,7 @@
 </div>
 
 <center>
-  <h1>Nuestra Historia</h1>
+  <h1>Nuestra Historia----- </h1>
   <hr>
 </center>
 <p>
