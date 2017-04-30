@@ -2,23 +2,57 @@
 
 This project is practically aimed at helping students by taking tests and providing simulated tests of their end exam, as well as obtaining the results of each of them.
 
+## Directory Project
+```
+$ tree -L 1 -a
+
+├── app
+├── artisan
+├── bootstrap
+├── composer.json        ---> file configuration Plugins, Tools
+├── composer.lock
+├── config
+├── database
+├── .editorconfig        ---> file configuration UTF8 
+├── .env                 ---> file configuration.
+├── .env.example
+├── getStatusCode())
+├── .git
+├── .gitattributes
+├── .gitignore
+├── gulpfile.js
+├── package.json
+├── phpunit.xml
+├── public
+├── RamaPrincipal.txt
+├── readme.md
+├── resources
+├── routes
+├── server.php
+├── storage
+├── tests
+└── vendor
+
+11 directories, 15 files
+```
+
 ## Install
 
 1.- Install composer
 ```
-cd /directory/project
-Composer install
+$ cd /directory/project
+$ Composer install
 ```
 2.- Create database
 ```
-mysql -u root -p
+$ mysql -u root -p
 password: ?
-create database simulator? 
-use database simulator
+mysql-> create database simulator? 
+mysql-> use database simulator
 ```
 3.- Create .env
 ```
-vim .env
+$ vim .env
 
 APP_ENV=local
 APP_KEY=
@@ -55,15 +89,29 @@ PUSHER_SECRET=
 ```
 4.- Key Generate project
 ```
-php artisan key:generate
+$ php artisan key:generate
 ```
 5.- Migrate models->database
 ```
-php artisan migrate
+$ php artisan migrate
+                                                                        
+Migrated: 2014_10_12_000000_create_users_table
+Migrated: 2014_10_12_100000_create_password_resets_table
+Migrated: 2017_03_06_234248_create_direccions_table
+Migrated: 2017_03_06_234259_create_profesors_table
+Migrated: 2017_03_06_234310_create_cursos_table
+Migrated: 2017_03_06_234320_create_unidads_table
+Migrated: 2017_03_06_234330_create_tipos_table
+Migrated: 2017_03_06_234356_create_preguntas_table
+Migrated: 2017_03_06_234407_create_respuestas_table
+Migrated: 2017_03_06_234436_create_alumnos_table
+Migrated: 2017_03_16_201043_create_cur_alus_table
+Migrated: 2017_03_16_214534_create_examens_table
+Migration table created successfully.
 ```
 6.- Create user admin
 ```
-php artisan tinker
+$ php artisan tinker
 
 $user->name="admin";
 $user->foto="foto.png";
@@ -74,9 +122,9 @@ $user->save();
 ```
 7.- Compile project
 ```
-php artisan serv
+$ php artisan serv
 
-127.0.0.1:800
+127.0.0.1:800 -> Url
 ```
 
 ## Screenshot
