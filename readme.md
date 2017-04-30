@@ -2,6 +2,39 @@
 
 This project is practically aimed at helping students by taking tests and providing simulated tests of their end exam, as well as obtaining the results of each of them.
 
+## Directory Project
+```
+.
+├── app
+├── artisan
+├── bootstrap
+├── composer.json
+├── composer.lock
+├── config
+├── database
+├── .editorconfig
+├── .env
+├── .env.example
+├── getStatusCode())
+├── .git
+├── .gitattributes
+├── .gitignore
+├── gulpfile.js
+├── package.json
+├── phpunit.xml
+├── public
+├── RamaPrincipal.txt
+├── readme.md
+├── resources
+├── routes
+├── server.php
+├── storage
+├── tests
+└── vendor
+
+11 directories, 15 files
+´´´
+
 ## Install
 
 1.- Install composer
