@@ -95,19 +95,18 @@ $ php artisan key:generate
 ```
 $ php artisan migrate
                                                                         
-Migrated: 2014_10_12_000000_create_users_table                                                                           
-Migrated: 2014_10_12_100000_create_password_resets_table                                                                 
-Migrated: 2017_03_06_234248_create_direccions_table                                                                      
-Migrated: 2017_03_06_234259_create_profesors_table                                                                       
-Migrated: 2017_03_06_234310_create_cursos_table                                                                          
-Migrated: 2017_03_06_234320_create_unidads_table                                                                         
-Migrated: 2017_03_06_234330_create_tipos_table                                                                           
-Migrated: 2017_03_06_234356_create_preguntas_table                                                                       
-Migrated: 2017_03_06_234407_create_respuestas_table                                                                      
-Migrated: 2017_03_06_234436_create_alumnos_table                                                                         
-Migrated: 2017_03_16_201043_create_cur_alus_table                                                                        
+Migrated: 2014_10_12_000000_create_users_table
+Migrated: 2014_10_12_100000_create_password_resets_table
+Migrated: 2017_03_06_234248_create_direccions_table
+Migrated: 2017_03_06_234259_create_profesors_table
+Migrated: 2017_03_06_234310_create_cursos_table
+Migrated: 2017_03_06_234320_create_unidads_table
+Migrated: 2017_03_06_234330_create_tipos_table
+Migrated: 2017_03_06_234356_create_preguntas_table
+Migrated: 2017_03_06_234407_create_respuestas_table
+Migrated: 2017_03_06_234436_create_alumnos_table
+Migrated: 2017_03_16_201043_create_cur_alus_table
 Migrated: 2017_03_16_214534_create_examens_table
-
 Migration table created successfully.
 ```
 6.- Create user admin
