@@ -27,7 +27,7 @@
     	<div class="container-fluid panelcursos">
       		<div class="row">
       			<div class="col-sm-4"><br>
-      			<img class="img-circle" src="http://corpboost.com/wp-content/uploads/2014/11/laravel-cb-logo1.png" alt="" width="100" height="100">
+      			<img class="img-circle" src="/img/{{ $cur->CUR_foto}}" alt="" width="100" height="100">
       			</div>
       			<div class="col-sm-8"><br>
       				<label for="curso">CURSO</label>

@@ -47,7 +47,7 @@
 </div>
 
 <center>
-  <h1>Nuestra Historia----- </h1>
+  <h1>Nuestra Historia</h1>
   <hr>
 </center>
 <p>
@@ -163,20 +163,20 @@
 <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header imgheader">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+        <strong>
         <h2 class="modal-title colordiv" id="myModalLabel">Iniciar sesión</h2>
-        <div class="logo" >
-          <center><img src="img/escudo.jpg" width="250" height="250" id="logo" class="slideUp" alt=""></center>
-        </div>
+        </strong>
+
       </div>
        <div class="modal-body">
         {!! Form::open(['route'=>'loginuser','method'=>'POST']) !!}
         <center>
         <div class="form-group">
-          {{ Form::text('user',null,['class'=>'user','placeholder'=>'Nombre','required'])}}
+          {{ Form::text('user',null,['class'=>'user','placeholder'=>'Usuario','required'])}}
         </div>
         <div class="form-group">
           {{ Form::password('password', ['class' => 'pass','placeholder'=>'Contraseña','required']) }}
@@ -184,11 +184,11 @@
         </center>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">
+        <button type="button" class="btn-button-c" data-dismiss="modal">
           Cancelar
           <span class="glyphicon glyphicon-remove"></span>
         </button>
-        {{ Form::button('Acceder <span class="glyphicon glyphicon-ok"></span> ', array('class'=>'btn btn-success pull-right', 'type'=>'submit')) }}
+        {{ Form::button('Acceder <span class="glyphicon glyphicon-ok"></span> ', array('class'=>'btn-button-a pull-right', 'type'=>'submit')) }}
         {!! Form::close() !!}
       </div>
     </div>

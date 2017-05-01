@@ -52,10 +52,10 @@ h1{
 	width: 100px;
 	height: 100px;
 }
-.panelimg
+.panels
 {
-  background: rgb(242, 243, 244);
-	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 5px;
 }
 .panelcursos
 {

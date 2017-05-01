@@ -60,7 +60,7 @@
           <div class="row">
             <div class="col-sm-2">
               <center>
-                <img id="imgcursosa" src="/img/reloj.png" alt="">
+                <img id="imgcursosa" src="/img/{{$ins->CUR_foto}}" alt="">
               </center>
             </div>
             <div class="col-sm-10">
@@ -74,7 +74,7 @@
           <div class="row">
             <div class="col-sm-2">
               <center>
-                <img id="imgcursosp" src="/img/reloj.png" alt="">
+                <img id="imgcursosp" src="/img/{{$ins->CUR_foto}}" alt="">
               </center>
             </div>
             <div class="col-sm-10">
@@ -87,7 +87,7 @@
           <div class="row">
             <div class="col-sm-2">
               <center>
-                <img id="imgcursosr" src="/img/reloj.png" alt="">
+                <img id="imgcursosr" src="/img/{{$ins->CUR_foto}}" alt="">
               </center>
             </div>
             <div class="col-sm-10">
@@ -114,7 +114,7 @@
     <div class="row">
       <div class="col-sm-2">
         <center>
-          <img id="imgcursos" src="/img/reloj.png" alt="">
+          <img id="imgcursos" src="/img/{{$cur->CUR_foto}}" alt="">
         </center>
       </div>
       <div class="col-sm-10">

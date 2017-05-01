@@ -18,7 +18,11 @@ class AdminCursoController extends Controller
     {
       #$curso=Curso::all();
       $curso=Curso::join('profesors','profesors.PRO_id','=','cursos.PRO_id')->get();
-      return view("Administrador.Curso.index")->with('curso',$curso);
+      $profesor=Profesor::all();
+
+      return view("Administrador.Curso.index")
+      ->with('profesor',$profesor)
+      ->with('curso',$curso);
     }
 
     /**
@@ -29,7 +33,7 @@ class AdminCursoController extends Controller
     public function create()
     {
       $profesor=Profesor::all();
-      return view('Administrador.Curso.create')->with('profesor',$profesor);
+      return view('Administrador.Curso.index')->with('profesor',$profesor);
     }
 
     /**
@@ -40,6 +44,17 @@ class AdminCursoController extends Controller
      */
     public function store(Request $request)
     {
+      if($request->file('file'))
+      {
+        $file=$request->file('file');
+        $nombre = 'curso_'.time().'.'.$file->getClientOriginalExtension();
+        $path=public_path().'/img';
+        $file->move($path, $nombre);
+      }
+      else
+      {
+        $nombre="file.png";
+      }
       $fecha=date('Y-m-d');
       $curso=new Curso;
       $curso->CUR_nombre=($request->nombre);
@@ -47,7 +62,7 @@ class AdminCursoController extends Controller
       $curso->CUR_cupos=($request->cupos);
       $curso->CUR_fecha=$fecha;
       $curso->CUR_clave=($request->clave);
-      $curso->CUR_foto="cusro.png";
+      $curso->CUR_foto=$nombre;
       $curso->CUR_estatus="habilitado";
       $curso->PRO_id=($request->profesor);
       $curso->save();

@@ -40,7 +40,7 @@
 usuario
            <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#"> <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Perfil</a></li>
+            <li><a href="{{ route('alumnoperfil.index') }}"> <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Perfil</a></li>
             <li role="separator" class="divider"></li>
             <li>
               <a href="{{ url('/logout') }}" onclick="event.preventDefault();   document.getElementById('logout-form').submit();" >

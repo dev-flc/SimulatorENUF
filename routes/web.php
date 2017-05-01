@@ -35,6 +35,7 @@ Route::group(['prefix'=>'admin','middleware'=>['admin','auth']], function(){
 Route::resource('cursos','AdminCursoController');
 
 Route::resource('profesores','AdminProfesorController');
+
 });
 //middleware Administrador Inicio
 
@@ -63,6 +64,11 @@ Route::resource('respuesta','ProRespuestaController');
 #Route::group(['prefix'=>'alumno'], function(){
 Route::group(['prefix'=>'alumno','middleware'=>['alumno','auth']], function(){
 
+Route::resource('alumnoperfil','PerfilAlumnoController');
+Route::put('updatefoto/{id}',[
+    'uses' => 'PerfilAlumnoController@updatefoto',
+    'as' => 'updatefoto'
+    ]);
 Route::resource('principal','AlumnoPrincipalController');
 Route::resource('curos_registro','AlumnoRegistroCursoController');
 Route::resource('cursos_examen','AlumnoExamenController');

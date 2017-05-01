@@ -105,6 +105,11 @@
 {
   color: rgb(245, 176, 65);
 }
+#tamanofoto
+{
+  width: 100px;
+  height: 100px;
+}
 </style>
 <div class="row">
   <div class="col-sm-4">
@@ -118,7 +123,7 @@
   <div class="col-sm-8 ">
     <br>
     <div class="curse">
-    <center><h1>{{ $curso->CUR_nombre }} <img src="/img/foto.png" alt=""></h1></center>
+    <center><h1>{{ $curso->CUR_nombre }} <img id="tamanofoto" src="/img/{{$curso->CUR_foto}}" alt=""></h1></center>
   </div>
   <div class="col-sm-12">
     <h2>Descripción</h2>
