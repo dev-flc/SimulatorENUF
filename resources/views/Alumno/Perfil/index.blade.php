@@ -13,7 +13,8 @@
     }
     .modal-header h3
     {
-      color: rgb(255,255,255);
+      color: rgb(255, 255, 255);
+      font-size: 40px;
     }
     #pri1
     {
@@ -147,6 +148,48 @@
     {
       background: rgb(39, 174, 96);
       color: rgb(255,255,255);
+    }
+
+    .nom, .ap, .am, .edad, .mat, .email .calle, .col, .est, .cd, .p
+    {
+      width: 80%;
+      outline: none;
+      padding: 15px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid rgb(220,220,220);
+      color: rgb(52, 152, 219);
+      font-size: 15px;
+    }
+      .nom:focus, .nom:active ,.ap:focus, .ap:active
+      .am:focus, .am:active ,.edad:focus, .edad:active
+      .mat:focus, .mat:active ,.email:focus, .email:active
+      .calle:focus, .calle:active ,.col:focus, .col:active
+      .est:focus, .est:active ,.cd:focus, .cd:active
+      .p:focus, .p:active
+    {
+      outline: none;
+      border-bottom: 2px solid rgb(52, 152, 219);
+      color: rgb(52, 152, 219);
+    }
+
+    .user, .pass, .email
+    {
+      width: 80%;
+      outline: none;
+      padding: 15px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid rgb(220,220,220);
+      color: rgb(52, 152, 219);
+      font-size: 15px;
+    }
+    .user:focus, .user:active ,.pass:focus, .pass:active
+    .email:focus, .email:active
+    {
+      outline: none;
+      border-bottom: 2px solid rgb(52, 152, 219);
+      color: rgb(52, 152, 219);
     }
 
   </style>
@@ -360,7 +403,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h3 class="modal-title" id="myModalLabel">Actualizar datos personal</h3>
+        <h3 class="modal-title" id="myModalLabel">Actualizar datos personales</h3>
       </div>
       <div class="modal-body">
       {!! Form::open(['route' => ['alumnoperfil.update', $alu->ALU_id],'method' => 'put','id'=>'datosdeformulario']) !!}
@@ -368,19 +411,19 @@
         <div class="col-sm-6">
           <div class="form-group">
           {!! Form::label('nombre','Nombre') !!}
-          {!! Form::text('nombre',$alu->ALU_nombre,['class'=>'form-control','required'])!!}
+          {!! Form::text('nombre',$alu->ALU_nombre,['class'=>'nom','required'])!!}
         </div>
         <div class="form-group">
           {!! Form::label('ap','Apellido materno') !!}
-          {!! Form::text('ap',$alu->ALU_apellido_p,['class'=>'form-control','required'])!!}
+          {!! Form::text('ap',$alu->ALU_apellido_p,['class'=>'ap','required'])!!}
         </div>
         <div class="form-group">
           {!! Form::label('am','Apellido paterno') !!}
-          {!! Form::text('am',$alu->ALU_apellido_m,['class'=>'form-control','required'])!!}
+          {!! Form::text('am',$alu->ALU_apellido_m,['class'=>'am','required'])!!}
         </div>
         <div class="form-group">
           {!! Form::label('edad','Edad') !!}
-          {!! Form::number('edad',$alu->ALU_edad,['class'=>'form-control','required'])!!}
+          {!! Form::number('edad',$alu->ALU_edad,['class'=>'edad','required'])!!}
         </div>
         <div class="form-group">
           {!! Form::label('sexo','Sexo') !!}<br>
@@ -390,29 +433,29 @@
         </div>
         <div class="form-group">
           {!! Form::label('matricula','Matricula') !!}
-          {!! Form::number('matricula',$alu->ALU_metricula,['class'=>'form-control','required'])!!}
+          {!! Form::number('matricula',$alu->ALU_metricula,['class'=>'mat','required'])!!}
         </div>
         </div>
         <div class="col-sm-6">
           <div class="form-group">
           {!! Form::label('calle','Calle') !!}
-          {!! Form::text('calle',$alu->DIR_calle,['class'=>'form-control','required'])!!}
+          {!! Form::text('calle',$alu->DIR_calle,['class'=>'calle','required'])!!}
         </div>
         <div class="form-group">
           {!! Form::label('colonia','Colonia') !!}
-          {!! Form::text('colonia',$alu->DIR_colonia,['class'=>'form-control','required'])!!}
+          {!! Form::text('colonia',$alu->DIR_colonia,['class'=>'col','required'])!!}
         </div>
         <div class="form-group">
           {!! Form::label('estado','Estado') !!}
-          {!! Form::text('estado',$alu->DIR_estado,['class'=>'form-control','required'])!!}
+          {!! Form::text('estado',$alu->DIR_estado,['class'=>'est','required'])!!}
         </div>
         <div class="form-group">
           {!! Form::label('ciudad','Ciudad') !!}
-          {!! Form::text('ciudad',$alu->DIR_ciudad,['class'=>'form-control','required'])!!}
+          {!! Form::text('ciudad',$alu->DIR_ciudad,['class'=>'cd','required'])!!}
         </div>
         <div class="form-group">
           {!! Form::label('pais','Pais') !!}
-          {!! Form::text('pais',$alu->DIR_pais,['class'=>'form-control','required'])!!}
+          {!! Form::text('pais',$alu->DIR_pais,['class'=>'p','required'])!!}
         </div>
         </div>
       </div>
@@ -470,19 +513,19 @@
         {!! Form::open(['route'=>'cursos.store','method'=>'POST']) !!}
         <div class="form-group">
           {!! Form::label('usuario','Usuario') !!}
-          {!! Form::text('usuario',$alu->name,['class'=>'form-control','required'])!!}
+          {!! Form::text('usuario',$alu->name,['class'=>'user','required'])!!}
         </div>
         <div class="form-group">
           {!! Form::label('email','Email') !!}
-          {!! Form::email('email',$alu->email,['class'=>'form-control','required'])!!}
+          {!! Form::email('email',$alu->email,['class'=>'email','required'])!!}
         </div>
         <div class="form-group">
         {!! Form::label('password','Contraseña') !!}
-        {{ Form::password('password', ['class' => 'form-control','placeholder'=>'***','required']) }}
+        {{ Form::password('password', ['class' => 'pass','placeholder'=>'***','required']) }}
         </div>
         <div class="form-group">
           {!! Form::label('passwordverific','Verificar contraseña') !!}
-          {{ Form::password('passwordverific', ['class' => 'form-control','placeholder'=>'***','required']) }}
+          {{ Form::password('passwordverific', ['class' => 'pass','placeholder'=>'***','required']) }}
         </div>
       </div>
       <div class="modal-footer">

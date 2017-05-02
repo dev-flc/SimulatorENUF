@@ -4,6 +4,73 @@
 	<meta charset="UTF-8">
 	<title>actualizar curso</title>
 </head>
+
+ <style type="text/css">
+ 
+ .imgheader
+{
+  background: url("/img/pri1.png");
+  height: 200px;
+}
+.imgheader h2
+{
+  color: rgb(52, 73, 94);
+  font-size: 40px;
+}
+.user, .pass
+{
+  width: 80%;
+  outline: none;
+  padding: 15px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid rgb(220,220,220);
+  color: rgb(52, 152, 219);
+  font-size: 15px;
+}
+.user:focus, .user:active ,.pass:focus, .pass:active
+{
+  outline: none;
+  border-bottom: 2px solid rgb(52, 152, 219);
+  color: rgb(52, 152, 219);
+}
+
+ .btn-button-c
+    {
+      background: rgb(255,255,255);
+      border: none;
+      border: 1px solid rgb(192, 57, 43) ;
+      width: 150px;
+      height: 40px;
+      margin: 5px;
+      padding: 5px;
+      color: rgb(192, 57, 43);
+      transition: .6s;
+    }
+    .btn-button-a
+    {
+      background: rgb(255,255,255);
+      border: none;
+      border: 1px solid rgb(39, 174, 96) ;
+      width: 150px;
+      height: 40px;
+      margin: 5px;
+      padding: 5px;
+      color: rgb(39, 174, 96);
+      transition: .6s;
+    }
+    .btn-button-c:hover
+    {
+      background: rgb(192, 57, 43);
+      color: rgb(255,255,255);
+    }
+    .btn-button-a:hover
+    {
+      background: rgb(39, 174, 96);
+      color: rgb(255,255,255);
+    }
+ </style>
+
 <body>
 	<h1>actualizar curso</h1>
    <ul>

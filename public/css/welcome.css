@@ -7,7 +7,7 @@
 .imgheader h2
 {
   color: rgb(52, 73, 94);
-  font-size: 50px;
+  font-size: 40px;
 }
 .user, .pass
 {
@@ -18,7 +18,7 @@
   border: none;
   border-bottom: 2px solid rgb(220,220,220);
   color: rgb(52, 152, 219);
-  font-size: 20px;
+  font-size: 15px;
 }
 .user:focus, .user:active ,.pass:focus, .pass:active
 {
@@ -64,11 +64,30 @@
 
 /* Modal login Fin */
 
-/*
-Aqui van los de registrar
- */
+/*Modal register inicio */
+.nom, .ap, .am, .edad, .mat, .email
+{
+  width: 80%;
+  outline: none;
+  padding: 15px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid rgb(220,220,220);
+  color: rgb(52, 152, 219);
+  font-size: 15px;
+}
+.nom:focus, .nom:active ,.ap:focus, .ap:active
+.am:focus, .am:active ,.edad:focus, .edad:active
+.mat:focus, .mat:active ,.email:focus, .email:active
+{
+  outline: none;
+  border-bottom: 2px solid rgb(52, 152, 219);
+  color: rgb(52, 152, 219);
+}
 
-/* modal login fin */
+/* modal register fin */
+
+
 h1.responsive{
      word-wrap: break-word;
      -webkit-hyphens: auto;

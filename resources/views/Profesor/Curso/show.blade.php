@@ -8,6 +8,79 @@
   <div class="seccionone">
     <img id="pri1" src="/img/pri2.png" alt="">
   </div>
+
+  <style type="text/css">
+    .modal-header
+    {
+      background: url(/img/desing/12.jpg);
+      height: 150px;
+    }
+    .modal-header h3
+    {
+      color: rgb(255, 255, 255);
+      font-size: 40px;
+    }
+
+    .apo, .uni, .fec, .min, .pre
+    {
+      width: 80%;
+      outline: none;
+      padding: 15px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid rgb(220,220,220);
+      color: rgb(52, 152, 219);
+      font-size: 15px;
+    }
+    .apo:focus, .apo:active ,.uni:focus, .uni:active
+    .fec:focus, .fec:active ,.min:focus, .min:active
+    .pre:focus, .pre:active 
+    {
+      outline: none;
+      border-bottom: 2px solid rgb(52, 152, 219);
+      color: rgb(52, 152, 219);
+    }
+
+    .btn-button-c
+    {
+      background: rgb(255,255,255);
+      border: none;
+      border: 1px solid rgb(192, 57, 43) ;
+      width: 150px;
+      height: 40px;
+      margin: 5px;
+      padding: 5px;
+      color: rgb(192, 57, 43);
+      transition: .6s;
+    }
+    .btn-button-a
+    {
+      background: rgb(255,255,255);
+      border: none;
+      border: 1px solid rgb(39, 174, 96) ;
+      width: 150px;
+      height: 40px;
+      margin: 5px;
+      padding: 5px;
+      color: rgb(39, 174, 96);
+      transition: .6s;
+    }
+      .btn-button-c:hover
+    {
+      background: rgb(192, 57, 43);
+      color: rgb(255,255,255);
+    }
+      .btn-button-a:hover
+    {
+      background: rgb(39, 174, 96);
+      color: rgb(255,255,255);
+    }
+
+    </style>
+
+
+
+
 @endsection
 <!-- Inicio Section Contenido -->
 @section('content')
@@ -226,7 +299,6 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-
       </div>
       <div class="modal-body">
         {!! Form::open(['route'=>'unidad.store','method'=>'POST','files' => true]) !!}
@@ -235,33 +307,32 @@
         </div>
         <div class="form-group">
         {!! Form::label('file','Material de apoyo') !!}
-        {!! Form::file('file',['class'=>'form-control','onchange'=>'previewFile()']) !!}</p>
+        {!! Form::file('file',['class'=>'apo','onchange'=>'previewFile()']) !!}</p>
         </div>
         <div class="form-group">
           {!! Form::label('nombre','Nombre de unidad') !!}
-          {!! Form::text('nombre',null,['class'=>'form-control','required'])!!}
+          {!! Form::text('nombre',null,['class'=>'uni','required'])!!}
           <p>Solo puede contener 34 caracteres A-Z | 0-9</p>
         </div>
         <div class="form-group">
           {!! Form::label('fecha','Fecha de examen final') !!}
-          {!! Form::date('fecha',null,['class'=>'form-control','required'])!!}
+          {!! Form::date('fecha',null,['class'=>'fec','required'])!!}
         </div>
         <div class="form-group">
           {!! Form::label('tiempo','ingrese los minutos de examen final') !!}
-          {!! Form::number('tiempo',null,['class'=>'form-control','placeholder'=>'ejemplo 30','required'])!!}
+          {!! Form::number('tiempo',null,['class'=>'min','placeholder'=>'ejemplo 30','required'])!!}
         </div>
         <div class="form-group">
           {!! Form::label('numero','Numero de preguntas de examen final') !!}
-          {!! Form::number('numero',null,['class'=>'form-control','required'])!!}
+          {!! Form::number('numero',null,['class'=>'pre','required'])!!}
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">
-          Cancelar
-          <span class="glyphicon glyphicon-remove"></span>
+        <button type="button" class="btn-button-c" data-dismiss="modal">Cancelar
+        <span class="glyphicon glyphicon-remove"></span>
         </button>
         {{ Form::button('Agregar <span class="glyphicon glyphicon-ok"></span>',
-          array('class'=>'btn btn-success pull-right', 'type'=>'submit')) }}
+          array('class'=>'btn-button-a pull-right', 'type'=>'submit')) }}
         {!! Form::close() !!}
       </div>
     </div>
