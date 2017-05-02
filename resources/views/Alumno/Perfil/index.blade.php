@@ -150,9 +150,9 @@
       color: rgb(255,255,255);
     }
 
-    .nom, .ap, .am, .edad, .mat, .email .calle, .col, .est, .cd, .p
+    .nom, .ap, .am, .edad, .mat, .email, .callee, .col, .est, .cd, .pais
     {
-      width: 80%;
+      width: 100%;
       outline: none;
       padding: 15px;
       background: none;
@@ -161,12 +161,12 @@
       color: rgb(52, 152, 219);
       font-size: 15px;
     }
-      .nom:focus, .nom:active ,.ap:focus, .ap:active
-      .am:focus, .am:active ,.edad:focus, .edad:active
-      .mat:focus, .mat:active ,.email:focus, .email:active
-      .calle:focus, .calle:active ,.col:focus, .col:active
-      .est:focus, .est:active ,.cd:focus, .cd:active
-      .p:focus, .p:active
+      .nom:focus, .nom:active ,.ap:focus, .ap:active,
+      .am:focus, .am:active ,.edad:focus, .edad:active,
+      .mat:focus, .mat:active ,.email:focus, .email:active,
+      .callee:focus, .callee:active ,.col:focus, .col:active,
+      .est:focus, .est:active ,.cd:focus, .cd:active,
+      .pais:focus, .pais:active
     {
       outline: none;
       border-bottom: 2px solid rgb(52, 152, 219);
@@ -175,7 +175,7 @@
 
     .user, .pass, .email
     {
-      width: 80%;
+      width: 100%;
       outline: none;
       padding: 15px;
       background: none;
@@ -410,19 +410,19 @@
       <div class="row">
         <div class="col-sm-6">
           <div class="form-group">
-          {!! Form::label('nombre','Nombre') !!}
+          {!! Form::label('nombre','Nombre') !!}<br />
           {!! Form::text('nombre',$alu->ALU_nombre,['class'=>'nom','required'])!!}
         </div>
         <div class="form-group">
-          {!! Form::label('ap','Apellido materno') !!}
+          {!! Form::label('ap','Apellido materno') !!}<br />
           {!! Form::text('ap',$alu->ALU_apellido_p,['class'=>'ap','required'])!!}
         </div>
         <div class="form-group">
-          {!! Form::label('am','Apellido paterno') !!}
+          {!! Form::label('am','Apellido paterno') !!}<br />
           {!! Form::text('am',$alu->ALU_apellido_m,['class'=>'am','required'])!!}
         </div>
         <div class="form-group">
-          {!! Form::label('edad','Edad') !!}
+          {!! Form::label('edad','Edad') !!}<br />
           {!! Form::number('edad',$alu->ALU_edad,['class'=>'edad','required'])!!}
         </div>
         <div class="form-group">
@@ -432,30 +432,30 @@
           </center>
         </div>
         <div class="form-group">
-          {!! Form::label('matricula','Matricula') !!}
+          {!! Form::label('matricula','Matricula') !!}<br />
           {!! Form::number('matricula',$alu->ALU_metricula,['class'=>'mat','required'])!!}
         </div>
         </div>
         <div class="col-sm-6">
           <div class="form-group">
-          {!! Form::label('calle','Calle') !!}
-          {!! Form::text('calle',$alu->DIR_calle,['class'=>'calle','required'])!!}
+          {!! Form::label('calle','Calle') !!}<br />
+          {!! Form::text('calle',$alu->DIR_calle,['class'=>'callee','required'])!!}
         </div>
         <div class="form-group">
-          {!! Form::label('colonia','Colonia') !!}
+          {!! Form::label('colonia','Colonia') !!}<br />
           {!! Form::text('colonia',$alu->DIR_colonia,['class'=>'col','required'])!!}
         </div>
         <div class="form-group">
-          {!! Form::label('estado','Estado') !!}
+          {!! Form::label('estado','Estado') !!}<br />
           {!! Form::text('estado',$alu->DIR_estado,['class'=>'est','required'])!!}
         </div>
         <div class="form-group">
-          {!! Form::label('ciudad','Ciudad') !!}
+          {!! Form::label('ciudad','Ciudad') !!}<br />
           {!! Form::text('ciudad',$alu->DIR_ciudad,['class'=>'cd','required'])!!}
         </div>
         <div class="form-group">
-          {!! Form::label('pais','Pais') !!}
-          {!! Form::text('pais',$alu->DIR_pais,['class'=>'p','required'])!!}
+          {!! Form::label('pais','Pais') !!}<br />
+          {!! Form::text('pais',$alu->DIR_pais,['class'=>'pais','required'])!!}
         </div>
         </div>
       </div>
@@ -512,21 +512,22 @@
       <div class="modal-body">
         {!! Form::open(['route'=>'cursos.store','method'=>'POST']) !!}
         <div class="form-group">
-          {!! Form::label('usuario','Usuario') !!}
+          {!! Form::label('usuario','Usuario') !!}<br />
           {!! Form::text('usuario',$alu->name,['class'=>'user','required'])!!}
         </div>
         <div class="form-group">
-          {!! Form::label('email','Email') !!}
+          {!! Form::label('email','Email') !!}<br />
           {!! Form::email('email',$alu->email,['class'=>'email','required'])!!}
         </div>
         <div class="form-group">
-        {!! Form::label('password','Contraseña') !!}
+        {!! Form::label('password','Contraseña') !!}<br />
         {{ Form::password('password', ['class' => 'pass','placeholder'=>'***','required']) }}
         </div>
         <div class="form-group">
-          {!! Form::label('passwordverific','Verificar contraseña') !!}
+          {!! Form::label('passwordverific','Verificar contraseña') !!}<br />
           {{ Form::password('passwordverific', ['class' => 'pass','placeholder'=>'***','required']) }}
         </div>
+        <br />
       </div>
       <div class="modal-footer">
          <button type="button"  class="btn-button-c" data-dismiss="modal">Cancelar <span class="glyphicon glyphicon-remove"></span></button>

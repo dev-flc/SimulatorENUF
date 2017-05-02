@@ -1,16 +1,16 @@
 /* modal login */
 .imgheader
 {
-  background: url("/img/pri1.png");
+  background: url("/img/desing/12.jpg");
   height: 200px;
 }
 .imgheader h2
 {
-  color: rgb(52, 73, 94);
+  color: rgb(255,255,255);
   font-size: 40px;
 }
 .user, .pass
-{
+{ 
   width: 80%;
   outline: none;
   padding: 15px;
@@ -65,9 +65,9 @@
 /* Modal login Fin */
 
 /*Modal register inicio */
-.nom, .ap, .am, .edad, .mat, .email
+.nom, .ap, .am, .edad, .mat, .email, .userr, .passs
 {
-  width: 80%;
+  width: 90%;
   outline: none;
   padding: 15px;
   background: none;
@@ -76,9 +76,10 @@
   color: rgb(52, 152, 219);
   font-size: 15px;
 }
-.nom:focus, .nom:active ,.ap:focus, .ap:active
-.am:focus, .am:active ,.edad:focus, .edad:active
-.mat:focus, .mat:active ,.email:focus, .email:active
+.nom:focus, .nom:active ,.ap:focus, .ap:active,
+.am:focus, .am:active ,.edad:focus, .edad:active,
+.mat:focus, .mat:active ,.email:focus, .email:active,
+.userr:focus,.userr:active, .passs:focus,.passs:active
 {
   outline: none;
   border-bottom: 2px solid rgb(52, 152, 219);

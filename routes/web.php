@@ -69,6 +69,12 @@ Route::put('updatefoto/{id}',[
     'uses' => 'PerfilAlumnoController@updatefoto',
     'as' => 'updatefoto'
     ]);
+
+Route::get('descargafiles/{id}',[
+    'uses' => 'AlumnoExamenController@descargafiles',
+    'as' => 'descargafiles'
+    ]);
+
 Route::resource('principal','AlumnoPrincipalController');
 Route::resource('curos_registro','AlumnoRegistroCursoController');
 Route::resource('cursos_examen','AlumnoExamenController');

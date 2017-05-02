@@ -110,6 +110,7 @@
         <h2 class="modal-title colordiv" id="myModalLabel">Registro</h2>
       </div>
       <div class="modal-body">
+      <center>
         {!! Form::open(['route'=>'registroalumno.registeruser','method'=>'POST']) !!}
         <div class="form-group">
           {{ Form::text('nombre',null,['class'=>'nom','placeholder'=>'Nombre','required'])}}
@@ -131,17 +132,18 @@
         </div>
         <hr>
         <div class="form-group">
-          {{ Form::text('user',null,['class'=>'user','placeholder'=>'Usuario','required'])}}
+          {{ Form::text('user',null,['class'=>'userr','placeholder'=>'Usuario','required'])}}
         </div>
         <div class="form-group">
           {{ Form::email('email',null,['class'=>'email','placeholder'=>'Email','required'])}}
         </div>
         <div class="form-group">
-        {{ Form::password('password', ['class' => 'pass','placeholder'=>'Contraseña','required']) }}
+        {{ Form::password('password', ['class' => 'passs','placeholder'=>'Contraseña','required']) }}
         </div>
         <div class="form-group">
-          {{ Form::password('passwordverific', ['class' => 'pass','placeholder'=>'Verificar Contraseña','required']) }}
+          {{ Form::password('passwordverific', ['class' => 'passs','placeholder'=>'Verificar Contraseña','required']) }}
         </div>
+        </center>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn-button-c" data-dismiss="modal">
@@ -178,6 +180,7 @@
         <div class="form-group">
           {{ Form::password('password', ['class' => 'pass','placeholder'=>'Contraseña','required']) }}
         </div>
+        <br>
         </center>
       </div>
       <div class="modal-footer">

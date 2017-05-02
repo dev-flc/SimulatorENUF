@@ -12,6 +12,7 @@ use SimulatorENUF\Models\Pregunta;
 use SimulatorENUF\Models\Respuesta;
 use SimulatorENUF\Models\Examen;
 use SimulatorENUF\Models\CurAlu;
+use SimulatorENUF\User;
 
 use DB;
 
@@ -214,6 +215,7 @@ class AlumnoExamenController extends Controller
     public function show($id)
     {
       $iduseralumno = Auth::user()->id;
+      $user=User::find($iduseralumno);
       $alumno=Alumno::where('USE_id', $iduseralumno)->first();
       $curso=Curso::find($id);
       $unidad=Unidad::select('*')->where('CUR_id','=',$id)->get();
@@ -221,8 +223,15 @@ class AlumnoExamenController extends Controller
       return view('Alumno.Curso.show')
       ->with('curso',$curso)
       ->with('alumno',$alumno)
+      ->with('user',$user)
       ->with('fecha',$fecha)
       ->with('unidad',$unidad);
+    }
+    public function descargafiles($id)
+    {
+        $unidad=Unidad::find($id);
+        $path=public_path().'/files/documents/'.$unidad->UNI_material_apoyo;
+        return response()->download($path);
     }
     public function examenfinal($id)
     {

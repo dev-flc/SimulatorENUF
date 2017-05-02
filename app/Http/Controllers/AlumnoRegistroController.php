@@ -29,7 +29,7 @@ class AlumnoRegistroController extends Controller
       #nuevo usuario
       $user=new User;
       $user->name=($request->user);
-      $user->foto="foto.png";
+      $user->foto="file.png";
       $user->email=($request->email);
       $user->password=bcrypt($request->password);
       $user->save();

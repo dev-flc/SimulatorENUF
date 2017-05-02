@@ -26,7 +26,7 @@
   .perfildiv
   {
     background: rgb(244, 246, 246);
-    height: 500px;
+    height: auto;
   }
   #imgperfil
   {
@@ -162,8 +162,28 @@
     <br>
     <div class="container-fluid perfildiv">
       <center><br>
-        <img id="imgperfil" src="/img/profesor.jpg" alt="">
+        <img id="imgperfil" src="/img/{{$user->foto}}" alt="">
+        <br />
+        <br />
       </center>
+        <label for="">
+            Nombre:
+        </label>
+        <p id="texto-a">
+          {{$alumno->ALU_nombre}} {{$alumno->ALU_apellido_p}} {{$alumno->ALU_apellido_m}}
+        </p>
+        <label for="">Edad:</label>
+        <p id="texto-a">
+          {{$alumno->ALU_edad}}
+        </p>
+        <label for="">Sexo:</label>
+        <p id="texto-a">
+          {{$alumno->ALU_sexo}}
+        </p>
+        <label for="">Matricula:</label>
+        <p id="texto-a">
+          {{$alumno->ALU_metricula}}
+        </p>
     </div>
   </div>
   <div class="col-sm-8 ">
@@ -248,6 +268,19 @@
   <a href="{{ route('detalleunidad', $uni->UNI_id) }}">
     <span class="label label-primary">Ver detalles</span>
   </a>
+  @if($uni->UNI_material_apoyo=="")
+   <span class="label label-default label-circle">Material
+    <span class="glyphicon glyphicon-download" aria-hidden="true"></span>
+  </span>
+  @else
+  <a href="{{ route('descargafiles', $uni->UNI_id) }}">
+    <span class="label label-success label-circle">Material
+      <span class="glyphicon glyphicon-download" aria-hidden="true"></span>
+    </span>
+  </a>
+  @endif
+  
+
 
 </center>
    </div>

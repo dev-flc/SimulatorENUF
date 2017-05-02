@@ -14,13 +14,47 @@
 
 <!-- Contenido -->
 @section('content')
+<style type="text/css">
+  table
+  {
+    width: 100%;  
+  }
+  table tr td
+  {
+    text-align: right;
+  }
+  #texto-a
+  {
+    text-align: center;
+  }
+</style>
 <div class="row">
   <div class="col-sm-4">
     <br>
     <div class="container-fluid perfildiv">
       <center><br>
-        <img id="imgperfil" src="/img/profesor.jpg" alt="">
+        <img id="imgperfil" src="/img/{{$user->foto}}" alt="">
+        <br />
+        <br />
       </center>
+        <label for="">
+            Nombre:
+        </label>
+        <p id="texto-a">
+          {{$alumno->ALU_nombre}} {{$alumno->ALU_apellido_p}} {{$alumno->ALU_apellido_m}}
+        </p>
+        <label for="">Edad:</label>
+        <p id="texto-a">
+          {{$alumno->ALU_edad}}
+        </p>
+        <label for="">Sexo:</label>
+        <p id="texto-a">
+          {{$alumno->ALU_sexo}}
+        </p>
+        <label for="">Matricula:</label>
+        <p id="texto-a">
+          {{$alumno->ALU_metricula}}
+        </p>
     </div>
   </div>
   <div class="col-sm-8">
