@@ -16,8 +16,12 @@ class AdminCursoController extends Controller
      */
     public function index()
     {
+      
       #$curso=Curso::all();
-      $curso=Curso::join('profesors','profesors.PRO_id','=','cursos.PRO_id')->get();
+      $curso=Curso::join('profesors','profesors.PRO_id','=','cursos.PRO_id')
+      ->join('users','users.id','=','profesors.USE_id')
+      ->get();
+      
       $profesor=Profesor::all();
 
       return view("Administrador.Curso.index")

@@ -47,7 +47,7 @@ class AdminProfesorController extends Controller
         #nuevo usuario
         $user=new User;
         $user->name=($request->usuario);
-        $user->foto="user.png";
+        $user->foto="file.png";
         $user->password=bcrypt($request->usuario);
         $user->type="profesor";
         $user->save();

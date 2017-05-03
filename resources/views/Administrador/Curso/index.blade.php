@@ -61,51 +61,221 @@
       height: 350px;
       width: 100%;
     }
+    h5 {
+    font-size: 1.28571429em;
+    font-weight: 700;
+    line-height: 1.2857em;
+    margin: 0;
+}
+
+.card {
+    margin: 5px;
+    font-size: 1em;
+    overflow: hidden;
+    padding: 0;
+    border: none;
+    border-radius: .28571429rem;
+    box-shadow: 0 1px 3px 0 rgb(52, 152, 219), 0 0 0 1px rgb(52, 152, 219);
+}
+
+.card-block {
+    font-size: 1em;
+    position: relative;
+    margin: 0;
+    padding: 1em;
+    background: rgb(255,255,255);
+    border: none;
+    border-top: 1px solid rgb(93, 173, 226);
+    box-shadow: none;
+}
+
+.card-img-top {
+    display: block;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 1px solid rgb(52, 152, 219);
+    margin: 3px;
+}
+.card-title {
+    font-size: 1.28571429em;
+    font-weight: 700;
+    line-height: 1.2857em;
+    color: rgb(44, 62, 80);
+}
+
+.card-text {
+    clear: both;
+    margin-top: .5em;
+    color: rgb(255,255,255);
+}
+#ptext-body
+{
+  text-align: center;
+  color: rgb(52, 152, 219);
+}
+#ptext
+{
+  text-align: center;
+  color: rgb(255,255,255)
+}
+.tex-body
+{
+  border: 1px solid rgb(52, 152, 219);
+  border-radius: 10px;
+}
+.card-footer-success {
+    font-size: 1em;
+    position: static;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    padding: .75em 1em;
+    background: rgb(52, 152, 219);
+    color: rgba(0, 0, 0, .4);
+    border-top: 1px solid rgb(52, 152, 219) !important;
+}
+.card-footer-danger {
+    font-size: 1em;
+    position: static;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    padding: .75em 1em;
+    background: rgb(231, 76, 60);
+    color: rgba(0, 0, 0, .4);
+    border-top: 1px solid rgb(231, 76, 60) !important;
+}
+.card-inverse .btn {
+    border: 1px solid rgba(0, 0, 0, .05);
+}
+.profile {
+    position: absolute;
+    top: -23px;
+    display: inline-block;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 45px;
+    height: 45px;
+    margin: 0;
+    border: 2px solid rgb(52, 152, 219);
+    border-radius: 50%;
+}
+
+.profile-avatar {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.profile-inline {
+    position: relative;
+    top: 0;
+    display: inline-block;
+}
+
+.profile-inline ~ .card-title {
+    display: inline-block;
+    margin-left: 4px;
+    vertical-align: top;
+}
+.meta {
+    font-size: 1em;
+    color: rgba(0, 0, 0, .4);
+}
+
+.meta a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, .4);
+}
+
+.meta a:hover {
+    color: rgba(0, 0, 0, .87);
+}
+#label-color
+{
+  color: rgb(33, 47, 61);
+}
+.btn-pree
+{
+  border: none;;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background: rgb(255,255,255);
+
+}
+.titulo
+{
+  position: relative; 
+  top: -90%;
+  text-align: center;
+  color: rgb(255,255,255);
+}
+
   </style>
   <img id="pri1" src="/img/pri2.png" alt="">
+  <h1 class="titulo">Cursos</h1>
 	</div>
 @endsection
 
 @section('content')
-<!--<li><a href="{{ route('cursos.index') }}">cursos</a></li>
-    <li><a href="{{ route('cursos.create') }}">Crear cursos</a></li>
-    <li><a href="{{ route('profesores.index') }}">profesores</a></li>
-    <li><a href="{{ route('profesores.create') }}">Create profesores</a></li>
-    <a href="{{ url('/logout') }}" onclick="event.preventDefault();   document.getElementById('logout-form').submit();" >
-             Cerrar </a>
-              <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                {{ csrf_field() }}
-              </form>
-
--->
-<center>
-	<h1>Cursos</h1>
-  <hr width="400">
-</center>
-
-  <table class="table">
-   <tr>
-		<th>Nombre</th>
-		<th>Cupos</th>
-    <th>fecha</th>
-		<th>estatus</th>
-		<th>Profesor</th>
-    <th>clave</th>
-		<th>editar</th>
-		</tr>
-	@foreach ($curso as $cursos)
-	<tr>
-		<td>{{ $cursos->CUR_nombre }}</td>
-		<td>{{ $cursos->CUR_cupos }}</td>
-    <td>{{ $cursos->CUR_fecha }}</td>
-		<td>{{ $cursos->CUR_estatus }}</td>
-		<td>
-      {{ $cursos->PRO_nombre }} {{ $cursos->PRO_apellido_p }} {{ $cursos->PRO_apellido_m }}</td>
-    <td>{{ $cursos->CUR_clave }}</td>
-		<td><a href="{{ route('cursos.edit', $cursos->CUR_id) }}"><button class="btn-editar btn-pre"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></a></a></td>
-		</tr>
-	@endforeach
-	</table>
+<br>
+<div class="row">
+  @foreach ($curso as $cursos)
+     <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+                <div class="card card-inverse card-info">
+                    <center>
+                    <img class="card-img-top" src="/img/{{$cursos->CUR_foto}}" alt="">
+                    </center>
+                    <div class="card-block">
+                        <figure class="profile">
+                            <img class="profile-avatar" src="/img/{{$cursos->foto}}" alt="">
+                        </figure>
+                        <h4 class="card-title mt-3">{{ $cursos->PRO_nombre }} {{ $cursos->PRO_apellido_p }} {{ $cursos->PRO_apellido_m }}</h4>
+                        <div class="meta card-text">
+                            <center>
+                              <label id="label-color" for="">{{ $cursos->CUR_nombre }}</label>
+                            </center>
+                        </div>
+                       <div class="row">
+                         <div class="col-sm-6 ">
+                          <center>
+                          <div class="container-fluid tex-body">
+                          <div class="meta card-text">
+                            <label id="label-color" for="">Cupos</label>
+                            <p id="ptext-body">{{ $cursos->CUR_cupos }}</p>
+                          </div>
+                          </div>
+                          </center>
+                         </div>
+                         <div class="col-sm-6 ">
+                          <center>
+                          <div class="container-fluid tex-body">
+                          <div class="meta card-text">
+                            <label id="label-color" for="">clave</label>
+                            <p id="ptext-body">{{ $cursos->CUR_clave }}</p>
+                          </div>
+                          </div>
+                          </center>
+                         </div>
+                       </div>
+          
+                    </div>
+                    @if($cursos->CUR_estatus=="habilitado")
+                    <div class="card-footer-success">
+                    @else
+                    <div class="card-footer-danger">
+                    @endif
+                        <small id="ptext">{{ $cursos->CUR_estatus }}  |  {{ $cursos->CUR_fecha }}</small>
+                        <a href="{{ route('cursos.edit', $cursos->CUR_id) }}"><button class="btn-pree pull-right"><span class="glyphicon glyphicon-pencil " aria-hidden="true"></span></button></a>
+                    </div>
+                  
+                </div>
+            </div>
+  @endforeach
+</div>
   <br>
   <br>
   <br>
