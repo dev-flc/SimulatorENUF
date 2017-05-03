@@ -73,7 +73,6 @@ class AlumnoRegistroController extends Controller
         {
             return Redirect::route('principal.index');
         }
-
-        return Redirect::back()->with('error_message', 'Invalid data')->withInput();
+        return Redirect::back()->with('error_message', 'Usuario ó contraseña incorrectos')->withInput();
     }
 }

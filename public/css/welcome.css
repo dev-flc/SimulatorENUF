@@ -1,4 +1,8 @@
 /* modal login */
+.alert-login
+{
+  width: 80%;
+}
 .imgheader
 {
   background: url("/img/desing/12.jpg");
@@ -8,6 +12,23 @@
 {
   color: rgb(255,255,255);
   font-size: 40px;
+}
+.us, .pa
+{ 
+  width: 80%;
+  outline: none;
+  padding: 15px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid rgb(231, 76, 60);
+  color: rgb(231, 76, 60);
+  font-size: 15px;
+}
+.us:focus, .us:active ,.pa:focus, .pa:active
+{
+  outline: none;
+  border-bottom: 2px solid rgb(231, 76, 60);
+  color: rgb(231, 76, 60);
 }
 .user, .pass
 { 

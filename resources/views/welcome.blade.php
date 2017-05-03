@@ -11,6 +11,7 @@
       height: 350px;
       width: 100%;
     }
+
   </style>
   <img id="pri1" src="/img/pri2.png" alt="">
 
@@ -160,6 +161,7 @@
 
 
 <!-- Modal login -->
+
 <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -172,13 +174,21 @@
         </strong>
       </div>
        <div class="modal-body">
+        @if(Session::has('error_message'))
+          <center>
+            <div class="alert alert-danger   alert-dismissible alert-login" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <strong>Error!</strong> usuario o contraseña incorrectos.
+            </div>
+          </center>
+        @endif
         {!! Form::open(['route'=>'loginuser','method'=>'POST']) !!}
         <center>
         <div class="form-group">
-          {{ Form::text('user',null,['class'=>'user','placeholder'=>'Usuario','required'])}}
+          {{ Form::text('user',null,['class'=>'user','id'=>'user','placeholder'=>'Usuario','required'])}}
         </div>
         <div class="form-group">
-          {{ Form::password('password', ['class' => 'pass','placeholder'=>'Contraseña','required']) }}
+          {{ Form::password('password', ['class' => 'pass','id'=>'pass','placeholder'=>'Contraseña','required']) }}
         </div>
         <br>
         </center>
@@ -200,7 +210,19 @@
 
 <!--Script -->
 @section('script')
+
+@if(Session::has('error_message'))
 <script type="text/javascript">
+//$( "#user" ).last().addClass( "userr" );
+ // $( "#pass" ).last().addClass( "passs" );
+  $( "#pass" ).removeClass( "pass" ).addClass("pa");
+  $( "#user" ).removeClass( "user" ).addClass("us");
+  $('#login').modal('toggle');
+  
+</script>
+@endif
+<script type="text/javascript">
+
 function scrollOn() {
     $('#map').removeClass('scrolloff');
 
