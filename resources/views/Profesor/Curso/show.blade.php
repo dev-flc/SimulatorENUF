@@ -20,10 +20,9 @@
       color: rgb(255, 255, 255);
       font-size: 40px;
     }
-
-    .apo, .uni, .fec, .min, .pre
+    .apo, .uni, .fec, .min, .pre, .nopre
     {
-      width: 80%;
+      width: 100%;
       outline: none;
       padding: 15px;
       background: none;
@@ -32,9 +31,9 @@
       color: rgb(52, 152, 219);
       font-size: 15px;
     }
-    .apo:focus, .apo:active ,.uni:focus, .uni:active
-    .fec:focus, .fec:active ,.min:focus, .min:active
-    .pre:focus, .pre:active 
+    .apo:focus, .apo:active ,.uni:focus, .uni:active,
+    .fec:focus, .fec:active ,.min:focus, .min:active,
+    .nopre:focus, .nopre:active 
     {
       outline: none;
       border-bottom: 2px solid rgb(52, 152, 219);
@@ -77,10 +76,6 @@
     }
 
     </style>
-
-
-
-
 @endsection
 <!-- Inicio Section Contenido -->
 @section('content')
@@ -260,7 +255,7 @@
   <br>
 
 <div class="contenedor">
-<button class="botonF1" data-toggle="modal" data-target="#unidad"  data-tooltip="Nueva Unidad">
+<button class="botonF1" data-toggle="modal" data-target="#unidad"  data-tooltip="Nuevo Examen">
   <span>+</span>
 </button>
 
@@ -299,6 +294,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+         <h3 class="modal-title colordiv" id="myModalLabel">Registro de  Examenes</h3>
       </div>
       <div class="modal-body">
         {!! Form::open(['route'=>'unidad.store','method'=>'POST','files' => true]) !!}
@@ -309,23 +305,28 @@
         {!! Form::label('file','Material de apoyo') !!}
         {!! Form::file('file',['class'=>'apo','onchange'=>'previewFile()']) !!}</p>
         </div>
+        <br>
         <div class="form-group">
           {!! Form::label('nombre','Nombre de unidad') !!}
           {!! Form::text('nombre',null,['class'=>'uni','required'])!!}
           <p>Solo puede contener 34 caracteres A-Z | 0-9</p>
         </div>
+        <br>
         <div class="form-group">
           {!! Form::label('fecha','Fecha de examen final') !!}
           {!! Form::date('fecha',null,['class'=>'fec','required'])!!}
         </div>
+        <br>
         <div class="form-group">
           {!! Form::label('tiempo','ingrese los minutos de examen final') !!}
           {!! Form::number('tiempo',null,['class'=>'min','placeholder'=>'ejemplo 30','required'])!!}
         </div>
+        <br>
         <div class="form-group">
           {!! Form::label('numero','Numero de preguntas de examen final') !!}
-          {!! Form::number('numero',null,['class'=>'pre','required'])!!}
+          {!! Form::number('numero',null,['class'=>'nopre','required'])!!}
         </div>
+        <br>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn-button-c" data-dismiss="modal">Cancelar

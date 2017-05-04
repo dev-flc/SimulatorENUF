@@ -263,6 +263,87 @@
   text-align: center;
   color: rgb(255,255,255);
 }
+/* modal profesor */
+    .modal-header
+    {
+      background: url("/img/desing/12.jpg");
+      height: 150px;
+    }
+    .modal-header h3
+    {
+      color: rgb(255,255,255);
+      font-size: 40px;
+    }
+    .noom, .aap, .aam, .ussu
+    { 
+      width: 100%;
+      outline: none;
+      padding: 15px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid rgb(220,220,220);
+      color: rgb(52, 152, 219);
+      font-size: 15px;
+    }
+    .noom:focus, .noom:active, .aap:focus, .aap:active,
+    .aam:focus, .aam:active, .ussu:focus, .ussu:active
+    {
+      outline: none;
+      border-bottom: 2px solid rgb(52, 152, 219);
+      color: rgb(52, 152, 219);
+    }
+
+    .btn-button-c
+    {
+      background: rgb(255,255,255);
+      border: none;
+      border: 1px solid rgb(192, 57, 43) ;
+      width: 150px;
+      height: 40px;
+      margin: 5px;
+      padding: 5px;
+      color: rgb(192, 57, 43);
+      transition: .6s;
+    }
+    .btn-button-a
+    {
+      background: rgb(255,255,255);
+      border: none;
+      border: 1px solid rgb(39, 174, 96) ;
+      width: 150px;
+      height: 40px;
+      margin: 5px;
+      padding: 5px;
+      color: rgb(39, 174, 96);
+      transition: .6s;
+    }
+    .btn-button-s
+    {
+      background: rgb(255,255,255);
+      border: none;
+      border: 1px solid rgb(20, 155, 238) ;
+      width: 150px;
+      height: 40px;
+      margin: 5px;
+      padding: 5px;
+      color: rgb(39, 174, 96);
+      transition: .6s;
+    }
+    .btn-button-c:hover
+    {
+      background: rgb(192, 57, 43);
+      color: rgb(255,255,255);
+    }
+    .btn-button-a:hover
+    {
+      background: rgb(39, 174, 96);
+      color: rgb(255,255,255);
+    }
+    .btn-button-s:hover
+    {
+      background: rgb(20, 155, 238);
+      color: rgb(255,255,255);
+    }
   </style>
   <img id="pri1" src="/img/pri2.png" alt="">
   <h1 class="titulo">Profesores</h1>
@@ -313,7 +394,7 @@
   <br>
   <br>
 <div class="contenedor">
-<button class="botonF1 tooltip-right1" data-toggle="modal" data-target="#pregunta" data-tooltip="Nuevo Curso">
+<button class="botonF1 tooltip-right1" data-toggle="modal" data-target="#pregunta" data-tooltip="Nuevo Profesor">
   <span>+</span>
 </button>
 </div>
@@ -326,7 +407,7 @@
 
 <!-- Modals-->
 @section('modal')
-<!-- Modal Alumnos -->
+<!-- Modal Profesor -->
 <div class="modal fade" id="pregunta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -334,49 +415,50 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h3 class="modal-title colordiv" id="myModalLabel">Curso</h3>
+        <h3 class="modal-title colordiv" id="myModalLabel">Registro Profesor</h3>
       </div>
       <div class="modal-body">
         
         {!! Form::open(['route'=>'profesores.store','method'=>'POST']) !!}
     <div class="form-group">
         {!! Form::label('nombre','Nombre') !!}
-        {!! Form::text('nombre',null,['class'=>'form-control','id'=>'nombre','required'])!!}
+        {!! Form::text('nombre',null,['class'=>'noom','id'=>'nombre','required'])!!}
     </div>
     <div class="form-group">
         {!! Form::label('apellido_p','Apellido Paterno') !!}
-        {!! Form::text('apellido_p',null,['class'=>'form-control','id'=>'apellido_p','required'])!!}
+        {!! Form::text('apellido_p',null,['class'=>'aap','id'=>'apellido_p','required'])!!}
     </div>
     <div class="form-group">
         {!! Form::label('apellido_m','Apellido Materno') !!}
-        {!! Form::text('apellido_m',null,['class'=>'form-control','id'=>'apellido_m','required'])!!}
+        {!! Form::text('apellido_m',null,['class'=>'aam','id'=>'apellido_m','required'])!!}
     </div>
+    <center>
   <div class="form-group">
     {!! Form::label('sexo','Sexo ') !!}
     {{ Form::radio('sex', 'hombre', true) }} Hombre  {{ Form::radio('sex', 'mujer') }} Mujer
   </div>
+  </center>
     <hr>
-
     <div class="form-group">
         {!! Form::label('usuario','Usuario') !!}
-        {!! Form::text('usuario',null,['class'=>'form-control','id'=>'usuario','required','readonly'=>'readonly'])!!}
+        {!! Form::text('usuario',null,['class'=>'ussu','id'=>'usuario','required','readonly'=>'readonly'])!!}
     </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">
+        <button type="button" class="btn-button-c" data-dismiss="modal">
           Cancelar
           <span class="glyphicon glyphicon-remove"></span>
         </button>
-    {{ Form::button('Generar usuario <span class="glyphicon glyphicon-ok"></span>', array('class'=>'btn btn-warning pull-right','id'=>'generar', 'type'=>'button')) }}
+    {{ Form::button('Generar usuario <span class="glyphicon glyphicon-ok"></span>', array('class'=>'btn-button-s pull-right','id'=>'generar', 'type'=>'button')) }}
     
-    {{ Form::button('Guardar usuario <span class="glyphicon glyphicon-ok"></span>', array('class'=>'btn btn-success pull-right','id'=>'registrar','style'=>'display:none', 'type'=>'submit')) }}
+    {{ Form::button('Guardar usuario <span class="glyphicon glyphicon-ok"></span>', array('class'=>'btn-button-a pull-right','id'=>'registrar','style'=>'display:none', 'type'=>'submit')) }}
   
     {!! Form::close() !!}
       </div>
     </div>
   </div>
 </div>
-<!-- Modal Final Alumnos -->
+<!-- Modal Final  -->
 @endsection
 @section('script')
 <script type="text/javascript">

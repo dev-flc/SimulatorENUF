@@ -49,6 +49,71 @@
       width: 200px;
       height: 200px;
     }
+    /* modal curso */
+    .modal-header
+    {
+      background: url("/img/desing/12.jpg");
+      height: 150px;
+    }
+    .modal-header h3
+    {
+      color: rgb(255,255,255);
+      font-size: 40px;
+    }
+    .noom, .descrii, .cuup, .claav, .cco
+    { 
+      width: 100%;
+      outline: none;
+      padding: 15px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid rgb(220,220,220);
+      color: rgb(52, 152, 219);
+      font-size: 15px;
+    }
+    .noom:focus, .noom:active, .descrii:focus, .descrii:active,
+    .cuup:focus, .cuup:active, .claav:focus, .claav:active,
+    .cco:focus, .cco:active
+    {
+      outline: none;
+      border-bottom: 2px solid rgb(52, 152, 219);
+      color: rgb(52, 152, 219);
+    }
+
+    .btn-button-c
+    {
+      background: rgb(255,255,255);
+      border: none;
+      border: 1px solid rgb(192, 57, 43) ;
+      width: 150px;
+      height: 40px;
+      margin: 5px;
+      padding: 5px;
+      color: rgb(192, 57, 43);
+      transition: .6s;
+    }
+    .btn-button-a
+    {
+      background: rgb(255,255,255);
+      border: none;
+      border: 1px solid rgb(39, 174, 96) ;
+      width: 150px;
+      height: 40px;
+      margin: 5px;
+      padding: 5px;
+      color: rgb(39, 174, 96);
+      transition: .6s;
+    }
+    .btn-button-c:hover
+    {
+      background: rgb(192, 57, 43);
+      color: rgb(255,255,255);
+    }
+    .btn-button-a:hover
+    {
+      background: rgb(39, 174, 96);
+      color: rgb(255,255,255);
+    }
   </style>
 
 @endsection
@@ -307,15 +372,15 @@
       <div class="modal-body">
       {!! Form::open(['route'=>'cursos.store','method'=>'POST','files'=>'true']) !!}
       <div class="form-group">
-        {!! Form::label('nombre','Nombre ') !!}
-        {{ Form::text('nombre',null,['class'=>'form-control','required']) }}
+        {!! Form::label('nombre','Nombre ') !!}<br>
+        {{ Form::text('nombre',null,['class'=>'noom','required']) }}
       </div>
       <div class="form-group">
         {{ Form::label('Descripcion','Descripcion ') }}<br>
-        {{ Form::textarea('descripcion', null, ['class' => 'form-control','placeholder'=>'Descripcion','rows'=>'3']) }}
+        {{ Form::textarea('descripcion', null, ['class' => 'descrii','placeholder'=>'Descripcion','rows'=>'3']) }}
       </div>
       <div class="form-group">
-        {!! Form::file('file',['class'=>'form-control','id'=>'files']) !!}
+        {!! Form::file('file',['class'=>'cco','id'=>'files']) !!}
       </div>
       <center>
       <div class="list" id="list">
@@ -323,11 +388,11 @@
       </center>
       <div class="form-group">
         {!! Form::label('cupos','Cupos') !!}
-        {!! Form::number('cupos',null,['class'=>'form-control','required'])!!}
+        {!! Form::number('cupos',null,['class'=>'cuup','required'])!!}
       </div>
       <div class="form-group">
         {!! Form::label('clave','Clave') !!}
-        {!! Form::number('clave',null,['class'=>'form-control','required'])!!}
+        {!! Form::number('clave',null,['class'=>'claav','required'])!!}
       </div>
       <select  name="profesor" class="form-control" required>
         <option value="">Seleccione un profesor</option>
@@ -337,11 +402,11 @@
       </select>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">
+        <button type="button" class="btn-button-c" data-dismiss="modal">
           Cancelar
           <span class="glyphicon glyphicon-remove"></span>
         </button>
-        {{ Form::button('Registrar <span class="glyphicon glyphicon-ok"></span>', array('class'=>'btn btn-success pull-right', 'type'=>'submit')) }}
+        {{ Form::button('Registrar <span class="glyphicon glyphicon-ok"></span>', array('class'=>'btn-button-a pull-right', 'type'=>'submit')) }}
       {!! Form::close() !!}
       </div>
     </div>
