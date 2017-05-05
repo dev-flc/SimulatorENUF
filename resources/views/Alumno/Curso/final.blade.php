@@ -308,11 +308,14 @@ input[type=checkbox]:checked{
             @if($res->PRE_id == $pre->PRE_id)
             <td >{{$res->RES_nombre}}</td>
             <td id="separador"><input type="checkbox" name="res{{$i++}}" id="res{{$iddd++}}" value="{!!$res->RES_id!!}"></td>
-
-
             @endif
           </tr>
           @endforeach
+          <tr>
+            <td colspan="2">
+              <center><label for="">{{$pre->PRE_respuestas}} Respuestas</label></center>
+            </td>
+          </tr>
           </table>
           <br>
         </div>

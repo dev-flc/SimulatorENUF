@@ -3,7 +3,8 @@
 namespace SimulatorENUF\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Auth;
+use Hash;
 class ProPrincipalController extends Controller
 {
     /**
@@ -13,7 +14,16 @@ class ProPrincipalController extends Controller
      */
     public function index()
     {
-        return view('Profesor.Principal.index');
+        $name = Auth::user()->name;
+    if(Hash::check($name, Auth::user()->password))
+       {
+        $verificar = true;
+       }
+       else
+       {
+        $verificar= false;
+       }
+        return view('Profesor.Principal.index')->with('verifica',$verificar);
     }
 
     /**

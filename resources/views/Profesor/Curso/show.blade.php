@@ -307,24 +307,25 @@
         </div>
         <br>
         <div class="form-group">
-          {!! Form::label('nombre','Nombre de unidad') !!}
-          {!! Form::text('nombre',null,['class'=>'uni','required'])!!}
+          {!! Form::text('nombre',null,['class'=>'uni','placeholder'=>'Nombre de unidad','required'])!!}
           <p>Solo puede contener 34 caracteres A-Z | 0-9</p>
         </div>
         <br>
         <div class="form-group">
-          {!! Form::label('fecha','Fecha de examen final') !!}
+          {!! Form::label('fecha','Fecha de inicio') !!}
+          {!! Form::date('fecha_inicio',null,['class'=>'fec','placeholder'=>'fecha de inicio','required'])!!}
+        </div>
+        <div class="form-group">
+          {!! Form::label('fecha','Fecha final') !!}
           {!! Form::date('fecha',null,['class'=>'fec','required'])!!}
         </div>
         <br>
         <div class="form-group">
-          {!! Form::label('tiempo','ingrese los minutos de examen final') !!}
-          {!! Form::number('tiempo',null,['class'=>'min','placeholder'=>'ejemplo 30','required'])!!}
+          {!! Form::number('tiempo',null,['class'=>'min','placeholder'=>'tiempo de examen en minutos, ejemplo 30','required'])!!}
         </div>
         <br>
         <div class="form-group">
-          {!! Form::label('numero','Numero de preguntas de examen final') !!}
-          {!! Form::number('numero',null,['class'=>'nopre','required'])!!}
+          {!! Form::number('numero',null,['class'=>'nopre','placeholder'=>'Numero de preguntas de examen final','required'])!!}
         </div>
         <br>
       </div>

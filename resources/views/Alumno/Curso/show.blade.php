@@ -157,6 +157,7 @@
   height: 100px;
 }
 </style>
+
 <div class="row">
   <div class="col-sm-4">
     <br>
@@ -206,9 +207,9 @@
   <tr>
     <td><center><h3>Nombre</h3></center></td>
     <td><center><h3>Intentos</h3></center></td>
-    <td><center><h3>Fecha</h3></center></td>
+    <td><center><h3>Fecha inicio</h3></center></td>
+    <td><center><h3>Fecha final</h3></center></td>
     <td><center><h3>Calificación</h3></center></td>
-    <td><center><h3>Tiempo</h3></center></td>
   </tr>
   <tr>
     <td>
@@ -224,6 +225,9 @@
       </center>
     </td>
     <td>
+      <center>{{$uni->UNI_fecha_inicio}}</center>
+    </td>
+    <td>
       <center>{{$uni->UNI_fecha_final}}</center>
     </td>
     <td>
@@ -234,37 +238,32 @@
            <h2 class="aprobado">{{$uni->UNI_calificacion}}</h2>
         @elseif($uni->UNI_calificacion<=6)
            <h2 class="reprobado">{{$uni->UNI_calificacion}}</h2>
-
         @endif
       </center>
-    </td>
-    <td>
-       <center>{{$uni->UNI_tiempo}} minutos</center>
     </td>
   </tr>
 </table>
 </div>
 <hr>
 <center>
-  @if($uni->UNI_fecha_final>$fecha)
-  <a href="{{ route('examenprueba', $uni->UNI_id) }}" style="text-decoration: none;">
+@if($uni->UNI_fecha_inicio<=$fecha &&  $uni->UNI_fecha_final>=$fecha)
+ <a href="{{ route('examenprueba', $uni->UNI_id) }}" style="text-decoration: none;">
     <span class="label label-success">Examen de prueba</span>
   </a>
+  @if($uni->UNI_intento<3)
+  <span class="label label-success" style="cursor:pointer" onclick="Envio({{$uni->UNI_id}});">Examen finall</span>
+  @else
+    <span class="label label-default">Examen final</span>
+  @endif
   @else
   <span class="label label-default">Examen de prueba</span>
-  @endif
-
-  @if($uni->UNI_intento>=3)
-  <span class="label label-default">Examen final</span>
-  @else
-    @if($uni->UNI_fecha_final==$fecha )
-       <span class="label label-success" style="cursor:pointer" onclick="Envio({{$uni->UNI_id}});">Examen finall</span>
-
-    @else
   <span class="label label-default">Examen final</span>
 
-    @endif
-  @endif
+@endif
+
+
+
+
   <a href="{{ route('detalleunidad', $uni->UNI_id) }}">
     <span class="label label-primary">Ver detalles</span>
   </a>

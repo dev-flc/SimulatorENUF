@@ -53,6 +53,7 @@ class ProUnidadController extends Controller
       $unidad->UNI_nombre=($request->nombre);
       $unidad->UNI_material_apoyo=$nombreapoyo;
       $unidad->UNI_fecha_final=($request->fecha);
+      $unidad->UNI_fecha_inicio=($request->fecha_inicio);
       $unidad->UNI_tiempo=($request->tiempo);
       $unidad->UNI_numero_pregunta=($request->numero);
       $unidad->CUR_id=($request->curso);

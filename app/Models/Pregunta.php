@@ -10,6 +10,7 @@ class Pregunta extends Model
 	protected $primaryKey = 'PRE_id';
     protected $fillable = [
         'PRE_nombre',
+        'PRE_respuestas',
         'UNI_id'
     ];
 
@@ -25,3 +26,4 @@ class Pregunta extends Model
     	return $this->hasMany('SimulatorENUF\Models\Unidad');
     }
 }
+ 

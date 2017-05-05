@@ -195,22 +195,27 @@
     <div class="row">
       <div class="col-sm-6">
         <div class="container-fluid borderunidad ">
-        <h2>
-        <center>
-          <img id="alumnosimg" src="/img/book1.png" alt="">
-          Unidad:<br> {{ $unidad->UNI_nombre }}
-        </center>
-        </h2>
+        <br>
+          <center><label for=""> <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>Unidad</label> </center>
+        <center><h2>{{ $unidad->UNI_nombre }}</h2></center>
+        
         </div>
       </div>
       <div class="col-sm-6">
         <div class="container-fluid borderunidad">
-        <h2>
-        <center>
-          <img id="alumnosimg" src="/img/calendar1.png" alt="">
-          Fecha Examen:<br> {{ $unidad->UNI_fecha_final }}
-        </center>
-        </h2>
+        <br>
+        <table>
+          <tr>
+            <td><center><label for=""> <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+ Fecha de inicio</label> </center></td>
+            <td><center><label for=""><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+ Fecha Final</label> </center></td>
+          </tr>
+          <tr>
+            <td><center><h2>{{ $unidad->UNI_fecha_inicio }}</h2></h2></td>
+            <td><center><h2>{{ $unidad->UNI_fecha_final }}</h2></h2></td>
+          </tr>
+        </table>
         </div>
       </div>
     </div>

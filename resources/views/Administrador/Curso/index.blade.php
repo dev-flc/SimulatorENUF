@@ -298,7 +298,9 @@
                         <figure class="profile">
                             <img class="profile-avatar" src="/img/{{$cursos->foto}}" alt="">
                         </figure>
+                        <center>
                         <h4 class="card-title mt-3">{{ $cursos->PRO_nombre }} {{ $cursos->PRO_apellido_p }} {{ $cursos->PRO_apellido_m }}</h4>
+                        </center>
                         <div class="meta card-text">
                             <center>
                               <label id="label-color" for="">{{ $cursos->CUR_nombre }}</label>

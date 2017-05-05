@@ -30,10 +30,46 @@
 
 <!-- Modals-->
 @section('modal')
-
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      	<!--
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+        <h3 class="modal-title" id="myModalLabel">Completar información</h3>
+      </div>
+      <div class="modal-body">
+          {!! Form::open(['route'=>'profesores.store','method'=>'POST']) !!}
+          <div class="form-group">
+            {!! Form::text('calle',null,['class'=>'form-control','id'=>'calle','placeholder'=>'Calle','required'])!!}
+          </div>
+          <div class="form-group">
+              {!! Form::text('colonia',null,['class'=>'form-control','id'=>'colonia','placeholder'=>'Colonia','required'])!!}
+          </div>
+          <div class="form-group">
+              {!! Form::text('colonia',null,['class'=>'form-control','id'=>'colonia','placeholder'=>'Colonia','required'])!!}
+          </div>
+          <div class="form-group">
+              {!! Form::text('colonia',null,['class'=>'form-control','id'=>'colonia','placeholder'=>'Colonia','required'])!!}
+          </div>
+           <hr>
+      </div>
+      <div class="modal-footer">
+      <!--  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+            {{ Form::button('Guardar información <span class="glyphicon glyphicon-ok"></span> ', array('class'=>'btn btn-success pull-right','id'=>'generar', 'type'=>'button')) }}
+         {!! Form::close() !!}
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
 
 <!--Script -->
 @section('script')
-
+@if($verifica=="true")
+<script type="text/javascript">
+	$('#myModal').modal('toggle');
+</script>
+@endif
 @endsection

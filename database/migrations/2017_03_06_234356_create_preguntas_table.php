@@ -16,6 +16,7 @@ class CreatePreguntasTable extends Migration
         Schema::create('preguntas', function (Blueprint $table) {
             $table->increments('PRE_id');
             $table->string('PRE_nombre')->nullable();
+            $table->integer('PRE_respuestas')->nullable();
             $table->integer('UNI_id')->unsigned()->nullable();
             $table->timestamps();
 
@@ -23,7 +24,7 @@ class CreatePreguntasTable extends Migration
             $table->foreign('UNI_id')->references('UNI_id')->on('unidads');
 
         });
-    }
+    } 
 
     /**
      * Reverse the migrations.
