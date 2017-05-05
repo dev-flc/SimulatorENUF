@@ -3,6 +3,9 @@
 namespace SimulatorENUF\Http\Controllers;
 
 use Illuminate\Http\Request;
+use SimulatorENUF\Models\Profesor;
+use SimulatorENUF\Models\Direccion;
+use SimulatorENUF\User;
 use Auth;
 use Hash;
 class ProPrincipalController extends Controller
@@ -14,8 +17,9 @@ class ProPrincipalController extends Controller
      */
     public function index()
     {
-        $name = Auth::user()->name;
-    if(Hash::check($name, Auth::user()->password))
+      $name = Auth::user()->name;
+      $id = Auth::user()->id;
+      if(Hash::check($name, Auth::user()->password))
        {
         $verificar = true;
        }
@@ -23,7 +27,9 @@ class ProPrincipalController extends Controller
        {
         $verificar= false;
        }
-        return view('Profesor.Principal.index')->with('verifica',$verificar);
+        return view('Profesor.Principal.index')
+        ->with('id',$id)
+        ->with('verifica',$verificar);
     }
 
     /**
@@ -78,7 +84,25 @@ class ProPrincipalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $user=User::find($id);
+        $user->password=bcrypt($request->password);
+        $user->save();
+        if($user)
+        {
+          $profesor=Profesor::where('USE_id', $id)->first();
+          $dir=Direccion::where('DIR_id', $profesor->DIR_id)->first();
+          $dir->DIR_calle=($request->calle);
+          $dir->DIR_colonia=($request->colonia);
+          $dir->DIR_estado=($request->estado);
+          $dir->DIR_ciudad=($request->ciudad);
+          $dir->DIR_pais=($request->pais);
+          $dir->DIR_cp=($request->cp);
+          if($dir)
+          {
+            return redirect()->route('principalprofesor.index');
+          }
+        }
     }
 
     /**

@@ -55,6 +55,7 @@ class ProPreguntaController extends Controller
       $pregunta->PRE_nombre=($request->pregunta);
       $pregunta->PRE_respuestas=$correctas;
       $pregunta->UNI_id=($request->unidad);
+      $pregunta->CUR_id=($request->curso);
       $pregunta->save();
       $idpre= Pregunta::find($pregunta->PRE_id);
 
@@ -70,10 +71,10 @@ class ProPreguntaController extends Controller
       $respuesta->PRE_id=($idpre->PRE_id);
       $respuesta->TIP_id=$tipoo;
       $respuesta->save();
-      
+
       };
-      
-      
+
+
       return redirect()->route('unidad.show', ($request->unidad));
     }
 

@@ -11,7 +11,8 @@ class Pregunta extends Model
     protected $fillable = [
         'PRE_nombre',
         'PRE_respuestas',
-        'UNI_id'
+        'UNI_id',
+        'CUR_id'
     ];
 
 
@@ -25,5 +26,10 @@ class Pregunta extends Model
     {
     	return $this->hasMany('SimulatorENUF\Models\Unidad');
     }
+    #uno a uno  tipo
+    public function curso()
+    {
+        return $this->hasOne('SimulatorENUF\Models\Curso');
+    }
 }
- 
+

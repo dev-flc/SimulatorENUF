@@ -79,7 +79,7 @@
       font-size: 40px;
     }
     .ppre, .resp1, .resp2, .resp3, .resp4
-    { 
+    {
       width: 100%;
       outline: none;
       padding: 15px;
@@ -198,7 +198,7 @@
         <br>
           <center><label for=""> <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>Unidad</label> </center>
         <center><h2>{{ $unidad->UNI_nombre }}</h2></center>
-        
+
         </div>
       </div>
       <div class="col-sm-6">
@@ -325,7 +325,8 @@
       <div class="modal-body">
       {!! Form::open(['route'=>'pregunta.store','method'=>'POST']) !!}
         <div class="form-group">
-          {!! Form::hidden('unidad',$unidad->UNI_id,['class'=>'uuni','id'=>'pregunta','required'])!!}
+          {!! Form::hidden('unidad',$unidad->UNI_id)!!}
+          {!! Form::hidden('curso',$curso->CUR_id)!!}
         </div>
         <div class="form-group">
           {!! Form::label('pregunta','Pregunta') !!}

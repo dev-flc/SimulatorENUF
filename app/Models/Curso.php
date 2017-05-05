@@ -35,4 +35,8 @@ class Curso extends Model
     {
         return $this->belongsTo('SimulatorENUF\Models\CurAlu');
     }
+    public function pregunta()
+    {
+        return $this->belongsTo('SimulatorENUF\Models\Pregunta');
+    }
 }
