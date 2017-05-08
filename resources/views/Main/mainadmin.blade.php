@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>@yield('title','Default')</title>
+  <link rel="icon" href="/img/curso.png">
   <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.min.css') }}">
   <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">

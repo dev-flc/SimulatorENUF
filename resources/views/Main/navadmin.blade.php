@@ -16,7 +16,12 @@
       <ul class="nav navbar-nav">
         <li><a href="{{ route('principalprofesor.index') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Inicio<span class="sr-only">(current)</span></a></li>
         <li><a href="{{ route('profesores.index') }}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profesores</a></li>
-        <li><a href="{{ route('cursos.index') }}"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Cursos</a></li>
+        @if($profesor->count())
+          <li>
+          <a href="{{ route('cursos.index') }}"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Cursos</a>
+        </li>
+        @endif
+        
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">

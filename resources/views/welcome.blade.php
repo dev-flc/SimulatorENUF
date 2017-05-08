@@ -43,8 +43,9 @@
 </div>
 <div class="container-fluid">
 <center>
-  <img src="/img/estudiantes.png" class="img-responsive" alt="">
+  <img src="/img/estudiantes.jpg" class="img-responsive" alt="">
 </center>
+
 </div>
 
 <center>
@@ -67,11 +68,6 @@
   Momento importante en la historia de la Normal ha sido la construcción del nuevo edificio que actualmente se ocupa y que fue gestionado por el Profr. Israel Rivera Serrano, por la profra. Felipa Cuenca Adame y el Profr. Javier Soberanis Méndez directivos de esa época. Este edificio fue inaugurado por el Gobernador Rubén Figueroa Alcocer, 15 de septiembre de 1994
 </p><br>
 
-<div class="container-fluid">
-<div class="continer-fluid">
-  <img src="/img/ICT-horizontal.png" style="width: 100%" class="img-responsive" alt="">
-</div>
-</div>
   <center><h2>Ubicanos</h2></center><hr>
 <style type="text/css">
 .scrolloff iframe   {
@@ -129,7 +125,7 @@
           {{ Form::number('matricula',null,['class'=>'mat','placeholder'=>'Matricula','required'])}}
         </div>
         <div class="form-group">
-          {{ Form::radio('sexo', 'hombre', true) }} Hombre  {{ Form::radio('sex', 'mujer') }} Mujer
+          {{ Form::radio('sexo', 'hombre', true) }} Hombre  {{ Form::radio('sexo', 'mujer') }} Mujer
         </div>
         <hr>
         <div class="form-group">

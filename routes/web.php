@@ -12,12 +12,10 @@
 */
 
 Route::get('/', function () {
-
     // Verificamos que el usuario no esta autenticado
     if (Auth::check())
     {
         return redirect()->route('principal.index');
-
     }
     else
     {
@@ -57,11 +55,15 @@ Route::resource('principalprofesor','ProPrincipalController');
 
 Route::resource('respuesta','ProRespuestaController');
 
+Route::get('/detallecurso/{id}',[
+    'uses' => 'ProCursoController@detallecurso',
+    'as' => 'detallecurso'
+    ]);
+
 });
 //middleware Profesor Fin
 
 //middleware Alumno Inicio
-#Route::group(['prefix'=>'alumno'], function(){
 Route::group(['prefix'=>'alumno','middleware'=>['alumno','auth']], function(){
 
 Route::resource('alumnoperfil','PerfilAlumnoController');

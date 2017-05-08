@@ -47,9 +47,43 @@
           <div class="form-group">
               {!! Form::text('colonia',null,['class'=>'cool','id'=>'colonia','placeholder'=>'Colonia','required'])!!}
           </div>
-          <div class="form-group">
-              {!! Form::text('estado',null,['class'=>'ess','id'=>'estado','placeholder'=>'Estado','required'])!!}
-          </div>
+           <div class="form-group">
+                        {!! Form::select('estado',[
+                        ''=>'seleccione una estado',
+                        'Aguascalientes'=>'Aguascalientes',
+                        'Baja California'=>'Baja California',
+                        'Baja California Sur'=>'Baja California Sur',
+                        'Campeche'=>'Campeche',
+                        'Chiapas'=>'Chiapas',
+                        'Chihuahua'=>'Chihuahua',
+                        'Coahuila'=>'Coahuila',
+                        'Colima'=>'Colima',
+                        'Distrito Federal'=>'Distrito Federal',
+                        'Durango'=>'Durango',
+                        'Estado de México'=>'Estado de México',
+                        'Guanajuato'=>'Guanajuato',
+                        'Guerrero'=>'Guerrero',
+                        'Hidalgo'=>'Hidalgo',
+                        'Jalisco'=>'Jalisco',
+                        'Michoacán'=>'Michoacán',
+                        'Morelos'=>'Morelos',
+                        'Nayarit'=>'Nayarit',
+                        'Nuevo Leon'=>'Nuevo Leon',
+                        'Oaxaca'=>'Oaxaca',
+                        'Puebla'=>'Puebla',
+                        'Queretaro'=>'Queretaro',
+                        'Quintana Roo'=>'Quintana Roo',
+                        'San Luis Potosi'=>'San Luis Potosi',
+                        'Sinaloa'=>'Sinaloa',
+                        'Sonora'=>'Sonora',
+                        'Tabasco'=>'Tabasco',
+                        'Tamaulipas'=>'Tamaulipas',
+                        'Tlaxcala'=>'Tlaxcala',
+                        'Veracruz'=>'Veracruz',
+                        'Yucatán'=>'Yucatán',
+                        'Zacatecas'=>'Zacatecas',]
+                        ,null,['class'=>'ess','required']) !!}
+                </div>
           <div class="form-group">
               {!! Form::text('ciudad',null,['class'=>'ciiu','id'=>'ciudad','placeholder'=>'Ciudad','required'])!!}
           </div>
@@ -61,16 +95,15 @@
           </div>
            <hr>
            <div class="form-group">
-              {!! Form::text('password',null,['class'=>'pass','id'=>'password','placeholder'=>'Contraseña','required'])!!}
+              {!! Form::password('password',['class'=>'pass','id'=>'password','placeholder'=>'Contraseña','required'])!!}
           </div>
           <div class="form-group">
-              {!! Form::text('password_verific',null,['class'=>'verif','id'=>'password_verific','placeholder'=>'Verificar contraseña','required'])!!}
+              {!! Form::password('password_verific',['class'=>'verif','id'=>'password_verific','placeholder'=>'Verificar contraseña','required'])!!}
           </div>
       </div>
       <div class="modal-footer">
       <!--  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-            {{ Form::button('Guardar información <span class="glyphicon glyphicon-ok"></span> ', array('class'=>'btn-button-a pull-right','id'=>'generar', 'type'=>'submit')) }}
-
+            {{ Form::button('Guardar <span class="glyphicon glyphicon-ok"></span> ', array('class'=>'btn-button-a pull-right','id'=>'generar', 'type'=>'submit')) }}
          {!! Form::close() !!}
       </div>
     </div>

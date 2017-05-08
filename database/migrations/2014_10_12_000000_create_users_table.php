@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
 class CreateUsersTable extends Migration
 {
@@ -23,6 +24,15 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        DB::table('users')->insert(
+            array(
+                'name' => 'admin',
+                'foto' => 'logo.png',
+                'email' => 'admin@gmail.com',
+                'password'=>bcrypt('enuf2017'),
+                'type'=>'administrador'
+            )
+        );
     }
 
     /**

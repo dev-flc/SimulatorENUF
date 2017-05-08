@@ -99,6 +99,18 @@ class ProCursoController extends Controller
       ->with('a',$a)
       ->with('unidad',$unidad);
     }
+    
+    public function detallecurso($id)
+    {
+      #PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
+      $unidad=Unidad::select('*')->where('CUR_id','=',$id)
+      ->get();
+      $curso=Curso::find($id);
+      $alumno=Alumno::all();
+      return view('Profesor.Curso.lista')
+      ->with('alumno',$alumno)
+      ->with('curso',$curso);
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -108,7 +120,7 @@ class ProCursoController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**

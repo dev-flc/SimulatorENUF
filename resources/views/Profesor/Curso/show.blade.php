@@ -83,34 +83,46 @@
 <div class="row">
   <div class="col-sm-12"><center><h1>{{$curso->CUR_nombre}}</h1></center><br></div>
 
-  <div class="col-sm-4">
+  <div class="col-sm-3">
     <center>
       <p id="centradop">Cupos del curso</p>
       <h2>
         <span class="label label-primary">
-          # {{ $curso->CUR_cupos}}
+          {{ $curso->CUR_cupos}}
         </span>
       </h2>
     </center>
   </div>
-  <div class="col-sm-4">
+  <div class="col-sm-3">
     <center>
       <p id="centradop">Cupos disponibles</p>
       <h2>
         <span class="label label-success">
-          # {{ $curso->CUR_cupos}}
+          {{ $curso->CUR_cupos}}
         </span>
       </h2>
     </center>
   </div>
-  <div class="col-sm-4">
+  <div class="col-sm-3">
     <center>
-      <p id="centradop">Fecha</p>
+      <p id="centradop">Examen global</p>
       <h2>
-        <span class="label label-default">
-          {{ $curso->CUR_fecha}}
+        <span class="label label-default" data-toggle="modal" data-target="#examen_gobal"  data-tooltip="Habilitar | Deshabilitar" style="cursor:pointer">
+          {{ $curso->CUR_estatus_examen}} 
         </span>
       </h2>
+    </center>
+  </div>
+  <div class="col-sm-3">
+    <center>
+      <p id="centradop">Lista de alumnos</p>
+      <a href="{{ route('detallecurso', $curso->CUR_id) }}" style="text-decoration: none;">
+      <h2>
+        <span class="label label-success">
+          Detalle
+        </span>
+      </h2>
+      </a>
     </center>
   </div>
 </div>
@@ -255,7 +267,7 @@
   <br>
 
 <div class="contenedor">
-<button class="botonF1" data-toggle="modal" data-target="#unidad"  data-tooltip="Nuevo Examen">
+<button class="botonF1" data-toggle="modal" data-target="#unidad"  data-tooltip="Nueva unidad">
   <span>+</span>
 </button>
 
@@ -341,6 +353,49 @@
   </div>
 </div>
 <!-- Modal Final Unidad -->
+
+<!-- Modal examen global -->
+<div class="modal" id="examen_gobal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+         <h3 class="modal-title colordiv" id="myModalLabel">Examen Global</h3>
+      </div>
+      <div class="modal-body">
+        {!! Form::open(['route'=>'unidad.store','method'=>'POST','files' => true]) !!}
+        <div class="form-group">
+          {!! Form::label('curso','Fecha de inicio') !!}
+          {!! Form::date('nombre',$curso->CUR_fecha_inicio,['class'=>'uni','required'])!!}
+        </div>
+        <div class="form-group">
+          {!! Form::label('curso','Fecha final') !!}
+          {!! Form::date('nombre',$curso->CUR_fecha_inicio,['class'=>'uni','required'])!!}
+        </div>
+        <div class="form-group">
+            {{ Form::radio('status', 'habilitado', true) }} Habilitado
+            {{ Form::radio('status', 'deshabilitado') }} Deshabilitado
+        </div>
+        <div class="form-group">
+          {!! Form::label('curso','Timpo de examen en minutos') !!}
+          {!! Form::number('nombre',$curso->CUR_tiempo,['class'=>'uni','placeholder'=>'ejemplo:   30 minutos','required'])!!}
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-button-c" data-dismiss="modal">Cancelar
+        <span class="glyphicon glyphicon-remove"></span>
+        </button>
+        {{ Form::button('Agregar <span class="glyphicon glyphicon-ok"></span>',
+          array('class'=>'btn-button-a pull-right', 'type'=>'submit')) }}
+        {!! Form::close() !!}
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Final Examen Global -->
 
 @endsection
 <!-- Fin Section Modal -->

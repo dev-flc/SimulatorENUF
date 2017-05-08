@@ -363,7 +363,7 @@
 @section('modal')
 <!-- Modal Alumnos -->
 <div class="modal fade" id="pregunta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -374,12 +374,16 @@
       <div class="modal-body">
       {!! Form::open(['route'=>'cursos.store','method'=>'POST','files'=>'true']) !!}
       <div class="form-group">
-        {!! Form::label('nombre','Nombre ') !!}<br>
-        {{ Form::text('nombre',null,['class'=>'noom','required']) }}
+        {{ Form::text('nombre',null,['class'=>'noom','placeholder'=>'Nombre del curso','required']) }}
       </div>
+      <select  name="profesor" class="noom" required>
+        <option value="">Seleccione un profesor</option>
+        @foreach ($profesor as $pro)
+        <option value="{{ $pro->PRO_id}}">{{ $pro->PRO_nombre}} {{ $pro->PRO_apellido_p}} {{ $pro->PRO_apellido_m }}  </option>
+        @endforeach
+      </select>
       <div class="form-group">
-        {{ Form::label('Descripcion','Descripcion ') }}<br>
-        {{ Form::textarea('descripcion', null, ['class' => 'descrii','placeholder'=>'Descripcion','rows'=>'3']) }}
+        {{ Form::textarea('descripcion', null, ['class' => 'descrii','placeholder'=>'Descripcion del curso','rows'=>'3']) }}
       </div>
       <div class="form-group">
         {!! Form::file('file',['class'=>'cco','id'=>'files']) !!}
@@ -389,19 +393,11 @@
       </div>
       </center>
       <div class="form-group">
-        {!! Form::label('cupos','Cupos') !!}
-        {!! Form::number('cupos',null,['class'=>'cuup','required'])!!}
+        {!! Form::number('cupos',null,['class'=>'cuup','placeholder'=>'Cupos','required'])!!}
       </div>
       <div class="form-group">
-        {!! Form::label('clave','Clave') !!}
-        {!! Form::number('clave',null,['class'=>'claav','required'])!!}
+        {!! Form::text('clave',null,['class'=>'claav','placeholder'=>'Clave','required'])!!}
       </div>
-      <select  name="profesor" class="form-control" required>
-        <option value="">Seleccione un profesor</option>
-        @foreach ($profesor as $pro)
-        <option value="{{ $pro->PRO_id}}">{{ $pro->PRO_nombre}} {{ $pro->PRO_apellido_p}} {{ $pro->PRO_apellido_m }}  </option>
-        @endforeach
-      </select>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn-button-c" data-dismiss="modal">
@@ -420,35 +416,30 @@
 @section('script')
 <script type="text/javascript">
 function archivo(evt) {
-                  var files = evt.target.files; // FileList object
-
-                  // Obtenemos la imagen del campo "file".
-                  for (var i = 0, f; f = files[i]; i++) {
-                    //Solo admitimos imágenes.
-                    if (!f.type.match('image.*')) {
-                        continue;
-                    }
-
-                    var reader = new FileReader();
-
-                    reader.onload = (function(theFile) {
-                        return function(e) {
-                          // Insertamos la imagen
-                         document.getElementById("list").innerHTML = ['<img class="thumb list2" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
-                         document.getElementById("list")
-
-                         var d = document.getElementById("list");
-                        d.className += "list2";
-                        };
-                    })(f);
-
-                    reader.readAsDataURL(f);
-                  }
-              }
-
-              document.getElementById('files').addEventListener('change', archivo, false);
-
-      </script>
+  var files = evt.target.files
+  for (var i = 0, f; f = files[i]; i++) {
+  if (!f.type.match('image.*')) {
+    continue;
+  }
+  var reader = new FileReader();
+  reader.onload = (function(theFile) {
+  return function(e) {
+  document.getElementById("list").innerHTML = ['<img class="thumb list2" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
+  document.getElementById("list")
+  var d = document.getElementById("list");
+  d.className += "list2";
+  };
+  })(f);
+    reader.readAsDataURL(f);
+  }
+  }
+  document.getElementById('files').addEventListener('change', archivo, false);
+</script>
+@if (!$curso->count())
+  <script type="text/javascript">
+    $('#pregunta').modal('toggle');
+  </script>
+@endif
 @endsection
 
 

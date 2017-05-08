@@ -204,17 +204,18 @@
 <div class="unidad">
 <div class="table-responsive">
 <table  style="width: 100%;">
+<tr>
+  <td colspan="5">
+    <center><h2>{{$uni->UNI_nombre}}</h2></center>
+  </td>
+</tr>
   <tr>
-    <td><center><h3>Nombre</h3></center></td>
     <td><center><h3>Intentos</h3></center></td>
     <td><center><h3>Fecha inicio</h3></center></td>
     <td><center><h3>Fecha final</h3></center></td>
     <td><center><h3>Calificación</h3></center></td>
   </tr>
   <tr>
-    <td>
-      <center>{{$uni->UNI_nombre}}</center>
-    </td>
     <td>
       <center>
         @if($uni->UNI_intento=="")
@@ -247,49 +248,111 @@
 <hr>
 <center>
 @if($uni->UNI_fecha_inicio<=$fecha &&  $uni->UNI_fecha_final>=$fecha)
- <a href="{{ route('examenprueba', $uni->UNI_id) }}" style="text-decoration: none;">
+  <a href="{{ route('examenprueba', $uni->UNI_id) }}" style="text-decoration: none;">
     <span class="label label-success">Examen de prueba</span>
   </a>
   @if($uni->UNI_intento<3)
-  <span class="label label-success" style="cursor:pointer" onclick="Envio({{$uni->UNI_id}});">Examen finall</span>
+    <span class="label label-success" style="cursor:pointer" onclick="Envio({{$uni->UNI_id}});">Examen final</span>
   @else
     <span class="label label-default">Examen final</span>
   @endif
-  @else
+@else
   <span class="label label-default">Examen de prueba</span>
   <span class="label label-default">Examen final</span>
-
 @endif
-
-
-
-
   <a href="{{ route('detalleunidad', $uni->UNI_id) }}">
     <span class="label label-primary">Ver detalles</span>
   </a>
-  @if($uni->UNI_material_apoyo=="")
-   <span class="label label-default label-circle">Material
+@if($uni->UNI_material_apoyo=="")
+  <span class="label label-default label-circle">Material
     <span class="glyphicon glyphicon-download" aria-hidden="true"></span>
   </span>
-  @else
+@else
   <a href="{{ route('descargafiles', $uni->UNI_id) }}">
     <span class="label label-success label-circle">Material
       <span class="glyphicon glyphicon-download" aria-hidden="true"></span>
     </span>
   </a>
   @endif
-  
-
-
 </center>
    </div>
 @endforeach
+
+<!--Global -->
+<div class="unidad">
+<div class="table-responsive">
+<table  style="width: 100%;">
+<tr>
+  <td colspan="5">
+    <center><h2>Examen Global</h2></center>
+  </td>
+</tr>
+  <tr>
+    <td><center><h3>Intentos</h3></center></td>
+    <td><center><h3>Fecha inicio</h3></center></td>
+    <td><center><h3>Fecha final</h3></center></td>
+    <td><center><h3>Calificación</h3></center></td>
+  </tr>
+  <tr>
+    <td>
+      <center>
+        @if($curso->CUR_intento)
+          {{ $curso->CUR_intento }}
+        @else
+          0
+        @endif
+      </center>
+    </td>
+    <td>
+      <center>
+        @if($curso->CUR_fecha_inicio)
+          {{ $curso->CUR_fecha_inicio }}
+        @else
+          pendiente
+        @endif
+      </center>
+    </td>
+    <td>
+       <center>
+        @if($curso->CUR_fecha_final)
+          {{ $curso->CUR_fecha_final }}
+        @else
+          pendiente
+        @endif
+      </center>
+    </td>
+    <td> 
+      <center>
+        @if($uni->CUR_calificacion=="")
+          Pendiente
+        @elseif($uni->CUR_calificacion>=7)
+           <h2 class="aprobado">{{$uni->CUR_calificacion}}</h2>
+        @elseif($uni->CUR_calificacion<=6)
+           <h2 class="reprobado">{{$uni->CUR_calificacion}}</h2>
+        @endif
+      </center>
+    </td>
+  </tr>
+</table>
+</div>
+<hr>
+<center>
+@if($uni->CUR_calificacion=="habilitado")
+  <span class="label label-success" style="cursor:pointer" onclick="Global({{$uni->CUR_id}});">
+    Relaizar examen global
+  </span>
+@else
+  <span class="label label-default">Relaizar examen global</span>
+@endif
+</center>
+   </div>
       <br>
       <br>
     </div>
   </div>
 </div>
-<!--  AQUI ESTOY-->
+
+<!--Fin global-->
 @endsection
 
 <!-- subcontenido -->
@@ -308,30 +371,48 @@
 <!--  AQUI tambien -->
 
 <script type="text/javascript">
-
 var Envio=function(id){
+swal({
+  title: "Relizar Examen?",
+  text: "empezar ahora!",
+  type: "success",
+  showCancelButton: true,
+  confirmButtonColor: '#2ECC71',
+  confirmButtonText: 'Confirmar',
+  cancelButtonText: "Cancelar!",
+  closeOnConfirm: false,
+  closeOnCancel: false
+},
+function(isConfirm) {
+  if (isConfirm) {
+    window.location.href = "{{url('alumno/examenfinal')}}/"+id+"";
+  } 
+  else {
+  swal("Cancelado", ":)", "error");
+  }
+});
+}
 
-  swal({
-                title: "Relizar Examen?",
-                text: "empezar ahora!",
-                type: "success",
-                showCancelButton: true,
-                confirmButtonColor: '#2ECC71',
-                confirmButtonText: 'Confirmar',
-                cancelButtonText: "Cancelar!",
-                closeOnConfirm: false,
-                closeOnCancel: false
-            },
-            function(isConfirm) {
-                if (isConfirm) {
-
-                         window.location.href = "{{url('alumno/examenfinal')}}/"+id+"";
-
-
-                } else {
-                    swal("Cancelado", ":)", "error");
-                }
-            });
+var Global=function(id){
+swal({
+  title: "Presentar Examen Global?",
+  text: "empezar ahora!",
+  type: "success",
+  showCancelButton: true,
+  confirmButtonColor: '#2ECC71',
+  confirmButtonText: 'Confirmar',
+  cancelButtonText: "Cancelar!",
+  closeOnConfirm: false,
+  closeOnCancel: false
+},
+function(isConfirm) {
+  if (isConfirm) {
+    window.location.href = "{{url('alumno/examenfinal')}}/"+id+"";
+  } 
+  else {
+  swal("Cancelado", ":(", "error");
+  }
+});
 }
 </script>
 @endsection
