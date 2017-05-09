@@ -127,6 +127,29 @@
   </div>
 </div>
 <hr>
+
+<table class="table table-hover" border="1">
+  <tr>
+    <th>Nombre</th>
+    <th>Apellidos</th>
+    <th>Estatus</th>
+    <th>Unidad</th>
+  </tr>
+  @foreach($list as $li)
+  <tr>
+    <td>{{$li->ALU_nombre}}</td>
+    <td>{{$li->ALU_apellido_p}} {{$li->ALU_apellido_m}}</td>
+    <td>{{$li->CUAL_estatus}}</td>
+    <td>{{$li->UNI_calificacion}}</td>
+  </tr>
+  @endforeach
+</table>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <table class="table table-hover">
 <tr>
   <th rowspan="2"><center><br />Nombre</center></th>

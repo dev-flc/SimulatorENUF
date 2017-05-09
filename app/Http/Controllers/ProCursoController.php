@@ -105,15 +105,14 @@ class ProCursoController extends Controller
 
 
 
-/*
-    $users = CurAlu::select('*')
+
+    $list = CurAlu::select('*')
       ->where('cur_alus.CUR_id', '=',$id )
       ->join('alumnos','alumnos.ALU_id','=','cur_alus.ALU_id')
       ->join('cursos','cursos.CUR_id','=','cur_alus.CUR_id')
       ->join('unidads','unidads.CUR_id','=','cur_alus.CUR_id')
       ->get();
-    dd($users);
-*/
+
 
 
       $contador=0;
@@ -134,6 +133,7 @@ class ProCursoController extends Controller
 
       return view('Profesor.Curso.lista')
       ->with('lista',$lista)
+      ->with('list',$list)
       ->with('unidad',$unidad)
       ->with('contador',$contador)
       ->with('curso',$curso);
