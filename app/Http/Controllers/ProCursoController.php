@@ -99,16 +99,43 @@ class ProCursoController extends Controller
       ->with('a',$a)
       ->with('unidad',$unidad);
     }
-    
+
     public function detallecurso($id)
     {
-      #PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
-      $unidad=Unidad::select('*')->where('CUR_id','=',$id)
+
+
+
+/*
+    $users = CurAlu::select('*')
+      ->where('cur_alus.CUR_id', '=',$id )
+      ->join('alumnos','alumnos.ALU_id','=','cur_alus.ALU_id')
+      ->join('cursos','cursos.CUR_id','=','cur_alus.CUR_id')
+      ->join('unidads','unidads.CUR_id','=','cur_alus.CUR_id')
       ->get();
+    dd($users);
+*/
+
+
+      $contador=0;
       $curso=Curso::find($id);
-      $alumno=Alumno::all();
+
+      $lista=CurAlu::select('*')->where('CUR_id','=',$id)
+      ->join('alumnos','alumnos.ALU_id','=','cur_alus.ALU_id')
+      ->get();
+
+
+      $unidad=Unidad::select('*')->where('CUR_id','=',$id)
+
+      ->get();
+      foreach($unidad as $co)
+      {
+        $contador++;
+      }
+
       return view('Profesor.Curso.lista')
-      ->with('alumno',$alumno)
+      ->with('lista',$lista)
+      ->with('unidad',$unidad)
+      ->with('contador',$contador)
       ->with('curso',$curso);
     }
 
@@ -120,7 +147,7 @@ class ProCursoController extends Controller
      */
     public function edit($id)
     {
-        
+
     }
 
     /**

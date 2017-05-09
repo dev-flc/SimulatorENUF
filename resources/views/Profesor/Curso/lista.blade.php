@@ -33,7 +33,7 @@
     }
     .apo:focus, .apo:active ,.uni:focus, .uni:active,
     .fec:focus, .fec:active ,.min:focus, .min:active,
-    .nopre:focus, .nopre:active 
+    .nopre:focus, .nopre:active
     {
       outline: none;
       border-bottom: 2px solid rgb(52, 152, 219);
@@ -108,7 +108,7 @@
       <p id="centradop">Examen global</p>
       <h2>
         <span class="label label-default" data-toggle="modal" data-target="#examen_gobal"  data-tooltip="Habilitar | Deshabilitar" style="cursor:pointer">
-          {{ $curso->CUR_estatus_examen}} 
+          {{ $curso->CUR_estatus_examen}}
         </span>
       </h2>
     </center>
@@ -127,22 +127,38 @@
   </div>
 </div>
 <hr>
-<h1>LISTa.BLADE</h1>
-<h1>PORCURSOCONTROLLER</h1>
 <table class="table table-hover">
-  <tr>
-    <th>Nombre</th>
-    <th>Apellidos</th>
-    <th>Unidades</th>
-  </tr>
-  <tr>
-  @foreach($alumno as $alu)
-    <td>{{$alu->ALU_nombre}}</td>
-    <td>{{$alu->ALU_apellido_p}} {{$alu->ALU_apellido_m}}</td>
-    <td>hj</td>
+<tr>
+  <th rowspan="2"><center><br />Nombre</center></th>
+  <th rowspan="2"><center><br />Apellidos</center></th>
+  <th rowspan="2"><center><br />Estatus</center></th>
+  <th colspan="{{$contador}}"><center>Unidades</center></th>
+</tr>
+<tr>
+ @for ($i = 1; $i<=$contador; $i++)
+    <td><center>unidad {{$i}}</center></td>
+  @endfor
+</tr>
+
+@foreach($lista as $lis)
+<tr>
+  <td><center>{{$lis->ALU_nombre}}</center></td>
+  <td><center>{{$lis->ALU_apellido_p}} {{$lis->ALU_apellido_m}}</center></td>
+  <td><center>{{$lis->CUAL_estatus}}</center></td>
+  @foreach($unidad as $uni)
+    <td>
+      @if(!$uni->UNI_calificacion)
+        <center>p</center>
+      @else
+        <center>{{$uni->UNI_calificacion}}
+        </center>
+      @endif
+    </td>
   @endforeach
-  </tr>
+</tr>
+@endforeach
 </table>
+<br>
 </div>
   <br>
   <br>
