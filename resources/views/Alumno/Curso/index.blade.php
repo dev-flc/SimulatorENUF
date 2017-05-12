@@ -21,8 +21,8 @@
 <style>
   .perfildiv
   {
-    background: rgb(244, 246, 246);
-    height: 500px;
+    border: 1px solid rgb(220,220,220);
+    height: auto;
   }
   #imgperfil
   {
@@ -99,7 +99,7 @@
 #profe
 {
   width: 150px;
-  height: 200px;
+  height: 150px;
 }
 .star
 {
@@ -114,10 +114,30 @@
 <div class="row">
   <div class="col-sm-4">
     <br>
-    <div class="container-fluid perfildiv">
+       <div class="container-fluid perfildiv">
       <center><br>
-        <img id="imgperfil" src="/img/profesor.jpg" alt="">
+        <img id="imgperfil" src="/img/{{$foto}}" alt="">
+        <br />
+        <br />
       </center>
+        <label for="">
+            Nombre:
+        </label>
+        <p id="texto-a">
+          {{$alumno->ALU_nombre}} {{$alumno->ALU_apellido_p}} {{$alumno->ALU_apellido_m}}
+        </p>
+        <label for="">Edad:</label>
+        <p id="texto-a">
+          {{$alumno->ALU_edad}}
+        </p>
+        <label for="">Sexo:</label>
+        <p id="texto-a">
+          {{$alumno->ALU_sexo}}
+        </p>
+        <label for="">Matricula:</label>
+        <p id="texto-a">
+          {{$alumno->ALU_metricula}}
+        </p>
     </div>
   </div>
   <div class="col-sm-8 ">
@@ -159,10 +179,10 @@
   <div class="col-sm-4">
   <h2>Profesor</h2>
     <div class="thumbnail">
-      <img src="/img/profesor.jpg" id="profe" alt="...">
+      <img src="/img/{{$pro->foto}}" id="profe" alt="...">
       <div class="caption">
         <center>
-          <h3>Nombre Profesor Ahora</h3>
+          <h3>{{ $pro->PRO_nombre }} {{$pro->PRO_apellido_p}} {{$pro->PRO_apellido_m}}</h3>
           <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
           <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
           <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>

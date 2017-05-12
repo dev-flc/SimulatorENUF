@@ -25,7 +25,7 @@
 <style>
   .perfildiv
   {
-    background: rgb(244, 246, 246);
+    border: 1px solid rgb(220,220,220);
     height: auto;
   }
   #imgperfil

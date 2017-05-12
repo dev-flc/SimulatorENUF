@@ -7,6 +7,7 @@ use SimulatorENUF\Models\Curso;
 use SimulatorENUF\Models\Unidad;
 use SimulatorENUF\Models\CurAlu;
 use SimulatorENUF\Models\Alumno;
+use SimulatorENUF\Models\Profesor;
 use Auth;
 use Laracasts\Flash\Flash;
 
@@ -71,12 +72,17 @@ class AlumnoRegistroCursoController extends Controller
     public function show($id)
     {
       $iduseralumno = Auth::user()->id;
+      $foto = Auth::user()->foto;
       $alumno=Alumno::where('USE_id', $iduseralumno)->first();
       $curso=Curso::find($id);
+      $pro=Profesor::find($curso->PRO_id)->join('users','users.id','=','profesors.USE_id')->first();
+
       $unidad=Unidad::select('*')->where('CUR_id','=',$id)->get();
       return view('Alumno.Curso.index')
       ->with('curso',$curso)
       ->with('alumno',$alumno)
+      ->with('pro',$pro)
+      ->with('foto',$foto)
       ->with('unidad',$unidad);
     }
 
