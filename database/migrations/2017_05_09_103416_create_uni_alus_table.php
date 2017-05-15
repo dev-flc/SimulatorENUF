@@ -15,10 +15,10 @@ class CreateUniAlusTable extends Migration
     {
         Schema::create('uni_alus', function (Blueprint $table) {
             $table->increments('UNAL_id');
-            $table->integer('UNI_id')->unsigned()->nullable();;
-            $table->integer('ALU_id')->unsigned()->nullable();;
-            $table->integer('UNAL_calificacion')->nullable();;
-            $table->integer('UNAL_intentos')->nullable();;
+            $table->integer('UNI_id')->unsigned()->nullable();
+            $table->integer('ALU_id')->unsigned()->nullable();
+            $table->integer('UNAL_calificacion')->nullable();
+            $table->integer('UNAL_intentos')->nullable();
             $table->timestamps();
             $table->foreign('UNI_id')->references('UNI_id')->on('unidads');
             $table->foreign('ALU_id')->references('ALU_id')->on('alumnos');

@@ -12,6 +12,7 @@ use SimulatorENUF\Models\Pregunta;
 use SimulatorENUF\Models\Respuesta;
 use SimulatorENUF\Models\Examen;
 use SimulatorENUF\Models\CurAlu;
+use SimulatorENUF\Models\UniAlu;
 use SimulatorENUF\User;
 
 use DB;
@@ -48,10 +49,10 @@ class AlumnoExamenController extends Controller
      public function finalExamen(Request $request)
     {
 
+
       $iduseralumno = Auth::user()->id;
       $alumno=Alumno::where('USE_id', $iduseralumno)->first();
       $idalumno=$alumno->ALU_id;
-
       $b=4;
       $intent=0;
       $c=1;
@@ -116,13 +117,19 @@ class AlumnoExamenController extends Controller
 
         foreach ($totalintentos as $totalin) {
           $intent++;
-        }
-
-        $unidad=Unidad::find($request->unidadid);;
+        } 
+        $uni_alus=UniAlu::where('UNI_id',$request->unidadid)->where('ALU_id','=',$idalumno)->first();
+        $uni_alus->UNAL_calificacion=$calfinal;
+        $uni_alus->UNAL_intentos=$intent;
+        $uni_alus->save();
+        /*
+        dd($uni_alus);
+        $unidad=Unidad::find($request->unidadid);
         $unidad->UNI_calificacion=$calfinal;
         $unidad->UNI_intento=$intent;
         $unidad->save();
-        if($unidad){
+        */
+        if($uni_alus){
 
           $idcurso=($request->unidadid);
           return view('Alumno.Curso.resultado')
@@ -214,12 +221,19 @@ class AlumnoExamenController extends Controller
      */
     public function show($id)
     {
+
+
       $iduseralumno = Auth::user()->id;
       $user=User::find($iduseralumno);
       $alumno=Alumno::where('USE_id', $iduseralumno)->first();
+      $aluid=$alumno->ALU_id;
       $curso=Curso::find($id);
-      $unidad=Unidad::select('*')->where('CUR_id','=',$id)->get();
+      $unidad=Unidad::select('*')->where('CUR_id','=',$id)
+      ->get();
+      $uni_alus=UniAlu::where('ALU_id','=',$aluid)->get();
       $fecha=date('Y-m-d');
+      #dd($uni_alus);
+
       return view('Alumno.Curso.show')
       ->with('curso',$curso)
       ->with('alumno',$alumno)
@@ -235,8 +249,10 @@ class AlumnoExamenController extends Controller
     }
     public function examenfinal($id)
     {
+
       $iduseralumno = Auth::user()->id;
       $alumno=Alumno::where('USE_id', $iduseralumno)->first();
+
       $unidad=Unidad::find($id);
       $pre=$unidad->UNI_numero_pregunta;
       $i=1;
@@ -246,7 +262,15 @@ class AlumnoExamenController extends Controller
       $div=1;
       $pregunta=Pregunta::inRandomOrder()->select('*')->where('UNI_id','=',$id)->limit($pre)->get();
       $respuesta=Respuesta::inRandomOrder()->get();
-
+      $verific=UniAlu::where('UNI_id',$id)->first();
+      if(!$verific)
+      {
+        $registro=new UniAlu;
+        $registro->UNI_id=$id;
+        $registro->ALU_id=$alumno->ALU_id;
+        $registro->save(); 
+      }
+    
 
 
       return view('Alumno.Curso.final')
