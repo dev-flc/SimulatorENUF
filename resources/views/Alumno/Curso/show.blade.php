@@ -1,3 +1,4 @@
+
 @extends('Main.main')
 
 @section('title', 'Examenes')
@@ -211,36 +212,52 @@
 </tr>
   <tr>
     <td><center><h3>Intentos</h3></center></td>
+    <td><center><h3>Calificación</h3></center></td>
     <td><center><h3>Fecha inicio</h3></center></td>
     <td><center><h3>Fecha final</h3></center></td>
-    <td><center><h3>Calificación</h3></center></td>
   </tr>
   <tr>
+  <!-- aqui -->
+
+@if ($unialu->count())
+  @foreach($unialu as $unii)
     <td>
       <center>
-        @if($uni->UNI_intento=="")
-        0
-        @else
-        {{$uni->UNI_intento}}
+        
+        {{$unii->UNAL_intento}}
+        
+      </center>
+    </td>
+    <td>
+      <center>
+        @if($unii->UNAL_calificacion=="")
+          Pendiente
+        @elseif($unii->UNAL_calificacion>=7)
+           <h2 class="aprobado">{{$uni->UNI_calificacion}}</h2>
+        @elseif($unii->UNAL_calificacion<=6)
+           <h2 class="reprobado">{{$uni->UNI_calificacion}}</h2>
         @endif
       </center>
     </td>
+    @endforeach
+    <!-- aqui fin -->
+@else
+ <td>
+      <center>
+        0
+      </center>
+    </td>
+    <td>
+      <center>
+        Pendiente
+      </center>
+    </td>
+@endif
     <td>
       <center>{{$uni->UNI_fecha_inicio}}</center>
     </td>
     <td>
       <center>{{$uni->UNI_fecha_final}}</center>
-    </td>
-    <td>
-      <center>
-        @if($uni->UNI_calificacion=="")
-          Pendiente
-        @elseif($uni->UNI_calificacion>=7)
-           <h2 class="aprobado">{{$uni->UNI_calificacion}}</h2>
-        @elseif($uni->UNI_calificacion<=6)
-           <h2 class="reprobado">{{$uni->UNI_calificacion}}</h2>
-        @endif
-      </center>
     </td>
   </tr>
 </table>

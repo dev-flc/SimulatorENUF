@@ -48,8 +48,6 @@ class AlumnoExamenController extends Controller
      */
      public function finalExamen(Request $request)
     {
-
-
       $iduseralumno = Auth::user()->id;
       $alumno=Alumno::where('USE_id', $iduseralumno)->first();
       $idalumno=$alumno->ALU_id;
@@ -118,10 +116,13 @@ class AlumnoExamenController extends Controller
         foreach ($totalintentos as $totalin) {
           $intent++;
         } 
+        
         $uni_alus=UniAlu::where('UNI_id',$request->unidadid)->where('ALU_id','=',$idalumno)->first();
+      
         $uni_alus->UNAL_calificacion=$calfinal;
         $uni_alus->UNAL_intentos=$intent;
         $uni_alus->save();
+
         /*
         dd($uni_alus);
         $unidad=Unidad::find($request->unidadid);
@@ -221,8 +222,6 @@ class AlumnoExamenController extends Controller
      */
     public function show($id)
     {
-
-
       $iduseralumno = Auth::user()->id;
       $user=User::find($iduseralumno);
       $alumno=Alumno::where('USE_id', $iduseralumno)->first();
@@ -239,6 +238,7 @@ class AlumnoExamenController extends Controller
       ->with('alumno',$alumno)
       ->with('user',$user)
       ->with('fecha',$fecha)
+      ->with('unialu',$uni_alus)
       ->with('unidad',$unidad);
     }
     public function descargafiles($id)
@@ -252,7 +252,7 @@ class AlumnoExamenController extends Controller
 
       $iduseralumno = Auth::user()->id;
       $alumno=Alumno::where('USE_id', $iduseralumno)->first();
-
+      $idalumno=$alumno->ALU_id;
       $unidad=Unidad::find($id);
       $pre=$unidad->UNI_numero_pregunta;
       $i=1;
@@ -262,7 +262,9 @@ class AlumnoExamenController extends Controller
       $div=1;
       $pregunta=Pregunta::inRandomOrder()->select('*')->where('UNI_id','=',$id)->limit($pre)->get();
       $respuesta=Respuesta::inRandomOrder()->get();
-      $verific=UniAlu::where('UNI_id',$id)->first();
+      #$verific=UniAlu::where('UNI_id',$id)->first();
+      $verific=UniAlu::where('UNI_id',$id)->where('ALU_id','=',$idalumno)->first();
+
       if(!$verific)
       {
         $registro=new UniAlu;
