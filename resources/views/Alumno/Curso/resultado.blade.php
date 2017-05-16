@@ -62,7 +62,7 @@ p
 <div class="tiempo">
   <center>
       <p>
-        retornara en... <div id="tiempo">10</div>
+        retornara en... <div id="tiempo">05</div>
       </p>
   </center>
 </div>
@@ -76,7 +76,7 @@ p
 <script type="text/javascript">
 $(document).ready(function(){
   var tiempo = {
-    segundo:11
+    segundo:5
   };
   var tiempo_corriendo = null;
   tiempo_corriendo = setInterval(function(){

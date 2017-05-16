@@ -63,6 +63,8 @@
                 <th><center>Calificación</center></th>
             </tr>
             @foreach($prueba as $pru)
+            @if($pru->UNI_id==$id)
+
             @if($pru->EXA_calificacion>=7)
             <tr class="success">
                 <td>
@@ -100,6 +102,7 @@
                 </td>
             </tr>
             @endif
+            @endif
             @endforeach
             </table>
         @else
@@ -125,6 +128,7 @@
                 <th><center>Calificación</center></th>
             </tr>
             @foreach($final as $fin)
+            @if($fin->UNI_id==$id)
             @if($fin->EXA_calificacion>=7)
             <tr class="success">
                 <td>
@@ -162,6 +166,8 @@
                 </td>
             </tr>
             @endif
+            @endif
+
             @endforeach
             </table>
         @else

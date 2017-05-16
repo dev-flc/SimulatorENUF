@@ -21,7 +21,8 @@ class Curso extends Model
         'CUR_calificacion',
         'CUR_intento',
         'CUR_estatus_examen',
-        'CUR_tiempo'
+        'CUR_tiempo',
+        'CUR_numero_preguntas'
     ];
     public function unidad()
     {

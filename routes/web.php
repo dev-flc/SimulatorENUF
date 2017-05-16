@@ -61,6 +61,11 @@ Route::get('/detallecurso/{id}',[
     ]);
 
 });
+
+Route::put('updateexamenglobal/{id}',[
+    'uses' => 'ProCursoController@updateexamenglobal',
+    'as' => 'updateexamenglobal'
+    ]);
 //middleware Profesor Fin
 
 //middleware Alumno Inicio
@@ -72,6 +77,11 @@ Route::put('updatefoto/{id}',[
     'as' => 'updatefoto'
     ]);
 
+
+
+
+
+
 Route::get('descargafiles/{id}',[
     'uses' => 'AlumnoExamenController@descargafiles',
     'as' => 'descargafiles'
@@ -81,6 +91,11 @@ Route::resource('principal','AlumnoPrincipalController');
 Route::resource('curos_registro','AlumnoRegistroCursoController');
 Route::resource('cursos_examen','AlumnoExamenController');
 
+/* Examen global */
+Route::get('/globalshow/{id}',[
+    'uses' => 'AlumnoExamenController@globalshow',
+    'as' => 'globalshow'
+    ]);
 /* Examen final */
 Route::get('/examenfinal/{id}',[
     'uses' => 'AlumnoExamenController@examenfinal',
@@ -100,6 +115,10 @@ Route::get('/detalleunidad/{id}',[
   Route::post('finalexamen',[
     'uses' => 'AlumnoExamenController@finalExamen',
     'as' => 'finalexamen'
+    ]);
+  Route::post('globalfinal',[
+    'uses' => 'AlumnoExamenController@globalfinal',
+    'as' => 'globalfinal'
     ]);
 });
 //middleware Alumno Fin

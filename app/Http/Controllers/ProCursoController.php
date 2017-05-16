@@ -63,6 +63,7 @@ class ProCursoController extends Controller
      */
     public function show($id)
     {
+
       $curso=Curso::find($id);
       $aprobado=CurAlu::select('*')
       ->where('CUR_id','=',$curso->CUR_id)
@@ -102,8 +103,6 @@ class ProCursoController extends Controller
 
     public function detallecurso($id)
     {
-
-
 
 
     $list = CurAlu::select('*')
@@ -159,12 +158,24 @@ class ProCursoController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $cur= CurAlu::find($id);
         $cur ->CUAL_estatus=($request->status);
         $cur->save();
         return redirect()->route('curso.show', ($request->curso));
     }
 
+    public function updateexamenglobal(Request $request, $id){
+
+       $cur= Curso::find($id);
+        $cur ->CUR_estatus_examen=($request->status);
+        $cur->CUR_fecha_inicio=($request->fechainicio);
+        $cur->CUR_fecha_final=($request->fechafinal);
+        $cur->CUR_tiempo=($request->tiempo);
+        $cur->CUR_numero_preguntas=($request->numero);
+        $cur->save();
+        return redirect()->route('curso.show', ($id));
+    }
     /**
      * Remove the specified resource from storage.
      *

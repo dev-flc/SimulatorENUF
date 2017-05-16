@@ -211,47 +211,34 @@
   </td>
 </tr>
   <tr>
+
     <td><center><h3>Intentos</h3></center></td>
-    <td><center><h3>Calificación</h3></center></td>
     <td><center><h3>Fecha inicio</h3></center></td>
     <td><center><h3>Fecha final</h3></center></td>
   </tr>
   <tr>
   <!-- aqui -->
-
-@if ($unialu->count())
+  @php
+    $a=0;
+    $b=0
+  @endphp
   @foreach($unialu as $unii)
+  @if($unii->UNI_id==$uni->UNI_id)
     <td>
       <center>
-        
-        {{$unii->UNAL_intento}}
-        
+        {{$unii->UNAL_intentos}}
       </center>
     </td>
-    <td>
-      <center>
-        @if($unii->UNAL_calificacion=="")
-          Pendiente
-        @elseif($unii->UNAL_calificacion>=7)
-           <h2 class="aprobado">{{$uni->UNI_calificacion}}</h2>
-        @elseif($unii->UNAL_calificacion<=6)
-           <h2 class="reprobado">{{$uni->UNI_calificacion}}</h2>
-        @endif
-      </center>
-    </td>
-    @endforeach
-    <!-- aqui fin -->
-@else
- <td>
-      <center>
-        0
-      </center>
-    </td>
-    <td>
-      <center>
-        Pendiente
-      </center>
-    </td>
+        @php
+          $b=$unii->UNAL_intentos;
+        @endphp
+      @break;
+    @endif
+@endforeach
+@if($a==0)
+<td>
+  <center>0</center>
+</td>
 @endif
     <td>
       <center>{{$uni->UNI_fecha_inicio}}</center>
@@ -268,11 +255,15 @@
   <a href="{{ route('examenprueba', $uni->UNI_id) }}" style="text-decoration: none;">
     <span class="label label-success">Examen de prueba</span>
   </a>
-  @if($uni->UNI_intento<3)
+
+  @if($b<3)
     <span class="label label-success" style="cursor:pointer" onclick="Envio({{$uni->UNI_id}});">Examen final</span>
   @else
     <span class="label label-default">Examen final</span>
   @endif
+
+
+
 @else
   <span class="label label-default">Examen de prueba</span>
   <span class="label label-default">Examen final</span>
@@ -313,8 +304,8 @@
   <tr>
     <td>
       <center>
-        @if($curso->CUR_intento)
-          {{ $curso->CUR_intento }}
+        @if($cursoo->CUAL_intentos)
+          {{ $cursoo->CUAL_intentos }}
         @else
           0
         @endif
@@ -338,15 +329,9 @@
         @endif
       </center>
     </td>
-    <td> 
+    <td>
       <center>
-        @if($uni->CUR_calificacion=="")
-          Pendiente
-        @elseif($uni->CUR_calificacion>=7)
-           <h2 class="aprobado">{{$uni->CUR_calificacion}}</h2>
-        @elseif($uni->CUR_calificacion<=6)
-           <h2 class="reprobado">{{$uni->CUR_calificacion}}</h2>
-        @endif
+       {{$cursoo->CUAL_calificacion}}
       </center>
     </td>
   </tr>
@@ -354,10 +339,15 @@
 </div>
 <hr>
 <center>
-@if($uni->CUR_calificacion=="habilitado")
-  <span class="label label-success" style="cursor:pointer" onclick="Global({{$uni->CUR_id}});">
+@if($curso->CUR_estatus_examen=="habilitado")
+  @if($cursoo->CUAL_intentos<3)
+   <span class="label label-success" style="cursor:pointer" onclick="Global({{$curso->CUR_id}});">
     Relaizar examen global
   </span>
+  @else
+     <span class="label label-default">Relaizar examen global</span>
+  @endif
+
 @else
   <span class="label label-default">Relaizar examen global</span>
 @endif
@@ -403,7 +393,7 @@ swal({
 function(isConfirm) {
   if (isConfirm) {
     window.location.href = "{{url('alumno/examenfinal')}}/"+id+"";
-  } 
+  }
   else {
   swal("Cancelado", ":)", "error");
   }
@@ -424,8 +414,8 @@ swal({
 },
 function(isConfirm) {
   if (isConfirm) {
-    window.location.href = "{{url('alumno/examenfinal')}}/"+id+"";
-  } 
+    window.location.href = "{{url('alumno/globalshow')}}/"+id+"";
+  }
   else {
   swal("Cancelado", ":(", "error");
   }

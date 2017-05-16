@@ -33,7 +33,7 @@
     }
     .apo:focus, .apo:active ,.uni:focus, .uni:active,
     .fec:focus, .fec:active ,.min:focus, .min:active,
-    .nopre:focus, .nopre:active 
+    .nopre:focus, .nopre:active
     {
       outline: none;
       border-bottom: 2px solid rgb(52, 152, 219);
@@ -108,7 +108,7 @@
       <p id="centradop">Examen global</p>
       <h2>
         <span class="label label-default" data-toggle="modal" data-target="#examen_gobal"  data-tooltip="Habilitar | Deshabilitar" style="cursor:pointer">
-          {{ $curso->CUR_estatus_examen}} 
+          {{ $curso->CUR_estatus_examen}}
         </span>
       </h2>
     </center>
@@ -365,14 +365,14 @@
          <h3 class="modal-title colordiv" id="myModalLabel">Examen Global</h3>
       </div>
       <div class="modal-body">
-        {!! Form::open(['route'=>'unidad.store','method'=>'POST','files' => true]) !!}
+        {!! Form::open(['route'=>['updateexamenglobal',$curso->CUR_id],'method'=>'PUT']) !!}
         <div class="form-group">
           {!! Form::label('curso','Fecha de inicio') !!}
-          {!! Form::date('nombre',$curso->CUR_fecha_inicio,['class'=>'uni','required'])!!}
+          {!! Form::date('fechainicio',$curso->CUR_fecha_inicio,['class'=>'uni','required'])!!}
         </div>
         <div class="form-group">
           {!! Form::label('curso','Fecha final') !!}
-          {!! Form::date('nombre',$curso->CUR_fecha_inicio,['class'=>'uni','required'])!!}
+          {!! Form::date('fechafinal',$curso->CUR_fecha_final,['class'=>'uni','required'])!!}
         </div>
         <div class="form-group">
             {{ Form::radio('status', 'habilitado', true) }} Habilitado
@@ -380,7 +380,11 @@
         </div>
         <div class="form-group">
           {!! Form::label('curso','Timpo de examen en minutos') !!}
-          {!! Form::number('nombre',$curso->CUR_tiempo,['class'=>'uni','placeholder'=>'ejemplo:   30 minutos','required'])!!}
+          {!! Form::number('tiempo',$curso->CUR_tiempo,['class'=>'uni','placeholder'=>'ejemplo:   30 minutos','required'])!!}
+        </div>
+        <div class="form-group">
+          {!! Form::label('curso','Numero de preguntas') !!}
+          {!! Form::number('numero',$curso->CUR_numero_preguntas,['class'=>'uni','placeholder'=>'ejemplo:   30 preguntas','required'])!!}
         </div>
 
       </div>
@@ -388,7 +392,7 @@
         <button type="button" class="btn-button-c" data-dismiss="modal">Cancelar
         <span class="glyphicon glyphicon-remove"></span>
         </button>
-        {{ Form::button('Agregar <span class="glyphicon glyphicon-ok"></span>',
+        {{ Form::button('Guardar <span class="glyphicon glyphicon-ok"></span>',
           array('class'=>'btn-button-a pull-right', 'type'=>'submit')) }}
         {!! Form::close() !!}
       </div>

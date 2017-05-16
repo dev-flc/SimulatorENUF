@@ -46,6 +46,99 @@ class AlumnoExamenController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function globalfinal(Request $request)
+    {
+      $iduseralumno = Auth::user()->id;
+      $alumno=Alumno::where('USE_id', $iduseralumno)->first();
+      $idalumno=$alumno->ALU_id;
+      $b=4;
+      $intent=0;
+      $c=1;
+      $vv=0;
+      $cal=0;
+      $rescorrecta=0;
+      $cantidadres=(int)($request->cantidad)*4;
+      #echo $cantidadres;
+      $cantidad=(int)($request->cantidad);
+      #echo "cantidad=".$cantidad."<br>";
+      for($i=1;$i<=$cantidad;$i++)
+      {
+        $pre="pre".$i;
+        $pregunta=Respuesta::select('*')->where('PRE_id','=',$request->$pre)->where('TIP_id','=',1)->get();
+        $cantidadcorrectas=count($pregunta); #cantidad de respuestas correctas
+        for ($a=$c; $a<=$cantidadres; $a++)
+        {
+          $res="res".$a;
+          $respuesta=($request->$res);
+          if(isset($respuesta))
+          {
+            $verificar=Respuesta::find($respuesta);
+            if ($verificar->TIP_id==1)
+            {
+              $vv=$vv+1;
+            }
+            else
+            {
+              $vv=$vv-1;
+            }
+          }
+          if($a==$b)
+          {
+            if ($vv==$cantidadcorrectas)
+            {
+              $cal=$cal+1;
+            }
+              $b=$b+4;
+              $c=$a+1;
+              $vv=0;
+              break;
+          }
+        }
+      }
+      $calfinal=round($cal*10/$cantidad);
+      $hora= date("h:i:s a");
+      $fecha=date('Y-m-d');
+      $examen=new Examen;
+      $examen->EXA_nombre=($request->nombre);
+      $examen->EXA_fecha=$fecha;
+      $examen->EXA_hora=$hora;
+      $examen->EXA_calificacion=$calfinal;
+      $examen->EXA_tiempo=$hora;//pendiente tiempo del examen
+      $examen->UNI_id=($request->unidadid);
+      $examen->TIP_id=5;
+      $examen->ALU_id=$idalumno;
+      $examen->save();
+
+      if($examen){
+
+        $totalintentos=Examen::select('*')->where('UNI_id','=',$request->unidadid)->where('TIP_id','=',5)->where('ALU_id','=',$idalumno)->get();
+
+        foreach ($totalintentos as $totalin) {
+          $intent++;
+        }
+
+        $uni_alus=CurAlu::where('CUR_id',$request->unidadid)->where('ALU_id','=',$idalumno)->first();
+        $uni_alus->CUAL_calificacion=$calfinal;
+        $uni_alus->CUAL_intentos=$intent;
+        $uni_alus->save();
+
+        /*
+        dd($uni_alus);
+        $unidad=Unidad::find($request->unidadid);
+        $unidad->UNI_calificacion=$calfinal;
+        $unidad->UNI_intento=$intent;
+        $unidad->save();
+        */
+        if($uni_alus){
+
+          $idcurso=($request->unidadid);
+          return view('Alumno.Curso.resultado')
+          ->with('cal',$calfinal)
+          ->with('id',$idcurso);
+        }
+      }
+    }
+
      public function finalExamen(Request $request)
     {
       $iduseralumno = Auth::user()->id;
@@ -111,14 +204,14 @@ class AlumnoExamenController extends Controller
 
       if($examen){
 
-        $totalintentos=Examen::select('*')->where('UNI_id','=',$request->unidadid)->where('TIP_id','=',4)->get();
+        $totalintentos=Examen::select('*')->where('UNI_id','=',$request->unidadid)->where('TIP_id','=',4)->where('ALU_id','=',$idalumno)->get();
 
         foreach ($totalintentos as $totalin) {
           $intent++;
-        } 
-        
+        }
+
         $uni_alus=UniAlu::where('UNI_id',$request->unidadid)->where('ALU_id','=',$idalumno)->first();
-      
+
         $uni_alus->UNAL_calificacion=$calfinal;
         $uni_alus->UNAL_intentos=$intent;
         $uni_alus->save();
@@ -140,6 +233,8 @@ class AlumnoExamenController extends Controller
         }
       }
     }
+
+
 
     public function store(Request $request)
     {
@@ -222,19 +317,27 @@ class AlumnoExamenController extends Controller
      */
     public function show($id)
     {
+
+
       $iduseralumno = Auth::user()->id;
       $user=User::find($iduseralumno);
       $alumno=Alumno::where('USE_id', $iduseralumno)->first();
       $aluid=$alumno->ALU_id;
       $curso=Curso::find($id);
+      $cursoo=CurAlu::where('CUR_id', $id)->where('ALU_id', $aluid)->first();
+
       $unidad=Unidad::select('*')->where('CUR_id','=',$id)
       ->get();
       $uni_alus=UniAlu::where('ALU_id','=',$aluid)->get();
+
+
+      #dd($uni_alus);
       $fecha=date('Y-m-d');
       #dd($uni_alus);
 
       return view('Alumno.Curso.show')
       ->with('curso',$curso)
+      ->with('cursoo',$cursoo)
       ->with('alumno',$alumno)
       ->with('user',$user)
       ->with('fecha',$fecha)
@@ -247,6 +350,37 @@ class AlumnoExamenController extends Controller
         $path=public_path().'/files/documents/'.$unidad->UNI_material_apoyo;
         return response()->download($path);
     }
+
+    public function globalshow($id)
+    {
+      $iduseralumno = Auth::user()->id;
+      $alumno=Alumno::where('USE_id', $iduseralumno)->first();
+      $idalumno=$alumno->ALU_id;
+      #$unidad=Unidad::find($id);
+      #$pre=$unidad->UNI_numero_pregunta;
+      $unidad=Curso::find($id);
+      $pre=$unidad->CUR_numero_preguntas;
+      $i=1;
+      $p=1;
+      $iddd=1;
+      $num=1;
+      $div=1;
+      $pregunta=Pregunta::inRandomOrder()->select('*')->where('CUR_id','=',$id)->limit($pre)->get();
+      $respuesta=Respuesta::inRandomOrder()->get();
+     # $verific=CurAlu::where('CUR_id',$id)->where('ALU_id','=',$idalumno)->first();
+
+      return view('Alumno.Curso.global')
+      ->with('alumno',$alumno)
+      ->with('pregunta',$pregunta)
+      ->with('i',$i)
+      ->with('p',$p)
+      ->with('div',$div)
+      ->with('iddd',$iddd)
+      ->with('num',$num)
+      ->with('respuesta',$respuesta)
+      ->with('unidad',$unidad);
+    }
+
     public function examenfinal($id)
     {
 
@@ -262,19 +396,14 @@ class AlumnoExamenController extends Controller
       $div=1;
       $pregunta=Pregunta::inRandomOrder()->select('*')->where('UNI_id','=',$id)->limit($pre)->get();
       $respuesta=Respuesta::inRandomOrder()->get();
-      #$verific=UniAlu::where('UNI_id',$id)->first();
       $verific=UniAlu::where('UNI_id',$id)->where('ALU_id','=',$idalumno)->first();
-
       if(!$verific)
       {
         $registro=new UniAlu;
         $registro->UNI_id=$id;
         $registro->ALU_id=$alumno->ALU_id;
-        $registro->save(); 
+        $registro->save();
       }
-    
-
-
       return view('Alumno.Curso.final')
       ->with('alumno',$alumno)
       ->with('pregunta',$pregunta)
@@ -355,10 +484,12 @@ class AlumnoExamenController extends Controller
       $prueba=Examen::where('ALU_id','=',$idalum)->where('TIP_id','=',3)->get();
       $p=1;
       $f=1;
+
       return view('Alumno.Curso.detalleunidad')
       ->with('final',$final)
       ->with('f',$f)
       ->with('p',$p)
+      ->with('id',$id)
       ->with('prueba',$prueba);
     }
 }

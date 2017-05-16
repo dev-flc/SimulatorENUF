@@ -25,10 +25,10 @@ class CreateCursosTable extends Migration
             $table->integer('PRO_id')->unsigned()->nullable();
             $table->date('CUR_fecha_inicio')->nullable();
             $table->date('CUR_fecha_final')->nullable();
-            $table->string('CUR_calificacion')->nullable();
-            $table->string('CUR_intento')->nullable();
             $table->enum('CUR_estatus_examen',['habilitado','deshabilitado'])->default('deshabilitado');
             $table->string('CUR_tiempo')->nullable();
+            $table->integer('CUR_numero_preguntas')->nullable();
+
             $table->timestamps();
             $table->foreign('PRO_id')->references('PRO_id')->on('profesors');
         });
