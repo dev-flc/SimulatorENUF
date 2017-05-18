@@ -98,7 +98,7 @@
       <p id="centradop">Cupos disponibles</p>
       <h2>
         <span class="label label-success">
-          {{ $curso->CUR_cupos}}
+          {{ $cupos}}
         </span>
       </h2>
     </center>
@@ -160,11 +160,14 @@
         </div>
 
         <div class="col-sm-3">
+        @if($cupos<=0)
+        @else
         {{Form::open(['route'=>['curso.update',$pen->CUAL_id],'method'=>'PUT'])}}
           {!! Form::hidden('status','aprobado',['reloady','readonly'])!!}
           {!! Form::hidden('curso',$pen->CUR_id,['reloady','readonly'])!!}
           {{ Form::button('Aprobar <span class="glyphicon glyphicon-ok"></span>', array('class'=>'btn-aprobar', 'type'=>'submit')) }}
         {!! Form::close() !!}
+        @endif
         </div>
       </div>
       @endforeach
@@ -212,11 +215,14 @@
          <center> <p id="textcenter">{{ $dene->ALU_nombre }} {{ $dene->ALU_apellido_p }} {{ $dene->ALU_apellido_m }}</p></center>
         </div>
         <div class="col-sm-4">
+        @if($cupos<=0)
+        @else
           {{Form::open(['route'=>['curso.update',$dene->CUAL_id],'method'=>'PUT'])}}
           {!! Form::hidden('status','aprobado',['reloady','readonly'])!!}
           {!! Form::hidden('curso',$dene->CUR_id,['reloady','readonly'])!!}
           {{ Form::button('Aprobar <span class="glyphicon glyphicon-ok"></span>', array('class'=>'btn-aprobar', 'type'=>'submit')) }}
         {!! Form::close() !!}
+        @endif
         </div>
       </div>
       @endforeach
