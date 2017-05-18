@@ -7,6 +7,7 @@ use Auth;
 use SimulatorENUF\Models\Curso;
 use SimulatorENUF\Models\Unidad;
 use SimulatorENUF\Models\CurAlu;
+use SimulatorENUF\Models\UniAlu;
 use SimulatorENUF\Models\Alumno;
 use SimulatorENUF\Models\Profesor;
 use DB;
@@ -65,12 +66,21 @@ class ProCursoController extends Controller
     {
 
       $curso=Curso::find($id);
+      $numero=$curso->CUR_cupos;
+      $b=0;
+      $cupos=0;
       $aprobado=CurAlu::select('*')
       ->where('CUR_id','=',$curso->CUR_id)
       ->where('CUAL_estatus','=','aprobado')
       ->join('alumnos','alumnos.ALU_id','=','cur_alus.ALU_id')
       ->join('users','users.id','=','alumnos.USE_id')
       ->get();
+
+      foreach($aprobado as $app)
+      {
+        $b++;
+      }
+      $cupos=$numero-$b;
       $pendiente=CurAlu::select('*')
       ->where('CUR_id','=',$curso->CUR_id)
       ->where('CUAL_estatus','=','pendiente')
@@ -98,43 +108,31 @@ class ProCursoController extends Controller
       ->with('aprobado',$aprobado)
       ->with('verificar',$verificar)
       ->with('a',$a)
+      ->with('cupos',$cupos)
       ->with('unidad',$unidad);
     }
 
     public function detallecurso($id)
     {
 
-
     $list = CurAlu::select('*')
       ->where('cur_alus.CUR_id', '=',$id )
       ->join('alumnos','alumnos.ALU_id','=','cur_alus.ALU_id')
-      ->join('cursos','cursos.CUR_id','=','cur_alus.CUR_id')
-      ->join('unidads','unidads.CUR_id','=','cur_alus.CUR_id')
+      #->join('cursos','cursos.CUR_id','=','cur_alus.CUR_id')
       ->get();
 
+      $unidad=Unidad::where('CUR_id','=',$id)
+      #->join('uni_alus','uni_alus.UNI_id','unidads.UNI_id')
+      ->get();
 
+      $alusuni=UniAlu::all();
 
-      $contador=0;
       $curso=Curso::find($id);
 
-      $lista=CurAlu::select('*')->where('CUR_id','=',$id)
-      ->join('alumnos','alumnos.ALU_id','=','cur_alus.ALU_id')
-      ->get();
-
-
-      $unidad=Unidad::select('*')->where('CUR_id','=',$id)
-
-      ->get();
-      foreach($unidad as $co)
-      {
-        $contador++;
-      }
-
       return view('Profesor.Curso.lista')
-      ->with('lista',$lista)
       ->with('list',$list)
+      ->with('alusuni',$alusuni)
       ->with('unidad',$unidad)
-      ->with('contador',$contador)
       ->with('curso',$curso);
     }
 

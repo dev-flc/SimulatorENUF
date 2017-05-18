@@ -82,112 +82,53 @@
 <div class="container-fluid">
 <div class="row">
   <div class="col-sm-12"><center><h1>{{$curso->CUR_nombre}}</h1></center><br></div>
-
-  <div class="col-sm-3">
-    <center>
-      <p id="centradop">Cupos del curso</p>
-      <h2>
-        <span class="label label-primary">
-          {{ $curso->CUR_cupos}}
-        </span>
-      </h2>
-    </center>
-  </div>
-  <div class="col-sm-3">
-    <center>
-      <p id="centradop">Cupos disponibles</p>
-      <h2>
-        <span class="label label-success">
-          {{ $curso->CUR_cupos}}
-        </span>
-      </h2>
-    </center>
-  </div>
-  <div class="col-sm-3">
-    <center>
-      <p id="centradop">Examen global</p>
-      <h2>
-        <span class="label label-default" data-toggle="modal" data-target="#examen_gobal"  data-tooltip="Habilitar | Deshabilitar" style="cursor:pointer">
-          {{ $curso->CUR_estatus_examen}}
-        </span>
-      </h2>
-    </center>
-  </div>
-  <div class="col-sm-3">
-    <center>
-      <p id="centradop">Lista de alumnos</p>
-      <a href="{{ route('detallecurso', $curso->CUR_id) }}" style="text-decoration: none;">
-      <h2>
-        <span class="label label-success">
-          Detalle
-        </span>
-      </h2>
-      </a>
-    </center>
-  </div>
+  <center><h2>Lista de alumnos </h2></center>
 </div>
 <hr>
 
-<table class="table table-hover" border="1">
+<table class="table table-hover">
   <tr>
-    <th>Nombre</th>
-    <th>Apellidos</th>
-    <th>Estatus</th>
-    <th>Unidad</th>
+    <th rowspan="2">Nombre</th>
+    <th rowspan="2">Apellidos</th>
+    <th colspan="2"><center>Unidades</center></th>
+    <th colspan="2">Examen Global</th>
+
   </tr>
+
+<tr>
+
+   @foreach($unidad as $uni)
+    <td>{{$uni->UNI_nombre}}</td>
+   @endforeach
+  <td>Intentos</td>
+  <td>Calificacion</td>
+</tr>
   @foreach($list as $li)
-  <tr>
+ <tr>
     <td>{{$li->ALU_nombre}}</td>
     <td>{{$li->ALU_apellido_p}} {{$li->ALU_apellido_m}}</td>
-    <td>{{$li->CUAL_estatus}}</td>
-    <td>{{$li->UNI_calificacion}}</td>
-  </tr>
-  @endforeach
-</table>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<table class="table table-hover">
-<tr>
-  <th rowspan="2"><center><br />Nombre</center></th>
-  <th rowspan="2"><center><br />Apellidos</center></th>
-  <th rowspan="2"><center><br />Estatus</center></th>
-  <th colspan="{{$contador}}"><center>Unidades</center></th>
-</tr>
-<tr>
- @for ($i = 1; $i<=$contador; $i++)
-    <td><center>unidad {{$i}}</center></td>
-  @endfor
-</tr>
 
-@foreach($lista as $lis)
-<tr>
-  <td><center>{{$lis->ALU_nombre}}</center></td>
-  <td><center>{{$lis->ALU_apellido_p}} {{$lis->ALU_apellido_m}}</center></td>
-  <td><center>{{$lis->CUAL_estatus}}</center></td>
-  @foreach($unidad as $uni)
-    <td>
-      @if(!$uni->UNI_calificacion)
-        <center>p</center>
-      @else
-        <center>{{$uni->UNI_calificacion}}
-        </center>
-      @endif
-    </td>
+
+
+    @foreach($alusuni as $unii)
+        @if($unii->ALU_id==$li->ALU_id)
+         <td> {{$unii->UNAL_calificacion}}</td>
+        @else
+        <td>0</td>
+        @endif
+      @endforeach
+
+    <td>{{$li->CUAL_intentos}}</td>
+    <td>{{$li->CUAL_calificacion}}</td>
+
+  </tr>
+
   @endforeach
-</tr>
-@endforeach
 </table>
+<br>
+<br>
 <br>
 </div>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
 
 <div class="contenedor">
 <button class="botonF1" data-toggle="modal" data-target="#unidad"  data-tooltip="Nueva unidad">
@@ -218,65 +159,12 @@
 
 <!-- Inicio Section Modal -->
 
-@section('modal')
-<!-- Modal examen global -->
-<div class="modal" id="examen_gobal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-         <h3 class="modal-title colordiv" id="myModalLabel">Examen Global</h3>
-      </div>
-      <div class="modal-body">
-        {!! Form::open(['route'=>'unidad.store','method'=>'POST','files' => true]) !!}
-        <div class="form-group">
-          {!! Form::label('curso','Fecha de inicio') !!}
-          {!! Form::date('nombre',$curso->CUR_fecha_inicio,['class'=>'uni','required'])!!}
-        </div>
-        <div class="form-group">
-          {!! Form::label('curso','Fecha final') !!}
-          {!! Form::date('nombre',$curso->CUR_fecha_inicio,['class'=>'uni','required'])!!}
-        </div>
-        <div class="form-group">
-            {{ Form::radio('status', 'habilitado', true) }} Habilitado
-            {{ Form::radio('status', 'deshabilitado') }} Deshabilitado
-        </div>
-        <div class="form-group">
-          {!! Form::label('curso','Timpo de examen en minutos') !!}
-          {!! Form::number('nombre',$curso->CUR_tiempo,['class'=>'uni','placeholder'=>'ejemplo:   30 minutos','required'])!!}
-        </div>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn-button-c" data-dismiss="modal">Cancelar
-        <span class="glyphicon glyphicon-remove"></span>
-        </button>
-        {{ Form::button('Agregar <span class="glyphicon glyphicon-ok"></span>',
-          array('class'=>'btn-button-a pull-right', 'type'=>'submit')) }}
-        {!! Form::close() !!}
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal Final Examen Global -->
-
-@endsection
 <!-- Fin Section Modal -->
 
 <!-- Inicio Section Script -->
 @section('script')
-<script type="text/javascript">
-  $('.botonF1').click(function()
-  {
-  $('.btn-m').addClass('animacionVer');
-  })
-  $('.contenedor').mouseleave(function()
-  {
-  $('.btn-m').removeClass('animacionVer');
-  })
-  </script>
+
 
 <!-- Fin Section Script -->
 

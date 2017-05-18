@@ -258,7 +258,7 @@
 
 .titulo
 {
-  position: relative; 
+  position: relative;
   top: -90%;
   text-align: center;
   color: rgb(255,255,255);
@@ -275,7 +275,7 @@
       font-size: 40px;
     }
     .noom, .aap, .aam, .ussu
-    { 
+    {
       width: 100%;
       outline: none;
       padding: 15px;
@@ -378,26 +378,31 @@
                     <a class="btn btn-primary btn-sm btn-profe" rel="publisher"
                        href="{{ route('profesores.edit', $pro->PRO_id) }}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                     </a>
+                    <!--
                     <a class="btn btn-danger btn-sm btn-profe" rel="publisher"
                        href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </a>
                     <a class="btn btn-success btn-twitter btn-sm btn-profe" href="#"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                     </a>
+                    -->
                 </div>
             </div>
         </div>
   @endforeach
   </div>
-</div>
+<br>
+<br>
+<br>
+<br>
+<br>
 
- <br>
-  <br>
-  <br>
 <div class="contenedor">
 <button class="botonF1 tooltip-right1" data-toggle="modal" data-target="#pregunta" data-tooltip="Nuevo Profesor">
   <span>+</span>
 </button>
 </div>
+</div>
+
 @endsection
 
 
@@ -418,7 +423,7 @@
         <h3 class="modal-title colordiv" id="myModalLabel">Nuevo Profesor</h3>
       </div>
       <div class="modal-body">
-        
+
         {!! Form::open(['route'=>'profesores.store','method'=>'POST']) !!}
     <div class="form-group">
         {!! Form::label('nombre','Nombre') !!}
@@ -450,9 +455,9 @@
           <span class="glyphicon glyphicon-remove"></span>
         </button>
     {{ Form::button('Generar usuario <span class="glyphicon glyphicon-ok"></span>', array('class'=>'btn-button-s pull-right','id'=>'generar', 'type'=>'button')) }}
-    
+
     {{ Form::button('Guardar usuario <span class="glyphicon glyphicon-ok"></span>', array('class'=>'btn-button-a pull-right','id'=>'registrar','style'=>'display:none', 'type'=>'submit')) }}
-  
+
     {!! Form::close() !!}
       </div>
     </div>
