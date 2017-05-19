@@ -242,7 +242,7 @@
 
         <div class="col-sm-6">
           <p>
-            {{ $pre->PRE_nombre}}
+           {{$count++}} {{ $pre->PRE_nombre}}
           </p>
         </div>
       <div class="col-sm-5">
@@ -274,7 +274,8 @@
         <div class="col-sm-1">
         <center>
           <a href=""><button class="btn-eliminar btn-pre"><span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span></button></a>
-          <a href=""><button class="btn-editar btn-pre"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></a>
+
+          <a href="{{ route('unidad.edit', $pre->PRE_id) }}"><button class="btn-editar btn-pre"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></a>
           </center>
         </div>
 

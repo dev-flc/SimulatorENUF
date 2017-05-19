@@ -19,8 +19,8 @@ class CreatePreguntasTable extends Migration
             $table->integer('PRE_respuestas')->nullable();
             $table->integer('UNI_id')->unsigned()->nullable();
             $table->integer('CUR_id')->unsigned()->nullable();
+            $table->string('PRE_file')->nullable();
             $table->timestamps();
-
             #llave foranea examen
             $table->foreign('CUR_id')->references('CUR_id')->on('cursos');
             $table->foreign('UNI_id')->references('UNI_id')->on('unidads');

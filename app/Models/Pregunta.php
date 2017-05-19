@@ -12,7 +12,8 @@ class Pregunta extends Model
         'PRE_nombre',
         'PRE_respuestas',
         'UNI_id',
-        'CUR_id'
+        'CUR_id',
+        'PRE_file',
     ];
 
 

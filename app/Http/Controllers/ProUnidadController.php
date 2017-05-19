@@ -74,11 +74,12 @@ class ProUnidadController extends Controller
       $unidad=Unidad::find($id);
       $idcurso=$unidad->CUR_id;
       $curso=Curso::find($idcurso);
-
+      $count=1;
       $pregunta=Pregunta::select('*')->where('UNI_id','=',$id)->get();
       $respuesta=Respuesta::all();
       return view("Profesor.Unidad.show")
       ->with('curso',$curso)
+      ->with('count',$count)
       ->with('pregunta',$pregunta)
       ->with('respuesta',$respuesta)
       ->with('unidad',$unidad);
@@ -92,7 +93,17 @@ class ProUnidadController extends Controller
      */
     public function edit($id)
     {
-        //
+      $pregunta=Pregunta::find($id);
+      $respuesta=Respuesta::where('PRE_id','=',$id)->get();
+      $con=1;
+      $con2=1;
+      $con3=1;
+      return view("Profesor.Unidad.editpregunta")
+      ->with('pre',$pregunta)
+      ->with('con',$con)
+      ->with('con2',$con2)
+      ->with('con3',$con3)
+      ->with('res',$respuesta);
     }
 
     /**
@@ -104,7 +115,39 @@ class ProUnidadController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pregunta=Pregunta::find($id);
+        if($request->file('file'))
+        {
+            $file=$request->file('file');
+            $nombrefile = 'foto_'.time().'.'.$file->getClientOriginalExtension();
+            $path=public_path().'/files/documents';
+            $file->move($path, $nombrefile);
+        }
+        else
+        {
+            $nombrefile=null;
+        }
+        $pre=Pregunta::find($id);
+        $pre->PRE_nombre=($request->Pregunta);
+        $pre->PRE_file=$nombrefile;
+        $pre->save();
+
+        if($pre)
+        {
+         # dd("yes");
+        }
+        else{
+          #dd("not");
+        }
+        return redirect()->route('unidad.show', ($pregunta->UNI_id));
+
+        /*
+        for($a=1;$a<5;$a++)
+        {
+          $res="res".$a."<br>";
+          $tip="tip".$a."<br>";
+        }
+        */
     }
 
     /**
