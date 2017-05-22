@@ -40,8 +40,9 @@
     <center>
     <div class="container-fluid panelimg">
       <br>
-      <img src="/img/diploma.png" alt="" id="divimg">
-      <h2>Unidades Aprobadas</h2>
+      <img src="/img/alumno.png" alt="" id="divimg">
+      <p><span class="badge">42</span></p>
+      <h2>Alumnos</h2>
     </div>
     </center>
     </div>
@@ -50,23 +51,26 @@
     <center>
     <div class="container-fluid panelimg">
       <br>
-      <img src="/img/reloj.png" alt="" id="divimg">
-      <h2>Fechas Y Horas</h2>
+      <img src="/img/curso.png" alt="" id="divimg">
+        <p><span class="badge">42</span></p>
+      <h2>Examenes</h2>
     </div>
     </center>
     </div>
-
     <div class="col-sm-4 subfinal">
     <center>
     <div class="container-fluid panelimg">
       <br>
-      <img src="/img/024-colaboracion.png" alt="" id="divimg">
-      <h2>Examenes Aleatorios</h2>
+      <img src="/img/profesor.png" alt="" id="divimg">
+      <p><span class="badge">42</span></p>
+      <h2>Profesores</h2>
     </div>
     </center>
     </div>
+
   </div><br><br>
 </div>
+
 
 <footer class="footer">
       <div class="container-fluid">

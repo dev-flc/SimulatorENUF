@@ -1,0 +1,139 @@
+    #pri1
+    {
+      height: 350px;
+      width: 100%;
+    }
+
+   .perfildiv
+  {
+    border: 1px solid rgb(220,220,220);
+    height: auto;
+  }
+  #imgperfil
+  {
+    width: 175px;
+    height: 250px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  }
+  .btn-registro
+  {
+    width: 50%;
+    height: 50px;
+    background: rgb(255,255,255);
+    border:none;
+    border: 1px solid rgb(220,220,220);
+    font-size: 20px;
+    color: #666;
+    transition: .7s;
+  }
+  .btn-registro:hover
+  {
+    border: 1px solid rgb(52, 152, 219);
+    background: rgb(52, 152, 219);
+    color: rgb(255,255,255);
+  }
+
+.clave
+{
+  width: 100%;
+  outline: none;
+  padding: 15px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid rgb(220,220,220);
+  font-size: 20px;
+  text-align: center;
+}
+.clave:focus, .clave:active
+{
+  outline: none;
+  border-bottom: 2px solid rgb(52, 152, 219);
+  color: rgb(52, 152, 219);
+}
+.curse
+{
+  border: 1px solid rgb(220,220,220);
+  padding: 10px;
+}
+.unidad
+{
+  border: 1px solid rgb(220,220,220);
+  width: 100%;
+  height: auto;
+  padding: 15px;
+  margin: 5px;
+  font-size: 17px;
+  transition: .7s;
+}
+.unidad:hover
+{
+  border: 1px solid rgb(52, 152, 219);
+  color: rgb(52, 152, 219);
+  border-radius: 5px;
+}
+.starr
+{
+  color: rgb(133, 193, 233);
+  font-size: 20px;
+}
+#profe
+{
+  width: 150px;
+  height: 200px;
+}
+.star
+{
+  color: rgb(245, 176, 65);
+}
+#uninom{
+  width: 100%;
+}
+.separar
+{
+  width: 150%;
+}
+.final
+{
+  width: 95%;
+  margin: 5px;
+  border: none;
+  background: none;
+  border: 1px solid rgb(220,220,220);
+  border-radius: 20px;
+  color: rgb(128, 139, 150);
+}
+.prueba
+{
+  width: 95%;
+  margin: 5px;
+  border: none;
+  background: none;
+  border: 1px solid rgb(220,220,220);
+  border-radius: 20px;
+  color: rgb(128, 139, 150);
+}
+.final:hover{
+  border: 1px solid rgb(46, 204, 113);
+  color: rgb(46, 204, 113);
+}
+.prueba:hover{
+  border: 1px solid rgb(142, 68, 173);
+  color: rgb(142, 68, 173);
+}
+.ancho
+{
+  width: 65%;
+}
+.aprobado
+{
+  color: rgb(46, 204, 113);
+}
+.reprobado
+{
+  color: rgb(231, 76, 60);
+}
+#tamanofoto
+{
+  width: 100px;
+  height: 100px;
+}

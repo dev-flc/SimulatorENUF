@@ -6,39 +6,9 @@
   <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.min.css') }}">
   <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('css/alumnocursofinal.css') }}">
 </head>
 <body>
-<style type="text/css">
-  .divcal
-  {
-    border:1px solid rgb(46, 204, 113);
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-  }
-  img
-  {
-    width: 100px;
-    height: 100px;
-  }
-  h1,h2,h3,p,#tiempo
-{
-  font-family: 'Poiret One', cursive;
-}
-h2
-{
-  font-size: 40px;
-  color: rgb(46, 204, 113);
-}
-p
-{
-  font-size: 20px;
-}
-#tiempo
-{
-  font-size: 20px;
-}
-</style>
 <br>
 <br>
 <div class="texto">
