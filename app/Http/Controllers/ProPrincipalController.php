@@ -8,6 +8,8 @@ use SimulatorENUF\Models\Direccion;
 use SimulatorENUF\User;
 use Auth;
 use Hash;
+use SimulatorENUF\Models\Curso;
+
 class ProPrincipalController extends Controller
 {
     /**
@@ -19,6 +21,7 @@ class ProPrincipalController extends Controller
     {
       $name = Auth::user()->name;
       $id = Auth::user()->id;
+      $foto = Auth::user()->foto;
       if(Hash::check($name, Auth::user()->password))
        {
         $verificar = true;
@@ -27,8 +30,14 @@ class ProPrincipalController extends Controller
        {
         $verificar= false;
        }
+
+       $pro=Profesor::where('USE_id',$id)->first();
+        $curso = Curso::select('*')->where('PRO_id','=',$pro->PRO_id)->get();
         return view('Profesor.Principal.index')
         ->with('id',$id)
+        ->with('foto',$foto)
+        ->with('curso',$curso)
+        ->with('pro',$pro)
         ->with('verifica',$verificar);
     }
 

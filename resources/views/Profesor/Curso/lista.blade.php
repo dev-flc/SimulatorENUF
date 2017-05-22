@@ -18,44 +18,41 @@
   <center><h2>Lista de alumnos </h2></center>
 </div>
 <hr>
-
 <table class="table table-hover">
   <tr>
-    <th rowspan="2">Nombre</th>
-    <th rowspan="2">Apellidos</th>
-    <th colspan="2"><center>Unidades</center></th>
-    <th colspan="2">Examen Global</th>
+    <th rowspan="2"><center>Nombre</center></th>
+    <th rowspan="2"><center>Apellidos</center></th>
+    <th colspan="{{$a}}"><center>Unidades</center></th>
+    <th colspan="2"><center>Examen Global</center></th>
 
   </tr>
-
 <tr>
-
-   @foreach($unidad as $uni)
-    <td>{{$uni->UNI_nombre}}</td>
-   @endforeach
-  <td>Intentos</td>
-  <td>Calificacion</td>
+@foreach($unidad as $uni)
+    <td><center>unidad {{$aa++}}</center></td>
+@endforeach
+  <td><center>Calificacion</center></td>
 </tr>
   @foreach($list as $li)
  <tr>
-    <td>{{$li->ALU_nombre}}</td>
-    <td>{{$li->ALU_apellido_p}} {{$li->ALU_apellido_m}}</td>
-
-
-
+    <td><center>{{$li->ALU_nombre}}</center></td>
+    <td><center>{{$li->ALU_apellido_p}} {{$li->ALU_apellido_m}}</center></td>
+@foreach($unidad as $u)
     @foreach($alusuni as $unii)
-        @if($unii->ALU_id==$li->ALU_id)
-         <td> {{$unii->UNAL_calificacion}}</td>
-        @else
-        <td>0</td>
-        @endif
-      @endforeach
+    @if($unii->UNI_id==$u->UNI_id)
+      @if($li->ALU_id==$unii->ALU_id)
+        <td><center>{{$unii->UNAL_calificacion}}</center></td>
+      @endif
+    @endif
+    @endforeach
+@endforeach
+    <td>
+      @if($li->CUAL_calificacion== "")
 
-    <td>{{$li->CUAL_intentos}}</td>
-    <td>{{$li->CUAL_calificacion}}</td>
-
+      @else
+        <center>{{$li->CUAL_calificacion}}</center>
+      @endif
+    </td>
   </tr>
-
   @endforeach
 </table>
 <br>
@@ -64,7 +61,7 @@
 </div>
 
 <div class="contenedor">
-<button class="botonF1" data-toggle="modal" data-target="#unidad"  data-tooltip="Nueva unidad">
+<button class="botonF1" data-toggle="modal" data-target="#descargar"  data-tooltip="Descargar PDF">
   <span>+</span>
 </button>
 

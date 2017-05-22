@@ -1,3 +1,5 @@
+/public/img/*
+/public/files/*
 /node_modules
 /public/storage
 /storage/*.key

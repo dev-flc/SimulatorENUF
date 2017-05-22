@@ -13,14 +13,68 @@
 
 <!-- Contenido -->
 @section('content')
-<h2>Principal profesor</h2>
-<h2>Principal profesor</h2>
-<h2>Principal profesor</h2>
-<h2>Principal profesor</h2>
-<h2>Principal profesor</h2>
-<h2>Principal profesor</h2>
-<h2>Principal profesor</h2>
-
+<div class="row">
+  <div class="col-sm-4">
+    <div class="container-fluid">
+    <br>
+    <center>
+      <img src="/img/{{$foto}}" alt="" style="width: 150px; height: 150px;">
+      <h2>{{$pro->PRO_nombre}}</h2>
+      <p style="text-align: center;">{{$pro->PRO_apellido_p}} {{$pro->PRO_apellido_m}}</p>
+      <p style="text-align: center;">Profesor</p>
+    </center>
+    </div>
+  </div>
+  <div class="col-sm-8">
+  <center>
+    <h1>Cursos</h1>
+  </center>
+  <div class="row">
+ @foreach($curso as $cur)
+  <div class="col-sm-6">
+      <div class="container-fluid panelcursos">
+          <div class="row">
+            <div class="col-sm-4"><br>
+            <img class="img-circle" src="/img/{{ $cur->CUR_foto}}" alt="" width="100" height="100">
+            </div>
+            <div class="col-sm-8"><br>
+              <label for="curso">CURSO</label>
+              <h4>{{ $cur->CUR_nombre}}</h4>
+              <label for="curso">CUPOS</label>
+              <p>
+                {{ $cur->CUR_cupos}}
+              </p>
+            </div>
+          </div>
+          <hr>
+          <center>
+          <style type="text/css">
+            .btn-primary-btn
+            {
+              border: 1px solid rgb(133, 193, 233);
+              transition: .7s;
+              width: 100%;
+            }
+            .btn-primary-btn:hover
+            {
+              background: rgb(52, 152, 219);
+              color: rgb(255,255,255);
+            }
+          </style>
+          <a class="btn btn-primary-btn" href="{{ route('curso.show', $cur->CUR_id) }}">
+            Ver <span class="glyphicon glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+          </a>
+          </center>
+          <br>
+          <br>
+      </div>
+    </div>
+@endforeach
+</div>
+</div>
+</div>
+<br>
+<br>
 @endsection
 
 <!-- subcontenido -->

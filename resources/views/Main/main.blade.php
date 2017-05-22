@@ -40,8 +40,8 @@
     <center>
     <div class="container-fluid panelimg">
       <br>
-      <img src="/img/diploma.png" alt="" id="divimg">
-      <h2>Unidades Aprobadas</h2>
+      <img src="/img/alumno.png" alt="" id="divimg">
+      <h2>Alumnos</h2>
     </div>
     </center>
     </div>
@@ -50,8 +50,8 @@
     <center>
     <div class="container-fluid panelimg">
       <br>
-      <img src="/img/reloj.png" alt="" id="divimg">
-      <h2>Fechas Y Horas</h2>
+      <img src="/img/curso.png" alt="" id="divimg">
+      <h2>Cursos</h2>
     </div>
     </center>
     </div>
@@ -60,8 +60,8 @@
     <center>
     <div class="container-fluid panelimg">
       <br>
-      <img src="/img/024-colaboracion.png" alt="" id="divimg">
-      <h2>Examenes Aleatorios</h2>
+      <img src="/img/profesor.png" alt="" id="divimg">
+      <h2>Profesores</h2>
     </div>
     </center>
     </div>

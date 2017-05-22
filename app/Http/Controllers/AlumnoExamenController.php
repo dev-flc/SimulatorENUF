@@ -99,7 +99,7 @@ class AlumnoExamenController extends Controller
       $hora= date("h:i:s a");
       $fecha=date('Y-m-d');
       $examen=new Examen;
-      $examen->EXA_nombre=($request->nombre);
+      $examen->EXA_nombre="Examen global";
       $examen->EXA_fecha=$fecha;
       $examen->EXA_hora=$hora;
       $examen->EXA_calificacion=$calfinal;
@@ -192,7 +192,7 @@ class AlumnoExamenController extends Controller
       $hora= date("h:i:s a");
       $fecha=date('Y-m-d');
       $examen=new Examen;
-      $examen->EXA_nombre=($request->nombre);
+      $examen->EXA_nombre="Examen Final";
       $examen->EXA_fecha=$fecha;
       $examen->EXA_hora=$hora;
       $examen->EXA_calificacion=$calfinal;
@@ -289,7 +289,7 @@ class AlumnoExamenController extends Controller
       $hora= date('h:i:s a');
       $fecha=date('Y-m-d');
       $examen=new Examen;
-      $examen->EXA_nombre=($request->nombre);
+      $examen->EXA_nombre="Examen prueba";
       $examen->EXA_fecha=$fecha;
       $examen->EXA_hora=$hora;
       $examen->EXA_calificacion=$cal;

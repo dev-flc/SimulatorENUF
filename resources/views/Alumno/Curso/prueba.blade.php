@@ -41,11 +41,12 @@
   {!! Form::open(['route'=>'cursos_examen.store','method'=>'POST','id'=>'examenfinal']) !!}
 @foreach($pregunta as $pre)
     <div id="div{{$div++}}" class="container-fluid cuadro" >
+
     <br>
       <div class="row">
-
         <div class="col-sm-6">
-          <label for="">{{$num++}}.- Pregunta:</label>
+
+             <label for="">{{$num++}}.- Pregunta:</label>
           <p>
             {{ $pre->PRE_nombre}}
             <input type="hidden" name="pre{{$p++}}" value="{{ $pre->PRE_id}}">
@@ -67,6 +68,14 @@
             @endif
           </tr>
           @endforeach
+            <tr>
+              <td colspan="2">
+                <center>
+                <span class="label label-success" data-toggle="modal" data-target="#{{$pre->PRE_id}}" style="cursor: pointer;">
+                Ayuda <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></span>
+                </center>
+              </td>
+            </tr>
           </table>
           <br>
         </div>
@@ -74,6 +83,10 @@
 
       </div>
     </div>
+
+
+
+
 
     @endforeach
     <input type="hidden" name="cantidad" id="cantidad" value="{{$p-1}}">
@@ -106,6 +119,33 @@
 
 <!-- Modals-->
 @section('modal')
+@foreach($pregunta as $pregunt)
+  <div class="modal fade" id="{{$pregunt->PRE_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">{{$pregunt->PRE_nombre}}</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-flui">
+          <style type="text/css">
+            #fotoayuda
+            {
+              width: 100%;
+              height: auto;
+            }
+          </style>
+          <img src="/files/documents/{{$pregunt->PRE_file}}" id="fotoayuda">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+@endforeach
 
 @endsection
 

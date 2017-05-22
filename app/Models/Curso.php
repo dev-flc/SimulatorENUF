@@ -34,7 +34,7 @@ class Curso extends Model
     }
     public function curalu()
     {
-        return $this->belongsTo('SimulatorENUF\Models\CurAlu');
+        return $this->belongsTo(CurAlu::class);
     }
     public function pregunta()
     {

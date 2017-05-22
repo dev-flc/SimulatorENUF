@@ -18,12 +18,12 @@ class CurAlu extends Model
     #uno a muchos cursos
     public function curso()
     {
-        return $this->hasMany('SimulatorENUF\Models\Curso','CUR_id');
+        return $this->hasMany(Curso::class);
     }
 
     #uno a muchos alumnos
     public function alumnos()
     {
-        return $this->hasMany('SimulatorENUF\Models\Alumno','ALU_id');
+        return $this->hasMany(Alumno::class);
     }
 }

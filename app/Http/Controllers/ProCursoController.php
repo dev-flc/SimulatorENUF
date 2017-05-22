@@ -114,23 +114,31 @@ class ProCursoController extends Controller
 
     public function detallecurso($id)
     {
-
-    $list = CurAlu::select('*')
+        $list = CurAlu::select('*')
       ->where('cur_alus.CUR_id', '=',$id )
       ->join('alumnos','alumnos.ALU_id','=','cur_alus.ALU_id')
       #->join('cursos','cursos.CUR_id','=','cur_alus.CUR_id')
       ->get();
 
+      $deta = CurAlu::where('CUR_id',$id)->get();
+
+
       $unidad=Unidad::where('CUR_id','=',$id)
       #->join('uni_alus','uni_alus.UNI_id','unidads.UNI_id')
       ->get();
-
+      $a=0;
+      foreach($unidad as $uni)
+      {
+        $a++;
+      }
+      $aa=1;
       $alusuni=UniAlu::all();
-
       $curso=Curso::find($id);
-
       return view('Profesor.Curso.lista')
       ->with('list',$list)
+      ->with('deta',$deta)
+      ->with('a',$a)
+      ->with('aa',$aa)
       ->with('alusuni',$alusuni)
       ->with('unidad',$unidad)
       ->with('curso',$curso);
