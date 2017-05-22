@@ -71,6 +71,8 @@
             <tr>
               <td colspan="2">
                 <center>
+
+              <center><label for="">{{$pre->PRE_respuestas}} Respuestas</label>
                 <span class="label label-success" data-toggle="modal" data-target="#{{$pre->PRE_id}}" style="cursor: pointer;">
                 Ayuda <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></span>
                 </center>

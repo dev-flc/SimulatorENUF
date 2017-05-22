@@ -46,8 +46,8 @@
     @endforeach
 @endforeach
     <td>
-      @if($li->CUAL_calificacion== "")
-
+      @if($li->CUAL_calificacion==" ")
+        <center>0</center>
       @else
         <center>{{$li->CUAL_calificacion}}</center>
       @endif

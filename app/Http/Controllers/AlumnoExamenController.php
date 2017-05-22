@@ -121,16 +121,7 @@ class AlumnoExamenController extends Controller
         $uni_alus->CUAL_calificacion=$calfinal;
         $uni_alus->CUAL_intentos=$intent;
         $uni_alus->save();
-
-        /*
-        dd($uni_alus);
-        $unidad=Unidad::find($request->unidadid);
-        $unidad->UNI_calificacion=$calfinal;
-        $unidad->UNI_intento=$intent;
-        $unidad->save();
-        */
         if($uni_alus){
-
           $idcurso=($request->unidadid);
           return view('Alumno.Curso.resultado')
           ->with('cal',$calfinal)
