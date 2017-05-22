@@ -33,7 +33,7 @@
 
 <div id="rojo" class="container-fluid msj-time">
   <center>
-  <h2 id="reloj" class="success"><label id="hour">00</label>:<label id="minute">00</label>:<label id="second">00</label></h2>
+  <h2 id="reloj" class="success"><label id="hour">00</label>:<label id="minute">00</label>:<label id="second">00</label> <label> | {{ $unidad->UNI_tiempo }}m</label></h2>
   <p id="mensajeerror" class="danger"></p>
 </center>
 </div>
@@ -130,8 +130,8 @@
         minuto1: 0,
         segundo: 0
     };
-    //var tiempoexamen=$("#tiempoexamen").val();
-    var tiempoexamen=4;
+    var tiempoexamen=$("#tiempoexamen").val();
+   // var tiempoexamen=4;
 
 
     var alerta=tiempoexamen-3;

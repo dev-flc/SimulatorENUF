@@ -144,6 +144,40 @@ class ProCursoController extends Controller
       ->with('curso',$curso);
     }
 
+    public function listapdf($id)
+    {
+         $list = CurAlu::select('*')
+      ->where('cur_alus.CUR_id', '=',$id )
+      ->join('alumnos','alumnos.ALU_id','=','cur_alus.ALU_id')
+      #->join('cursos','cursos.CUR_id','=','cur_alus.CUR_id')
+      ->get();
+
+      $deta = CurAlu::where('CUR_id',$id)->get();
+
+
+      $unidad=Unidad::where('CUR_id','=',$id)
+      #->join('uni_alus','uni_alus.UNI_id','unidads.UNI_id')
+      ->get();
+      $a=0;
+      foreach($unidad as $uni)
+      {
+        $a++;
+      }
+      $aa=1;
+      $alusuni=UniAlu::all();
+      $curso=Curso::find($id);
+      $pdf = \PDF::loadView('Profesor.Curso.pdf',[
+        'id' => $id,
+        'list' => $list,
+        'deta' => $deta,
+        'a' => $a,
+        'aa' => $aa,
+        'alusuni' => $alusuni,
+        'unidad' => $unidad,
+        'curso' => $curso
+        ]);
+      return $pdf->download('Lista.pdf');
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -154,6 +188,7 @@ class ProCursoController extends Controller
     {
 
     }
+
 
     /**
      * Update the specified resource in storage.

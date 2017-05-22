@@ -61,9 +61,11 @@
 </div>
 
 <div class="contenedor">
+<a href="{{ route('listapdf', $curso->CUR_id) }}">
 <button class="botonF1" data-toggle="modal" data-target="#descargar"  data-tooltip="Descargar PDF">
   <span>+</span>
 </button>
+</a>
 
 
 <!--
@@ -79,11 +81,7 @@
 <!-- Fin Section Contenido -->
 
 @section('subcontenido')
-<div class="row">
-  <div class="col-sm-4"></div>
-  <div class="col-sm-4"></div>
-  <div class="col-sm-4"></div>
-</div>
+
 @endsection
 
 

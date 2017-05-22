@@ -181,6 +181,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         //flash
         Laracasts\Flash\FlashServiceProvider::class,
+        //Pdf
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -232,6 +234,8 @@ return [
         //collective
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        //pdf
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 

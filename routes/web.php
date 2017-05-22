@@ -60,6 +60,12 @@ Route::get('/detallecurso/{id}',[
     'as' => 'detallecurso'
     ]);
 
+
+Route::get('/listapdf/{id}',[
+    'uses' => 'ProCursoController@listapdf',
+    'as' => 'listapdf'
+    ]);
+
 });
 
 Route::put('updateexamenglobal/{id}',[
