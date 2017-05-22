@@ -51,11 +51,20 @@ class ProPreguntaController extends Controller
           $correctas++;
         }
       }
+
+   
+      $file=$request->file('file');
+            $nombrefile = 'foto_'.time().'.'.$file->getClientOriginalExtension();
+            $path=public_path().'/files/documents';
+            $file->move($path, $nombrefile);
+
+
       $pregunta=new Pregunta;
       $pregunta->PRE_nombre=($request->pregunta);
       $pregunta->PRE_respuestas=$correctas;
       $pregunta->UNI_id=($request->unidad);
       $pregunta->CUR_id=($request->curso);
+      $pregunta->PRE_file=$nombrefile;
       $pregunta->save();
       $idpre= Pregunta::find($pregunta->PRE_id);
 

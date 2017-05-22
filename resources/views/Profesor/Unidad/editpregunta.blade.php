@@ -24,7 +24,8 @@
     @foreach ($res as $re)
       <div class="col-sm-9">
         <div class="form-group">
-          {!! Form::label('Pregunta','Respuesta'." ".$con++) !!}
+        {{ Form::hidden('idres'.$con4++, $re->RES_id ) }}
+          {!! Form::label('Respuesta','Respuesta'." ".$con++) !!}
           {!! Form::text('res'.$con2++,$re->RES_nombre,['class'=>'form-control','required'])!!}
         </div>
       </div>
@@ -50,9 +51,9 @@
 </div>
 <br>
 @endsection
-
 <!-- subcontenido -->
 @section('subcontenido')
 
 @endsection
+
 

@@ -5,6 +5,8 @@
 @section('styles')
   <link rel="stylesheet" href="{{ asset('css/button-menu.css') }}">
   <link rel="stylesheet" href="{{ asset('css/profesorcursosshow.css') }}">
+  <link rel="stylesheet" href="{{ asset('plugins/confirm/sweetalert.css') }}">
+
 @endsection
 
 <!-- Contenido Principal -->
@@ -28,34 +30,23 @@
 <br>
 <div class="row">
   <div class="col-sm-12">
-    <center><h1>{{$curso->CUR_nombre}}</h1></center><br><hr></div>
-  <div class="col-sm-4">
+    <center><h1>{{$curso->CUR_nombre}}</h1></center>
+      <span class="label label-success" style="float: right;">Editar unidad <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+</span>
+    <br><hr></div>
+  <div class="col-sm-8">
     <center>
-      <p id="centradop">Cupos del curso</p>
       <h2>
-        <span class="label label-primary">
-          # {{ $curso->CUR_cupos}}
-        </span>
+          Descripción 
       </h2>
+      <p  style="text-align: justify;">{{ $curso->CUR_descripcion}}</p>
+      
     </center>
   </div>
   <div class="col-sm-4">
     <center>
-      <p id="centradop">Cupos disponibles</p>
       <h2>
-        <span class="label label-success">
-          # {{ $curso->CUR_cupos}}
-        </span>
-      </h2>
-    </center>
-  </div>
-  <div class="col-sm-4">
-    <center>
-      <p id="centradop">Fecha</p>
-      <h2>
-        <span class="label label-default">
-          {{ $curso->CUR_fecha}}
-        </span>
+        <img src="/img/{{$curso->CUR_foto}}" alt="" style="width: 100%; border-radius: 10px;">
       </h2>
     </center>
   </div>
@@ -68,7 +59,7 @@
       <div class="col-sm-6">
         <div class="container-fluid borderunidad ">
         <br>
-          <center><label for=""> <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>Unidad</label> </center>
+          <center><label for=""> <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Unidad</label> </center>
         <center><h2>{{ $unidad->UNI_nombre }}</h2></center>
 
         </div>
@@ -145,7 +136,15 @@
 
         <div class="col-sm-1">
         <center>
-          <a href=""><button class="btn-eliminar btn-pre"><span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span></button></a>
+      {!! Form::open(['route'=>['unidad.destroy',$pre->PRE_id],'method'=>'DELETE','id'=>'destroyform']) !!}
+          {{ csrf_field() }}
+          {!! Form::hidden('unidad',$unidad->UNI_id)!!}
+          
+        <button class="btn-eliminar btn-pre" type="button" onclick="destroybtn()"><span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+      {!! Form::close() !!}
+
+
+          
 
           <a href="{{ route('unidad.edit', $pre->PRE_id) }}"><button class="btn-editar btn-pre"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></a>
           </center>
@@ -196,7 +195,7 @@
         <h3 class="modal-title colordiv" id="myModalLabel">Registro de Preguntas</h3>
       </div>
       <div class="modal-body">
-      {!! Form::open(['route'=>'pregunta.store','method'=>'POST']) !!}
+      {!! Form::open(['route'=>'pregunta.store','method'=>'POST','files'=>'true']) !!}
         <div class="form-group">
           {!! Form::hidden('unidad',$unidad->UNI_id)!!}
           {!! Form::hidden('curso',$curso->CUR_id)!!}
@@ -205,11 +204,16 @@
           {!! Form::label('pregunta','Pregunta') !!}
           {!! Form::text('pregunta',null,['class'=>'ppre','id'=>'pregunta','required'])!!}
         </div>
+          <div class="form-group">
+              {!! Form::label('foto','Imagen de ayuda') !!}
+              {!! Form::file('file',['class'=>'form-control','required'])!!}
+          </div> 
         <div class="row">
           <div class="col-sm-8">
             <div class="form-group">
             {!! Form::label('respuesta1','Respuesta 1') !!}
             {!! Form::text('respuesta1',null,['class'=>'resp1','id'=>'respuesta1','required'])!!}
+
             </div>
           </div>
           <div class="col-sm-4">
@@ -278,6 +282,30 @@
 
 <!--Script -->
 @section('script')
+<script  src="{{ asset('plugins/confirm/sweetalert.min.js') }}"></script> 
+<script type="text/javascript">
+  function destroybtn(){
+    swal({
+  title: "Esta seguro de eliminar la pregunata?",
+  text: "Eliminar ahora!",
+  type: "success",
+  showCancelButton: true,
+  confirmButtonColor: '#2ECC71',
+  confirmButtonText: 'Confirmar',
+  cancelButtonText: "Cancelar!",
+  closeOnConfirm: false,
+  closeOnCancel: false
+},
+function(isConfirm){
+  if (isConfirm) {
+      $( "#destroyform" ).submit();
+  }
+  else {
+  swal("Cancelado", ":(", "error");
+  }
+});
+  }
+</script>
 
 @endsection
 
