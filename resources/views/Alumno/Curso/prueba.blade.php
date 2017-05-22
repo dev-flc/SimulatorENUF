@@ -15,17 +15,7 @@
 
 <!-- Contenido -->
 @section('content')
-<div class="row">
-  <div class="col-sm-4">
-    <br>
-    <div class="container-fluid perfildiv">
-      <center><br>
-        <img id="imgperfil" src="/img/profesor.jpg" alt="">
-      </center>
-    </div>
-  </div>
-  <div class="col-sm-8 ">
-    <br>
+
     <div class="curse">
     <center><h1>{{ $unidad->UNI_nombre }}
 
