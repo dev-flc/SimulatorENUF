@@ -10,12 +10,13 @@
     <img id="pri1" src="/img/pri2.png" alt="">
   </div>
 @endsection
+
 <!-- Inicio Section Contenido -->
 @section('content')
 <div class="container-fluid">
 <div class="row">
   <div class="col-sm-12"><center><h1>{{$curso->CUR_nombre}}</h1></center><br></div>
-  <center><h2>Lista de alumnos </h2></center>
+  <h2>Alumnos: </h2>
 </div>
 <hr>
 <table class="table table-hover">
