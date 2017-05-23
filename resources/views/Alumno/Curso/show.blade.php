@@ -11,7 +11,7 @@
 <!-- Contenido Principal -->
 @section('imagenprincipal')
   <div class="seccionone">
-  <img id="pri1" src="/img/pri2.png" alt="">
+  <img id="pri1" src="/img/desing/02.jpg" alt="">
   </div>
 @endsection
 

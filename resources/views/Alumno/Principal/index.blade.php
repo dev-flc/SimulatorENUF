@@ -3,6 +3,7 @@
 @section('title', 'Cursos')
 @section('styles')
   <link rel="stylesheet" href="{{ asset('css/prialumno.css') }}">
+   <link rel="stylesheet" href="{{ asset('css/photo.css') }}">
 @endsection
 
 <!-- Contenido Principal -->
@@ -14,23 +15,10 @@
 
 <!-- Contenido -->
 @section('content')
-<style type="text/css">
-  table
-  {
-    width: 100%;  
-  }
-  table tr td
-  {
-    text-align: right;
-  }
-  #texto-a
-  {
-    text-align: center;
-  }
-</style>
+
 <div class="row">
   <div class="col-sm-4">
-    <br>
+    <br><!--
     <div class="container-fluid perfildiv">
       <center><br>
         <img id="imgperfil" src="/img/{{$user->foto}}" alt="">
@@ -54,7 +42,39 @@
         <label for="">Matricula:</label>
         <p id="texto-a">
           {{$alumno->ALU_metricula}}
-        </p>
+        </p>-->
+  <div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-sm-6">
+
+            <div class="card hovercard">
+                <div class="cardheader">
+                @if($alumno->ALU_sexo=="hombre")
+                <div class="cardheader">
+
+                </div>
+            @else
+                <div class="cardheader2">
+
+                </div>
+            @endif
+                </div>
+                <div class="avatar">
+                    <img alt="" src="/img/desing/02.jpg>
+                </div>
+                <div class="info">
+                    <div class="title">
+                        <a>{{$alumno->ALU_nombre}} {{$alumno->ALU_apellido_p}} {{$alumno->ALU_apellido_m}}</a>
+                    </div>
+                    <div class="desc"><h4>Matricula:{{$alumno->ALU_metricula}}</h4></div>
+                    <div class="desc"><h4>Edad:{{$alumno->ALU_edad}}</h4></div>
+                    <div class="desc"><h4>Sexo:{{$alumno->ALU_sexo}}</h4></div>
+                </div>
+            </div>
+
+        </div>
+
+  </div>
     </div>
   </div>
   <div class="col-sm-8">
@@ -62,8 +82,7 @@
   <div class="container-fluid">
     @include('flash::message')
   </div>
-  <div class="container-fluid
-  ">
+  <div class="container-fluid">
   <div class="row estatus">
     <div class="col-sm-4">
       <div id="colora">
