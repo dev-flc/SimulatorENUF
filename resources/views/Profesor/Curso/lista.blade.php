@@ -30,7 +30,7 @@
   </tr>
 <tr>
 @php($call = 0)
-@php($nada = " ")
+@php($nada = null)
 
 @foreach($unidad as $uni)
     <td><center>unidad {{$aa++}}</center></td>
