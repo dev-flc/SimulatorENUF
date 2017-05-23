@@ -346,7 +346,7 @@
     }
   </style>
   <img id="pri1" src="/img/pri2.png" alt="">
-  <h1 class="titulo">Profesores</h1>
+  <h1 class="titulo">Editar profesor</h1>
   </div>
 @endsection
 
@@ -378,7 +378,12 @@
     @endif
   </div>
    <div class="form-group">
-    {{ Form::button('<span class="glyphicon glyphicon-ok"></span> Actualizar', array('class'=>'btn btn-success pull-right', 'type'=>'submit')) }}
+      <button type="button" class="btn-button-c" data-dismiss="modal">
+         Cancelar
+         <span class="glyphicon glyphicon-remove"></span>
+      </button>
+    {{ Form::button('<span class="glyphicon glyphicon-ok"></span> Actualizar', array('class'=>'btn-button-a pull-right', 'type'=>'submit')) }}
+    
     </div>
   {!! Form::close() !!}
 </div>

@@ -32,7 +32,7 @@
   <div class="col-sm-12">
     <center><h1>{{$curso->CUR_nombre}}</h1></center>
       <span class="label label-success" style="float: right;">Editar unidad <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-</span>
+    </span>
     <br><hr></div>
   <div class="col-sm-8">
     <center>
@@ -192,7 +192,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h3 class="modal-title colordiv" id="myModalLabel">Registro de Preguntas</h3>
+        <h3 class="modal-title colordiv" id="myModalLabel">Nueva pregunta</h3>
       </div>
       <div class="modal-body">
       {!! Form::open(['route'=>'pregunta.store','method'=>'POST','files'=>'true']) !!}
@@ -286,7 +286,7 @@
 <script type="text/javascript">
   function destroybtn(){
     swal({
-  title: "Esta seguro de eliminar la pregunata?",
+  title: "Esta seguro de eliminar la pregunta?",
   text: "Eliminar ahora!",
   type: "success",
   showCancelButton: true,

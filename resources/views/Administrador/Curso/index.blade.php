@@ -66,6 +66,10 @@
                     @endif
                         <small id="ptext">{{ $cursos->CUR_estatus }}  |  {{ $cursos->CUR_fecha }}</small>
                         <a href="{{ route('cursos.edit', $cursos->CUR_id) }}"><button class="btn-pree pull-right"><span class="glyphicon glyphicon-pencil " aria-hidden="true"></span></button></a>
+
+                        <a class="btn btn-danger btn-sm btn-curso" rel="publisher"
+                       href="#"><span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        </a>
                     </div>
                   
                 </div>
@@ -98,7 +102,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h3 class="modal-title colordiv" id="myModalLabel">Curso</h3>
+        <h3 class="modal-title colordiv" id="myModalLabel">Nuevo curso</h3>
       </div>
       <div class="modal-body">
       {!! Form::open(['route'=>'cursos.store','method'=>'POST','files'=>'true']) !!}

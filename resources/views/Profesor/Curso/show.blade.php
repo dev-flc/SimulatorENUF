@@ -174,16 +174,28 @@
       <a href="{{ route('unidad.show', $uni->UNI_id) }}">
       <div class="col-sm-12 cuadro">
         <div class="col-sm-2">
+        <br>
           <div class="numero">
             {{$a++}}
           </div>
         </div>
         <div class="col-sm-6"><br>
+        <br>
+        <br>
           <p id="textcenterunidad">{{ $uni->UNI_nombre }}</p>
         </div>
         <div class="col-sm-4"><br>
           <p id="textcenterunidad"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{ $uni->UNI_fecha_final }}</p>
         </div>
+        <div class="modal-footer">
+        <button type="button" class="btn-button-cc" data-dismiss="modal">
+          Eliminar
+          <span class="glyphicon glyphicon-trash"></span>
+        </button>
+        {{ Form::button('Editar<span class="glyphicon glyphicon-pencil"></span>', array('class'=>'btn-button-aa pull-right','id'=>'registrar', 'type'=>'submit')) }}
+
+      {!! Form::close() !!}
+      </div>
       </div>
       </a>
     @endforeach
@@ -244,7 +256,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-         <h3 class="modal-title colordiv" id="myModalLabel">Registro de  Examenes</h3>
+         <h3 class="modal-title colordiv" id="myModalLabel">Nueva unidad</h3>
       </div>
       <div class="modal-body">
         {!! Form::open(['route'=>'unidad.store','method'=>'POST','files' => true]) !!}

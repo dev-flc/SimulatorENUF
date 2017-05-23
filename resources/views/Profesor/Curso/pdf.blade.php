@@ -13,6 +13,7 @@
 <hr>
 <table border="1">
   <tr>
+    <th rowspan="2">NP</th>
     <th rowspan="2">Nombre</th>
     <th rowspan="2">Apellidos</th>
     <th colspan="{{$a}}"><center>Unidades</center></th>
@@ -26,6 +27,7 @@
 </tr>
   @foreach($list as $li)
  <tr>
+    <td>NP</td>
     <td>{{$li->ALU_nombre}}</td>
     <td>{{$li->ALU_apellido_p}} {{$li->ALU_apellido_m}}</td>
 @foreach($unidad as $u)

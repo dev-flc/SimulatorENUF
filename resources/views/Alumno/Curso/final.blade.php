@@ -10,6 +10,7 @@
 @section('imagenprincipal')
   <div class="seccionone">
   <img id="pri1" src="/img/pri2.png" alt="">
+   <h1 class="titulo">Examen final</h1>
   </div>
 @endsection
 

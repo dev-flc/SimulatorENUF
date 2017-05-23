@@ -232,3 +232,11 @@ input[type=checkbox]:checked{
   height: 45px;
   font-size: 17px;
 }
+
+.titulo
+{
+  position: relative;
+  top: -90%;
+  text-align: center;
+  color: rgb(255,255,255);
+}

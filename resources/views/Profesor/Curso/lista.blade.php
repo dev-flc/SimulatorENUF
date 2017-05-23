@@ -20,11 +20,11 @@
 <hr>
 <table class="table table-hover">
   <tr>
+    <th rowspan="2"><center>NP</center></th>
     <th rowspan="2"><center>Nombre</center></th>
     <th rowspan="2"><center>Apellidos</center></th>
     <th colspan="{{$a}}"><center>Unidades</center></th>
     <th colspan="2"><center>Examen Global</center></th>
-
   </tr>
 <tr>
 @foreach($unidad as $uni)
@@ -34,8 +34,9 @@
 </tr>
   @foreach($list as $li)
  <tr>
-    <td><center>{{$li->ALU_nombre}}</center></td>
-    <td><center>{{$li->ALU_apellido_p}} {{$li->ALU_apellido_m}}</center></td>
+    <td>NP</td>
+    <td>{{$li->ALU_nombre}}</td>
+    <td>{{$li->ALU_apellido_p}}  {{$li->ALU_apellido_m}}</td>
 @foreach($unidad as $u)
     @foreach($alusuni as $unii)
     @if($unii->UNI_id==$u->UNI_id)

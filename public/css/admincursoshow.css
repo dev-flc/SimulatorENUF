@@ -266,3 +266,11 @@
   text-align: center;
   color: rgb(255,255,255);
 }
+
+.card.hovercard .cardheader {
+    background: url("/img/desing/02.jpg");
+    background-size: cover;
+    height: 135px;
+}
+
+.btn-curso{ border-radius: 50%; width:32px; height:32px; line-height:20px;  }
