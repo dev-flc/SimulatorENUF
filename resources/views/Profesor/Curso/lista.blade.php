@@ -29,8 +29,8 @@
     <th><center>Calificación</center></th>
   </tr>
 <tr>
-        @php($call=0)
-        @php($nada="")
+@php($call = 0)
+@php($nada = " ")
 
 @foreach($unidad as $uni)
     <td><center>unidad {{$aa++}}</center></td>
@@ -44,8 +44,8 @@
     <td>{{$li->ALU_apellido_p}}  {{$li->ALU_apellido_m}}</td>
 @foreach($unidad as $u)
     @foreach($alusuni as $unii)
-    @if($unii->UNI_id==$u->UNI_id)
-      @if($li->ALU_id==$unii->ALU_id)
+    @if($unii->UNI_id == $u->UNI_id)
+      @if($li->ALU_id == $unii->ALU_id)
         <td><center>{{$unii->UNAL_calificacion}}
         @php ($call = $call + $unii->UNAL_calificacion)
         </center></td>
@@ -54,22 +54,22 @@
     @endforeach
 @endforeach
     <td>
-      @if($li->CUAL_calificacion>=0)
+      @if($li->CUAL_calificacion >= 0)
         <center>{{$li->CUAL_calificacion}}</center>
       @endif
     </td>
 
     <td>
-    @if($li->CUAL_calificacion>=0)
-    @php($call=$call+$li->CUAL_calificacion)
-      @if($call>=1)
+    @if($li->CUAL_calificacion >= 0)
+    @php($call = $call+$li->CUAL_calificacion)
+      @if($call >= 1)
       <center>{{$call*10/$total}}</center>
       @endif
     @endif
     </td>
   </tr>
-  @php($call=$nada)
-  @php($calli=$nada)
+  @php($call = $nada)
+  @php($calli = $nada)
   @endforeach
 </table>
 <br>
