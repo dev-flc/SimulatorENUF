@@ -61,7 +61,7 @@
 
     <td>
     @if($li->CUAL_calificacion >= 0)
-    @php($call = $call+$li->CUAL_calificacion)
+    @php($call = $call + $li->CUAL_calificacion)
       @if($call >= 1)
       <center>{{$call*10/$total}}</center>
       @endif
