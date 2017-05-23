@@ -176,7 +176,7 @@ class ProCursoController extends Controller
         'unidad' => $unidad,
         'curso' => $curso
         ]);
-      return $pdf->stream('Lista.pdf');
+      return $pdf->download('Lista.pdf');
     }
     /**
      * Show the form for editing the specified resource.
