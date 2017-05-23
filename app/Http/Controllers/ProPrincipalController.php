@@ -70,7 +70,6 @@ class ProPrincipalController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**

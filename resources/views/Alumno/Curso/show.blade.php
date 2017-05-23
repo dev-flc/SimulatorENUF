@@ -30,26 +30,28 @@
             Nombre:
         </label>
         <p id="texto-a">
-          {{$alumno->ALU_nombre}} {{$alumno->ALU_apellido_p}} {{$alumno->ALU_apellido_m}}
+          <center>{{$alumno->ALU_nombre}} {{$alumno->ALU_apellido_p}} {{$alumno->ALU_apellido_m}}</center>
         </p>
         <label for="">Edad:</label>
         <p id="texto-a">
-          {{$alumno->ALU_edad}}
+          <center>{{$alumno->ALU_edad}}</center>
         </p>
         <label for="">Sexo:</label>
         <p id="texto-a">
-          {{$alumno->ALU_sexo}}
+          <center>{{$alumno->ALU_sexo}}</center>
         </p>
         <label for="">Matricula:</label>
         <p id="texto-a">
-          {{$alumno->ALU_metricula}}
+          <center>{{$alumno->ALU_metricula}}</center>
         </p>
     </div>
   </div>
   <div class="col-sm-8 ">
     <br>
     <div class="curse">
-    <center><h1>{{ $curso->CUR_nombre }}<img id="tamanofoto" src="/img/{{ $curso->CUR_foto }}" alt=""></h1></center>
+    <center><h1>{{ $curso->CUR_nombre }}</h1>
+    <img id="tamanofoto" src="/img/{{ $curso->CUR_foto }}" alt="" style="width: 100px; height: 100px; border-radius: 50%;">
+    </center>
   </div>
   <div class="col-sm-12">
     <h2>Descripción</h2>

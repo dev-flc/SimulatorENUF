@@ -44,6 +44,7 @@ Route::resource('profesores','AdminProfesorController');
 Route::group(['prefix'=>'profesor','middleware'=>['profesor','auth']], function(){
 
 Route::resource('curso','ProCursoController');
+Route::resource('perfilprofesor','ProPerfilController');
 
 Route::resource('alumno','ProAlumnoController');
 

@@ -175,7 +175,7 @@
           <td colspan="2"><label for="">Tipo de usuario</label></td>
         </tr>
         <tr>
-          <td><p>Alumno</p></td>
+          <td><p>Profesor</p></td>
           <td>
             <center>
               <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>

@@ -2,14 +2,12 @@
 
 namespace SimulatorENUF\Http\Controllers;
 
+use SimulatorENUF\Models\Direccion;
+use SimulatorENUF\Models\Profesor;
+use Auth;
 use Illuminate\Http\Request;
-use SimulatorENUF\Models\Unidad;
-use SimulatorENUF\Models\Curso;
-use SimulatorENUF\Models\Pregunta;
-use SimulatorENUF\Models\Respuesta;
 
-
-class ProPreguntaController extends Controller
+class ProPerfilController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +16,13 @@ class ProPreguntaController extends Controller
      */
     public function index()
     {
-        //
+    	$iduseralumno = Auth::user()->id;
+      	$alumno=Profesor::where('USE_id', $iduseralumno)
+      ->join('direccions','direccions.DIR_id','=','profesors.DIR_id')
+      ->join('users','users.id','=','profesors.USE_id')
+      ->first();
+        return view('Profesor.Perfil.index')->with('alu',$alumno); 
+        
     }
 
     /**
@@ -39,50 +43,7 @@ class ProPreguntaController extends Controller
      */
     public function store(Request $request)
     {
-      $correctas=0;
-
-      for($i=1; $i<=4; $i++)
-      {
-      $ti="tipo".$i;
-      $tip=($request->$ti);
-      $t=(int)$tip;
-        if($t==1)
-        {
-          $correctas++;
-        }
-      }
-      $file=$request->file('file');
-            $nombrefile = 'foto_'.time().'.'.$file->getClientOriginalExtension();
-            $path=public_path().'/files/documents';
-            $file->move($path, $nombrefile);
-
-
-      $pregunta=new Pregunta;
-      $pregunta->PRE_nombre=($request->pregunta);
-      $pregunta->PRE_respuestas=$correctas;
-      $pregunta->UNI_id=($request->unidad);
-      $pregunta->CUR_id=($request->curso);
-      $pregunta->PRE_file=$nombrefile;
-      $pregunta->save();
-      $idpre= Pregunta::find($pregunta->PRE_id);
-
-
-      for($i=1; $i<=4; $i++)
-      {
-      $res="respuesta".$i;
-      $tipo="tipo".$i;
-      $tipoo=($request->$tipo);
-      $tipoo=(int)$tipoo;
-      $respuesta=new Respuesta;
-      $respuesta->RES_nombre=($request->$res);
-      $respuesta->PRE_id=($idpre->PRE_id);
-      $respuesta->TIP_id=$tipoo;
-      $respuesta->save();
-
-      };
-
-
-      return redirect()->route('unidad.show', ($request->unidad));
+        //
     }
 
     /**

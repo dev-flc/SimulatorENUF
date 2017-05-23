@@ -98,7 +98,7 @@
               </center>
             </div>
             <div class="col-sm-10">
-              <p>{{$ins->CUR_nombre}}</p>
+              <h4>{{$ins->CUR_nombre}}</h4>
             </div>
           </div>
         </div>
@@ -112,7 +112,7 @@
               </center>
             </div>
             <div class="col-sm-10">
-              <p>{{$ins->CUR_nombre}}</p>
+              <h4>{{$ins->CUR_nombre}}</h4>
             </div>
           </div>
         </div>
@@ -125,7 +125,7 @@
               </center>
             </div>
             <div class="col-sm-10">
-              <p>{{$ins->CUR_nombre}}</p>
+              <h4>{{$ins->CUR_nombre}}</h4>
             </div>
           </div>
         </div>
@@ -152,7 +152,7 @@
         </center>
       </div>
       <div class="col-sm-10">
-        <p>{{ $cur->CUR_nombre }}</p>
+        <h4>{{ $cur->CUR_nombre }}</h4>
       </div>
       </div>
     </div>
