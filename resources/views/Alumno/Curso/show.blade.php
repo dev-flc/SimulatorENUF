@@ -6,6 +6,7 @@
 @section('styles')
   <link rel="stylesheet" href="{{ asset('plugins/confirm/sweetalert.css') }}">
   <link rel="stylesheet" href="{{ asset('css/alumnocursoshow.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/photo.css') }}">
 @endsection
 
 <!-- Contenido Principal -->
@@ -17,36 +18,33 @@
 
 <!-- Contenido -->
 @section('content')
-
 <div class="row">
-  <div class="col-sm-4">
-    <br>
-    <div class="container-fluid perfildiv">
-      <center><br>
-        <img id="imgperfil" src="/img/{{$user->foto}}" alt="">
-        <br />
-        <br />
-      </center>
-        <label for="">
-            Nombre:
-        </label>
-        <p id="texto-a">
-          <center>{{$alumno->ALU_nombre}} {{$alumno->ALU_apellido_p}} {{$alumno->ALU_apellido_m}}</center>
-        </p>
-        <label for="">Edad:</label>
-        <p id="texto-a">
-          <center>{{$alumno->ALU_edad}}</center>
-        </p>
-        <label for="">Sexo:</label>
-        <p id="texto-a">
-          <center>{{$alumno->ALU_sexo}}</center>
-        </p>
-        <label for="">Matricula:</label>
-        <p id="texto-a">
-          <center>{{$alumno->ALU_metricula}}</center>
-        </p>
-    </div>
-  </div>
+<div class="col-sm-3">
+    <div class="card hovercard">
+       <div class="cardheader">
+                @if($alumno->ALU_sexo=="hombre")
+                <div class="cardheader">
+
+                </div>
+            @else
+                <div class="cardheader2">
+
+                </div>
+            @endif
+                </div>
+        <div class="avatar">
+             <img id="imgperfil" src="/img/{{$user->foto}}" alt="">
+             </div>
+              <div class="info">
+                    <div class="title">
+                       {{$alumno->ALU_nombre}} {{$alumno->ALU_apellido_p}} {{$alumno->ALU_apellido_m}}
+                    </div>
+                    <div class="desc"><h4>Matricula:{{$alumno->ALU_metricula}}</h4></div>
+                    <div class="desc"><h4>Edad:{{$alumno->ALU_edad}}</h4></div>
+                    <div class="desc"><h4>Sexo:{{$alumno->ALU_sexo}}</h4></div>
+                </div>
+            </div>
+         </div>
   <div class="col-sm-8 ">
     <br>
     <div class="curse">

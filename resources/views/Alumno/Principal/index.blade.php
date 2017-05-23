@@ -18,31 +18,7 @@
 
 <div class="row">
   <div class="col-sm-4">
-    <br><!--
-    <div class="container-fluid perfildiv">
-      <center><br>
-        <img id="imgperfil" src="/img/{{$user->foto}}" alt="">
-        <br />
-        <br />
-      </center>
-        <label for="">
-            Nombre:
-        </label>
-        <p id="texto-a">
-          {{$alumno->ALU_nombre}} {{$alumno->ALU_apellido_p}} {{$alumno->ALU_apellido_m}}
-        </p>
-        <label for="">Edad:</label>
-        <p id="texto-a">
-          {{$alumno->ALU_edad}}
-        </p>
-        <label for="">Sexo:</label>
-        <p id="texto-a">
-          {{$alumno->ALU_sexo}}
-        </p>
-        <label for="">Matricula:</label>
-        <p id="texto-a">
-          {{$alumno->ALU_metricula}}
-        </p>-->
+    <br>
   <div class="container">
   <div class="row">
     <div class="col-lg-3 col-sm-6">
@@ -71,11 +47,9 @@
                     <div class="desc"><h4>Sexo:{{$alumno->ALU_sexo}}</h4></div>
                 </div>
             </div>
-
         </div>
-
   </div>
-    </div>
+  </div>
   </div>
   <div class="col-sm-8">
   <br>

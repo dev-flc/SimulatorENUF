@@ -3,6 +3,7 @@
 @section('title', 'Cursos')
 @section('styles')
   <link rel="stylesheet" href="{{ asset('css/proprincipal.css') }}">
+   <link rel="stylesheet" href="{{ asset('css/adminprofesor.css') }}">
 @endsection
 <!-- Contenido Principal -->
 @section('imagenprincipal')
@@ -13,18 +14,23 @@
 
 <!-- Contenido -->
 @section('content')
+<br>
 <div class="row">
-  <div class="col-sm-4">
-    <div class="container-fluid">
-    <br>
-    <center>
-      <img src="/img/{{$foto}}" alt="" style="width: 150px; height: 150px;">
-      <h2>{{$pro->PRO_nombre}}</h2>
-      <p style="text-align: center;">{{$pro->PRO_apellido_p}} {{$pro->PRO_apellido_m}}</p>
-      <p style="text-align: center;">Profesor</p>
-    </center>
+<div class="col-sm-3">
+    <div class="card hovercard">
+    <div class="cardheader">
     </div>
-  </div>
+        <div class="avatar">
+             <img alt="" src="/img/{{$foto}}">
+             </div>
+              <div class="info">
+                    <div class="title">
+                        {{ $pro->PRO_nombre }} {{ $pro->PRO_apellido_p }} {{ $pro->PRO_apellido_m }}
+                    </div>
+                    <div class="title"><h3>Profesor</h3></div>
+                </div>
+            </div>
+         </div>
   <div class="col-sm-8">
   <center>
     <h1>Cursos</h1>

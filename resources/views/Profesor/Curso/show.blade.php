@@ -181,21 +181,11 @@
         </div>
         <div class="col-sm-6"><br>
         <br>
-        <br>
           <p id="textcenterunidad">{{ $uni->UNI_nombre }}</p>
         </div>
         <div class="col-sm-4"><br>
           <p id="textcenterunidad"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{ $uni->UNI_fecha_final }}</p>
         </div>
-        <div class="modal-footer">
-        <button type="button" class="btn-button-cc" data-dismiss="modal">
-          Eliminar
-          <span class="glyphicon glyphicon-trash"></span>
-        </button>
-        {{ Form::button('Editar<span class="glyphicon glyphicon-pencil"></span>', array('class'=>'btn-button-aa pull-right','id'=>'registrar', 'type'=>'submit')) }}
-
-      {!! Form::close() !!}
-      </div>
       </div>
       </a>
     @endforeach

@@ -5,32 +5,28 @@
 
 @section('styles')
   <link rel="stylesheet" href="{{ asset('css/alumnocursoglobal.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/alumnocursofinal.css') }}">
 @endsection
 
 <!-- Contenido Principal -->
 @section('imagenprincipal')
   <div class="seccionone">
   <img id="pri1" src="/img/pri2.png" alt="">
+  <h1 class="titulo">Examen global</h1>
   </div>
 @endsection
 
 <!-- Contenido -->
 @section('content')
+
 <div class="row">
-  <div class="col-sm-4">
-    <br>
-    <div class="container-fluid perfildiv">
-      <center><br>
-        <img id="imgperfil" src="/img/profesor.jpg" alt="">
-      </center>
-    </div>
-  </div>
-  <div class="col-sm-8 ">
+
+  <div class="col-sm-12 ">
     <br>
     <div class="curse">
     <center><h1>{{ $unidad->CUR_nombre }}
     </h1>
-
+    <h2>Tiempo definido de examen: {{ $unidad->UNI_tiempo }} minutos </h2>
     </center>
 
   </div>
@@ -111,7 +107,7 @@
  <!-- fin -->
   </div>
 </div>
-</div>
+
 @endsection
 
 <!-- subcontenido -->
