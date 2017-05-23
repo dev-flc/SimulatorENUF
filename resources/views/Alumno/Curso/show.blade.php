@@ -11,12 +11,13 @@
 <!-- Contenido Principal -->
 @section('imagenprincipal')
   <div class="seccionone">
-  <img id="pri1" src="/img/desing/02.jpg" alt="">
+  <img id="pri1" src="/img/pri2.png" alt="">
   </div>
 @endsection
 
 <!-- Contenido -->
 @section('content')
+
 <div class="row">
   <div class="col-sm-4">
     <br>
@@ -95,10 +96,8 @@
       @break;
     @endif
 @endforeach
-@if($a==0)
-<td>
-  <center>0</center>
-</td>
+@if($a>=$b)
+<td><center>0</center></td>
 @endif
     <td>
       <center>{{$uni->UNI_fecha_inicio}}</center>
@@ -191,7 +190,11 @@
     </td>
     <td>
       <center>
+        @if($cursoo->CUAL_calificacion)
        {{$cursoo->CUAL_calificacion}}
+       @else
+        pendiente
+       @endif
       </center>
     </td>
   </tr>

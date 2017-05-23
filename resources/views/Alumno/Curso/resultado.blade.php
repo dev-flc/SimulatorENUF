@@ -42,9 +42,17 @@
 
 <script  src="{{ asset('plugins/jQuery/jquery-3.1.1.js') }}"></script>
 <script  src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+<script type="text/javascript">
 
+
+
+</script>
 <script type="text/javascript">
 $(document).ready(function(){
+  window.location.hash="no-back-button";
+   window.location.hash="Again-No-back-button" //chrome
+   window.onhashchange=function(){window.location.hash="no-back-button";}
+
   var tiempo = {
     segundo:5
   };

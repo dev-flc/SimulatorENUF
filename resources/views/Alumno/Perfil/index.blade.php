@@ -326,7 +326,7 @@
         <h3 class="modal-title" id="myModalLabel">Actualizar datos de usuario</h3>
       </div>
       <div class="modal-body">
-        {!! Form::open(['route'=>'cursos.store','method'=>'POST']) !!}
+        {!! Form::open(['route' => ['updateuseralum', $alu->id],'method' => 'put','id'=>'datosdeformulario','files'=>'true']) !!}
         <div class="form-group">
           {!! Form::label('usuario','Usuario') !!}<br />
           {!! Form::text('usuario',$alu->name,['class'=>'user','required'])!!}

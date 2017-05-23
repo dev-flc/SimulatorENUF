@@ -128,8 +128,16 @@
 @section('script')
 <script  src="{{ asset('plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
 <script type="text/javascript">
-  $(document).ready(function(){
+document.onkeydown = function (e) {
+  if (e.keyCode === 116) {
+    return false;
+  }
+};
 
+  $(document).ready(function(){
+   window.location.hash="no-back-button";
+   window.location.hash="Again-No-back-button" //chrome
+   window.onhashchange=function(){window.location.hash="no-back-button";}
 
     var tiempo = {
         hora: 0,

@@ -75,7 +75,7 @@
             <td><h4>{{ $uni->UNI_nombre }}</h4></td>
           </tr>
         </table>
-        
+
       </div>
       @endforeach
 @else

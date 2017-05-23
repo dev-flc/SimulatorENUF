@@ -75,6 +75,17 @@ class PerfilAlumnoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    public function updateuseralum(Request $request, $id)
+    {
+$user=User::find($id);
+      $user->name=($request->usuario);
+      $user->email=($request->email);
+      $user->password=bcrypt($request->password);
+      $user->save();
+          return redirect()->route('alumnoperfil.index');
+
+    }
     public function update(Request $request, $id)
     {
       $alumno=Alumno::find($id);
@@ -116,7 +127,7 @@ class PerfilAlumnoController extends Controller
        if($request->file('file'))
       {
         $file=$request->file('file');
-        $nombre = 'curso_'.time().'.'.$file->getClientOriginalExtension();
+        $nombre = 'alumno_'.time().'.'.$file->getClientOriginalExtension();
         $path=public_path().'/img';
         $file->move($path, $nombre);
       }

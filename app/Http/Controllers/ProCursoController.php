@@ -121,7 +121,7 @@ class ProCursoController extends Controller
       ->get();
 
       $deta = CurAlu::where('CUR_id',$id)->get();
-
+      $total=0;
 
       $unidad=Unidad::where('CUR_id','=',$id)
       #->join('uni_alus','uni_alus.UNI_id','unidads.UNI_id')
@@ -131,14 +131,18 @@ class ProCursoController extends Controller
       {
         $a++;
       }
+        $total=($a+1)*10;
       $aa=1;
+      $np=1;
       $alusuni=UniAlu::all();
       $curso=Curso::find($id);
       return view('Profesor.Curso.lista')
       ->with('list',$list)
       ->with('deta',$deta)
       ->with('a',$a)
+      ->with('np',$np)
       ->with('aa',$aa)
+      ->with('total',$total)
       ->with('alusuni',$alusuni)
       ->with('unidad',$unidad)
       ->with('curso',$curso);
@@ -151,7 +155,7 @@ class ProCursoController extends Controller
       ->join('alumnos','alumnos.ALU_id','=','cur_alus.ALU_id')
       #->join('cursos','cursos.CUR_id','=','cur_alus.CUR_id')
       ->get();
-
+      $total=0;
       $deta = CurAlu::where('CUR_id',$id)->get();
 
 
@@ -163,7 +167,10 @@ class ProCursoController extends Controller
       {
         $a++;
       }
+      $total=($a+1)*10;
       $aa=1;
+      $np=1;
+
       $alusuni=UniAlu::all();
       $curso=Curso::find($id);
       $pdf = \PDF::loadView('Profesor.Curso.pdf',[
@@ -172,9 +179,11 @@ class ProCursoController extends Controller
         'deta' => $deta,
         'a' => $a,
         'aa' => $aa,
+        'np' => $np,
         'alusuni' => $alusuni,
         'unidad' => $unidad,
-        'curso' => $curso
+        'curso' => $curso,
+        'total' => $total,
         ]);
       return $pdf->download('Lista.pdf');
     }

@@ -115,7 +115,7 @@
 @foreach($pregunta as $pregunt)
   <div class="modal fade" id="{{$pregunt->PRE_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content modal-lg">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">{{$pregunt->PRE_nombre}}</h4>
@@ -148,6 +148,17 @@
 <script  src="{{ asset('plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
 <script type="text/javascript">
 
+document.onkeydown = function (e) {
+  if (e.keyCode === 116) {
+    return false;
+  }
+};
+  $(document).ready(function(){
+      window.location.hash="no-back-button";
+   window.location.hash="Again-No-back-button" //chrome
+   window.onhashchange=function(){window.location.hash="no-back-button";}
+
+  });
 $("#enviar").click(function(){
    var canti =$("#cantidad").val();
    var respuestas=canti*4;

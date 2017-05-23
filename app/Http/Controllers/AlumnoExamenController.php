@@ -413,6 +413,7 @@ class AlumnoExamenController extends Controller
       $unidad=Unidad::find($id);
       $i=1;
       $p=1;
+      $totall=1;
       $iddd=1;
       $num=1;
       $div=1;
@@ -424,6 +425,7 @@ class AlumnoExamenController extends Controller
       ->with('pregunta',$pregunta)
       ->with('i',$i)
       ->with('p',$p)
+      ->with('totall',$totall)
       ->with('div',$div)
       ->with('iddd',$iddd)
       ->with('num',$num)

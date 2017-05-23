@@ -17,11 +17,11 @@
 @section('content')
 
 <center>
-  <img id="pri2" src="/img/{{$alu->foto}}" alt="">
+  <img id="pri2" src="/img/{{$pro->foto}}" alt="">
    <button id="editimg" class="" data-toggle="modal" data-target="#foto">
           <span  class="glyphicon glyphicon-camera" aria-hidden="true"></span>
     </button>
-  <h1>{{$alu->ALU_nombre}} {{$alu->ALU_apellido_p}} {{$alu->ALU_apellido_m}}</h1>
+  <h1>{{$pro->PRO_nombre}} {{$pro->PRO_apellido_p}} {{$pro->PRO_apellido_m}}</h1>
   <hr>
 </center>
 <div class="container-fluid">
@@ -36,7 +36,7 @@
           <td colspan="2"><label for="">Nombre</label></td>
         </tr>
         <tr>
-          <td><p>{{$alu->ALU_nombre}} {{$alu->ALU_apellido_p}} {{$alu->ALU_apellido_m}}</p></td>
+          <td><p>{{$pro->PRO_nombre}} {{$pro->PRO_apellido_p}} {{$pro->PRO_apellido_m}}</p></td>
           <td>
             <center>
               <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
@@ -44,35 +44,13 @@
           </td>
         </tr>
         <tr>
-          <td colspan="2"><label for="">Edad</label></td>
-        </tr>
-        <tr>
-          <td><p>{{$alu->ALU_edad}}</p></td>
-          <td>
-            <center>
-              <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-            </center>
-          </td>
-        </tr>
-        <tr>
           <td colspan="2"><label for="">Sexo</label></td>
         </tr>
         <tr>
-          <td><p>{{$alu->ALU_sexo}}</p></td>
+          <td><p>{{$pro->PRO_sexo}}</p></td>
           <td>
             <center>
               <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
-            </center>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2"><label for="">Matricula</label></td>
-        </tr>
-        <tr>
-          <td><p>{{$alu->ALU_metricula}}</p></td>
-          <td>
-            <center>
-              <span class="glyphicon glyphicon-barcode" aria-hidden="true"></span>
             </center>
           </td>
         </tr>
@@ -85,7 +63,7 @@
           <td colspan="2"><label for="">Calle</label></td>
         </tr>
         <tr>
-          <td><p>{{$alu->DIR_calle}}</p></td>
+          <td><p>{{$pro->DIR_calle}}</p></td>
           <td>
             <center>
               <span class="glyphicon glyphicon-road " aria-hidden="true"></span>
@@ -96,7 +74,7 @@
           <td colspan="2"><label for="">Colonia</label></td>
         </tr>
         <tr>
-          <td><p>{{$alu->DIR_colonia}}</p></td>
+          <td><p>{{$pro->DIR_colonia}}</p></td>
           <td>
             <center>
               <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
@@ -107,7 +85,7 @@
           <td colspan="2"><label for="">Estado</label></td>
         </tr>
         <tr>
-          <td><p>{{$alu->DIR_estado}}</p></td>
+          <td><p>{{$pro->DIR_estado}}</p></td>
           <td>
             <center>
               <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>
@@ -118,7 +96,7 @@
           <td colspan="2"><label for="">Ciudad</label></td>
         </tr>
         <tr>
-          <td><p>{{$alu->DIR_ciudad}}</p></td>
+          <td><p>{{$pro->DIR_ciudad}}</p></td>
           <td>
             <center>
               <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
@@ -129,7 +107,7 @@
           <td colspan="2"><label for="">Pais</label></td>
         </tr>
         <tr>
-          <td><p>{{$alu->DIR_pais}}</p></td>
+          <td><p>{{$pro->DIR_pais}}</p></td>
           <td>
             <center>
               <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
@@ -153,7 +131,7 @@
           <td colspan="2"><label for="">Nombre de usuario</label></td>
         </tr>
         <tr>
-          <td><p>{{$alu->name}}</p></td>
+          <td><p>{{$pro->name}}</p></td>
           <td>
             <center>
               <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
@@ -164,7 +142,7 @@
           <td colspan="2"><label for="">Email</label></td>
         </tr>
         <tr>
-          <td><p>{{$alu->email}}</p></td>
+          <td><p>{{$pro->email}}</p></td>
           <td>
             <center>
               <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
@@ -222,24 +200,20 @@
         <h3 class="modal-title" id="myModalLabel">Actualizar datos personales</h3>
       </div>
       <div class="modal-body">
-      {!! Form::open(['route' => ['alumnoperfil.update', $alu->ALU_id],'method' => 'put','id'=>'datosdeformulario']) !!}
+      {!! Form::open(['route' => ['perfilprofesor.update', $pro->PRO_id],'method' => 'put','id'=>'datosdeformulario']) !!}
       <div class="row">
         <div class="col-sm-6">
           <div class="form-group">
           {!! Form::label('nombre','Nombre') !!}<br />
-          {!! Form::text('nombre',$alu->ALU_nombre,['class'=>'nom','required'])!!}
+          {!! Form::text('nombre',$pro->PRO_nombre,['class'=>'nom','required'])!!}
         </div>
         <div class="form-group">
           {!! Form::label('ap','Apellido materno') !!}<br />
-          {!! Form::text('ap',$alu->ALU_apellido_p,['class'=>'ap','required'])!!}
+          {!! Form::text('ap',$pro->PRO_apellido_p,['class'=>'ap','required'])!!}
         </div>
         <div class="form-group">
           {!! Form::label('am','Apellido paterno') !!}<br />
-          {!! Form::text('am',$alu->ALU_apellido_m,['class'=>'am','required'])!!}
-        </div>
-        <div class="form-group">
-          {!! Form::label('edad','Edad') !!}<br />
-          {!! Form::number('edad',$alu->ALU_edad,['class'=>'edad','required'])!!}
+          {!! Form::text('am',$pro->PRO_apellido_m,['class'=>'am','required'])!!}
         </div>
         <div class="form-group">
           {!! Form::label('sexo','Sexo') !!}<br>
@@ -247,31 +221,27 @@
           {{ Form::radio('sex', 'hombre',true) }} Hombre  {{ Form::radio('sex', 'mujer') }} Mujer
           </center>
         </div>
-        <div class="form-group">
-          {!! Form::label('matricula','Matricula') !!}<br />
-          {!! Form::number('matricula',$alu->ALU_metricula,['class'=>'mat','required'])!!}
-        </div>
         </div>
         <div class="col-sm-6">
           <div class="form-group">
           {!! Form::label('calle','Calle') !!}<br />
-          {!! Form::text('calle',$alu->DIR_calle,['class'=>'callee','required'])!!}
+          {!! Form::text('calle',$pro->DIR_calle,['class'=>'callee','required'])!!}
         </div>
         <div class="form-group">
           {!! Form::label('colonia','Colonia') !!}<br />
-          {!! Form::text('colonia',$alu->DIR_colonia,['class'=>'col','required'])!!}
+          {!! Form::text('colonia',$pro->DIR_colonia,['class'=>'col','required'])!!}
         </div>
         <div class="form-group">
           {!! Form::label('estado','Estado') !!}<br />
-          {!! Form::text('estado',$alu->DIR_estado,['class'=>'est','required'])!!}
+          {!! Form::text('estado',$pro->DIR_estado,['class'=>'est','required'])!!}
         </div>
         <div class="form-group">
           {!! Form::label('ciudad','Ciudad') !!}<br />
-          {!! Form::text('ciudad',$alu->DIR_ciudad,['class'=>'cd','required'])!!}
+          {!! Form::text('ciudad',$pro->DIR_ciudad,['class'=>'cd','required'])!!}
         </div>
         <div class="form-group">
           {!! Form::label('pais','Pais') !!}<br />
-          {!! Form::text('pais',$alu->DIR_pais,['class'=>'pais','required'])!!}
+          {!! Form::text('pais',$pro->DIR_pais,['class'=>'pais','required'])!!}
         </div>
         </div>
       </div>
@@ -296,10 +266,10 @@
       </div>
       <div class="modal-body">
         <center>
-          <img id="updatefoto" src="/img/{{$alu->foto}}" alt="">
+          <img id="updatefoto" src="/img/{{$pro->foto}}" alt="">
           <br>
           <br>
-          {!! Form::open(['route' => ['updatefoto', $alu->id],'method' => 'put','id'=>'datosdeformulario','files'=>'true']) !!}
+          {!! Form::open(['route' => ['updateproimg', $pro->id],'method' => 'put','id'=>'datosdeformulario','files'=>'true']) !!}
           <div class="form-group">
             {!! Form::file('file',['class'=>'form-control','id'=>'imgInp']) !!}
           </div>
@@ -326,14 +296,15 @@
         <h3 class="modal-title" id="myModalLabel">Actualizar datos de usuario</h3>
       </div>
       <div class="modal-body">
-        {!! Form::open(['route'=>'cursos.store','method'=>'POST']) !!}
+
+         {!! Form::open(['route' => ['updateuser', $pro->id],'method' => 'put']) !!}
         <div class="form-group">
           {!! Form::label('usuario','Usuario') !!}<br />
-          {!! Form::text('usuario',$alu->name,['class'=>'user','required'])!!}
+          {!! Form::text('usuario',$pro->name,['class'=>'user','required'])!!}
         </div>
         <div class="form-group">
           {!! Form::label('email','Email') !!}<br />
-          {!! Form::email('email',$alu->email,['class'=>'email','required'])!!}
+          {!! Form::email('email',$pro->email,['class'=>'email','required'])!!}
         </div>
         <div class="form-group">
         {!! Form::label('password','Contraseña') !!}<br />

@@ -61,6 +61,16 @@ Route::get('/detallecurso/{id}',[
     'as' => 'detallecurso'
     ]);
 
+Route::put('/updateuser/{id}',[
+    'uses' => 'ProPerfilController@updateuser',
+    'as' => 'updateuser'
+    ]);
+
+Route::put('/updateproimg/{id}',[
+    'uses' => 'ProPerfilController@updateproimg',
+    'as' => 'updateproimg'
+    ]);
+
 
 Route::get('/listapdf/{id}',[
     'uses' => 'ProCursoController@listapdf',
@@ -85,7 +95,10 @@ Route::put('updatefoto/{id}',[
     ]);
 
 
-
+Route::put('/updateuseralum/{id}',[
+    'uses' => 'PerfilAlumnoController@updateuseralum',
+    'as' => 'updateuseralum'
+    ]);
 
 
 

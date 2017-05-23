@@ -60,7 +60,7 @@
             @endif
                 </div>
                 <div class="avatar">
-                    <img alt="" src="/img/desing/02.jpg>
+                    <img  src="/img/{{$mifotito}}">
                 </div>
                 <div class="info">
                     <div class="title">

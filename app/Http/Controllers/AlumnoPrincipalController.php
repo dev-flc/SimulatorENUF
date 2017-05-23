@@ -20,6 +20,7 @@ class AlumnoPrincipalController extends Controller
     public function index()
     {
       $iduseralumno = Auth::user()->id;
+      $mifotito = Auth::user()->foto;
       $user=User::find($iduseralumno);
       $alumno=Alumno::where('USE_id', $iduseralumno)->first();
       $idalumno=$alumno->ALU_id;
@@ -37,6 +38,7 @@ class AlumnoPrincipalController extends Controller
       return view('Alumno.Principal.index')
       ->with('alumno',$alumno)
       ->with('user',$user)
+      ->with('mifotito',$mifotito)
       ->with('inscrito',$inscrito)
       ->with('idalumno',$alumno->ALU_id)
       ->with('curso',$curso);
