@@ -19,9 +19,11 @@ Route::get('/', function () {
     }
     else
     {
-      return view('welcome');
+        return redirect()->route('welcome');
     }
 });
+
+    Route::get('/', 'WelcomeController@welcome');
 
 #Route::group(['prefix'=>'admin','middleware'=>['admin','auth']], function(){
 
