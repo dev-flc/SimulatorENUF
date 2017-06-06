@@ -22,8 +22,7 @@
 <table class="table table-hover">
   <tr>
     <th rowspan="2"><center>NP</center></th>
-    <th rowspan="2"><center>Nombre</center></th>
-    <th rowspan="2"><center>Apellidos</center></th>
+    <th rowspan="2"><center>Nombre completo</center></th>
     <th colspan="{{$a}}"><center>Unidades</center></th>
     <th><center>Examen Global</center></th>
     <th><center>Calificación</center></th>
@@ -40,8 +39,7 @@
   @foreach($list as $li)
  <tr>
     <td>{{$np++}}</td>
-    <td>{{$li->ALU_nombre}}</td>
-    <td>{{$li->ALU_apellido_p}}  {{$li->ALU_apellido_m}}</td>
+    <td>{{$li->ALU_apellido_p}}  {{$li->ALU_apellido_m}} {{$li->ALU_nombre}}</td>
 @foreach($unidad as $u)
     @foreach($alusuni as $unii)
     @if($unii->UNI_id == $u->UNI_id)

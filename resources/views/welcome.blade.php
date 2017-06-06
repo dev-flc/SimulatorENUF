@@ -92,12 +92,10 @@
   <div class="row">
     <div class="col-sm-4">
      <div class="secre" >
-     <br>
-     <center>
-       <img src="img/secretaria.png" id="secre" alt="">
-     </center>
+     <br><br><br>
+       <img src="img/secretaria.png" id="secre" align="right">
     </div>
-    </div>
+    </div><br>
     <div class="col-sm-4">
     <center>
         <p id="titulo">Escuela Normal Urbana Federal</p>
@@ -109,9 +107,7 @@
     </div>
     <div class="col-sm-4">
        <div class="escudo" >
-       <center>
-       <img src="img/esc.png" id="escudo" class="slideUp" alt="">
-       </center>
+       <img src="img/100.png" id="escudo" class="slideUp" alt="">
     </div>
     </div>
   </div>

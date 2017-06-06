@@ -5,17 +5,19 @@
   <title></title>
 </head>
 <body>
-  <div class="container-fluid">
-<div class="row">
-  <div class="col-sm-12"><center><h1>{{$curso->CUR_nombre}}</h1></center><br></div>
-  <center><h2>Lista de alumnos </h2></center>
-</div>
-<hr>
-<table border="1">
+  <div class="row">
+    <div class="col-sm-12">
+     <br>
+       <img src="img/nav.png">
+    </div>
+  </div>
+<br><br>
+<div class="col-sm-12" id="p1"><center>{{$curso->CUR_nombre}}</center><br></div>
+<center>Lista de alumnos</center><br>
+<table border="1" id="p" bordercolor="silver">
   <tr>
     <th rowspan="2"><center>NP</center></th>
-    <th rowspan="2"><center>Nombre</center></th>
-    <th rowspan="2"><center>Apellidos</center></th>
+    <th rowspan="2"><center>Nombre completo</center></th>
     <th colspan="{{$a}}"><center>Unidades</center></th>
     <th><center>Examen Global</center></th>
     <th><center>Calificación</center></th>
@@ -32,8 +34,7 @@
   @foreach($list as $li)
  <tr>
     <td>{{$np++}}</td>
-    <td>{{$li->ALU_nombre}}</td>
-    <td>{{$li->ALU_apellido_p}}  {{$li->ALU_apellido_m}}</td>
+    <td>{{$li->ALU_apellido_p}}  {{$li->ALU_apellido_m}} {{$li->ALU_nombre}}</td>
 @foreach($unidad as $u)
     @foreach($alusuni as $unii)
     @if($unii->UNI_id==$u->UNI_id)
@@ -64,9 +65,23 @@
   @php($calli=$nada)
   @endforeach
 </table>
-<br>
-<br>
-<br>
+ <div class="row">
+    <div class="col-sm-12">
+     <br>
+       <img src="img/pie.png">
+    </div>
+  </div>
 </div>
 </body>
+
 </html>
+<style>
+#p {
+  font-size: 90%;
+}
+#p1 {
+  font-size: 90%;
+  font-weight: bold;
+}
+
+</style>
