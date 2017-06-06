@@ -21,7 +21,7 @@
    <button id="editimg" class="" data-toggle="modal" data-target="#foto">
           <span  class="glyphicon glyphicon-camera" aria-hidden="true"></span>
     </button>
-  <h1>{{$alu->ALU_nombre}} {{$alu->ALU_apellido_p}} {{$alu->ALU_apellido_m}}</h1>
+  <h1 class="nom">{{$alu->ALU_nombre}} {{$alu->ALU_apellido_p}} {{$alu->ALU_apellido_m}}</h1>
   <hr>
 </center>
 <div class="container-fluid">

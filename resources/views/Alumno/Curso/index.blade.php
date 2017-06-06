@@ -4,6 +4,8 @@
 
 @section('styles')
   <link rel="stylesheet" href="{{ asset('css/alumnocursoindex.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/photo.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/adminprofesor.css') }}">
 @endsection
 
 <!-- Contenido Principal -->
@@ -16,35 +18,35 @@
 <!-- Contenido -->
 @section('content')
 <div class="row">
-  <div class="col-sm-4">
-    <br>
-       <div class="container-fluid perfildiv">
-      <center><br>
-        <img id="imgperfil" src="/img/{{$foto}}" alt="">
-        <br />
-        <br />
-      </center>
-        <label for="">
-            Nombre:
-        </label>
-        <p id="texto-a">
-          <center>{{$alumno->ALU_nombre}} {{$alumno->ALU_apellido_p}} {{$alumno->ALU_apellido_m}}</center>
-        </p>
-        <label for="">Edad:</label>
-        <p id="texto-a">
-          <center>{{$alumno->ALU_edad}}</center>
-        </p>
-        <label for="">Sexo:</label>
-        <p id="texto-a">
-          <center>{{$alumno->ALU_sexo}}</center>
-        </p>
-        <label for="">Matricula:</label>
-        <p id="texto-a">
-          <center>{{$alumno->ALU_metricula}}</center>
-        </p>
-    </div>
-  </div>
-  <div class="col-sm-8 ">
+<!--
+  <div class="col-sm-3">
+   <div class="card hovercard">
+       <div class="cardheader">
+                @if($alumno->ALU_sexo=="hombre")
+                <div class="cardheader">
+
+                </div>
+            @else
+                <div class="cardheader2">
+
+                </div>
+            @endif
+                </div>
+        <div class="avatar">
+             <img id="imgperfil" src="/img/{{$foto}}" alt="">
+             </div>
+              <div class="info">
+                    <div class="title">
+                       {{$alumno->ALU_nombre}} {{$alumno->ALU_apellido_p}} {{$alumno->ALU_apellido_m}}
+                    </div>
+                    <div class="title"><h4>Matricula:{{$alumno->ALU_metricula}}</h4></div>
+                    <div class="title"><h4>Edad:{{$alumno->ALU_edad}}</h4></div>
+                    <div class="title"><h4>Sexo:{{$alumno->ALU_sexo}}</h4></div>
+                </div>
+            </div>
+         </div>
+         -->
+  <div class="col-sm-12 ">
     <br>
     <div class="curse">
     <center><h1>{{ $curso->CUR_nombre }}</h1>
@@ -72,10 +74,9 @@
               </div>
             </td>
             <td class="separador"></td>
-            <td><h4>{{ $uni->UNI_nombre }}</h4></td>
+            <td><h4>{{$uni->UNI_nombre }}</h4></td>
           </tr>
         </table>
-
       </div>
       @endforeach
 @else
@@ -87,12 +88,26 @@
 </div>
     </div>
   <div class="col-sm-4">
-  <h2>Profesor</h2>
-    <div class="thumbnail">
-      <img src="/img/{{$pro->foto}}" id="profe" alt="...">
-      <div class="caption">
-        <center>
-          <h3>{{ $pro->PRO_nombre }} {{$pro->PRO_apellido_p}} {{$pro->PRO_apellido_m}}</h3>
+  <center><h3>Catedratico</h3></center>
+    <div class="card hovercard">
+            @if($pro->PRO_sexo=="hombre")
+                <div class="cardheader">
+
+                </div>
+            @else
+                <div class="cardheader2">
+
+                </div>
+            @endif
+                <div class="avatar">
+                   <img src="/img/{{$pro->foto}}" id="profe" alt="...">
+                </div>
+                <div class="info">
+                    <div class="title">
+                        {{ $pro->PRO_nombre }} {{ $pro->PRO_apellido_p }} {{ $pro->PRO_apellido_m }}
+                    </div>
+                    <div class="info">Profesor</div>
+                </div>
           <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
           <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
           <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
@@ -101,7 +116,6 @@
         </center>
       </div>
     </div>
-
   </div>
     <br>
     <div class="col-sm-12">
@@ -113,7 +127,7 @@
     {!! Form::open(['route'=>'curos_registro.store','method'=>'POST']) !!}
       {{ Form::hidden('idcurso',$curso->CUR_id)}}
       {{ Form::hidden('idalumno',$alumno->ALU_id)}}
-      {{ Form::text('clave',null,['class'=>'clave','placeholder'=>'Ingrese la cleve del curso','required'])}}<br><br>
+      {{ Form::text('clave',null,['class'=>'clave','placeholder'=>'Ingrese la clave del curso','required'])}}<br><br>
       <center>
       {{ Form::button('Registrarme', array('class'=>'btn-registro', 'type'=>'submit')) }}<br><br>
       </center>
@@ -125,7 +139,16 @@
 
 <!-- subcontenido -->
 @section('subcontenido')
-
+<center>
+    <br>
+    <br>
+    <br><br>
+        <p id="titulo">Escuela Normal Urbana Federal</p>
+        <p id="subtitulo"> "Profr. Rafael Ramírez"</p>
+        <hr id="hr">  </hr>
+        <p id="conten"> Licenciatura en Educacion Secundaria<br>
+                        con Especialidad en Telesecuandaria </p>
+</center>
 @endsection
 
 <!-- Modals-->
@@ -137,4 +160,3 @@
 @section('script')
 
 @endsection
-

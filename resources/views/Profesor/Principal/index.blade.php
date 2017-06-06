@@ -3,12 +3,13 @@
 @section('title', 'Cursos')
 @section('styles')
   <link rel="stylesheet" href="{{ asset('css/proprincipal.css') }}">
-   <link rel="stylesheet" href="{{ asset('css/adminprofesor.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/profesorcursosshow.css') }}">
 @endsection
 <!-- Contenido Principal -->
 @section('imagenprincipal')
   <div class="seccionone">
     <img id="pri1" src="/img/pri2.png" alt="">
+    <h1 class="titulo">Cursos</h1>
   </div>
 @endsection
 
@@ -32,13 +33,10 @@
             </div>
          </div>
   <div class="col-sm-8">
-  <center>
-    <h1>Cursos</h1>
-  </center>
   <div class="row">
  @foreach($curso as $cur)
   <div class="col-sm-6">
-      <div class="container-fluid panelcursos">
+      <div class="panelcursos">
           <div class="row">
             <div class="col-sm-4"><br>
             <img class="img-circle" src="/img/{{ $cur->CUR_foto}}" alt="" width="100" height="100">
@@ -54,19 +52,7 @@
           </div>
           <hr>
           <center>
-          <style type="text/css">
-            .btn-primary-btn
-            {
-              border: 1px solid rgb(133, 193, 233);
-              transition: .7s;
-              width: 100%;
-            }
-            .btn-primary-btn:hover
-            {
-              background: rgb(52, 152, 219);
-              color: rgb(255,255,255);
-            }
-          </style>
+          <br><br>
           <a class="btn btn-primary-btn" href="{{ route('curso.show', $cur->CUR_id) }}">
             Ver <span class="glyphicon glyphicon glyphicon-eye-open" aria-hidden="true"></span>
           </a>
@@ -85,7 +71,16 @@
 
 <!-- subcontenido -->
 @section('subcontenido')
-
+<center>
+    <br>
+    <br>
+    <br>
+        <p id="titulo">Escuela Normal Urbana Federal</p>
+        <p id="subtitulo"> "Profr. Rafael Ramírez"</p>
+        <hr id="hr">  </hr>
+        <p id="conten"> Licenciatura en Educacion Secundaria<br>
+                        con Especialidad en Telesecuandaria </p>
+</center>
 @endsection
 
 <!-- Modals-->

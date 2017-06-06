@@ -234,12 +234,13 @@ input[type=checkbox]:checked{
   font-size: 17px;
 }
 .titulo
-{
-  position: relative;
-  top: -90%;
-  text-align: center;
-  color: rgb(255,255,255);
-}
+    {
+    position: relative;
+    top: -90%;
+    text-align: center;
+    color: rgb(16, 39, 89);
+    font-size: 70px;
+    }
 
 .divcal
   {

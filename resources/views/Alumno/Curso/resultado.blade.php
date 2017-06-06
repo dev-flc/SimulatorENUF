@@ -36,10 +36,6 @@
       </p>
   </center>
 </div>
-
-
-
-
 <script  src="{{ asset('plugins/jQuery/jquery-3.1.1.js') }}"></script>
 <script  src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 <script type="text/javascript">

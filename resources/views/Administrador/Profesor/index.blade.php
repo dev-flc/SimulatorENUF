@@ -14,18 +14,15 @@
 @endsection
 
 @section('content')
-
   <div class="row">
   @foreach ($profesor as $pro)
     <div class="col-sm-3">
             <div class="card hovercard">
             @if($pro->PRO_sexo=="hombre")
                 <div class="cardheader">
-
                 </div>
             @else
                 <div class="cardheader2">
-
                 </div>
             @endif
                 <div class="avatar">
@@ -35,20 +32,15 @@
                     <div class="title">
                         {{ $pro->PRO_nombre }} {{ $pro->PRO_apellido_p }} {{ $pro->PRO_apellido_m }}
                     </div>
-                    <div class="desc">{{ $pro->name }}</div>
+                    <div class="desc">Clave de usuario: {{ $pro->name }}</div>
                 </div>
                 <div class="bottom">
                     <a class="btn btn-primary btn-sm btn-profe" rel="publisher"
                        href="{{ route('profesores.edit', $pro->PRO_id) }}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                     </a>
                     
-                    <a class="btn btn-danger btn-sm btn-profe" rel="publisher"
-                       href="#"><span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
-                    </a>
-                    <!--
                     <a class="btn btn-success btn-twitter btn-sm btn-profe" href="#"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                     </a>
-                    -->
                 </div>
             </div>
         </div>
@@ -59,19 +51,25 @@
 <br>
 <br>
 <br>
-
 <div class="contenedor">
 <button class="botonF1 tooltip-right1" data-toggle="modal" data-target="#pregunta" data-tooltip="Nuevo Profesor">
   <span>+</span>
 </button>
 </div>
 </div>
-
 @endsection
 
-
 @section('subcontenido')
-
+<center>
+    <br>
+    <br>
+    <br>
+        <p id="titulo">Escuela Normal Urbana Federal</p>
+        <p id="subtitulo"> "Profr. Rafael Ramírez"</p>
+        <hr id="hr">  </hr>
+        <p id="conten"> Licenciatura en Educacion Secundaria<br>
+                        con Especialidad en Telesecuandaria </p>
+</center>
 @endsection
 
 <!-- Modals-->
@@ -102,11 +100,11 @@
         {!! Form::text('apellido_m',null,['class'=>'aam','id'=>'apellido_m','required'])!!}
     </div>
     <center>
-  <div class="form-group">
+    <div class="form-group">
     {!! Form::label('sexo','Sexo ') !!}
     {{ Form::radio('sex', 'hombre', true) }} Hombre  {{ Form::radio('sex', 'mujer') }} Mujer
-  </div>
-  </center>
+    </div>
+    </center>
     <hr>
     <div class="form-group">
         {!! Form::label('usuario','Usuario') !!}

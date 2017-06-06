@@ -3,7 +3,8 @@
 @section('title', 'Cursos')
 @section('styles')
   <link rel="stylesheet" href="{{ asset('css/prialumno.css') }}">
-   <link rel="stylesheet" href="{{ asset('css/photo.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/photo.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/adminprofesor.css') }}">
 @endsection
 
 <!-- Contenido Principal -->
@@ -42,9 +43,9 @@
                     <div class="title">
                         <a>{{$alumno->ALU_nombre}} {{$alumno->ALU_apellido_p}} {{$alumno->ALU_apellido_m}}</a>
                     </div>
-                    <div class="desc"><h4>Matricula:{{$alumno->ALU_metricula}}</h4></div>
-                    <div class="desc"><h4>Edad:{{$alumno->ALU_edad}}</h4></div>
-                    <div class="desc"><h4>Sexo:{{$alumno->ALU_sexo}}</h4></div>
+                    <div class="title"><h4>Matricula:{{$alumno->ALU_metricula}}</h4></div>
+                    <div class="title"><h4>Edad:{{$alumno->ALU_edad}}</h4></div>
+                    <div class="title"><h4>Sexo:{{$alumno->ALU_sexo}}</h4></div>
                 </div>
             </div>
         </div>
@@ -166,7 +167,16 @@
 
 <!-- subcontenido -->
 @section('subcontenido')
-
+<center>
+    <br>
+    <br>
+    <br><br>
+        <p id="titulo">Escuela Normal Urbana Federal</p>
+        <p id="subtitulo"> "Profr. Rafael Ramírez"</p>
+        <hr id="hr">  </hr>
+        <p id="conten"> Licenciatura en Educacion Secundaria<br>
+                        con Especialidad en Telesecuandaria </p>
+</center>
 @endsection
 
 <!-- Modals-->

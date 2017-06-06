@@ -11,12 +11,15 @@
 
   <div class="seccionone">
   <img id="pri1" src="/img/pri2.png" alt="">
+   <h1 class="titulo">Mis Evaluaciones</h1>
   </div>
 @endsection
 
 <!-- Contenido -->
 @section('content')
-<center><h1>Mis Evaluaciones</h1></center><br>
+<br>
+<br>
+<center>
 <div class="container-fluid">
     <div class="row">
     <div class="col-sm-6">
@@ -97,6 +100,7 @@
                 <th><center>Fecha</center></th>
                 <th><center>Hora</center></th>
                 <th><center>Calificación</center></th>
+                <th><center>Resultado de examen</center></th>
             </tr>
             @foreach($final as $fin)
             @if($fin->UNI_id==$id)
@@ -149,17 +153,28 @@
         @endif
         </div>
     </div>
-
-
+      <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading boder-tres"><h2>Examen Global</h2></div>
+         
+        </div>
     </div>
 </div>
-
+</div>
+</center>
 <br>
 @endsection
 
 <!-- subcontenido -->
 @section('subcontenido')
-
+<center>
+    <br><br><br><br>
+        <p id="titulo">Escuela Normal Urbana Federal</p>
+        <p id="subtitulo"> "Profr. Rafael Ramírez"</p>
+        <hr id="hr">  </hr>
+        <p id="conten"> Licenciatura en Educacion Secundaria<br>
+                        con Especialidad en Telesecuandaria </p>
+</center>
 @endsection
 
 <!-- Modals-->

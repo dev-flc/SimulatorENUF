@@ -21,22 +21,22 @@
   {!! Form::open(['route' => ['cursos.update', $curso->CUR_id],'method' => 'put']) !!}
     <div class="form-group">
         {!! Form::label('nombre','Nombre') !!}
-        {!! Form::text('nombre',$curso->CUR_nombre,['class'=>'form-control','required'])!!}
+        {!! Form::text('nombre',$curso->CUR_nombre,['class'=>'nmm','required'])!!}
     </div>
     <div class="form-group">
         {!! Form::label('cupos','Cupos') !!}
-        {!! Form::number('cupos',$curso->CUR_cupos,['class'=>'form-control','required'])!!}
+        {!! Form::number('cupos',$curso->CUR_cupos,['class'=>'cup','required'])!!}
     </div>
     <div class="form-group">
         {!! Form::label('clave','Clave') !!}
-        {!! Form::number('clave',$curso->CUR_clave,['class'=>'form-control','required'])!!}
+        {!! Form::number('clave',$curso->CUR_clave,['class'=>'clave','required'])!!}
     </div>
     <div class="form-group">
       {{ Form::radio('estatus', 'habilitado', true) }} habilitado
       {{ Form::radio('estatus', 'deshabilitado') }} deshabilitar
     </div>
     <label for="profesor">Profesor</label>
-    <select  name="profesor" class="form-control" required>
+    <select  name="profesor" class="prof" required>
         <option value="{{ $profesor->PRO_id}}">{{ $profesor->PRO_nombre }} {{ $profesor->PRO_apellido_p }} {{ $profesor->PRO_apellido_m }}*</option>
         @foreach ($profesores as $pro)
         @if($profesor->PRO_id==$pro->PRO_id)
@@ -45,17 +45,16 @@
         @endif
         @endforeach
     </select>
-<br>
-
-  <div class="form-group">
-      <button type="button" class="btn-button-c" data-dismiss="modal">
+    <br>
+    <br>
+    <div class="modal-footer">
+        <button type="button" class="btn-button-c" data-dismiss="modal">
          Cancelar
          <span class="glyphicon glyphicon-remove"></span>
-      </button>
+         </button>
           {{ Form::button('<span class="glyphicon glyphicon-ok"></span> Actualizar', array('class'=>'btn-button-a pull-right', 'type'=>'submit')) }}
     </div>
     {!! Form::close() !!}
-
 </div>
 <br>
 <br>
@@ -63,7 +62,16 @@
 
 
 @section('subcontenido')
-
+<center>
+    <br>
+    <br>
+    <br>
+        <p id="titulo">Escuela Normal Urbana Federal</p>
+        <p id="subtitulo"> "Profr. Rafael Ramírez"</p>
+        <hr id="hr">  </hr>
+        <p id="conten"> Licenciatura en Educacion Secundaria<br>
+                        con Especialidad en Telesecuandaria </p>
+</center>
 @endsection
 
 

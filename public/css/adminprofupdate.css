@@ -1,85 +1,9 @@
-#pri1
+    #pri1
     {
       height: 350px;
       width: 100%;
     }
-
-/* Modal Informacion*/
-.modal-header
-{
-  background: url("/img/desing/12.jpg");
-  height: 150px;
-}
-.modal-header h3
-{
-  color: rgb(255,255,255);
-  font-size: 40px;
-}
-.caal, .cool, .ess, .ciiu, .paai, .cpp, .pass, .verif
-{ 
-  width: 100%;
-  outline: none;
-  padding: 15px;
-  background: none;
-  border: none;
-  border-bottom: 2px solid rgb(220,220,220);
-  color: rgb(52, 152, 219);
-  font-size: 15px;
-}
-.caal:focus, .caal:active, .cool:focus, .cool:active,
-.ess:focus, .ess:active, .ciiu:focus, .ciiu:active,
-.paai:focus, .paai:active, .cpp:focus, .cpp:active,
-.pass:focus, .pass:active, .verif:focus, .verif:active
-
-
-{
-  outline: none;
-  border-bottom: 2px solid rgb(52, 152, 219);
-  color: rgb(52, 152, 219);
-}
-
- .btn-button-c
-    {
-      background: rgb(255,255,255);
-      border: none;
-      border: 1px solid rgb(192, 57, 43) ;
-      width: 150px;
-      height: 40px;
-      margin: 5px;
-      padding: 5px;
-      color: rgb(192, 57, 43);
-      transition: .6s;
-    }
-    .btn-button-a
-    {
-      background: rgb(255,255,255);
-      border: none;
-      border: 1px solid rgb(39, 174, 96) ;
-      width: 150px;
-      height: 40px;
-      margin: 5px;
-      padding: 5px;
-      color: rgb(39, 174, 96);
-      transition: .6s;
-    }
-    .btn-button-c:hover
-    {
-      background: rgb(192, 57, 43);
-      color: rgb(255,255,255);
-    }
-    .btn-button-a:hover
-    {
-      background: rgb(39, 174, 96);
-      color: rgb(255,255,255);
-    }
-
-/* Modal Informacion Fin */
-
-
-
-
-
-.card {
+    .card {
     padding-top: 20px;
     margin: 10px 0 20px 0;
     background-color: rgba(214, 224, 226, 0.2);
@@ -279,9 +203,6 @@
     height: 135px;
 }
 
-.panelcursos{
-  background: url("/img/desing/cur1.png");
-}
 
 .card.hovercard .avatar {
     position: relative;
@@ -332,15 +253,85 @@
     color: rgb(16, 39, 89);
     font-size: 70px;
 }
+/* modal profesor */
+    .modal-header
+    {
+      background: url("/img/desing/12.jpg");
+      height: 150px;
+    }
+    .modal-header h3
+    {
+      color: rgb(255,255,255);
+      font-size: 40px;
+    }
+    .noom, .aap, .aam
+    {
+      width: 100%;
+      outline: none;
+      padding: 15px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid rgb(220,220,220);
+      color: rgb(52, 152, 219);
+      font-size: 15px;
+    }
+    .noom:focus, .noom:active, .aap:focus, .aap:active,
+    .aam:focus, .aam:active
+    {
+      outline: none;
+      border-bottom: 2px solid rgb(52, 152, 219);
+      color: rgb(52, 152, 219);
+    }
 
-.btn-primary-btn{
-    border: 1px solid rgb(133, 193, 233);
-    transition: .7s;
-    width: 100%;
-}
-
-.btn-primary-btn:hover{
-    background: rgb(52, 152, 219);
-    color: rgb(255,255,255);
-}
-          
+    .btn-button-c
+    {
+      background: rgb(255,255,255);
+      border: none;
+      border: 1px solid rgb(192, 57, 43) ;
+      width: 150px;
+      height: 40px;
+      margin: 5px;
+      padding: 5px;
+      color: rgb(192, 57, 43);
+      transition: .6s;
+    }
+    .btn-button-a
+    {
+      background: rgb(255,255,255);
+      border: none;
+      border: 1px solid rgb(39, 174, 96) ;
+      width: 150px;
+      height: 40px;
+      margin: 5px;
+      padding: 5px;
+      color: rgb(39, 174, 96);
+      transition: .6s;
+    }
+    .btn-button-s
+    {
+      background: rgb(255,255,255);
+      border: none;
+      border: 1px solid rgb(20, 155, 238) ;
+      width: 150px;
+      height: 40px;
+      margin: 5px;
+      padding: 5px;
+      color: rgb(39, 174, 96);
+      transition: .6s;
+    }
+    .btn-button-c:hover
+    {
+      background: rgb(192, 57, 43);
+      color: rgb(255,255,255);
+    }
+    .btn-button-a:hover
+    {
+      background: rgb(39, 174, 96);
+      color: rgb(255,255,255);
+    }
+    .btn-button-s:hover
+    {
+      background: rgb(20, 155, 238);
+      color: rgb(255,255,255);
+    }
+  

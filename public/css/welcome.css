@@ -147,9 +147,42 @@ h1.responsive{
   text-align: justify;
   font-family: 'Josefin Sans', sans-serif;
 }
+
+
+#titulo{
+    color: rgb(213, 211, 234);
+    font-size: 25px;
+    font-style: arial;
+}
+#subtitulo{
+    color: rgb(213, 211, 234);
+    font-size: 20px;
+    font: oblique bold 200% cursive;    
+}
+
+#conten{
+    color: rgb(213, 211, 234);
+    font-size: 15px;
+    font:  oblique bold 120% cursive;
+  }
+#hr {
+  height: 10px;
+  width: 30%;
+}
+#escudo
+{
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+}
+#secre
+{
+    width: 280px;
+    height: 80px;
+}
 .contenerdor1
 {
-  background: rgb(52, 152, 219); /* colores no me gusta */
+  background: rgb(31, 97, 141);
   z-index: 3;
   position: relative;
   height: 300px;

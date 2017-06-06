@@ -35,7 +35,7 @@
                               <label id="label-color" for="">{{ $cursos->CUR_nombre }}</label>
                             </center>
                         </div>
-                       <div class="row">
+                        <div class="row">
                          <div class="col-sm-6 ">
                           <center>
                           <div class="container-fluid tex-body">
@@ -57,7 +57,6 @@
                           </center>
                          </div>
                        </div>
-          
                     </div>
                     @if($cursos->CUR_estatus=="habilitado")
                     <div class="card-footer-success">
@@ -68,10 +67,9 @@
                         <a href="{{ route('cursos.edit', $cursos->CUR_id) }}"><button class="btn-pree pull-right"><span class="glyphicon glyphicon-pencil " aria-hidden="true"></span></button></a>
 
                         <a class="btn btn-danger btn-sm btn-curso" rel="publisher"
-                       href="#"><span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        href="#"><span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
                         </a>
                     </div>
-                  
                 </div>
             </div>
   @endforeach
@@ -84,12 +82,41 @@
   <span>+</span>
 </button>
 </div>
-  </div>
-
+</div>
 @endsection
 
 @section('subcontenido')
-
+<br>
+  <br>
+    <br>
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-4">
+     <div class="secre" >
+     <br>
+     <center>
+      
+     </center>
+    </div>
+    </div>
+    <div class="col-sm-4">
+    <center><br>
+        <p id="titulo">Escuela Normal Urbana Federal</p>
+        <p id="subtitulo"> "Profr. Rafael Ramírez"</p>
+        <hr id="hr">  </hr>
+        <p id="conten"> Licenciatura en Educacion Secundaria<br>
+                        con Especialidad en Telesecuandaria </p>
+    </center>
+    </div>
+    <div class="col-sm-4">
+       <div class="escudo" >
+       <center>
+       
+       </center>
+    </div>
+    </div>
+  </div>
+</div>
 @endsection
 
 <!-- Modals-->

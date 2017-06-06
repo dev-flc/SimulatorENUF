@@ -76,11 +76,6 @@
 
       </div>
     </div>
-
-
-
-
-
     @endforeach
     <input type="hidden" name="cantidad" id="cantidad" value="{{$p-1}}">
     <input type="hidden" name="unidadid" value="{{ $unidad->UNI_id }}">
@@ -106,7 +101,16 @@
 @endsection
 
 <!-- subcontenido -->
-@section('subcontenido')
+@section('subcontenido')<center>
+    <br>
+    <br>
+    <br><br>
+        <p id="titulo">Escuela Normal Urbana Federal</p>
+        <p id="subtitulo"> "Profr. Rafael Ramírez"</p>
+        <hr id="hr">  </hr>
+        <p id="conten"> Licenciatura en Educacion Secundaria<br>
+                        con Especialidad en Telesecuandaria </p>
+</center>
 
 @endsection
 

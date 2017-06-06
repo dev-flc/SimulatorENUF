@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="{{ asset('css/main.css') }}">
   <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
   <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
+
   @yield('styles')
 </head>
 
@@ -41,7 +43,6 @@
     <div class="container-fluid panelimg">
       <br>
       <img src="/img/alumno.png" alt="" id="divimg">
-      <p><span class="badge">42</span></p>
       <h2>Alumnos</h2>
     </div>
     </center>
@@ -52,7 +53,6 @@
     <div class="container-fluid panelimg">
       <br>
       <img src="/img/curso.png" alt="" id="divimg">
-        <p><span class="badge">42</span></p>
       <h2>Examenes</h2>
     </div>
     </center>
@@ -62,7 +62,6 @@
     <div class="container-fluid panelimg">
       <br>
       <img src="/img/profesor.png" alt="" id="divimg">
-      <p><span class="badge">42</span></p>
       <h2>Profesores</h2>
     </div>
     </center>
