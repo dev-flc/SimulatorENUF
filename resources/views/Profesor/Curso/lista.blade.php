@@ -24,8 +24,8 @@
     <th rowspan="2"><center>NP</center></th>
     <th rowspan="2"><center>Nombre completo</center></th>
     <th colspan="{{$a}}"><center>Unidades</center></th>
-    <th><center>Examen Global</center></th>
-    <th><center>Calificación</center></th>
+    <th rowspan="2"><center>Examen<br>Global</center></th>
+    <th><center>Calificación Final</center></th>
   </tr>
 <tr>
 @php($call = 0)
@@ -34,7 +34,7 @@
 @foreach($unidad as $uni)
     <td><center>unidad {{$aa++}}</center></td>
 @endforeach
-  <td><center>Calificacion</center></td>
+  <td><center>Promedio</center></td>
 </tr>
   @foreach($list as $li)
  <tr>
@@ -96,16 +96,7 @@
 <!-- Fin Section Contenido -->
 
 @section('subcontenido')
-<center>
-    <br>
-    <br>
-    <br>
-        <p id="titulo">Escuela Normal Urbana Federal</p>
-        <p id="subtitulo"> "Profr. Rafael Ramírez"</p>
-        <hr id="hr">  </hr>
-        <p id="conten"> Licenciatura en Educacion Secundaria<br>
-                        con Especialidad en Telesecuandaria </p>
-</center>
+
 @endsection
 
 

@@ -3,8 +3,7 @@
 @section('title', 'Cursos')
 @section('styles')
   <link rel="stylesheet" href="{{ asset('css/prialumno.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/photo.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/adminprofesor.css') }}">
+   <link rel="stylesheet" href="{{ asset('css/adminprofesor.css') }}">
 @endsection
 
 <!-- Contenido Principal -->
@@ -16,42 +15,27 @@
 
 <!-- Contenido -->
 @section('content')
-
 <div class="row">
-  <div class="col-sm-4">
-    <br>
-  <div class="container">
-  <div class="row">
-    <div class="col-lg-3 col-sm-6">
-
-            <div class="card hovercard">
-                <div class="cardheader">
-                @if($alumno->ALU_sexo=="hombre")
-                <div class="cardheader">
-
-                </div>
-            @else
-                <div class="cardheader2">
-
-                </div>
-            @endif
-                </div>
-                <div class="avatar">
-                    <img  src="/img/{{$mifotito}}">
-                </div>
-                <div class="info">
+<div class="col-sm-3">
+    <div class="card hovercard">
+     @if($alumno->ALU_sexo=="hombre")
+    <div class="cardheader"></div>
+     @else
+      <div class="cardheader2"></div>
+       @endif
+        <div class="avatar">
+             <img alt="" src="/img/{{$mifotito}}">
+             </div>
+              <div class="info">
                     <div class="title">
-                        <a>{{$alumno->ALU_nombre}} {{$alumno->ALU_apellido_p}} {{$alumno->ALU_apellido_m}}</a>
+                        {{$alumno->ALU_nombre}} {{$alumno->ALU_apellido_p}} {{$alumno->ALU_apellido_m}}
                     </div>
-                    <div class="title"><h4>Matricula:{{$alumno->ALU_metricula}}</h4></div>
-                    <div class="title"><h4>Edad:{{$alumno->ALU_edad}}</h4></div>
-                    <div class="title"><h4>Sexo:{{$alumno->ALU_sexo}}</h4></div>
+                    <div class="title"><h3>Matricula:{{$alumno->ALU_metricula}}</h3></div>
+                    <div class="title"><h3>Edad:{{$alumno->ALU_edad}}</h3></div>
+                    <div class="title"><h3>Sexo:{{$alumno->ALU_sexo}}</h3></div>
                 </div>
             </div>
-        </div>
-  </div>
-  </div>
-  </div>
+         </div>
   <div class="col-sm-8">
   <br>
   <div class="container-fluid">
@@ -123,6 +107,7 @@
             </div>
           </div>
         </div>
+        </div>
       @endif
     @endforeach
 @else
@@ -167,16 +152,7 @@
 
 <!-- subcontenido -->
 @section('subcontenido')
-<center>
-    <br>
-    <br>
-    <br><br>
-        <p id="titulo">Escuela Normal Urbana Federal</p>
-        <p id="subtitulo"> "Profr. Rafael Ramírez"</p>
-        <hr id="hr">  </hr>
-        <p id="conten"> Licenciatura en Educacion Secundaria<br>
-                        con Especialidad en Telesecuandaria </p>
-</center>
+
 @endsection
 
 <!-- Modals-->

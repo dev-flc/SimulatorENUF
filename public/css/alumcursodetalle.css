@@ -26,21 +26,6 @@
        background: url(https://elandroidelibre.elespanol.com/wp-content/uploads/2014/12/fondo-pantalla-android-material-9.jpg);
        color:rgb(255,255,255);
     }
-     .panel .boder-tres
-    {
-       background-image: url("/img/fondo3.png"); 
-       color:rgb(255,255,255);
-    }
-
     .panel-default{
         border: 1px solid rgb(222,222,222);
     }
-    .titulo
-    {
-    position: relative;
-    top: -90%;
-    text-align: center;
-    color: rgb(16, 39, 89);
-    font-size: 70px;
-    }
-    

@@ -43,6 +43,7 @@
     <div class="container-fluid panelimg">
       <br>
       <img src="/img/alumno.png" alt="" id="divimg">
+      <p><span class="badge">42</span></p>
       <h2>Alumnos</h2>
     </div>
     </center>
@@ -53,6 +54,7 @@
     <div class="container-fluid panelimg">
       <br>
       <img src="/img/curso.png" alt="" id="divimg">
+        <p><span class="badge">42</span></p>
       <h2>Examenes</h2>
     </div>
     </center>
@@ -62,6 +64,7 @@
     <div class="container-fluid panelimg">
       <br>
       <img src="/img/profesor.png" alt="" id="divimg">
+      <p><span class="badge">42</span></p>
       <h2>Profesores</h2>
     </div>
     </center>

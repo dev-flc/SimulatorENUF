@@ -1,23 +1,3 @@
-@extends('Main.mainadmin')
-
-@section('title', 'Cursos')
-@section('styles')
-  <link rel="stylesheet" href="{{ asset('css/button-menu.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/admincursoupdate.css') }}">
-@endsection
-
-@section('imagenprincipal')
-  <div class="seccionone">
-  <img id="pri1" src="/img/pri2.png" alt="">
-  <h1 class="titulo">Editar curso</h1>
-  </div>
-@endsection
-
-@section('content')
-<br>
-<br>
-<br>
-<div class="container-fluid">
   {!! Form::open(['route' => ['cursos.update', $curso->CUR_id],'method' => 'put']) !!}
     <div class="form-group">
         {!! Form::label('nombre','Nombre') !!}
@@ -40,31 +20,18 @@
         <option value="{{ $profesor->PRO_id}}">{{ $profesor->PRO_nombre }} {{ $profesor->PRO_apellido_p }} {{ $profesor->PRO_apellido_m }}*</option>
         @foreach ($profesores as $pro)
         @if($profesor->PRO_id==$pro->PRO_id)
+
         @else if
         <option value="{{ $pro->PRO_id}}">{{ $pro->PRO_nombre}} {{ $pro->PRO_apellido_p}} {{ $pro->PRO_apellido_m}} </option>
         @endif
         @endforeach
     </select>
-<br>
+
 
   <div class="form-group">
-      <button type="button" class="btn-button-c" data-dismiss="modal">
-         Cancelar
-         <span class="glyphicon glyphicon-remove"></span>
-      </button>
-          {{ Form::button('<span class="glyphicon glyphicon-ok"></span> Actualizar', array('class'=>'btn-button-a pull-right', 'type'=>'submit')) }}
+    {{ Form::button('<span class="glyphicon glyphicon-ok"></span> Registrar', array('class'=>'btn btn-success pull-right', 'type'=>'submit')) }}
     </div>
+
+
+
     {!! Form::close() !!}
-
-</div>
-<br>
-<br>
-@endsection
-
-
-@section('subcontenido')
-
-@endsection
-
-
-@section('script')

@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="{{ asset('plugins/confirm/sweetalert.css') }}">
   <link rel="stylesheet" href="{{ asset('css/adminprofesor.css') }}">
   <link rel="stylesheet" href="{{ asset('css/alumnocursoshow.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/photo.css') }}">
 @endsection
 
 <!-- Contenido Principal -->
@@ -20,35 +19,28 @@
 <!-- Contenido -->
 @section('content')
 <div class="row">
- <div class="col-sm-3">
- <br>
-   <div class="card hovercard">
-       <div class="cardheader">
-                @if($alumno->ALU_sexo=="hombre")
-                <div class="cardheader">
-
-                </div>
-            @else
-                <div class="cardheader2">
-
-                </div>
-            @endif
-                </div>
+<div class="col-sm-3">
+    <div class="card hovercard">
+     @if($alumno->ALU_sexo=="hombre")
+    <div class="cardheader"></div>
+     @else
+      <div class="cardheader2"></div>
+       @endif
         <div class="avatar">
-            <img id="imgperfil" src="/img/{{$user->foto}}" alt="">
+             <img id="imgperfil" src="/img/{{$user->foto}}" alt="">
              </div>
               <div class="info">
                     <div class="title">
-                       {{$alumno->ALU_nombre}} {{$alumno->ALU_apellido_p}} {{$alumno->ALU_apellido_m}}
+                        {{$alumno->ALU_nombre}} {{$alumno->ALU_apellido_p}} {{$alumno->ALU_apellido_m}}
                     </div>
-                    <div class="title"><h4>Matricula:{{$alumno->ALU_metricula}}</h4></div>
-                    <div class="title"><h4>Edad:{{$alumno->ALU_edad}}</h4></div>
-                    <div class="title"><h4>Sexo:{{$alumno->ALU_sexo}}</h4></div>
+                    <div class="title"><h3>Matricula:{{$alumno->ALU_metricula}}</h3></div>
+                    <div class="title"><h3>Edad:{{$alumno->ALU_edad}}</h3></div>
+                    <div class="title"><h3>Sexo:{{$alumno->ALU_sexo}}</h3></div>
                 </div>
-            </div>
-         </div>
+          </div>
+      </div>
   <div class="col-sm-9">
-    <br>
+  <br>
     <div class="curse">
     <center><h1>{{ $curso->CUR_nombre }}</h1>
     <img id="tamanofoto" src="/img/{{ $curso->CUR_foto }}" alt="" style="width: 100px; height: 100px; border-radius: 50%;">
@@ -227,16 +219,7 @@
 
 <!-- subcontenido -->
 @section('subcontenido')
-<center>
-    <br>
-    <br>
-    <br><br>
-        <p id="titulo">Escuela Normal Urbana Federal</p>
-        <p id="subtitulo"> "Profr. Rafael Ramírez"</p>
-        <hr id="hr">  </hr>
-        <p id="conten"> Licenciatura en Educacion Secundaria<br>
-                        con Especialidad en Telesecuandaria </p>
-</center>
+
 @endsection
 
 <!-- Modals-->

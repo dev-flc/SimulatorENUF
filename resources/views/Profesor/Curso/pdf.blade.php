@@ -5,22 +5,20 @@
   <title></title>
 </head>
 <body>
-  <div class="row">
-    <div class="col-sm-12">
-     <br>
-       <img src="img/nav.png">
-    </div>
-  </div>
-<br><br>
-<div class="col-sm-12" id="p1"><center>{{$curso->CUR_nombre}}</center><br></div>
-<center>Lista de alumnos</center><br>
+  <div class="container-fluid">
+<div class="row">
+  <div clas="col-sm-12"><img id="nav" src="img/nav.png" alt=""></div><br><br>
+  <div class="col-sm-12" id="p1"><center>{{$curso->CUR_nombre}}</center><br></div>
+  <div class="col-sm-12" id="p1"> <center>Lista de alumnos</center></div>
+</div><br>
+<hr id=hr>
 <table border="1" id="p" bordercolor="silver">
   <tr>
     <th rowspan="2"><center>NP</center></th>
     <th rowspan="2"><center>Nombre completo</center></th>
     <th colspan="{{$a}}"><center>Unidades</center></th>
-    <th><center>Examen Global</center></th>
-    <th><center>Calificación</center></th>
+    <th rowspan="2"><center>Examen<br>Global</center></th>
+    <th><center>Calificación Final</center></th>
   </tr>
 <tr>
         @php($call=0)
@@ -29,7 +27,7 @@
 @foreach($unidad as $uni)
     <td><center>unidad {{$aa++}}</center></td>
 @endforeach
-  <td><center>Calificacion</center></td>
+  <td><center>Promedio</center></td>
 </tr>
   @foreach($list as $li)
  <tr>
@@ -65,23 +63,32 @@
   @php($calli=$nada)
   @endforeach
 </table>
- <div class="row">
-    <div class="col-sm-12">
-     <br>
-       <img src="img/pie.png">
-    </div>
-  </div>
+<br><br><br>
+ <div clas="col-sm-12"><img id="pie" src="img/pie.png" alt=""></div>
+<br>
 </div>
 </body>
-
 </html>
-<style>
+<style type="text/css">
+#nav
+{
+  width: 730px;
+  height: 125px;
+}
+#pie
+{
+  width: 730px;
+  height: 65px;
+}
 #p {
-  font-size: 90%;
+  font-size: 100%;
 }
 #p1 {
-  font-size: 90%;
+  font-size: 110%;
   font-weight: bold;
 }
-
+#hr{
+  color: #2980B9;
+  width: 720px;
+}
 </style>

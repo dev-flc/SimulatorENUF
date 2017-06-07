@@ -1,12 +1,12 @@
 /* inicio navbar */
 .navbar-default .navbar-brand {
-    color: rgb(232, 237, 249);
+    color: rgb(40, 116, 166);
     height: 80px;
 
 }
 .navbar-default {
     font-size: 15px;
-    background-color: rgba(16, 39, 89, 1);
+    background-color: rgba(255,255,255, 1);
     border-width: 0px;
     border-radius: 0px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
@@ -18,7 +18,7 @@
 }
 .navbar-default .navbar-nav>li>a:hover,
 .navbar-default .navbar-nav>li>a:focus {
-    color: rgba(232, 237, 249, 1);
+    color: rgba(102, 102, 102, 1);
     /*background-color: rgba(255, 255, 255, 1);*/
 }
 .navbar-default .navbar-nav>.active>a,

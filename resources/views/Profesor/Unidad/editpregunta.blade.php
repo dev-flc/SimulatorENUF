@@ -20,7 +20,7 @@
   {!! Form::open(['route' => ['unidad.update', $pre->PRE_id],'files'=>'true','method' => 'put']) !!}
     <div class="form-group">
         {!! Form::label('Pregunta','Pregunta') !!}
-        {!! Form::text('Pregunta',$pre->PRE_nombre,['class'=>'prenom','required'])!!}
+        {!! Form::text('Pregunta',$pre->PRE_nombre,['class'=>'form-control','required'])!!}
     </div>
     <div class="row">
     @foreach ($res as $re)
@@ -28,11 +28,11 @@
         <div class="form-group">
         {{ Form::hidden('idres'.$con4++, $re->RES_id ) }}
           {!! Form::label('Respuesta','Respuesta'." ".$con++) !!}
-          {!! Form::text('res'.$con2++,$re->RES_nombre,['class'=>'resp1','required'])!!}
+          {!! Form::text('res'.$con2++,$re->RES_nombre,['class'=>'form-control','required'])!!}
         </div>
       </div>
       <div class="col-sm-3">
-        <div class="correc">
+        <div class="form-group">
           {!! Form::label('Pregunta','Tipo') !!}
           {{Form::select('tipo'.$con3++,['1'=>'Correcta','2'=>'Falsa'],$re->TIP_id,['class'=>'form-control']) 
           }}
@@ -40,18 +40,20 @@
       </div>
     @endforeach
     </div>
-    <div class="f">
+    <div class="form-group">
         {!! Form::label('foto','Foto') !!}
         {!! Form::file('file',['class'=>'form-control'])!!}
     </div>    
    
 
-  <div class="modal-footer">
-      <button type="button" class="btn-button-c" data-dismiss="modal">Cancelar
-      <span class="glyphicon glyphicon-remove"></span>
+  <div class="form-group">
+      <button type="button" class="btn-button-c" data-dismiss="modal">
+          Cancelar
+          <span class="glyphicon glyphicon-remove"></span>
       </button>
-      {{ Form::button('<span class="glyphicon glyphicon-ok"></span> Actualizar', array('class'=>'btn-button-a pull-right', 'type'=>'submit')) }}
-      {!! Form::close() !!}
+    {{ Form::button('<span class="glyphicon glyphicon-ok"></span> Actualizar', array('class'=>'btn-button-a pull-right', 'type'=>'submit')) }}
+    
+    {!! Form::close() !!}
     </div>
   </div>
 </div>
@@ -59,16 +61,7 @@
 @endsection
 <!-- subcontenido -->
 @section('subcontenido')
-<center>
-    <br>
-    <br>
-    <br>
-        <p id="titulo">Escuela Normal Urbana Federal</p>
-        <p id="subtitulo"> "Profr. Rafael Ramírez"</p>
-        <hr id="hr">  </hr>
-        <p id="conten"> Licenciatura en Educacion Secundaria<br>
-                        con Especialidad en Telesecuandaria </p>
-</center>
+
 @endsection
 
 

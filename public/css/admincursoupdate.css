@@ -247,14 +247,12 @@
 .btn-profe{ border-radius: 50%; width:32px; height:32px; line-height:20px;  }
 
 .titulo
-    {
-    position: relative;
-    top: -90%;
-    text-align: center;
-    color: rgb(16, 39, 89);
-    font-size: 70px;
-    }
-    
+{
+  position: relative;
+  top: -90%;
+  text-align: center;
+  color: rgb(255,255,255);
+}
 /* modal profesor */
     .modal-header
     {
@@ -266,7 +264,7 @@
       color: rgb(255,255,255);
       font-size: 40px;
     }
-    .nmm, .cup, .clave, .prof
+    .noom, .aap, .aam, .ussu
     {
       width: 100%;
       outline: none;
@@ -277,8 +275,8 @@
       color: rgb(52, 152, 219);
       font-size: 15px;
     }
-    .nmm:focus, .nmm:active, .cup:focus, .cup:active,
-    .clave:focus, .clave:active, .prof:focus, .prof:active
+    .noom:focus, .noom:active, .aap:focus, .aap:active,
+    .aam:focus, .aam:active, .ussu:focus, .ussu:active
     {
       outline: none;
       border-bottom: 2px solid rgb(52, 152, 219);
@@ -309,6 +307,18 @@
       color: rgb(39, 174, 96);
       transition: .6s;
     }
+    .btn-button-s
+    {
+      background: rgb(255,255,255);
+      border: none;
+      border: 1px solid rgb(20, 155, 238) ;
+      width: 150px;
+      height: 40px;
+      margin: 5px;
+      padding: 5px;
+      color: rgb(39, 174, 96);
+      transition: .6s;
+    }
     .btn-button-c:hover
     {
       background: rgb(192, 57, 43);
@@ -319,4 +329,8 @@
       background: rgb(39, 174, 96);
       color: rgb(255,255,255);
     }
-  
+    .btn-button-s:hover
+    {
+      background: rgb(20, 155, 238);
+      color: rgb(255,255,255);
+    }

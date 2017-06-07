@@ -129,7 +129,6 @@
     border: none;
     border-radius: .28571429rem;
     box-shadow: 0 1px 3px 0 rgb(52, 152, 219), 0 0 0 1px rgb(52, 152, 219);
-    background-image: url("/img/desing/03.jpg");
 }
 
 .card-block {
@@ -261,13 +260,12 @@
 
 }
 .titulo
-    {
-    position: relative;
-    top: -90%;
-    text-align: center;
-    color: rgb(16, 39, 89);
-    font-size: 70px;
-    }
+{
+  position: relative; 
+  top: -90%;
+  text-align: center;
+  color: rgb(255,255,255);
+}
 
 .card.hovercard .cardheader {
     background: url("/img/desing/02.jpg");

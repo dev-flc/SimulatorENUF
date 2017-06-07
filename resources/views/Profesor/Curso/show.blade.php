@@ -3,6 +3,7 @@
 @section('styles')
   <link rel="stylesheet" href="{{ asset('css/button-menu.css') }}">
   <link rel="stylesheet" href="{{ asset('css/profesorcursosshow.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/profesorcursoindex.css') }}">
 @endsection
 @section('imagenprincipal')
   <div class="seccionone">
@@ -13,7 +14,8 @@
 <div class="container-fluid">
 <div class="row">
   <div class="col-sm-12"><center><h1>{{$curso->CUR_nombre}}</h1></center><br></div>
-  <div class="col-sm-2">
+
+  <div class="col-sm-3">
     <center>
       <p id="centradop">Cupos del curso</p>
       <h2>
@@ -23,7 +25,7 @@
       </h2>
     </center>
   </div>
-  <div class="col-sm-2">
+  <div class="col-sm-3">
     <center>
       <p id="centradop">Cupos disponibles</p>
       <h2>
@@ -33,11 +35,11 @@
       </h2>
     </center>
   </div>
-  <div class="col-sm-2">
+  <div class="col-sm-3">
     <center>
       <p id="centradop">Examen global</p>
       <h2>
-        <span class="button button4" data-toggle="modal" data-target="#examen_gobal"  data-tooltip="Habilitar | Deshabilitar">
+        <span class="label label-default" data-toggle="modal" data-target="#examen_gobal"  data-tooltip="Habilitar | Deshabilitar" style="cursor:pointer">
           {{ $curso->CUR_estatus_examen}}
         </span>
       </h2>
@@ -46,21 +48,9 @@
   <div class="col-sm-3">
     <center>
       <p id="centradop">Lista de alumnos</p>
-      <a href="{{ route('detallecurso', $curso->CUR_id) }}">
+      <a href="{{ route('detallecurso', $curso->CUR_id) }}" style="text-decoration: none;">
       <h2>
-        <span class="button button3" data-toggle="modal" data-tooltip="Descargar PDF" >
-          Calificaciones
-        </span>
-      </h2>
-      </a>
-    </center>
-  </div>
-  <div class="col-sm-3">
-    <center>
-      <p id="centradop">Pruebas de examen</p>
-
-      <h2>
-        <span class="button button2" data-toggle="modal" data-tooltip="Pruebas realizadas">
+        <span class="label label-success">
           Detalle
         </span>
       </h2>
@@ -69,7 +59,6 @@
   </div>
 </div>
 <hr>
-<br>
 <div class="row">
   <div class="col-sm-6">
   <div class="container-fluid">
@@ -236,15 +225,11 @@
 <!-- Fin Section Contenido -->
 
 @section('subcontenido')
-  <center>
-    <br>
-    <br>
-        <p id="titulo">Escuela Normal Urbana Federal</p>
-        <p id="subtitulo"> "Profr. Rafael Ramírez"</p>
-        <hr id="hr">  </hr>
-        <p id="conten"> Licenciatura en Educacion Secundaria<br>
-                        con Especialidad en Telesecuandaria </p>
-</center>
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4"></div>
+</div>
 @endsection
 
 
