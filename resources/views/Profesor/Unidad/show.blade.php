@@ -167,7 +167,7 @@
   <br>
 <!--button -->
 <div class="contenedor">
-<button class="botonF1 tooltip-right1" data-toggle="modal" data-target="#pregunta"  data-tooltip="Nueva Pregunta">
+<button class="botonF1 tooltip-right1" data-toggle="modal" data-target="#pregunta_id"  data-tooltip="Nueva Pregunta">
   <span>+</span>
 </button>
 </div>
@@ -182,7 +182,7 @@
 <!-- Modals-->
 @section('modal')
 <!-- Modal Alumnos -->
-<div class="modal fade" id="pregunta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="pregunta_id" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -199,18 +199,23 @@
         </div>
         <div class="form-group">
           {!! Form::label('pregunta','Pregunta') !!}
-          {!! Form::text('pregunta',null,['class'=>'ppre','id'=>'pregunta','required'])!!}
+          {!! Form::text('pregunta',null,['class'=>'ppre','id'=>'pregunta'])!!}
+          @if($errors->has('pregunta'))
+            <span style="color: red;">{{$errors->first('pregunta')}}</span>
+          @endif
         </div>
           <div class="form-group">
               {!! Form::label('foto','Imagen de ayuda') !!}
-              {!! Form::file('file',['class'=>'form-control','required'])!!}
+              {!! Form::file('file',['class'=>'form-control'])!!}
           </div> 
         <div class="row">
           <div class="col-sm-8">
             <div class="form-group">
             {!! Form::label('respuesta1','Respuesta 1') !!}
-            {!! Form::text('respuesta1',null,['class'=>'resp1','id'=>'respuesta1','required'])!!}
-
+            {!! Form::text('respuesta1',null,['class'=>'resp1','id'=>'respuesta1'])!!}
+            @if($errors->has('respuesta1'))
+              <span style="color: red;">{{$errors->first('respuesta1')}}</span>
+            @endif
             </div>
           </div>
           <div class="col-sm-4">
@@ -223,7 +228,10 @@
           <div class="col-sm-8">
             <div class="form-group">
             {!! Form::label('respuesta2','Respuesta 2') !!}
-            {!! Form::text('respuesta2',null,['class'=>'resp2','id'=>'respuesta2','required'])!!}
+            {!! Form::text('respuesta2',null,['class'=>'resp2','id'=>'respuesta2'])!!}
+            @if($errors->has('respuesta2'))
+              <span style="color: red;">{{$errors->first('respuesta2')}}</span>
+            @endif
             </div>
           </div>
           <div class="col-sm-4">
@@ -236,7 +244,10 @@
           <div class="col-sm-8">
             <div class="form-group">
             {!! Form::label('respuesta3','Respuesta 3') !!}
-            {!! Form::text('respuesta3',null,['class'=>'resp3','id'=>'respuesta3','required'])!!}
+            {!! Form::text('respuesta3',null,['class'=>'resp3','id'=>'respuesta3'])!!}
+             @if($errors->has('respuesta3'))
+              <span style="color: red;">{{$errors->first('respuesta3')}}</span>
+            @endif
             </div>
           </div>
           <div class="col-sm-4">
@@ -250,7 +261,10 @@
           <div class="col-sm-8">
             <div class="form-group">
             {!! Form::label('respuesta4','Respuesta 4') !!}
-            {!! Form::text('respuesta4',null,['class'=>'resp4','id'=>'respuesta4','required'])!!}
+            {!! Form::text('respuesta4',null,['class'=>'resp4','id'=>'respuesta4'])!!}
+             @if($errors->has('respuesta4'))
+              <span style="color: red;">{{$errors->first('respuesta4')}}</span>
+            @endif
             </div>
           </div>
           <div class="col-sm-4">
@@ -279,6 +293,14 @@
 
 <!--Script -->
 @section('script')
+<!--verificar error modal-->
+ @if($errors->all())
+ <script type="text/javascript">
+   $("#pregunta_id").modal("toggle");
+ </script>           
+ @endif
+
+ 
 <script  src="{{ asset('plugins/confirm/sweetalert.min.js') }}"></script> 
 <script type="text/javascript">
   function destroybtn(){

@@ -39,6 +39,13 @@ class ProPreguntaController extends Controller
      */
     public function store(Request $request)
     {
+       $this->validate($request,[
+        'pregunta' => 'required|max:255',
+        'respuesta1' => 'required|max:255',
+        'respuesta2' => 'required|max:255',
+        'respuesta3' => 'required|max:255',
+        'respuesta4' => 'required|max:255',
+        ]);
       $correctas=0;
 
       for($i=1; $i<=4; $i++)
