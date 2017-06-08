@@ -358,15 +358,24 @@
   {!! Form::open(['route' => ['profesores.update', $profesor->PRO_id],'method' => 'put']) !!}
   <div class="form-group">
     {!! Form::label('nombre','Nombre') !!}
-    {!! Form::text('nombre',$profesor->PRO_nombre,['class'=>'form-control','id'=>'nombre','required'])!!}
+    {!! Form::text('nombre',$profesor->PRO_nombre,['class'=>'form-control','id'=>'nombre'])!!}
+    @if($errors->has('nombre'))
+      <span style="color: red;">{{$errors->first('nombre')}}</span>
+    @endif
   </div>
   <div class="form-group">
     {!! Form::label('apellido_p','Apellido Paterno') !!}
-    {!! Form::text('apellido_p',$profesor->PRO_apellido_p,['class'=>'form-control','id'=>'apellido_p','required'])!!}
+    {!! Form::text('apellido_p',$profesor->PRO_apellido_p,['class'=>'form-control','id'=>'apellido_p'])!!}
+    @if($errors->has('apellido_p'))
+      <span style="color: red;">{{$errors->first('apellido_p')}}</span>
+    @endif
   </div>
   <div class="form-group">
     {!! Form::label('apellido_m','Apellido Materno') !!}
-    {!! Form::text('apellido_m',$profesor->PRO_apellido_m,['class'=>'form-control','id'=>'apellido_m','required'])!!}
+    {!! Form::text('apellido_m',$profesor->PRO_apellido_m,['class'=>'form-control','id'=>'apellido_m'])!!}
+    @if($errors->has('apellido_m'))
+      <span style="color: red;">{{$errors->first('apellido_m')}}</span>
+    @endif
   </div>
   <div class="form-group">
     @if( $profesor->PRO_sexo=='hombre')

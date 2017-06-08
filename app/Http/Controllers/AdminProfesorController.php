@@ -100,6 +100,13 @@ class AdminProfesorController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+      $this->validate($request,[
+        'nombre' => 'required|unique:profesors,PRO_nombre|max:255',
+        'apellido_p' => 'required|alpha',
+        'apellido_m' => 'required|alpha'
+        ]);
+
       $pro=Profesor::find($id);
       $pro->PRO_nombre=($request->nombre);
       $pro->PRO_apellido_p=($request->apellido_p);
