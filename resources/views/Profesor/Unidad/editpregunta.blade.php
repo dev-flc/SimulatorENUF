@@ -20,7 +20,7 @@
   {!! Form::open(['route' => ['unidad.update', $pre->PRE_id],'files'=>'true','method' => 'put']) !!}
     <div class="form-group">
         {!! Form::label('Pregunta','Pregunta') !!}
-        {!! Form::text('Pregunta',$pre->PRE_nombre,['class'=>'form-control','required'])!!}
+        {!! Form::text('Pregunta',$pre->PRE_nombre,['class'=>'form-control'])!!}
     </div>
     <div class="row">
     @foreach ($res as $re)
@@ -28,7 +28,7 @@
         <div class="form-group">
         {{ Form::hidden('idres'.$con4++, $re->RES_id ) }}
           {!! Form::label('Respuesta','Respuesta'." ".$con++) !!}
-          {!! Form::text('res'.$con2++,$re->RES_nombre,['class'=>'form-control','required'])!!}
+          {!! Form::text('res'.$con2++,$re->RES_nombre,['class'=>'form-control'])!!}
         </div>
       </div>
       <div class="col-sm-3">
