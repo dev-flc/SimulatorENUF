@@ -62,7 +62,7 @@ class AlumnoRegistroController extends Controller
       $alu->save();
 
       $data=[
-            'name' =>($request->user),
+            'name' =>($request->usuario),
             'password' => ($request->password)
         ];
 
@@ -76,7 +76,7 @@ class AlumnoRegistroController extends Controller
     {
       // Obtenemos los datos del formulario
         $login=[
-            'name' =>($request->user),
+            'name' =>($request->usuario),
             'password' => ($request->password)
         ];
 
