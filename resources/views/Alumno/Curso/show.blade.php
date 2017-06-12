@@ -64,10 +64,10 @@
   </td>
 </tr>
   <tr>
-
     <td><center><h3>Intentos</h3></center></td>
     <td><center><h3>Fecha inicio</h3></center></td>
     <td><center><h3>Fecha final</h3></center></td>
+    <td><center><h3>Calificiacion</h3></center></td>
   </tr>
   <tr>
   <!-- aqui -->
@@ -96,6 +96,17 @@
     </td>
     <td>
       <center>{{$uni->UNI_fecha_final}}</center>
+    </td>
+    <td>
+      <center>
+       @if($unii->UNAL_calificacion)
+       {{ $unii->UNAL_calificacion }}
+       @elseif($unii->UNAL_calificacion === 0)
+        0
+       @else
+        pendiente
+       @endif
+      </center>
     </td>
   </tr>
 </table>

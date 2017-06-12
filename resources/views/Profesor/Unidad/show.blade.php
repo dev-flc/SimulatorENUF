@@ -31,16 +31,18 @@
 <div class="row">
   <div class="col-sm-12">
     <center><h1>{{$curso->CUR_nombre}}</h1></center>
+    <a href="{{ route('showunidad', [$unidad->UNI_id, $curso->CUR_id]) }}">
       <span class="label label-success" style="float: right;">Editar unidad <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+    </a>
     </span>
     <br><hr></div>
   <div class="col-sm-8">
     <center>
       <h2>
-          Descripción 
+          Descripción
       </h2>
       <p  style="text-align: justify;">{{ $curso->CUR_descripcion}}</p>
-      
+
     </center>
   </div>
   <div class="col-sm-4">
@@ -139,7 +141,7 @@
       {!! Form::open(['route'=>['unidad.destroy',$pre->PRE_id],'method'=>'DELETE','id'=>'destroyform']) !!}
           {{ csrf_field() }}
           {!! Form::hidden('unidad',$unidad->UNI_id)!!}
-          
+
         <button class="btn-eliminar btn-pre" type="button" onclick="destroybtn()"><span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span></button>
       {!! Form::close() !!}
 
@@ -207,7 +209,7 @@
           <div class="form-group">
               {!! Form::label('foto','Imagen de ayuda') !!}
               {!! Form::file('file',['class'=>'form-control'])!!}
-          </div> 
+          </div>
         <div class="row">
           <div class="col-sm-8">
             <div class="form-group">
@@ -297,11 +299,11 @@
  @if($errors->all())
  <script type="text/javascript">
    $("#pregunta_id").modal("toggle");
- </script>           
+ </script>
  @endif
 
- 
-<script  src="{{ asset('plugins/confirm/sweetalert.min.js') }}"></script> 
+
+<script  src="{{ asset('plugins/confirm/sweetalert.min.js') }}"></script>
 <script type="text/javascript">
   function destroybtn(){
     swal({

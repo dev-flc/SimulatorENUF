@@ -68,6 +68,11 @@ Route::put('/updatepasswordalu/{id}',[
     'as' => 'updatepasswordalu'
     ]);
 
+Route::put('/updateunidad/{id}',[
+    'uses' => 'ProUnidadController@updateunidad',
+    'as' => 'updateunidad'
+    ]);
+
 Route::put('/updateuser/{id}',[
     'uses' => 'ProPerfilController@updateuser',
     'as' => 'updateuser'
@@ -82,6 +87,11 @@ Route::put('/updateproimg/{id}',[
 Route::get('/listapdf/{id}',[
     'uses' => 'ProCursoController@listapdf',
     'as' => 'listapdf'
+    ]);
+
+Route::get('/showunidad/{id}/{curso}/',[
+    'uses' => 'ProUnidadController@showunidad',
+    'as' => 'showunidad'
     ]);
 
 Route::get('/veralumno/{id}/{curso}/',[

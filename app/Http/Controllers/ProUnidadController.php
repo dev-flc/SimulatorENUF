@@ -7,6 +7,7 @@ use SimulatorENUF\Models\Unidad;
 use SimulatorENUF\Models\Curso;
 use SimulatorENUF\Models\Pregunta;
 use SimulatorENUF\Models\Respuesta;
+use Flash;
 
 class ProUnidadController extends Controller
 {
@@ -84,12 +85,14 @@ class ProUnidadController extends Controller
       ->with('unidad',$unidad);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function showunidad($id, $curso)
+    {
+      $unidad=Unidad::find($id);
+      return view("Profesor.Unidad.showunidad")
+      ->with('curso',$curso)
+      ->with('unidad',$unidad);
+
+    }
     public function edit($id)
     {
       $pregunta=Pregunta::find($id);
@@ -107,13 +110,37 @@ class ProUnidadController extends Controller
       ->with('res',$respuesta);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function updateunidad(Request $request, $id)
+    {
+      if($request->file('file'))
+        {
+            $file=$request->file('file');
+            $nombreapoyo = 'documento_'.time().'.'.$file->getClientOriginalExtension();
+            $path=public_path().'/files/documents';
+            $file->move($path, $nombreapoyo);
+        }
+        else
+        {
+            $nombreapoyo=null;
+        }
+      $unidad=Unidad::find($id);
+      $unidad->UNI_nombre=($request->nombre);
+      $unidad->UNI_material_apoyo=$nombreapoyo;
+      $unidad->UNI_fecha_final=($request->fecha_final);
+      $unidad->UNI_fecha_inicio=($request->fecha_de_inicio);
+      $unidad->UNI_tiempo=($request->tiempo);
+      $unidad->UNI_numero_pregunta=($request->numero);
+      if($unidad->save()){
+        Flash::success("Unidad actualizada, de manera exitosa")->important();;
+        return redirect()->route('curso.show', ($request->curso));
+      }
+      else
+      {
+        Flash::success("Lo sentimos algo salio mal intentelo de nuevo")->important();;
+        return redirect()->route('curso.show', ($request->curso));
+      }
+    }
+
     public function update(Request $request, $id)
     {
         $pregunta=Pregunta::find($id);
@@ -133,9 +160,9 @@ class ProUnidadController extends Controller
         {
           $pre=Pregunta::find($id);
           $pre->PRE_nombre=($request->Pregunta);
-          $pre->save(); 
+          $pre->save();
         }
-        
+
 
         if($pre)
         {
@@ -150,7 +177,7 @@ class ProUnidadController extends Controller
           $pre->save();
         }
         return redirect()->route('unidad.show', ($pregunta->UNI_id));
-        }    
+        }
     }
 
     /**
@@ -171,8 +198,8 @@ class ProUnidadController extends Controller
 
       $res=Pregunta::find($id);
       $res->delete();
-      
+
       return redirect()->route('unidad.show', ($request->unidad));
-      
+
     }
 }
