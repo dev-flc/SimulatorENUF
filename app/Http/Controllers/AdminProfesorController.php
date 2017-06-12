@@ -123,10 +123,16 @@ class AdminProfesorController extends Controller
         'password_confirmation' => 'required|min:3'
         ]);
       $user=User::find($id);
-      $user->password=($request->password);
-      Flash::success("Contraseña cambiada, de manera exitosa!")->important();;
-
-      return redirect()->route('profesores.index');
+      $user->password=bcrypt($request->password);
+      if($user->save()){
+        Flash::success("Contraseña cambiada, de manera exitosa")->important();;
+        return redirect()->route('profesores.index');
+      }
+      else
+      {
+        Flash::success("Lo sentimos algo salio mal intentelo de nuevo")->important();;
+        return redirect()->route('profesores.index');
+      }
 
     }
 
