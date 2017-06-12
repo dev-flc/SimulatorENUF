@@ -1,15 +1,7 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use Flash;
+
 
 Route::get('/', function () {
     // Verificamos que el usuario no esta autenticado
@@ -23,7 +15,6 @@ Route::get('/', function () {
     }
 });
 Route::get('/', 'WelcomeController@welcome');
-
 
 Route::group(['prefix'=>'admin','middleware'=>['admin','auth']], function(){
 
@@ -174,6 +165,14 @@ Route::get('/detalleunidad/{id}',[
 Route::post('logout', function (){
 Auth::logout();
 return redirect('/');
+});
+Route::get('login/', function () {
+    if (!Auth::check())
+    {
+        Flash::error("la sesion no a tenido uso en 10 minutos, inicie sesion una vez mas :)")->important();
+        #Flash::overlay('Modal Message', 'Modal Title')->important();
+        return redirect('/');
+    }
 });
 
 Route::get('/registro', 'AlumnoRegistroController@registro');

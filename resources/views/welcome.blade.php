@@ -22,6 +22,7 @@
 @section('content')
 <div class="container-fluid"><br>
 <center>
+  @include('flash::message')
   <img src="/img/internet-of-things-IoT1.png"  class="img-responsive" alt="">
 </center>
 <br>
