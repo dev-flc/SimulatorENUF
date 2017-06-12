@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use SimulatorENUF\Models\Profesor;
 use SimulatorENUF\Models\Direccion;
 use SimulatorENUF\User;
+use Flash;
 
 class AdminProfesorController extends Controller
 {
@@ -87,7 +88,7 @@ class AdminProfesorController extends Controller
      */
     public function edit($id)
     {
-         $profesor=Profesor::find($id);
+        $profesor=Profesor::find($id);
          return view("Administrador.Profesor.update")->with('profesor',$profesor);
     }
 
@@ -115,6 +116,20 @@ class AdminProfesorController extends Controller
       $pro->save();
       return redirect()->route('profesores.index');
     }
+    public function updatepass(Request $request, $id)
+    {
+      $this->validate($request,[
+        'password' => 'required|min:3|confirmed',
+        'password_confirmation' => 'required|min:3'
+        ]);
+      $user=User::find($id);
+      $user->password=($request->password);
+      Flash::success("Contraseña cambiada, de manera exitosa!")->important();;
+
+      return redirect()->route('profesores.index');
+
+    }
+
 
     /**
      * Remove the specified resource from storage.

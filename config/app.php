@@ -236,6 +236,8 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         //pdf
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        //flash
+        'Flash' => Laracasts\Flash\Flash::class,
 
     ],
 

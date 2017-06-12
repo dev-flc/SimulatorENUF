@@ -351,8 +351,10 @@
 @endsection
 
 @section('content')
+
 <br>
 <br>
+<label for="">Datos Personales</label>
 <br>
 <div class="container-fluid">
   {!! Form::open(['route' => ['profesores.update', $profesor->PRO_id],'method' => 'put']) !!}
@@ -394,12 +396,39 @@
          <span class="glyphicon glyphicon-remove"></span>
       </button>
       </a>
-
-
     </div>
   {!! Form::close() !!}
 </div>
-<br>
+<hr>
+<label for="">Cambiar Contraseña</label>
+<div class="container-fluid">
+  {!! Form::open(['route' => ['updatepass', $profesor->USE_id],'method' => 'put']) !!}
+  <div class="form-group">
+    {!! Form::label('contraseña','Nueva Contraseña') !!}
+    {!! Form::password('password',['class'=>'form-control'])!!}
+    @if($errors->has('password'))
+      <span style="color: red;">{{$errors->first('password')}}</span>
+    @endif
+  </div>
+  <div class="form-group">
+    {!! Form::label('verificar_contrasena','Verificar Contraseña') !!}
+    {!! Form::password('password_confirmation',['class'=>'form-control'])!!}
+    @if($errors->has('password_confirmation'))
+      <span style="color: red;">{{$errors->first('password_confirmation')}}</span>
+    @endif
+  </div>
+
+   <div class="form-group">
+   {{ Form::button('<span class="glyphicon glyphicon-ok"></span> Guardar', array('class'=>'btn-button-a pull-right', 'type'=>'submit')) }}
+     <a href="{{ route('profesores.index') }}">
+      <button type="button" class="btn-button-c pull-right" data-dismiss="modal">
+         Cancelar
+         <span class="glyphicon glyphicon-remove"></span>
+      </button>
+      </a>
+    </div>
+  {!! Form::close() !!}
+</div>
 <br>
 <br>
 @endsection

@@ -22,19 +22,19 @@ Route::get('/', function () {
         return redirect()->route('welcome');
     }
 });
+Route::get('/', 'WelcomeController@welcome');
 
-    Route::get('/', 'WelcomeController@welcome');
 
-#Route::group(['prefix'=>'admin','middleware'=>['admin','auth']], function(){
-
-//middleware Administrador Inicio
-
-#Route::group(['prefix'=>'admin'], function(){
 Route::group(['prefix'=>'admin','middleware'=>['admin','auth']], function(){
 
 Route::resource('cursos','AdminCursoController');
 
 Route::resource('profesores','AdminProfesorController');
+
+Route::put('/updatepass/{id}',[
+    'uses' => 'AdminProfesorController@updatepass',
+    'as' => 'updatepass'
+    ]);
 
 });
 //middleware Administrador Inicio

@@ -14,7 +14,8 @@
 @endsection
 
 @section('content')
-
+<br>
+@include('flash::message')
   <div class="row">
   @foreach ($profesor as $pro)
     <div class="col-sm-3">
@@ -41,11 +42,11 @@
                     <a class="btn btn-primary btn-sm btn-profe" rel="publisher"
                        href="{{ route('profesores.edit', $pro->PRO_id) }}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                     </a>
-                    
+
                     <!--<a class="btn btn-danger btn-sm btn-profe" rel="publisher"
                        href="#"><span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
                     </a>-->
-                    
+
                     <a class="btn btn-success btn-twitter btn-sm btn-profe" href="#"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                     </a>
                 </div>
