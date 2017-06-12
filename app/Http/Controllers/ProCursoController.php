@@ -11,6 +11,10 @@ use SimulatorENUF\Models\UniAlu;
 use SimulatorENUF\Models\Alumno;
 use SimulatorENUF\Models\Profesor;
 use DB;
+use SimulatorENUF\User;
+use SimulatorENUF\Models\Examen;
+use Flash;
+
 
 
 
@@ -64,7 +68,6 @@ class ProCursoController extends Controller
      */
     public function show($id)
     {
-
       $curso=Curso::find($id);
       $numero=$curso->CUR_cupos;
       $b=0;
@@ -197,15 +200,46 @@ class ProCursoController extends Controller
     {
 
     }
+    public function veralumno($id, $curso)
+    {
 
+      $alumno = Alumno::find($id);
+      $user = User::find($alumno->USE_id);
+      $unidades = Unidad::where("CUR_id", "=", $curso)->get();
+      $unidad = Unidad::where("CUR_id", "=", $curso)->count();
+      $final = Examen::where('ALU_id','=',$id)->where('TIP_id','=',4)->get();
+      $prueba = Examen::where('ALU_id','=',$id)->where('TIP_id','=',3)->get();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+      return view('Profesor.Curso.veralumno')
+      ->with('user',$user)
+      ->with('curso',$curso)
+      ->with('unidades',$unidades)
+      ->with('unidad',$unidad)
+      ->with('final',$final)
+      ->with('prueba',$prueba)
+      ->with('alumno',$alumno);
+
+    }
+
+    public function updatepasswordalu(Request $request, $id)
+    {
+      $this->validate($request,[
+        'password' => 'required|min:3|confirmed',
+        'password_confirmation' => 'required|min:3'
+        ]);
+      $user=User::find($id);
+      $user->password=bcrypt($request->password);
+      if($user->save()){
+        Flash::success("Contraseña cambiada, de manera exitosa")->important();;
+        return redirect()->route('curso.show', ($request->curso));
+      }
+      else
+      {
+        Flash::success("Lo sentimos algo salio mal intentelo de nuevo")->important();;
+        return redirect()->route('curso.show', ($request->curso));
+      }
+    }
+
     public function update(Request $request, $id)
     {
 

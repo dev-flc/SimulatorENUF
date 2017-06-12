@@ -63,6 +63,11 @@ Route::get('/detallecurso/{id}',[
     'as' => 'detallecurso'
     ]);
 
+Route::put('/updatepasswordalu/{id}',[
+    'uses' => 'ProCursoController@updatepasswordalu',
+    'as' => 'updatepasswordalu'
+    ]);
+
 Route::put('/updateuser/{id}',[
     'uses' => 'ProPerfilController@updateuser',
     'as' => 'updateuser'
@@ -79,13 +84,22 @@ Route::get('/listapdf/{id}',[
     'as' => 'listapdf'
     ]);
 
-});
+Route::get('/veralumno/{id}/{curso}/',[
+    'uses' => 'ProCursoController@veralumno',
+    'as' => 'veralumno'
+    ]);
 
 Route::put('updateexamenglobal/{id}',[
     'uses' => 'ProCursoController@updateexamenglobal',
     'as' => 'updateexamenglobal'
     ]);
+
+});
+
+
 //middleware Profesor Fin
+
+
 
 //middleware Alumno Inicio
 Route::group(['prefix'=>'alumno','middleware'=>['alumno','auth']], function(){
@@ -95,6 +109,7 @@ Route::put('updatefoto/{id}',[
     'uses' => 'PerfilAlumnoController@updatefoto',
     'as' => 'updatefoto'
     ]);
+
 
 
 Route::put('/updateuseralum/{id}',[

@@ -12,6 +12,8 @@
 <!-- Inicio Section Contenido -->
 @section('content')
 <div class="container-fluid">
+<br>
+@include('flash::message')
 <div class="row">
   <div class="col-sm-12"><center><h1>{{$curso->CUR_nombre}}</h1></center><br></div>
 
@@ -126,7 +128,10 @@
         {!! Form::close() !!}
         </div>
         <div class="col-sm-3">
-          <button class="btn-ver">Ver... <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button>
+        <a href="{{ route('veralumno', [$apro->ALU_id, $curso->CUR_id]) }}">
+          <button class="btn-ver">Ver <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+          </button>
+        </a>
         </div>
       </div>
       @endforeach
