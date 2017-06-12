@@ -76,7 +76,7 @@ class AlumnoRegistroController extends Controller
     {
       // Obtenemos los datos del formulario
         $login=[
-            'name' =>($request->usuario),
+            'name' =>($request->user),
             'password' => ($request->password)
         ];
 
