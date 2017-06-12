@@ -24,11 +24,11 @@ class AlumnoRegistroController extends Controller
         'nombre' => 'required|max:30|alpha',
         'apellido_paterno' => 'required|alpha',
         'apellido_materno' => 'required|alpha',
-        'edad' => 'required|numeric',
-        'matricula' => 'required|numeric|max:9',
+        'edad' => 'required|min:18|max:110|integer',
+        'matricula' => 'required|digits:9|integer',
         'usuario' => 'required|unique:users,name|max:30',
         'email' => 'required|unique:users,email|max:50',
-        'password' => 'required|min:3|confirmed',
+        'password' => 'required|alpha_dash|min:7|confirmed',
         'password_confirmation' => 'required|min:3'
         ]);
       #nueva direccion
