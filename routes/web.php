@@ -1,8 +1,5 @@
 <?php
 
-use Flash;
-
-
 Route::get('/', function () {
     // Verificamos que el usuario no esta autenticado
     if (Auth::check())
@@ -170,7 +167,6 @@ Route::get('login/', function () {
     if (!Auth::check())
     {
         Flash::error("la sesion no a tenido uso en 10 minutos, inicie sesion una vez mas :)")->important();
-        #Flash::overlay('Modal Message', 'Modal Title')->important();
         return redirect('/');
     }
 });
