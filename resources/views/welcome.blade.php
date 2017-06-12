@@ -110,35 +110,62 @@
       <center>
         {!! Form::open(['route'=>'registroalumno.registeruser','method'=>'POST']) !!}
         <div class="form-group">
-          {{ Form::text('nombre',null,['class'=>'nom','placeholder'=>'Nombre','required'])}}
+          {{ Form::text('nombre',null,['class'=>'nom','placeholder'=>'Nombre'])}}
+          @if($errors->has('nombre'))
+          <p style="color: red;">{{$errors->first('nombre')}}</p>
+        @endif
         </div>
         <div class="form-group">
-          {{ Form::text('apellido_p',null,['class'=>'ap','placeholder'=>'Apellido Paterno','required'])}}
+          {{ Form::text('apellido_paterno',null,['class'=>'ap','placeholder'=>'Apellido Paterno'])}}
+          @if($errors->has('apellido_paterno'))
+          <p style="color: red;">{{$errors->first('apellido_paterno')}}</p>
+        @endif
         </div>
         <div class="form-group">
-          {{ Form::text('apellido_m',null,['class'=>'am','placeholder'=>'Apellido Materno','required'])}}
+          {{ Form::text('apellido_materno',null,['class'=>'am','placeholder'=>'Apellido Materno'])}}
+          @if($errors->has('apellido_materno'))
+          <p style="color: red;">{{$errors->first('apellido_materno')}}</p>
+        @endif
         </div>
         <div class="form-group">
-          {{ Form::number('edad',null,['class'=>'edad','placeholder'=>'Edad','required'])}}
+          {{ Form::number('edad',null,['class'=>'edad','placeholder'=>'Edad'])}}
+          @if($errors->has('edad'))
+          <p style="color: red;">{{$errors->first('edad')}}</p>
+        @endif
         </div>
         <div class="form-group">
-          {{ Form::number('matricula',null,['class'=>'mat','placeholder'=>'Matricula','required'])}}
+          {{ Form::number('matricula',null,['class'=>'mat','placeholder'=>'Matricula'])}}
+          @if($errors->has('matricula'))
+          <p style="color: red;">{{$errors->first('matricula')}}</p>
+        @endif
         </div>
         <div class="form-group">
           {{ Form::radio('sexo', 'hombre', true) }} Hombre  {{ Form::radio('sexo', 'mujer') }} Mujer
         </div>
         <hr>
         <div class="form-group">
-          {{ Form::text('user',null,['class'=>'userr','placeholder'=>'Usuario','required'])}}
+          {{ Form::text('usuario',null,['class'=>'userr','placeholder'=>'Usuario'])}}
+          @if($errors->has('usuario'))
+          <p style="color: red;">{{$errors->first('usuario')}}</p>
+        @endif
         </div>
         <div class="form-group">
-          {{ Form::email('email',null,['class'=>'email','placeholder'=>'Email','required'])}}
+          {{ Form::email('email',null,['class'=>'email','placeholder'=>'Email'])}}
+          @if($errors->has('email'))
+          <p style="color: red;">{{$errors->first('email')}}</p>
+        @endif
         </div>
         <div class="form-group">
-        {{ Form::password('password', ['class' => 'passs','placeholder'=>'Contraseña','required']) }}
+        {{ Form::password('password', ['class' => 'passs','placeholder'=>'Contraseña']) }}
+        @if($errors->has('password'))
+          <p style="color: red;">{{$errors->first('password')}}</p>
+        @endif
         </div>
         <div class="form-group">
-          {{ Form::password('passwordverific', ['class' => 'passs','placeholder'=>'Verificar Contraseña','required']) }}
+          {{ Form::password('password_confirmation', ['class' => 'passs','placeholder'=>'Verificar Contraseña']) }}
+          @if($errors->has('password_confirmation'))
+            <p style="color: red;">{{$errors->first('password_confirmation')}}</p>
+          @endif
         </div>
         </center>
       </div>
@@ -206,7 +233,11 @@
 
 <!--Script -->
 @section('script')
-
+@if($errors->all())
+<script type="text/javascript">
+  $('#register').modal('toggle');
+</script>
+@endif
 @if(Session::has('error_message'))
 <script type="text/javascript">
 //$( "#user" ).last().addClass( "userr" );
@@ -214,7 +245,7 @@
   $( "#pass" ).removeClass( "pass" ).addClass("pa");
   $( "#user" ).removeClass( "user" ).addClass("us");
   $('#login').modal('toggle');
-  
+
 </script>
 @endif
 <script type="text/javascript">
