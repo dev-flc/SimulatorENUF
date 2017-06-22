@@ -81,11 +81,13 @@
   @endphp
   @foreach($unialu as $unii)
   @if($unii->UNI_id==$uni->UNI_id)
+    @if($unii->UNAL_intentos>=1)
     <td>
       <center>
         {{$unii->UNAL_intentos}}
-      </center>
+      </ceter>
     </td>
+    @endif
         @php
           $b=$unii->UNAL_intentos;
         @endphp
