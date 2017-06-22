@@ -47,11 +47,14 @@
    
 
   <div class="form-group">
-      <button type="button" class="btn-button-c" data-dismiss="modal">
+      {{ Form::button('<span class="glyphicon glyphicon-ok"></span> Actualizar', array('class'=>'btn-button-a pull-right', 'type'=>'submit')) }}
+      <a href="{{ route('unidad.show', $pre->UNI_id) }}">
+      <button type="button" class="btn-button-c pull-right">
           Cancelar
           <span class="glyphicon glyphicon-remove"></span>
       </button>
-    {{ Form::button('<span class="glyphicon glyphicon-ok"></span> Actualizar', array('class'=>'btn-button-a pull-right', 'type'=>'submit')) }}
+      </a>
+    
     
     {!! Form::close() !!}
     </div>

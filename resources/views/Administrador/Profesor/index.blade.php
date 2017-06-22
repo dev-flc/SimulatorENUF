@@ -15,7 +15,10 @@
 
 @section('content')
 <br>
-@include('flash::message')
+
+<div class="container-fluid">
+    @include('flash::message')
+</div>
   <div class="row">
   @foreach ($profesor as $pro)
     <div class="col-sm-3">

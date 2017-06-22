@@ -103,7 +103,7 @@ class AdminProfesorController extends Controller
     {
 
       $this->validate($request,[
-        'nombre' => 'required|unique:profesors,PRO_nombre|max:255',
+        'nombre' => 'required|max:255',
         'apellido_p' => 'required|alpha',
         'apellido_m' => 'required|alpha'
         ]);
@@ -113,7 +113,9 @@ class AdminProfesorController extends Controller
       $pro->PRO_apellido_p=($request->apellido_p);
       $pro->PRO_apellido_m=($request->apellido_m);
       $pro->PRO_sexo=($request->sex);
+      $pro->PRO_estatus=($request->estatus);
       $pro->save();
+      Flash::success("Datos actualizados correctamente")->important();
       return redirect()->route('profesores.index');
     }
     public function updatepass(Request $request, $id)
@@ -125,12 +127,12 @@ class AdminProfesorController extends Controller
       $user=User::find($id);
       $user->password=bcrypt($request->password);
       if($user->save()){
-        Flash::success("Contraseña cambiada, de manera exitosa")->important();;
+        Flash::success("Contraseña cambiada, de manera exitosa")->important();
         return redirect()->route('profesores.index');
       }
       else
       {
-        Flash::success("Lo sentimos algo salio mal intentelo de nuevo")->important();;
+        Flash::success("Lo sentimos algo salio mal intentelo de nuevo")->important();
         return redirect()->route('profesores.index');
       }
 

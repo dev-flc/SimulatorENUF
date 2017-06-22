@@ -299,8 +299,8 @@
 
          {!! Form::open(['route' => ['updateuser', $pro->id],'method' => 'put']) !!}
         <div class="form-group">
-          {!! Form::label('usuario','Usuario') !!}<br />
-          {!! Form::text('usuario',$pro->name,['class'=>'user','required'])!!}
+          {!! Form::label('usuario','Usuario') !!}
+            <h3 style=" color: rgb(41, 128, 185);">{{ $pro->name }}</h3>
         </div>
         <div class="form-group">
           {!! Form::label('email','Email') !!}<br />

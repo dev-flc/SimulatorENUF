@@ -176,6 +176,7 @@ class ProUnidadController extends Controller
           $pre->TIP_id=($request->$tip);
           $pre->save();
         }
+        Flash::success("Pregunta actualizada correctamente")->important();
         return redirect()->route('unidad.show', ($pregunta->UNI_id));
         }
     }

@@ -5,7 +5,7 @@ namespace SimulatorENUF\Http\Controllers;
 use Illuminate\Http\Request;
 use SimulatorENUF\Models\Profesor;
 use SimulatorENUF\Models\Curso;
-
+use Flash;
 
 class AdminCursoController extends Controller
 {
@@ -120,7 +120,7 @@ class AdminCursoController extends Controller
       $curso->PRO_id=($request->profesor);;
       $curso->save();
 
-      //flash('Presidente modificado correctamente', 'info')->important();
+      Flash::success("Cursos actualizado correctamente")->important();
       return redirect()->route('cursos.index');
     }
 

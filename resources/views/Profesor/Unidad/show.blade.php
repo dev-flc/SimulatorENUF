@@ -25,7 +25,10 @@
 
 <!-- Contenido -->
 @section('content')
-
+<br>
+<div class="container-fluid">
+    @include('flash::message')
+</div>
 <div class="container-fluid">
 <br>
 <div class="row">

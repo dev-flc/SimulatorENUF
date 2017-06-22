@@ -3,7 +3,13 @@
       height: 350px;
       width: 100%;
     }
-
+.titulo
+{
+  position: relative;
+  top: -90%;
+  text-align: center;
+  color: rgb(255,255,255);
+}
     .perfildiv
   {
     background: rgb(244, 246, 246);

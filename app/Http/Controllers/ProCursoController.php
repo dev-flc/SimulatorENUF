@@ -209,6 +209,8 @@ class ProCursoController extends Controller
       $unidad = Unidad::where("CUR_id", "=", $curso)->count();
       $final = Examen::where('ALU_id','=',$id)->where('TIP_id','=',4)->get();
       $prueba = Examen::where('ALU_id','=',$id)->where('TIP_id','=',3)->get();
+      $global = Examen::where('ALU_id','=',$id)->where('TIP_id','=',5)->get();
+
 
       return view('Profesor.Curso.veralumno')
       ->with('user',$user)
@@ -217,6 +219,7 @@ class ProCursoController extends Controller
       ->with('unidad',$unidad)
       ->with('final',$final)
       ->with('prueba',$prueba)
+      ->with('global',$global)
       ->with('alumno',$alumno);
 
     }

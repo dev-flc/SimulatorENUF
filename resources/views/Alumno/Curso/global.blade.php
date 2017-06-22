@@ -5,7 +5,6 @@
 
 @section('styles')
   <link rel="stylesheet" href="{{ asset('css/alumnocursoglobal.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/alumnocursofinal.css') }}">
 @endsection
 
 <!-- Contenido Principal -->
@@ -26,7 +25,7 @@
     <div class="curse">
     <center><h1>{{ $unidad->CUR_nombre }}
     </h1>
-    <h2>Tiempo definido de examen: {{ $unidad->UNI_tiempo }} minutos </h2>
+    <h2>Tiempo definido de examen: {{ $unidad->CUR_tiempo }} minutos </h2>
     </center>
 
   </div>
@@ -36,7 +35,7 @@
 
 <div id="rojo" class="container-fluid msj-time">
   <center>
-  <h2 id="reloj" class="success"><label id="hour">00</label>:<label id="minute">00</label>:<label id="second">00</label> <label> | {{ $unidad->UNI_tiempo }}m</label></h2>
+  <h2 id="reloj" class="success"><label id="hour">00</label>:<label id="minute">00</label>:<label id="second">00</label> <label> {{ $unidad->UNI_tiempo }}m</label></h2>
   <p id="mensajeerror" class="danger"></p>
 </center>
 </div>
@@ -107,6 +106,7 @@
  <!-- fin -->
   </div>
 </div>
+</div>
 
 @endsection
 
@@ -115,10 +115,7 @@
 
 @endsection
 
-<!-- Modals-->
-@section('modal')
 
-@endsection
 
 <!--Script -->
 @section('script')

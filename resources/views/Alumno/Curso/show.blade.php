@@ -51,6 +51,10 @@
       <p>{{ $curso->CUR_descripcion }}
       </p>
     <hr>
+    <h2>Reglas</h2>
+    <p>1. El examen final y el examen global solo permite tres intentos.</p>
+    <p>2. El examen de prueba no tiene limite de intentos.</p>
+    <hr>
   </div>
   <div class="col-sm-12">
     <h2>Unidades</h2>

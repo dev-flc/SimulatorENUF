@@ -468,21 +468,23 @@ class AlumnoExamenController extends Controller
 
     public function detalleunidad($id)
     {
+      $unidad = Unidad::find($id);
       $iduseralumno = Auth::user()->id;
-      $alumno=Alumno::where('USE_id', $iduseralumno)->first();
+      $alumno = Alumno::where('USE_id', $iduseralumno)->first();
 
-      $idalum=($alumno->ALU_id);
+      $idalum = ($alumno->ALU_id);
 
-      $final=Examen::where('ALU_id','=',$idalum)->where('TIP_id','=',4)->get();
-      $prueba=Examen::where('ALU_id','=',$idalum)->where('TIP_id','=',3)->get();
-      $p=1;
-      $f=1;
+      $final = Examen::where('ALU_id','=',$idalum)->where('TIP_id','=',4)->get();
+      $prueba = Examen::where('ALU_id','=',$idalum)->where('TIP_id','=',3)->get();
+      $p = 1;
+      $f = 1;
 
       return view('Alumno.Curso.detalleunidad')
       ->with('final',$final)
       ->with('f',$f)
       ->with('p',$p)
       ->with('id',$id)
+      ->with('unidad',$unidad)
       ->with('prueba',$prueba);
     }
 }

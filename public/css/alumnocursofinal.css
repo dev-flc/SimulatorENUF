@@ -257,15 +257,7 @@ input[type=checkbox]:checked{
 {
   font-family: 'Poiret One', cursive;
 }
-h2
-{
-  font-size: 40px;
-  color: rgb(46, 204, 113);
-}
-p
-{
-  font-size: 20px;
-}
+
 #tiempo
 {
   font-size: 20px;

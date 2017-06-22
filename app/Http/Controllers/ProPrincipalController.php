@@ -30,15 +30,19 @@ class ProPrincipalController extends Controller
        {
         $verificar= false;
        }
-
        $pro=Profesor::where('USE_id',$id)->first();
         $curso = Curso::select('*')->where('PRO_id','=',$pro->PRO_id)->get();
+        if($pro->PRO_estatus=="deshabilitado"){
+          return view('Profesor.Principal.error')->with('pro',$pro);
+        } 
+        else{
         return view('Profesor.Principal.index')
         ->with('id',$id)
         ->with('foto',$foto)
         ->with('curso',$curso)
         ->with('pro',$pro)
         ->with('verifica',$verificar);
+      }
     }
 
     /**

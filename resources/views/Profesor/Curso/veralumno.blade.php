@@ -5,13 +5,12 @@
   <link rel="stylesheet" href="{{ asset('css/button-menu.css') }}">
   <link rel="stylesheet" href="{{ asset('css/profesorcursosshow.css') }}">
 @endsection
-
 @section('imagenprincipal')
 <div class="seccionone">
   <img id="pri1" src="/img/pri2.png" alt="">
 </div>
 @endsection
-
+@section('content')
 <!-- Contenido -->
 <style type="text/css">
   #imgalumnos
@@ -21,7 +20,6 @@
     border-radius: 50%;
   }
 </style>
-@section('content')
 <center>
 <br>
   <img id="imgalumnos" src="/img/{{ $user->foto }}" alt="">
@@ -29,6 +27,7 @@
   {{ $alumno->ALU_nombre }} {{ $alumno->ALU_apellido_p }} {{ $alumno->ALU_apellido_m }}
 </h1>
   <hr>
+  <p style="text-align: center;">Usuario: {{ $user->name }}</p>
 </center>
 <div class="container-fluid">
   <h2>Unidades</h2>
@@ -59,8 +58,20 @@
     </div>
   @endforeach
   </div>
-  <div id="chart_div"></div>
 </div>
+<hr>
+
+<ul class="list-group">
+      <li class="list-group-item"><center>Examen Global</center></li>
+      <li class="list-group-item list-group-item-success">Resultado de examenes</li>
+      @foreach($global as $glo)
+        <li class="list-group-item">
+        <span class="badge">{{ $glo->EXA_calificacion }}</span>
+        {{ $glo->EXA_nombre }} | Fecha: {{ $glo->EXA_fecha }} | Hora: {{ $glo->EXA_hora }}
+        </li>
+      @endforeach
+</ul>
+
 <br>
 <br>
 <br>

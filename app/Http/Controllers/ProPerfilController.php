@@ -102,7 +102,6 @@ class ProPerfilController extends Controller
     public function updateuser(Request $request, $id)
     {
       $user=User::find($id);
-      $user->name=($request->usuario);
       $user->email=($request->email);
       $user->password=bcrypt($request->password);
       $user->save();

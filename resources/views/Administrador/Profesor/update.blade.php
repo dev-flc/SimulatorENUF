@@ -388,6 +388,16 @@
     {{ Form::radio('sex', 'hombre') }} Hombre  {{ Form::radio('sex', 'mujer','true') }} Mujer
     @endif
   </div>
+  <div class="form-group">
+      {!! Form::label('estatus','estatus ') !!}
+      @if( $profesor->PRO_estatus=='habilitado')
+        {{ Form::radio('estatus', 'habilitado', true) }} habilitado
+        {{ Form::radio('estatus', 'deshabilitado') }} deshabilitar
+      @else
+        {{ Form::radio('estatus', 'habilitado') }} habilitado
+        {{ Form::radio('estatus', 'deshabilitado',true) }} deshabilitar
+      @endif
+  </div>
    <div class="form-group">
    {{ Form::button('<span class="glyphicon glyphicon-ok"></span> Actualizar', array('class'=>'btn-button-a pull-right', 'type'=>'submit')) }}
      <a href="{{ route('profesores.index') }}">

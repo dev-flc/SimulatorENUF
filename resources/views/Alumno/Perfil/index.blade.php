@@ -24,6 +24,10 @@
   <h1>{{$alu->ALU_nombre}} {{$alu->ALU_apellido_p}} {{$alu->ALU_apellido_m}}</h1>
   <hr>
 </center>
+<br>
+<div class="container-fluid">
+    @include('flash::message')
+</div>
 <div class="container-fluid">
 <div class="row">
   <div class="col-sm-6">
@@ -328,8 +332,8 @@
       <div class="modal-body">
         {!! Form::open(['route' => ['updateuseralum', $alu->id],'method' => 'put','id'=>'datosdeformulario','files'=>'true']) !!}
         <div class="form-group">
-          {!! Form::label('usuario','Usuario') !!}<br />
-          {!! Form::text('usuario',$alu->name,['class'=>'user','required'])!!}
+          {!! Form::label('usuario','Usuario') !!}
+          <h3 style=" color: rgb(41, 128, 185);">{{ $alu->name }}</h3>
         </div>
         <div class="form-group">
           {!! Form::label('email','Email') !!}<br />

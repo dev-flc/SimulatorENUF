@@ -16,6 +16,9 @@
 
 @section('content')
 <br>
+<div class="container-fluid">
+    @include('flash::message')
+</div>
 <div class="row">
   @foreach ($curso as $cursos)
      <div class="col-sm-6 col-md-4 col-lg-3 mt-4">

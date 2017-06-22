@@ -16,7 +16,14 @@
 
 <!-- Contenido -->
 @section('content')
-<center><h1>Mis Evaluaciones</h1></center><br>
+<center>
+    <h1>{{ $unidad->UNI_nombre }}</h1>
+    <h3>Mis Evaluaciones</h3>
+</center><br>
+
+<a href="{{ route('cursos_examen.show', $unidad->CUR_id) }}">
+    <p style="text-align: center; text-decoration: none;">&larr; regreza</p>
+</a>
 <div class="container-fluid">
     <div class="row">
     <div class="col-sm-6">

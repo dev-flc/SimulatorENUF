@@ -7,6 +7,7 @@ use Auth;
 use SimulatorENUF\Models\Alumno;
 use SimulatorENUF\Models\Direccion;
 use SimulatorENUF\User;
+use Flash;
 
 class PerfilAlumnoController extends Controller
 {
@@ -78,12 +79,13 @@ class PerfilAlumnoController extends Controller
 
     public function updateuseralum(Request $request, $id)
     {
-$user=User::find($id);
-      $user->name=($request->usuario);
+      $user=User::find($id);
       $user->email=($request->email);
       $user->password=bcrypt($request->password);
       $user->save();
-          return redirect()->route('alumnoperfil.index');
+
+      Flash::success("Contraseña actualizada correctamente")->important();
+      return redirect()->route('alumnoperfil.index');
 
     }
     public function update(Request $request, $id)
