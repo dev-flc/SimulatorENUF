@@ -60,9 +60,16 @@ class ProPreguntaController extends Controller
         }
       }
       $file=$request->file('file');
-            $nombrefile = 'foto_'.time().'.'.$file->getClientOriginalExtension();
-            $path=public_path().'/files/documents';
-            $file->move($path, $nombrefile);
+      if($file)
+      {
+      $nombrefile = 'foto_'.time().'.'.$file->getClientOriginalExtension();
+      $path=public_path().'/files/documents';
+      $file->move($path, $nombrefile);
+      }
+      else
+      {
+        $nombrefile = "file.png";
+      }
 
 
       $pregunta=new Pregunta;

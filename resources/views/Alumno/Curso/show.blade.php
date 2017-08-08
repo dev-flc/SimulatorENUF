@@ -79,6 +79,7 @@
     $a=0;
     $b=0
   @endphp
+  @if ($unialu->count())
   @foreach($unialu as $unii)
   @if($unii->UNI_id==$uni->UNI_id)
     @if($unii->UNAL_intentos>=1)
@@ -94,6 +95,7 @@
       @break;
     @endif
 @endforeach
+@endif
 @if($a>=$b)
 <td><center>0</center></td>
 @endif
@@ -105,13 +107,22 @@
     </td>
     <td>
       <center>
-       @if($unii->UNAL_calificacion)
-       {{ $unii->UNAL_calificacion }}
-       @elseif($unii->UNAL_calificacion === 0)
+      @if ($unialu->count())
+      @if($unii->UNI_id == $uni->UNI_id)
+      
+      @if($unii->UNAL_calificacion>=1)
+        {{$unii->UNAL_calificacion}}
+      @elseif($unii->UNAL_calificacion === 0)
         0
-       @else
+      @else
         pendiente
-       @endif
+      @endif
+
+      @endif
+      
+      @else
+        Pendiente
+      @endif
       </center>
     </td>
   </tr>
