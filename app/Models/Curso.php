@@ -5,9 +5,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Curso extends Model
 {
-    protected $table = 'cursos';
+  protected $table = 'cursos';
 	protected $primaryKey = 'CUR_id';
-    protected $fillable = [
+  protected $fillable = [
         'CUR_nombre',
         'CUR_descripcion',
         'CUR_cupos',
@@ -39,5 +39,11 @@ class Curso extends Model
     public function pregunta()
     {
         return $this->belongsTo('SimulatorENUF\Models\Pregunta');
+    }
+
+    #Buscador
+    public function scopeBuscador($query, $namecurso)
+    {
+        return $query->where('CUR_nombre', 'LIKE', "%$namecurso%");
     }
 }

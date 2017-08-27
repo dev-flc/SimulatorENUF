@@ -95,10 +95,10 @@
       -->
 </footer>
 @yield('modal')
-
-
 <script  src="{{ asset('plugins/jQuery/jquery-3.1.1.js') }}"></script>
 <script  src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+
+
 <script>
   $(window).scroll(function() {
     $('#logo').each(function(){
@@ -114,5 +114,6 @@
   });
 </script>
   @yield('script')
+
 </body>
 </html>

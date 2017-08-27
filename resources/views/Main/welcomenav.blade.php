@@ -24,11 +24,13 @@
             Registrarme <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
           </a>
         </li>
+        <!--
         <li>
           <a href="#"  data-toggle="modal" data-target="#login">
             Iniciar Sesión <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
           </a>
         </li>
+        -->
         <!--
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>

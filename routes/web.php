@@ -11,7 +11,7 @@ Route::get('/', function () {
         return redirect()->route('welcome');
     }
 });
-Route::get('/', 'WelcomeController@welcome');
+Route::get('/', 'WelcomeController@welcome')->name("welcome");
 
 Route::group(['prefix'=>'admin','middleware'=>['admin','auth']], function(){
 

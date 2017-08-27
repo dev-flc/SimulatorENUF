@@ -3,15 +3,14 @@
 @section('title', 'Inicio')
 
 @section('styles')
-  <link rel="stylesheet" href="{{ asset('css/cursos.css') }}">
-
+<link rel="stylesheet" href="{{ asset('css/cursos.css') }}">
+<link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
 <!-- Contenido Principal -->
 @section('imagenprincipal')
   <div class="seccionone">
   <img id="pri1" src="/img/pri2.png" alt="">
   </div>
 @endsection
-
 <!-- Contenido -->
 @section('content')
 <div class="container-fluid"><br>
@@ -20,39 +19,57 @@
     <div class="col-sm-3 subfinal">
     <center>
      <div class="container-fluid panelimg"><br>
-     <button type="button" class="btn btn-primary btn-block"> <object>Iniciar sesión</object></button><br>
+     <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#login"> <object>Iniciar sesión</object></button><br>
     </div><br>
     <div class="container-fluid panelimg">
      <h4>Cursos disponibles</h4><br>
-      <div class="input-group">
-      <input type="text" class="form-control" placeholder="Buscar curso" aria-describedby="basic-addon2">
-      <span class="input-group-addon" id="basic-addon2">Buscar</span>
-      </div><br>
 
-    <div class="col-sm-12">
-     
-    
-      <a href=""">
-      <div class="cursos">
-      <div class="row">
-      <div class="col-sm-2">
-        <center>
-          <img id="imgcursos" src="img/blade.jpg"" alt="">
-        </center>
-      </div>
-    <div class="col-sm-10">
-      <h5>Uso de los medios en el aula</h5>
-      </div>
+<!-- Buscador inicio -->
+{!! Form::open([ 'route'=>'welcome','method'=>'GET','class'=>'navbar-form pull-center']) !!}
+<div class="input-group">
+    {!! Form::text('namecurso',null,['class'=>'form-control', 'placeholder'=>'Buscar Curso','aria-describedby'=>'search']) !!}
+    <span class="input-group-btn" >
+        <button class="btn btn-default" type="submit">Buscar</button>
+    </span>
+</div><!-- /input-group -->
+{!! Form::close() !!}
+<!--  Buscador final-->
+
+
+
+
+
+      <br>
+<style type="text/css">
+    #cursecolor:hover
+    {
+      background: rgb(52, 152, 219);
+      color: rgb(255,255,255);
+    }
+  </style>
+
+
+<div class="col-sm-12">
+  @if($curse->count())
+    <div class="row">
+     <div class="col-sm-12">
+      <div class="list-group">
+        @foreach($curse as $cur)
+          <a href="#" id="cursecolor" class="list-group-item" style="font-size: 13px">{{ $cur->CUR_nombre }}
+          </a>
+          @endforeach
+        </div>
+        {!! $curse->render()!!}
       </div>
     </div>
-    </a>
-    <br>
+  @else
     <div class="alert alert-dismissable alert-danger">
-    <button type="button" class="close" data-dismiss="alert">×</button>
-    <strong>Lo sentimos!</strong>
-    <h6> por el momento no hay cursos disponibles</h6>
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <strong>Lo sentimos!</strong>
+      <h5>Por el momento no hay cursos disponibles</h5>
     </div>
-  </div>
+  @endif
+</div>
   </div>
   </center>
   </div>
@@ -72,19 +89,27 @@
       encuentranos en las redes sociales</h5>
       <a href=""><img src="img/facebook.png" alt="" id="redes"></a>
       <a href=""><img src="img/twiter.png" alt="" id="redes"></a>
+      <br>
+      <br>
       </center>
     </div><br>
     </div>
     <div class="col-sm-3 subfinal">
-    <div class="container-fluid panelimg">
+    <div class="container-fluid panelimg" style="padding: 10px">
       <a href=""> <img src="img/blade.jpg" class="img-responsive" alt=""></a>
     </div><br>
+
     <div class="container-fluid panelimg">
-      calendario
+      <center>
+        <h5>Calendario</h5>
+      <div id="mdp-demo"></div>
+        <br>
+      </center>
     </div>
     </div>
     <br>
   </div>
+  <br>
 </div>
 @endsection
 
@@ -199,7 +224,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
         <strong>
-        <h2 class="modal-title colordiv" id="myModalLabel">Iniciar sesión</h2>
+         <h2 class="modal-title colordiv" id="myModalLabel">Iniciar sesión</h2>
         </strong>
       </div>
        <div class="modal-body">
@@ -265,4 +290,28 @@ function scrollOff() {
 
 }
 </script>
+
+
+<script  type="text/javascript" src="{{ asset('plugins/jQuery/jquery-ui.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-ui.multidatespicker.js') }}"></script>
+
+<script type="text/javascript">
+  var fechas = [];
+
+function sumarDias(fecha, dias){
+  fecha.setDate(fecha.getDate() + dias);
+  return fecha;
+}
+  @foreach($unidad as $fechaunidad)
+    dateuni = new Date("{!! $fechaunidad->UNI_fecha_inicio !!}");
+    sumadia=sumarDias(dateuni,1)
+    fechas.push(sumadia);
+  @endforeach
+  $('#mdp-demo').multiDatesPicker({
+  format: 'yyyy-mm-dd',
+  addDates: fechas
+});
+
+</script>
+
 @endsection
