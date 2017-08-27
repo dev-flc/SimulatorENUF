@@ -80,8 +80,7 @@
             <p id="pfooter">Contactanos</p>
             <p id="pfooter">Tel:(747) 47 2 52 27
             <p id="pfooter">e-mail: profesorrafaelramirez@outlook.es</p>
-            <a href="https://www.facebook.com/escuelanormalurbanafederalrr/?fref=ts"><img src="/img/facebook.png" alt="" id="redes"></a>
-            <a href=""><img src="/img/twiter.png" alt="" id="redes"></a>
+           
           </div>
          <div class="col-sm-4"><br>
           <a href=""> <img src="/img/guerrero.png" alt="" id="guerrero"></a>

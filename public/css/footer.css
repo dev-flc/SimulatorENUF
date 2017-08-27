@@ -7,6 +7,8 @@
 }
 #pfooter{
     color: rgb(255,255,255);
+    font-family: 'Poiret One', cursive;
+    font-size: 15px;
 }
 #redes
 {
@@ -14,8 +16,8 @@
 }
 #guerrero
 {
-    width: 280px;
-    height: 80px;
+    width: 200px;
+    height: 60px;
 }
 #fixedbutton {
     position: fixed;

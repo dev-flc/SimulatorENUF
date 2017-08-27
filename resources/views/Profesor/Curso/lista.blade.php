@@ -15,8 +15,8 @@
 @section('content')
 <div class="container-fluid">
 <div class="row">
-  <div class="col-sm-12"><center><h1>{{$curso->CUR_nombre}}</h1></center><br></div>
-  <h2>Alumnos: </h2>
+  <div class="col-sm-12"><center><h5>{{$curso->CUR_nombre}}</h5></center><br></div>
+  <h3>Lista de alumnos: </h3>
 </div>
 <hr>
 <table class="table table-hover">

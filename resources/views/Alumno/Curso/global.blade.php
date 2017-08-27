@@ -4,7 +4,8 @@
 @section('title', 'Examenes')
 
 @section('styles')
-  <link rel="stylesheet" href="{{ asset('css/alumnocursoglobal.css') }}">
+<link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
+<link rel="stylesheet" href="{{ asset('css/alumnocursoglobal.css') }}">
 @endsection
 
 <!-- Contenido Principal -->

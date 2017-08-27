@@ -4,6 +4,7 @@
 
 @section('styles')
   <link rel="stylesheet" href="{{ asset('css/alumnocursoprueba.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
 @endsection
 
 <!-- Contenido Principal -->
@@ -18,15 +19,10 @@
 @section('content')
 
     <div class="curse">
-    <center><h1>{{ $unidad->UNI_nombre }}
-
-    </h1>
-
-    </center>
+    <center><h1>{{ $unidad->UNI_nombre }}</h1></center>
 
   </div>
   <div class="col-sm-12">
-
  <!-- ini -->
 @if ($pregunta->count())
   {!! Form::open(['route'=>'cursos_examen.store','method'=>'POST','id'=>'examenfinal']) !!}
@@ -76,10 +72,6 @@
 
       </div>
     </div>
-
-
-
-
 
     @endforeach
     <input type="hidden" name="cantidad" id="cantidad" value="{{$p-1}}">

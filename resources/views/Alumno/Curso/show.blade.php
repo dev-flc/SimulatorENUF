@@ -5,6 +5,7 @@
 
 @section('styles')
   <link rel="stylesheet" href="{{ asset('plugins/confirm/sweetalert.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
   <link rel="stylesheet" href="{{ asset('css/adminprofesor.css') }}">
   <link rel="stylesheet" href="{{ asset('css/alumnocursoshow.css') }}">
 @endsection
@@ -27,51 +28,101 @@
       <div class="cardheader2"></div>
        @endif
         <div class="avatar">
+        <center>
              <img id="imgperfil" src="/img/{{$user->foto}}" alt="">
+             </center>
              </div>
-              <div class="info">
-                    <div class="title">
-                        {{$alumno->ALU_nombre}} {{$alumno->ALU_apellido_p}} {{$alumno->ALU_apellido_m}}
-                    </div>
-                    <div class="title"><h3>Matricula:{{$alumno->ALU_metricula}}</h3></div>
-                    <div class="title"><h3>Edad:{{$alumno->ALU_edad}}</h3></div>
-                    <div class="title"><h3>Sexo:{{$alumno->ALU_sexo}}</h3></div>
-                </div>
+                <div class="info">
+             <div class="title">
+             <center>
+            <h4> {{$alumno->ALU_nombre}} {{$alumno->ALU_apellido_p}} {{$alumno->ALU_apellido_m}}</h4>
+            </center>
           </div>
+          <hr>
+          <table  style="width: 80%;">
+            <tr>
+          <td colspan="2"><label for="">Usuario</label></td>
+        </tr>
+        <tr>
+          <td><h5> </h5></td>
+          <td>
+            <center>
+              <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            </center>
+          </td>
+        </tr>
+        <td colspan="2"><label for="">Matricula</label></td>
+        </tr>
+        <tr>
+          <td><h5>{{$alumno->ALU_metricula}}</h5></td>
+          <td>
+            <center>
+              <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
+            </center>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"><label for="">Calle</label></td>
+        </tr>
+        <tr>
+          <td><p>  </p></td>
+          <td>
+            <center>
+              <span class="glyphicon glyphicon-road " aria-hidden="true"></span>
+            </center>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"><label for="">Colonia</label></td>
+        </tr>
+        <tr>
+          <td><p>  </p></td>
+          <td>
+            <center>
+              <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+            </center>
+          </td>
+        </tr>      
+          </table>
+          <center>
+          <hr>
+          <h3>Redes sociales</h3>
+          <a href="https://www.facebook.com/"><img src="/img/facebook.png" alt="" id="redes"></a>
+          <a href="https://twitter.com"><img src="/img/twiter.png" alt="" id="redes"></a>
+          <a href="https://login.live.com"><img src="/img/hotmail.png" alt="" id="redes"></a>
+          </center>
+        </div>
       </div>
+    </div>
+         
   <div class="col-sm-9">
   <br>
     <div class="curse">
-    <center><h1>{{ $curso->CUR_nombre }}</h1>
+    <center><h2>{{ $curso->CUR_nombre }}</h2>
     <img id="tamanofoto" src="/img/{{ $curso->CUR_foto }}" alt="" style="width: 100px; height: 100px; border-radius: 50%;">
     </center>
   </div>
   <div class="col-sm-12">
-    <h2>Descripción</h2>
-      <p>{{ $curso->CUR_descripcion }}
-      </p>
-    <hr>
-    <h2>Reglas</h2>
-    <p>1. El examen final y el examen global solo permite tres intentos.</p>
-    <p>2. El examen de prueba no tiene limite de intentos.</p>
-    <hr>
+    <h3>Descripción</h3>
+      <h4>{{ $curso->CUR_descripcion }}
+      </h4>
   </div>
   <div class="col-sm-12">
-    <h2>Unidades</h2>
+    <h3>Unidades</h3>
     @foreach($unidad as $uni)
 <div class="unidad">
 <div class="table-responsive">
 <table  style="width: 100%;">
 <tr>
   <td colspan="5">
-    <center><h2>{{$uni->UNI_nombre}}</h2></center>
+    <center><h3>{{$uni->UNI_nombre}}</h3></center>
   </td>
 </tr>
   <tr>
-    <td><center><h3>Intentos</h3></center></td>
-    <td><center><h3>Fecha inicio</h3></center></td>
-    <td><center><h3>Fecha final</h3></center></td>
-    <td><center><h3>Calificiacion</h3></center></td>
+    <td><center><h4>Intentos</h4></center></td>
+    <td><center><h4>Fecha inicio</h4></center></td>
+    <td><center><h4>Fecha final</h4></center></td>
+    <td><center><h4>Calificiacion</h4></center></td>
   </tr>
   <tr>
   <!-- aqui -->

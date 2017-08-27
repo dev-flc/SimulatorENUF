@@ -1,3 +1,4 @@
+
 .btn-pre
     {
       border-radius: 50%;
@@ -41,16 +42,18 @@
       width: 200px;
       height: 200px;
     }
+
+
     /* modal curso */
     .modal-header
     {
       background: url("/img/desing/12.jpg");
-      height: 150px;
+      height: 100px;
     }
     .modal-header h3
     {
       color: rgb(255,255,255);
-      font-size: 40px;
+      font-size: 30px;
     }
     .noom, .descrii, .cuup, .claav, .cco
     { 
@@ -109,11 +112,17 @@
 
 
   /* imagen principal*/
-    #pri1
-    {
-      height: 350px;
-      width: 100%;
-    }
+.seccionone
+{
+  height: 150px;
+}
+
+#pri1
+{
+  height:200px;
+  width: 100%;
+}
+
     h5 {
     font-size: 1.28571429em;
     font-weight: 700;
@@ -208,8 +217,8 @@
     display: inline-block;
     overflow: hidden;
     box-sizing: border-box;
-    width: 45px;
-    height: 45px;
+    width: 55px;
+    height: 55px;
     margin: 0;
     border: 2px solid rgb(52, 152, 219);
     border-radius: 50%;

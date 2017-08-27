@@ -1,6 +1,6 @@
     #pri1
     {
-      height: 350px;
+      height: 200px;
       width: 100%;
     }
 
@@ -136,4 +136,8 @@
 {
   width: 100px;
   height: 100px;
+}
+label
+{
+  color: rgb(153, 163, 164);
 }

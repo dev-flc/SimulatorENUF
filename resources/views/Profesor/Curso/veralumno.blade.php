@@ -4,6 +4,7 @@
 @section('styles')
   <link rel="stylesheet" href="{{ asset('css/button-menu.css') }}">
   <link rel="stylesheet" href="{{ asset('css/profesorcursosshow.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
 @endsection
 @section('imagenprincipal')
 <div class="seccionone">
@@ -12,20 +13,12 @@
 @endsection
 @section('content')
 <!-- Contenido -->
-<style type="text/css">
-  #imgalumnos
-  {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-  }
-</style>
 <center>
 <br>
   <img id="imgalumnos" src="/img/{{ $user->foto }}" alt="">
-  <h1>
+  <h2>
   {{ $alumno->ALU_nombre }} {{ $alumno->ALU_apellido_p }} {{ $alumno->ALU_apellido_m }}
-</h1>
+</h2>
   <hr>
   <p style="text-align: center;">Usuario: {{ $user->name }}</p>
 </center>

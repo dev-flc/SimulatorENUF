@@ -4,6 +4,7 @@
 @section('styles')
   <link rel="stylesheet" href="{{ asset('css/button-menu.css') }}">
     <link rel="stylesheet" href="{{ asset('css/adminprofesor.css') }}">
+    
 @endsection
 
 @section('imagenprincipal')
@@ -32,26 +33,34 @@
 
                 </div>
             @endif
+            </center>
                 <div class="avatar">
+                <center>
                     <img alt="" src="/img/{{$pro->foto}}">
+                    </center>
                 </div>
                 <div class="info">
                     <div class="title">
+                    <center>
                         {{ $pro->PRO_nombre }} {{ $pro->PRO_apellido_p }} {{ $pro->PRO_apellido_m }}
+                        </center>
                     </div>
-                    <div class="desc">{{ $pro->name }}</div>
+                    <center>
+                    <div class="desc">usuario: {{ $pro->name }}</div>
+                    </center>
                 </div>
                 <div class="bottom">
+                <center>
                     <a class="btn btn-primary btn-sm btn-profe" rel="publisher"
                        href="{{ route('profesores.edit', $pro->PRO_id) }}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                     </a>
-
+                    </center>
                     <!--<a class="btn btn-danger btn-sm btn-profe" rel="publisher"
                        href="#"><span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
                     </a>-->
 
-                    <a class="btn btn-success btn-twitter btn-sm btn-profe" href="#"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                    </a>
+                   <!--<a class="btn btn-success btn-twitter btn-sm btn-profe" href="#"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                    </a>-->
                 </div>
             </div>
         </div>

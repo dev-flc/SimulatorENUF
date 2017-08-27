@@ -6,19 +6,13 @@
   <link rel="stylesheet" href="{{ asset('css/button-menu.css') }}">
   <link rel="stylesheet" href="{{ asset('css/profesorcursosshow.css') }}">
   <link rel="stylesheet" href="{{ asset('plugins/confirm/sweetalert.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
 
 @endsection
 
 <!-- Contenido Principal -->
 @section('imagenprincipal')
   <div class="seccionone">
- <style type="text/css">
-    #pri1
-    {
-      height: 350px;
-      width: 100%;
-    }
-  </style>
   <img id="pri1" src="/img/pri2.png" alt="">
   </div>
 @endsection
@@ -35,23 +29,22 @@
   <div class="col-sm-12">
     <center><h1>{{$curso->CUR_nombre}}</h1></center>
     <a href="{{ route('showunidad', [$unidad->UNI_id, $curso->CUR_id]) }}">
-      <span class="label label-success" style="float: right;">Editar unidad <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+      <span class="btn btn-editar" style="float: right;">Editar tema <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
     </a>
     </span>
     <br><hr></div>
   <div class="col-sm-8">
     <center>
-      <h2>
-          Descripción
-      </h2>
-      <p  style="text-align: justify;">{{ $curso->CUR_descripcion}}</p>
-
+      <h3>
+          Descripción del curso
+      </h3>
+      <h4  style="text-align: justify;">{{ $curso->CUR_descripcion}}</h4>
     </center>
   </div>
   <div class="col-sm-4">
     <center>
       <h2>
-        <img src="/img/{{$curso->CUR_foto}}" alt="" style="width: 100%; border-radius: 10px;">
+        <img src="/img/{{$curso->CUR_foto}}" alt="" style="width: 50%; border-radius: 10px;">
       </h2>
     </center>
   </div>
@@ -64,8 +57,8 @@
       <div class="col-sm-6">
         <div class="container-fluid borderunidad ">
         <br>
-          <center><label for=""> <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Unidad</label> </center>
-        <center><h2>{{ $unidad->UNI_nombre }}</h2></center>
+          <center><label for=""> <span class="glyphicon glyphicon-book" aria-hidden="true"></span> Tema</label> </center>
+        <center><h5>{{ $unidad->UNI_nombre }}</h5></center>
 
         </div>
       </div>
@@ -80,8 +73,8 @@
  Fecha Final</label> </center></td>
           </tr>
           <tr>
-            <td><center><h2>{{ $unidad->UNI_fecha_inicio }}</h2></h2></td>
-            <td><center><h2>{{ $unidad->UNI_fecha_final }}</h2></h2></td>
+            <td><center><h5>{{ $unidad->UNI_fecha_inicio }}</h5></td>
+            <td><center><h4>{{ $unidad->UNI_fecha_final }}</h4></td>
           </tr>
         </table>
         </div>
@@ -94,14 +87,19 @@
       <div class="row">
 
         <div class="col-sm-6">
-          <center><p>Preguntas:</p></center>
+          <h3>Banco de reactivos:</h3>
         </div>
-        <div class="col-sm-5">
-          <center><p>Respuestas:</p></center>
+        <div class="col-sm-3">
+        <a href="">
+           <span class="btn btn-est" style="float: right;">Ver estadisticas <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+           </span>
+           </a> 
         </div>
-        <div class="col-sm-1">
-          <center><p>Opción</p></center>
-        </div>
+        <div class="col-sm-3">
+          <center>
+          <button class="btn btn-ver " data-toggle="modal" data-target="#pregunta_id" style="float: right;">Agregar pregunta <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </button> 
+          </center>
+        </div>     
       </div>
     </div>
     @foreach($pregunta as $pre)
@@ -109,11 +107,11 @@
       <div class="row">
 
         <div class="col-sm-6">
-          <p>
+          <h4>
            {{$count++}} {{ $pre->PRE_nombre}}
-          </p>
+          </h4>
         </div>
-      <div class="col-sm-5">
+      <!--<div class="col-sm-5">
         <div class="table-responsive">
           <table>
           @foreach($respuesta as $res)
@@ -137,21 +135,28 @@
           @endforeach
           </table>
         </div>
-      </div>
+        </div>
+      </div>-->
 
-        <div class="col-sm-1">
-        <center>
-      {!! Form::open(['route'=>['unidad.destroy',$pre->PRE_id],'method'=>'DELETE','id'=>'destroyform']) !!}
+       <div class="col-sm-1">
+       {!! Form::open(['route'=>['unidad.destroy',$pre->PRE_id],'method'=>'DELETE','id'=>'destroyform']) !!}
           {{ csrf_field() }}
           {!! Form::hidden('unidad',$unidad->UNI_id)!!}
 
         <button class="btn-eliminar btn-pre" type="button" onclick="destroybtn()"><span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span></button>
-      {!! Form::close() !!}
+           {!! Form::close() !!}
+           </div>
 
+          <div class="col-sm-1">
           <a href="{{ route('unidad.edit', $pre->PRE_id) }}"><button class="btn-editar btn-pre"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></a>
-          </center>
-        </div>
+          </div>
 
+          <div class="col-sm-1">
+          <button class="btn-ver btn-pre" type="button" onclick=" "><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+        </div>
+        <div class="col-sm-3"><br>
+       <h5>Fecha: 12/08/2017  hora: 2:20</h5>
+        </div>
       </div>
     </div>
     @endforeach
@@ -203,7 +208,7 @@
           {!! Form::hidden('curso',$curso->CUR_id)!!}
         </div>
         <div class="form-group">
-          {!! Form::label('pregunta','Pregunta') !!}
+          {!! Form::label('pregunta','Descripción de la pregunta') !!}
           {!! Form::text('pregunta',null,['class'=>'ppre','id'=>'pregunta'])!!}
           @if($errors->has('pregunta'))
             <span style="color: red;">{{$errors->first('pregunta')}}</span>
@@ -214,6 +219,9 @@
               {!! Form::file('file',['class'=>'form-control'])!!}
           </div>
         <div class="row">
+        <div class="col-sm-12">
+          <h3>Seleccione las respuestas correctas</h3>
+        </div>
           <div class="col-sm-8">
             <div class="form-group">
             {!! Form::label('respuesta1','Respuesta 1') !!}
@@ -277,6 +285,55 @@
               <br>
               {{ Form::radio('tipo4', '2', true) }} Falsa
               {{ Form::radio('tipo4', '1') }} Correcta
+            </div>
+          </div>
+
+           <div class="col-sm-8">
+            <div class="form-group">
+            {!! Form::label('respuesta5','Respuesta 5') !!}
+            {!! Form::text('respuesta5',null,['class'=>'resp5','id'=>'respuesta5'])!!}
+             @if($errors->has('respuesta5'))
+              <span style="color: red;">{{$errors->first('respuesta5')}}</span>
+            @endif
+            </div>
+          </div>
+           <div class="col-sm-4">
+            <div class="form-group">
+              <br>
+              {{ Form::radio('tipo5', '2', true) }} Falsa
+              {{ Form::radio('tipo5', '1') }} Correcta
+            </div>
+          </div>
+           <div class="col-sm-8">
+            <div class="form-group">
+            {!! Form::label('respuesta6','Respuesta 6') !!}
+            {!! Form::text('respuesta6',null,['class'=>'resp6','id'=>'respuesta6'])!!}
+             @if($errors->has('respuesta6'))
+              <span style="color: red;">{{$errors->first('respuesta6')}}</span>
+            @endif
+            </div>
+          </div>
+           <div class="col-sm-4">
+            <div class="form-group">
+              <br>
+              {{ Form::radio('tipo6', '2', true) }} Falsa
+              {{ Form::radio('tipo6', '1') }} Correcta
+            </div>
+          </div>
+           <div class="col-sm-8">
+            <div class="form-group">
+            {!! Form::label('respuesta7','Respuesta 7') !!}
+            {!! Form::text('respuesta7',null,['class'=>'resp7','id'=>'respuesta7'])!!}
+             @if($errors->has('respuesta7'))
+              <span style="color: red;">{{$errors->first('respuesta7')}}</span>
+            @endif
+            </div>
+          </div>
+           <div class="col-sm-4">
+            <div class="form-group">
+              <br>
+              {{ Form::radio('tipo7', '2', true) }} Falsa
+              {{ Form::radio('tipo7', '1') }} Correcta
             </div>
           </div>
         </div>

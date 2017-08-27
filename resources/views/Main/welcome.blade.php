@@ -7,9 +7,9 @@
   <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.min.css') }}">
   <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
-  <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
   <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
   <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/welcomee.css') }}">
   @yield('styles')
 </head>
 
@@ -42,7 +42,7 @@
       <br>
       <img src="/img/alumno.png" alt="" id="divimg">
       <p><span class="badge">{{$alumnos}}</span></p>
-      <h2>Alumnos</h2>
+      <h3>Alumnos</h3>
     </div>
     </center>
     </div>
@@ -53,7 +53,7 @@
       <br>
       <img src="/img/cursos.png" alt="" id="divimg">
         <p><span class="badge">{{$cursos}}</span></p>
-      <h2>Cursos</h2>
+      <h3>Cursos</h3>
     </div>
     </center>
     </div>
@@ -63,7 +63,7 @@
       <br>
       <img src="/img/profesor.png" alt="" id="divimg">
       <p><span class="badge">{{$profesores}}</span></p>
-      <h2>Profesores</h2>
+      <h3>Profesores</h3>
     </div>
     </center>
     </div>
@@ -82,8 +82,6 @@
             <p id="pfooter">Contactanos</p>
             <p id="pfooter">Tel:(747) 47 2 52 27
             <p id="pfooter">e-mail: profesorrafaelramirez@outlook.es</p>
-            <a href=""><img src="img/facebook.png" alt="" id="redes"></a>
-            <a href=""><img src="img/twiter.png" alt="" id="redes"></a>
           </div>
          <div class="col-sm-4"><br>
           <a href=""> <img src="img/guerrero.png" alt="" id="guerrero"></a>

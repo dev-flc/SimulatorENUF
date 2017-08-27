@@ -1,3 +1,5 @@
+
+<!--
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -72,3 +74,47 @@ $(document).ready(function(){
 </script>
 </body>
 </html>
+-->
+
+
+
+@extends('Main.main')
+
+@section('title', 'Examenes')
+
+@section('styles')
+  <link rel="stylesheet" href="{{ asset('css/alumnocursoprueba.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
+@endsection
+
+<!-- Contenido Principal -->
+@section('imagenprincipal')
+  <div class="seccionone">
+  <img id="pri1" src="/img/pri2.png" alt="">
+   <h1 class="titulo">Resultado de evaluacion</h1>
+  </div>
+@endsection
+
+<!-- Contenido -->
+@section('content')
+
+    
+@endsection
+
+<!-- subcontenido -->
+@section('subcontenido')
+
+@endsection
+
+
+
+
+
+<!--Script -->
+@section('script')
+
+
+
+@endsection
+
+

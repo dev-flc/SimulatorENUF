@@ -6,7 +6,8 @@
 @section('imagenprincipal')
 
 @section('styles')
-  <link rel="stylesheet" href="{{ asset('css/alumcursodetalle.css') }}">
+ <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
+<link rel="stylesheet" href="{{ asset('css/alumcursodetalle.css') }}">
 @endsection
 
   <div class="seccionone">

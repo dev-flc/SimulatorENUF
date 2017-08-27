@@ -3,6 +3,7 @@
 @section('title', 'Examenes')
 
 @section('styles')
+<link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
   <link rel="stylesheet" href="{{ asset('css/alumnocursofinal.css') }}">
 @endsection
 

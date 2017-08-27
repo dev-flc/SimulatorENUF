@@ -15,9 +15,11 @@
 
 @section('content')
 <br>
-<br>
-<br>
 <div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 subfinal">
+    <div class="container-fluid panelimg"><br>
+    <center><h3>Datos del curso</h3></center>
   {!! Form::open(['route' => ['cursos.update', $curso->CUR_id],'method' => 'put']) !!}
     <div class="form-group">
         {!! Form::label('nombre','Nombre') !!}
@@ -56,6 +58,9 @@
 </a>
 </div>
 {!! Form::close() !!}
+</div>
+</div>
+</div>
 </div>
 <br>
 <br>

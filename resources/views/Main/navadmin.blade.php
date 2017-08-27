@@ -20,6 +20,7 @@
           <li>
           <a href="{{ route('cursos.index') }}"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Cursos</a>
         </li>
+        <li><a href="{{ route('profesores.index') }}"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Activar edición</a></li>
         @endif
 
       </ul>

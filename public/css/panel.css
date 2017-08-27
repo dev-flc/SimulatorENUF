@@ -1,0 +1,130 @@
+h1.responsive{
+     word-wrap: break-word;
+     -webkit-hyphens: auto;
+     -moz-hyphens: auto;
+     -ms-hyphens: auto;
+     -o-hyphens: auto;
+     hyphens: auto;
+}
+.panelhistoria
+{
+  z-index: 4;
+  position: relative;
+  height: auto;
+  top: -20px;
+
+}
+.seccionone
+{
+  height: 150px;
+ /*background: rgb(52, 73, 94);*/
+  background: url(/img/pri1.jpg);
+}
+
+#pri1
+{
+  height:200px;
+  width: 100%;
+}
+
+.subpanelhistoria
+{
+  background: rgb(255,255,255);
+  height: auto;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.subpanelhistoria p{
+  font-size: 20px;
+  text-align: justify;
+  font-family: 'Josefin Sans', sans-serif;
+}
+.contenerdor1
+{
+  background: rgb(0, 99, 168); /* colores no me gusta */
+  z-index: 3;
+  position: relative;
+  height: 150px;
+  top: -40px;
+}
+h1
+{
+  font-family: 'Poiret One', cursive;
+  font-size: 40px;
+ 
+}
+h2
+{
+  font-family: 'Poiret One', cursive;
+  font-size: 30px;
+  
+}
+h3
+{
+  font-family: 'Poiret One', cursive;
+  font-size: 25px;
+ 
+}
+h4
+{
+ font-family: 'Josefin Sans', sans-serif;
+ font-size: 20px;
+ 
+}
+h5
+{
+ font-family: 'Josefin Sans', sans-serif;
+ font-size: 17px;
+
+}
+h6
+{
+ font-family: 'Josefin Sans', sans-serif;
+ font-size: 15px;
+ color: rgb(163, 16, 24  );
+}
+#centradop
+{
+  text-align: center;
+}
+#divimg
+{
+  width: 90px;
+  height: 90px;
+}
+.panelimg
+{
+  background: rgb(242, 243, 244);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  color: rgb(36, 60, 75);
+}
+.panelcursos
+{
+  background: rgb(255,255,255);
+  margin: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+
+
+::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+
+}
+::-webkit-scrollbar-track {
+      background-color: rgb(242, 243, 244);
+       border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+      background-color: rgb(93, 173, 226);
+       border-radius: 10px;
+
+}
+::-webkit-scrollbar-corner {
+      background-color: black;
+}
+
+

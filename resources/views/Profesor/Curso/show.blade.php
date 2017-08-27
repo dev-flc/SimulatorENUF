@@ -2,6 +2,7 @@
 @section('title', 'Curso')
 @section('styles')
   <link rel="stylesheet" href="{{ asset('css/button-menu.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
   <link rel="stylesheet" href="{{ asset('css/profesorcursosshow.css') }}">
   <link rel="stylesheet" href="{{ asset('css/profesorcursoindex.css') }}">
 @endsection
@@ -15,8 +16,7 @@
 <br>
 @include('flash::message')
 <div class="row">
-  <div class="col-sm-12"><center><h1>{{$curso->CUR_nombre}}</h1></center><br></div>
-
+  <div class="col-sm-12"><center><h1>{{$curso->CUR_nombre}}</h1></center><br><hr></div>
   <div class="col-sm-3">
     <center>
       <p id="centradop">Cupos del curso</p>
@@ -171,7 +171,7 @@
   </div>
   <div class="col-sm-6">
   <div class="container-fluid">
-      <h3>Unidades del curso</h3>
+      <h3>Temas del curso</h3> 
       <hr>
     <div class="row">
     @if ($unidad->count())
@@ -200,6 +200,11 @@
         <strong>Porfavor!</strong> agrege una unidad al curso
       </div>
     @endif
+         <div class="contenedor">
+<button class="botonF1" data-toggle="modal" data-target="#unidad"  data-tooltip="Nuevo Tema">
+  <span>+</span>
+</button>
+</div>
     </div>
   </div>
   </div>
@@ -211,10 +216,7 @@
   <br>
   <br>
 
-<div class="contenedor">
-<button class="botonF1" data-toggle="modal" data-target="#unidad"  data-tooltip="Nueva unidad">
-  <span>+</span>
-</button>
+
 
 
 <!--
@@ -225,7 +227,6 @@
   <span>+</span>
 </button>
 -->
-</div>
 @endsection
 <!-- Fin Section Contenido -->
 
@@ -251,7 +252,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-         <h3 class="modal-title colordiv" id="myModalLabel">Nueva unidad</h3>
+         <h3 class="modal-title colordiv" id="myModalLabel">Nuevo Tema</h3>
       </div>
       <div class="modal-body">
         {!! Form::open(['route'=>'unidad.store','method'=>'POST','files' => true]) !!}
@@ -259,16 +260,17 @@
           {!! Form::text('curso',$curso->CUR_id,['class'=>'inputoculto','readonly'])!!}
         </div>
         <div class="form-group">
+          {!! Form::text('nombre',null,['class'=>'uni','placeholder'=>'Nombre del tema','required'])!!}
+        </div>
+        <div class="form-group">
+          {!! Form::text('nombre',null,['class'=>'apoy','placeholder'=>'Descripción del material de apoyo','required'])!!}
+        </div>
+        <div class="form-group">
         {!! Form::label('file','Material de apoyo') !!}
         {!! Form::file('file',['class'=>'apo','onchange'=>'previewFile()']) !!}</p>
-        </div>
-        <br>
+        </div><br>
         <div class="form-group">
-          {!! Form::text('nombre',null,['class'=>'uni','placeholder'=>'Nombre de unidad','required'])!!}
-          <p>Solo puede contener 34 caracteres A-Z | 0-9</p>
-        </div>
-        <br>
-        <div class="form-group">
+        <h3>Configuracion de datos para el Examen Final</h3>
           {!! Form::label('fecha','Fecha de inicio') !!}
           {!! Form::date('fecha_inicio',null,['class'=>'fec','placeholder'=>'fecha de inicio','required'])!!}
         </div>
@@ -276,15 +278,16 @@
           {!! Form::label('fecha','Fecha final') !!}
           {!! Form::date('fecha',null,['class'=>'fec','required'])!!}
         </div>
-        <br>
         <div class="form-group">
-          {!! Form::number('tiempo',null,['class'=>'min','placeholder'=>'tiempo de examen en minutos, ejemplo 30','required'])!!}
+          {!! Form::number('numero',null,['class'=>'nopre','placeholder'=>'Asignación general de puntos ','required'])!!}
         </div>
-        <br>
         <div class="form-group">
-          {!! Form::number('numero',null,['class'=>'nopre','placeholder'=>'Numero de preguntas de examen final','required'])!!}
+          {!! Form::number('tiempo',null,['class'=>'min','placeholder'=>'Tiempo de examen en minutos, ejemplo 30','required'])!!}
         </div>
-        <br>
+        <div class="form-group">
+         {!! Form::label('horario','Horario de aplicación') !!}
+          {!! Form::number('tiempo',null,['class'=>'hor','placeholder'=>'12:00 a 18:00','required'])!!}
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn-button-c" data-dismiss="modal">Cancelar
@@ -320,18 +323,24 @@
           {!! Form::date('fechafinal',$curso->CUR_fecha_final,['class'=>'uni','required'])!!}
         </div>
         <div class="form-group">
-            {{ Form::radio('status', 'habilitado', true) }} Habilitado
+        <h3>Estatus:</h3>
+            <center>
+            {{ Form::radio('status', 'habilitado', true) }} Habilitado  
             {{ Form::radio('status', 'deshabilitado') }} Deshabilitado
+            </center>
+        </div>
+        <div class="form-group">
+          {!! Form::label('curso','Asignación general de puntos') !!}
+          {!! Form::number('numero',$curso->CUR_numero_preguntas,['class'=>'uni','placeholder'=>'Asignación general de puntos','required'])!!}
         </div>
         <div class="form-group">
           {!! Form::label('curso','Timpo de examen en minutos') !!}
           {!! Form::number('tiempo',$curso->CUR_tiempo,['class'=>'uni','placeholder'=>'ejemplo:   30 minutos','required'])!!}
         </div>
         <div class="form-group">
-          {!! Form::label('curso','Numero de preguntas') !!}
-          {!! Form::number('numero',$curso->CUR_numero_preguntas,['class'=>'uni','placeholder'=>'ejemplo:   30 preguntas','required'])!!}
+         {!! Form::label('horario','Horario de aplicación') !!}
+          {!! Form::number('tiempo',null,['class'=>'hoo','placeholder'=>'12:00 a 18:00','required'])!!}
         </div>
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn-button-c" data-dismiss="modal">Cancelar

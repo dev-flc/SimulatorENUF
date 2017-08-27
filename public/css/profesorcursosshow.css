@@ -1,3 +1,13 @@
+.seccionone
+{
+  height: 150px;
+}
+
+#pri1
+{
+  height:200px;
+  width: 100%;
+}
 .numero
 {
     border-radius: 50%;
@@ -16,11 +26,6 @@
   width: 0px;
   height: 0px;
   border: none;
-}
-#pri1
-{
-  height: 350px;
-  width: 100%;
 }
 #alumnosimg
 {
@@ -51,7 +56,7 @@
 #textcenterunidad
 {
   text-align: center;
-  font-size: 19px;
+  font-size: 15px;
 }
 .aprobada
 {
@@ -102,6 +107,23 @@
   transition: .3s;
 }
 .btn-ver:hover
+{
+  background: rgb(52, 152, 219);
+  color: rgb(255,255,255);
+}
+.btn-est
+{
+  border-radius: 4px;
+  border: none;
+  border: 1px solid rgb(52, 152, 219);
+  background: none;
+  padding: 5px;
+  margin: 15px;
+  width: 100%;
+  transition: .3s;
+  color: rgb(128, 139, 150);
+}
+.btn-est:hover
 {
   background: rgb(52, 152, 219);
   color: rgb(255,255,255);
@@ -158,6 +180,19 @@
       color: rgb(255,255,255);
       background: rgb(52, 152, 219);
     }
+    .btn-ver
+    {
+      color: rgb(128, 139, 150);
+      border: 1px solid rgb(82, 190, 128);
+      background: rgb(255,255,255);
+      transition: .2s;
+    }
+    .btn-ver:hover
+    {
+      color: rgb(255,255,255);
+      background: rgb(82, 190, 128);
+    }
+
     #ress
     {
       width: 4%;
@@ -179,18 +214,18 @@
     {
       width: 100%;
     }
-    /* modal curso */
+    /* modal pregunta */
     .modal-header
     {
       background: url("/img/desing/12.jpg");
-      height: 150px;
+      height: 100px;
     }
     .modal-header h3
     {
       color: rgb(255,255,255);
-      font-size: 40px;
+      font-size: 30px;
     }
-    .ppre, .resp1, .resp2, .resp3, .resp4
+    .ppre, .resp1, .resp2, .resp3, .resp4, .resp5, .resp6, .resp7
     {
       width: 100%;
       outline: none;
@@ -203,7 +238,8 @@
     }
     .ppre:focus, .ppre:active, .resp1:focus, .resp1:active,
     .resp2:focus, .resp2:active, .resp3:focus, .resp3:active,
-    .resp4:focus, .resp4:active
+    .resp4:focus, .resp4:active, .resp5:focus, .resp5:active,
+    .resp6:focus, .resp6:active, .resp7:focus, .resp7:active
     {
       outline: none;
       border-bottom: 2px solid rgb(52, 152, 219);
@@ -244,10 +280,12 @@
       background: rgb(39, 174, 96);
       color: rgb(255,255,255);
     }
+    
     .titulo
-{
-  position: relative;
-  top: -90%;
-  text-align: center;
-  color: rgb(255,255,255);
-}
+    {
+      position: relative;
+      top: -90%;
+      text-align: center;
+      color: rgb(255,255,255);
+    }
+

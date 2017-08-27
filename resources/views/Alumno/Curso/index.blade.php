@@ -3,6 +3,7 @@
 @section('title', 'Registro')
 
 @section('styles')
+  <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
   <link rel="stylesheet" href="{{ asset('css/alumnocursoindex.css') }}">
   <link rel="stylesheet" href="{{ asset('css/adminprofesor.css') }}">
 @endsection
@@ -16,7 +17,7 @@
 
 <!-- Contenido -->
 @section('content')
-<div class="row">
+<!--
 <div class="col-sm-3">
     <div class="card hovercard">
      @if($alumno->ALU_sexo=="hombre")
@@ -38,23 +39,24 @@
                 </div>
             </div>
          </div>
-  <div class="col-sm-9">
+         -->
+  <div class="col-sm-12">
     <br>
     <div class="curse">
     <center><h1>{{ $curso->CUR_nombre }}</h1>
-      <img id="tamanofoto" src="/img/{{$curso->CUR_foto}}" alt="" style="width: 100px; height: 100px; border-radius: 50%;">
+      <img id="tamanofoto" src="/img/{{$curso->CUR_foto}}" alt="" style="width: 200px; height: 150px; border-radius: 5%;">
     </center>
   </div>
   <div class="col-sm-12">
-    <h2>Descripción</h2>
+    <h3>Descripción</h3>
       <p>{{ $curso->CUR_descripcion }}
       </p>
     <hr>
   </div>
-  <div class="col-sm-8">
+  <div class="col-sm-9">
   <div class="container-fluid">
 @if ($unidad->count())
-    <h2>Contenido</h2>
+    <h3>Contenido del tema</h3>
     @foreach($unidad as $uni)
     <div id="vertical-bar" table-responsive>
 
@@ -66,7 +68,7 @@
               </div>
             </td>
             <td class="separador"></td>
-            <td><h4>{{ $uni->UNI_nombre }}</h4></td>
+            <td><h5>{{ $uni->UNI_nombre }}</h5></td>
           </tr>
         </table>
       </div>
@@ -79,7 +81,7 @@
 @endif
 </div>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-3">
             <div class="card hovercard">
             @if($pro->PRO_sexo=="hombre")
                 <div class="cardheader">
@@ -91,14 +93,20 @@
                 </div>
             @endif
                 <div class="avatar">
+                <center>
                     <img alt="" src="/img/{{$pro->foto}}">
                 </div>
                 <div class="info">
                     <div class="title">
+                    <center>
                         {{ $pro->PRO_nombre }} {{ $pro->PRO_apellido_p }} {{ $pro->PRO_apellido_m }}
+                        </center>
                     </div>
+                    <center>
                     <div class="title"><h3>Profesor asignado</h3></div>
+                    </center>
                 </div>
+                <center>
           <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
           <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
           <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
@@ -115,11 +123,11 @@
         @include('flash::message')
       </div>
     <hr>
-    <h2>Registrarme</h2>
+    <h3>Registrarme en Tema:</h3>
     {!! Form::open(['route'=>'curos_registro.store','method'=>'POST']) !!}
       {{ Form::hidden('idcurso',$curso->CUR_id)}}
       {{ Form::hidden('idalumno',$alumno->ALU_id)}}
-      {{ Form::text('clave',null,['class'=>'clave','placeholder'=>'Ingrese la clave del curso','required'])}}<br><br>
+      {{ Form::text('clave',null,['class'=>'clave','placeholder'=>'Ingresa la clave del tema','required'])}}<br><br>
       <center>
       {{ Form::button('Registrarme', array('class'=>'btn-registro', 'type'=>'submit')) }}<br><br>
       </center>

@@ -4,6 +4,8 @@
 @section('styles')
   <link rel="stylesheet" href="{{ asset('css/proprincipal.css') }}">
    <link rel="stylesheet" href="{{ asset('css/adminprofesor.css') }}">
+   <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
+   <link rel="stylesheet" href="{{ asset('css/alumnoperfil.css') }}">
 @endsection
 <!-- Contenido Principal -->
 @section('imagenprincipal')
@@ -14,26 +16,93 @@
 
 <!-- Contenido -->
 @section('content')
-<br>
 <div class="row">
 <div class="col-sm-3">
     <div class="card hovercard">
     <div class="cardheader">
     </div>
-        <div class="avatar">
-             <img alt="" src="/img/{{$foto}}">
-             </div>
-              <div class="info">
-                    <div class="title">
-                        {{ $pro->PRO_nombre }} {{ $pro->PRO_apellido_p }} {{ $pro->PRO_apellido_m }}
-                    </div>
-                    <div class="title"><h3>Profesor</h3></div>
-                </div>
-            </div>
-         </div>
+    <div class="avatar">
+    <center>
+      <img alt="" src="/img/{{$foto}}">
+      </div>
+      <div class="info">
+        <div class="title">
+             {{ $pro->PRO_nombre }} {{ $pro->PRO_apellido_p }} {{ $pro->PRO_apellido_m }}
+          </div>
+          <center>
+          <div class="title"><h3>Profesor</h3></div><hr>
+          </center>
+          <table>
+            <tr>
+          <td colspan="2"><label for="">Usuario</label></td>
+        </tr>
+        <tr>
+          <td><p>{{$pro->name}}</p></td>
+          <td>
+            <center>
+              <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            </center>
+          </td>
+
+        </tr>
+           <tr>
+          <td colspan="2"><label for="">Calle</label></td>
+        </tr>
+        <tr>
+          <td><p>{{$pro->DIR_calle}}</p></td>
+          <td>
+            <center>
+              <span class="glyphicon glyphicon-road " aria-hidden="true"></span>
+            </center>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"><label for="">Colonia</label></td>
+        </tr>
+        <tr>
+          <td><p>{{$pro->DIR_colonia}}</p></td>
+          <td>
+            <center>
+              <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+            </center>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"><label for="">Ciudad</label></td>
+        </tr>
+        <tr>
+          <td><p>{{$pro->DIR_ciudad}}</p></td>
+          <td>
+            <center>
+              <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>
+            </center>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"><label for="">Estado</label></td>
+        </tr>
+        <tr>
+          <td><p>{{$pro->DIR_estado}}</p></td>
+          <td>
+            <center>
+              <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+            </center>
+          </td>
+        </tr>
+          </table>
+           <center>
+          <hr><h3>Redes sociales</h3>
+          <a href="https://www.facebook.com/"><img src="/img/facebook.png" alt="" id="redes"></a>
+          <a href="https://twitter.com"><img src="/img/twiter.png" alt="" id="redes"></a>
+          <a href="https://login.live.com"><img src="/img/hotmail.png" alt="" id="redes"></a>
+          </center>
+        </div>
+    </div>
+  </div>
   <div class="col-sm-9">
   <center>
-    <h1>Cursos</h1>
+    <h2>Cursos Asignados</h2>
+    <hr>
   </center>
   <div class="row">
  @foreach($curso as $cur)
@@ -45,7 +114,7 @@
             </div>
             <div class="col-sm-8"><br>
               <label for="curso">CURSO</label>
-              <h4>{{ $cur->CUR_nombre}}</h4>
+              <h5>{{ $cur->CUR_nombre}}</h5>
               <label for="curso">CUPOS</label>
               <p>
                 {{ $cur->CUR_cupos}}

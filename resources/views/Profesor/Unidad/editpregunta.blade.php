@@ -4,6 +4,7 @@
 @section('styles')
   <link rel="stylesheet" href="{{ asset('css/proprincipal.css') }}">
   <link rel="stylesheet" href="{{ asset('css/profesorcursosshow.css') }}">
+   <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
 @endsection
 <!-- Contenido Principal -->
 @section('imagenprincipal')

@@ -123,6 +123,7 @@ h1.responsive{
   z-index: 4;
   position: relative;
   height: auto;
+  width: 100%;
   top: -20px;
 
 }
