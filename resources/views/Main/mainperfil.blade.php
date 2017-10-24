@@ -9,6 +9,8 @@
   gtag('js', new Date());
 
   gtag('config', 'UA-108507917-1');
+  
+  console.log("yes");
 </script>
 
   <meta charset="UTF-8">
