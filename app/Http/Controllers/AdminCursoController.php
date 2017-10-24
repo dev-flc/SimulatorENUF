@@ -5,7 +5,7 @@ namespace SimulatorENUF\Http\Controllers;
 use Illuminate\Http\Request;
 use SimulatorENUF\Models\Profesor;
 use SimulatorENUF\Models\Curso;
-
+use Flash;
 
 class AdminCursoController extends Controller
 {
@@ -16,9 +16,15 @@ class AdminCursoController extends Controller
      */
     public function index()
     {
-      #$curso=Curso::all();
-      $curso=Curso::join('profesors','profesors.PRO_id','=','cursos.PRO_id')->get();
-      return view("Administrador.Curso.index")->with('curso',$curso);
+      $curso=Curso::join('profesors','profesors.PRO_id','=','cursos.PRO_id')
+      ->join('users','users.id','=','profesors.USE_id')
+      ->get();
+      
+      $profesor=Profesor::all();
+
+      return view("Administrador.Curso.index")
+      ->with('profesor',$profesor)
+      ->with('curso',$curso);
     }
 
     /**
@@ -29,7 +35,7 @@ class AdminCursoController extends Controller
     public function create()
     {
       $profesor=Profesor::all();
-      return view('Administrador.Curso.create')->with('profesor',$profesor);
+      return view('Administrador.Curso.index')->with('profesor',$profesor);
     }
 
     /**
@@ -40,6 +46,17 @@ class AdminCursoController extends Controller
      */
     public function store(Request $request)
     {
+      if($request->file('file'))
+      {
+        $file=$request->file('file');
+        $nombre = 'curso_'.time().'.'.$file->getClientOriginalExtension();
+        $path=public_path().'/img';
+        $file->move($path, $nombre);
+      }
+      else
+      {
+        $nombre="file.png";
+      }
       $fecha=date('Y-m-d');
       $curso=new Curso;
       $curso->CUR_nombre=($request->nombre);
@@ -47,7 +64,7 @@ class AdminCursoController extends Controller
       $curso->CUR_cupos=($request->cupos);
       $curso->CUR_fecha=$fecha;
       $curso->CUR_clave=($request->clave);
-      $curso->CUR_foto="cusro.png";
+      $curso->CUR_foto=$nombre;
       $curso->CUR_estatus="habilitado";
       $curso->PRO_id=($request->profesor);
       $curso->save();
@@ -103,7 +120,7 @@ class AdminCursoController extends Controller
       $curso->PRO_id=($request->profesor);;
       $curso->save();
 
-      //flash('Presidente modificado correctamente', 'info')->important();
+      Flash::success("Cursos actualizado correctamente")->important();
       return redirect()->route('cursos.index');
     }
 

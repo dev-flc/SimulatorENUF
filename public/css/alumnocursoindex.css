@@ -1,0 +1,97 @@
+
+#pri1
+    {
+      height: 350px;
+      width: 100%;
+    }
+    .perfildiv
+  {
+    border: 1px solid rgb(220,220,220);
+    height: auto;
+  }
+  #imgperfil
+  {
+    width: 175px;
+    height: 250px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  }
+  .btn-registro
+  {
+    width: 50%;
+    height: 50px;
+    background: rgb(255,255,255);
+    border:none;
+    border: 1px solid rgb(220,220,220);
+    font-size: 20px;
+    color: #666;
+    transition: .7s;
+  }
+  .btn-registro:hover
+  {
+    border: 1px solid rgb(52, 152, 219);
+    background: rgb(52, 152, 219);
+    color: rgb(255,255,255);
+  }
+
+.clave
+{
+  width: 100%;
+  outline: none;
+  padding: 15px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid rgb(220,220,220);
+  font-size: 20px;
+  text-align: center;
+}
+.clave:focus, .clave:active
+{
+  outline: none;
+  border-bottom: 2px solid rgb(52, 152, 219);
+  color: rgb(52, 152, 219);
+}
+.curse
+{
+  border: 1px solid rgb(220,220,220);
+  padding: 10px;
+}
+#vertical-bar {
+  border-left: 5px solid #ccc;
+  height:auto;
+  left: 50px;
+  position: relative;
+
+}
+.btn-circle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border: 1px solid rgb(133, 193, 233);
+  background: rgb(255,255,255);
+  text-align: center;
+  margin: 5px;
+  padding: 3px;
+  font-size: 12px;
+  line-height: 1.328571429;
+  border-radius: 50%;
+  left: -37px;
+}
+.starr
+{
+  color: rgb(133, 193, 233);
+  font-size: 20px;
+}
+#profe
+{
+  width: 150px;
+  height: 150px;
+}
+.star
+{
+  color: rgb(245, 176, 65);
+}
+#tamanofoto
+{
+  width: 100px;
+  height: 100px;
+}

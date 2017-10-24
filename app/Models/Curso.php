@@ -1,5 +1,4 @@
 <?php
-
 namespace SimulatorENUF\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -16,23 +15,35 @@ class Curso extends Model
         'CUR_clave',
         'CUR_foto',
         'CUR_estatus',
-        'PRO_id'
+        'PRO_id',
+        'CUR_fecha_inicio',
+        'CUR_fecha_final',
+        'CUR_calificacion',
+        'CUR_intento',
+        'CUR_estatus_examen',
+        'CUR_tiempo',
+        'CUR_numero_preguntas'
     ];
-
-
-
     public function unidad()
     {
         return $this->belongsTo('SimulatorENUF\Models\Unidad');
     }
-
-     public function profesor()
+    public function profesor()
     {
         return $this->belongsTo('SimulatorENUF\Models\Profesor');
     }
-
     public function curalu()
     {
-        return $this->belongsTo('SimulatorENUF\Models\CurAlu');
+        return $this->belongsTo(CurAlu::class);
+    }
+    public function pregunta()
+    {
+        return $this->belongsTo('SimulatorENUF\Models\Pregunta');
+    }
+
+    #Buscador
+    public function scopeBuscador($query, $namecurso)
+    {
+        return $query->where('CUR_nombre', 'LIKE', "%$namecurso%");
     }
 }

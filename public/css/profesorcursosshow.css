@@ -1,3 +1,13 @@
+.seccionone
+{
+  height: 150px;
+}
+
+#pri1
+{
+  height:200px;
+  width: 100%;
+}
 .numero
 {
     border-radius: 50%;
@@ -16,11 +26,6 @@
   width: 0px;
   height: 0px;
   border: none;
-}
-#pri1
-{
-  height: 350px;
-  width: 100%;
 }
 #alumnosimg
 {
@@ -51,7 +56,7 @@
 #textcenterunidad
 {
   text-align: center;
-  font-size: 19px;
+  font-size: 15px;
 }
 .aprobada
 {
@@ -106,6 +111,23 @@
   background: rgb(52, 152, 219);
   color: rgb(255,255,255);
 }
+.btn-est
+{
+  border-radius: 4px;
+  border: none;
+  border: 1px solid rgb(52, 152, 219);
+  background: none;
+  padding: 5px;
+  margin: 15px;
+  width: 100%;
+  transition: .3s;
+  color: rgb(128, 139, 150);
+}
+.btn-est:hover
+{
+  background: rgb(52, 152, 219);
+  color: rgb(255,255,255);
+}
 .btn-denegar:hover
 {
   background: rgb(231, 76, 60);
@@ -116,3 +138,154 @@
   background: rgb(46, 204, 113);
   color: rgb(255,255,255);
 }
+
+
+.borderunidad
+    {
+      border: 1px solid rgb(230,230,230);
+    }
+    #respuestaid
+    {
+      width: 100%;
+    }
+    .btn-pre
+    {
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      border: none;
+      margin: 2px;
+    }
+    .btn-editar
+    {
+      color: rgb(128, 139, 150);
+      border: 1px solid rgb(52, 152, 219);
+      background: rgb(255,255,255);
+      transition: .2s;
+    }
+    .btn-eliminar
+    {
+      color: rgb(128, 139, 150);
+      border: 1px solid rgb(231, 76, 60);
+      background: rgb(255,255,255);
+      transition: .2s;
+    }
+    .btn-eliminar:hover
+    {
+      color: rgb(255,255,255);
+      background: rgb(231, 76, 60);
+    }
+     .btn-editar:hover
+    {
+      color: rgb(255,255,255);
+      background: rgb(52, 152, 219);
+    }
+    .btn-ver
+    {
+      color: rgb(128, 139, 150);
+      border: 1px solid rgb(82, 190, 128);
+      background: rgb(255,255,255);
+      transition: .2s;
+    }
+    .btn-ver:hover
+    {
+      color: rgb(255,255,255);
+      background: rgb(82, 190, 128);
+    }
+
+    #ress
+    {
+      width: 4%;
+    }
+    #separador
+    {
+      width: 1%;
+      color: rgb(191, 201, 202);
+    }
+    .si
+    {
+      color: rgb(130, 224, 170);
+    }
+    .no
+    {
+      color: rgb(241, 148, 138);
+    }
+    table
+    {
+      width: 100%;
+    }
+    /* modal pregunta */
+    .modal-header
+    {
+      background: url("/img/desing/12.jpg");
+      height: 100px;
+    }
+    .modal-header h3
+    {
+      color: rgb(255,255,255);
+      font-size: 30px;
+    }
+    .ppre, .resp1, .resp2, .resp3, .resp4, .resp5, .resp6, .resp7
+    {
+      width: 100%;
+      outline: none;
+      padding: 15px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid rgb(220,220,220);
+      color: rgb(52, 152, 219);
+      font-size: 15px;
+    }
+    .ppre:focus, .ppre:active, .resp1:focus, .resp1:active,
+    .resp2:focus, .resp2:active, .resp3:focus, .resp3:active,
+    .resp4:focus, .resp4:active, .resp5:focus, .resp5:active,
+    .resp6:focus, .resp6:active, .resp7:focus, .resp7:active
+    {
+      outline: none;
+      border-bottom: 2px solid rgb(52, 152, 219);
+      color: rgb(52, 152, 219);
+    }
+
+    .btn-button-c
+    {
+      background: rgb(255,255,255);
+      border: none;
+      border: 1px solid rgb(192, 57, 43) ;
+      width: 150px;
+      height: 40px;
+      margin: 5px;
+      padding: 5px;
+      color: rgb(192, 57, 43);
+      transition: .6s;
+    }
+    .btn-button-a
+    {
+      background: rgb(255,255,255);
+      border: none;
+      border: 1px solid rgb(39, 174, 96) ;
+      width: 150px;
+      height: 40px;
+      margin: 5px;
+      padding: 5px;
+      color: rgb(39, 174, 96);
+      transition: .6s;
+    }
+    .btn-button-c:hover
+    {
+      background: rgb(192, 57, 43);
+      color: rgb(255,255,255);
+    }
+    .btn-button-a:hover
+    {
+      background: rgb(39, 174, 96);
+      color: rgb(255,255,255);
+    }
+    
+    .titulo
+    {
+      position: relative;
+      top: -90%;
+      text-align: center;
+      color: rgb(255,255,255);
+    }
+

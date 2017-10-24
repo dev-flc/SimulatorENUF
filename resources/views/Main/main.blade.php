@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>@yield('title','Default')</title>
+  <link rel="icon" href="/img/curso.png">
   <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.min.css') }}">
   <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
   <link rel="stylesheet" href="{{ asset('css/main.css') }}">
   <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
   <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
@@ -39,8 +41,8 @@
     <center>
     <div class="container-fluid panelimg">
       <br>
-      <img src="/img/diploma.png" alt="" id="divimg">
-      <h2>Unidades Aprobadas</h2>
+      <img src="/img/alumno.png" alt="" id="divimg">
+      <h2>Alumnos</h2>
     </div>
     </center>
     </div>
@@ -49,8 +51,8 @@
     <center>
     <div class="container-fluid panelimg">
       <br>
-      <img src="/img/reloj.png" alt="" id="divimg">
-      <h2>Fechas Y Horas</h2>
+      <img src="/img/curso.png" alt="" id="divimg">
+      <h2>Cursos</h2>
     </div>
     </center>
     </div>
@@ -59,36 +61,39 @@
     <center>
     <div class="container-fluid panelimg">
       <br>
-      <img src="/img/024-colaboracion.png" alt="" id="divimg">
-      <h2>Examenes Aleatorios</h2>
+      <img src="/img/profesor.png" alt="" id="divimg">
+      <h2>Profesores</h2>
     </div>
     </center>
     </div>
   </div><br><br>
 </div>
 
-
 <footer class="footer">
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-4">
-    </div>
-    <div class="col-sm-4">
-    <center><br>
-      <p>Escuela Normal Urbana Federal Profesor Rafael Ramirez. | 2017</p>
-    </center>
-    </div>
-    <div class="col-sm-4">
-    </div>
-  </div>
-</div>
-
+      <div class="container-fluid">
+       <div class="row">
+         <div class="col-sm-4"><br>
+          <p id="pfooter">Centro Escolar Vicente Guerrero, Col. Jardines del Sur, Chilpancingo,Gro.</p>
+          <p id="pfooter">C.P.39070</p>
+         </div>
+         <div class="col-sm-4"><br>
+            <p id="pfooter">Contactanos</p>
+            <p id="pfooter">Tel:(747) 47 2 52 27
+            <p id="pfooter">e-mail: profesorrafaelramirez@outlook.es</p>
+           
+          </div>
+         <div class="col-sm-4"><br>
+          <a href=""> <img src="/img/guerrero.png" alt="" id="guerrero"></a>
+         </div>
+       </div>
+      </div>
       <!--
       <button type="button" data-toggle="modal" data-target="#myModal" id="fixedbutton" class="btn btn-danger btn-circle btn-lg">
         <span class="glyphicon glyphicon-info-sign"></span>
       </button>
       -->
 </footer>
+
 @yield('modal')
 
 

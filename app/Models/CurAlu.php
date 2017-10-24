@@ -11,17 +11,19 @@ class CurAlu extends Model
   protected $fillable = [
         'CUAL_estatus',
         'CUR_id',
-        'ALU_id'
+        'ALU_id',
+        'CUAL_intentos',
+        'CUAL_calificacion'
     ];
     #uno a muchos cursos
     public function curso()
     {
-        return $this->hasMany('SimulatorENUF\Models\Curso');
+        return $this->hasMany(Curso::class);
     }
 
     #uno a muchos alumnos
-    public function alumno()
+    public function alumnos()
     {
-        return $this->hasMany('SimulatorENUF\Models\Alumno');
+        return $this->hasMany(Alumno::class);
     }
 }

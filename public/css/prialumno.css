@@ -3,10 +3,14 @@
       height: 350px;
       width: 100%;
     }
+#parrafo{
+    font-family: 'Josefin Sans', sans-serif;
+}
+    
 .perfildiv
   {
-    background: rgb(244, 246, 246);
-    height: 500px;
+    border: 1px solid rgb(220,220,220);
+    height: auto;
   }
   #imgcursos
   {
@@ -48,15 +52,15 @@
   }
   .cursos
   {
-    border: 1px solid rgb(52, 152, 219);
-    padding: 5px;
-    margin: 5px;
+    /*border: 1px solid rgb(52, 152, 219);*/
+    padding: auto;
+    margin: auto;
     transition: .7s;
   }
   .cursos:hover
   {
     background: rgb(214, 234, 248);
-    color: black;
+    color: rgb(52, 152, 219);
   }
   .cursop
   {
@@ -95,23 +99,25 @@
   }
   #colora
   {
-    font-size: 20px;
+    font-size: 15px;
     color: rgb(46, 204, 113);
     text-align: center;
   }
   #colorp
   {
-    font-size: 20px;
+    font-size: 15px;
     color: rgb(243, 156, 18);
     text-align: center;
   }
   #colorr
   {
-    font-size: 20px;
+    font-size: 15px;
     color: rgb(231, 76, 60);
     text-align: center;
   }
   .estatus
   {
     border: 1px solid rgb(200,200,200);
+    height: 60px;
+    width: 400px
   }

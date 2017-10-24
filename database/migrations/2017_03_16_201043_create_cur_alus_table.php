@@ -18,6 +18,9 @@ class CreateCurAlusTable extends Migration
             $table->enum('CUAL_estatus',['aprobado','pendiente','denegado'])->default('pendiente');
             $table->integer('CUR_id')->unsigned()->nullable();
             $table->integer('ALU_id')->unsigned()->nullable();
+            $table->integer('CUAL_intentos')->nullable();
+            $table->integer('CUAL_calificacion')->nullable();
+
             $table->timestamps();
             #llave foranea curso
             $table->foreign('CUR_id')->references('CUR_id')->on('cursos');

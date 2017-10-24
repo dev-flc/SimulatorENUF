@@ -1,258 +1,299 @@
+
 @extends('Main.main')
 
 @section('title', 'Examenes')
 
 @section('styles')
   <link rel="stylesheet" href="{{ asset('plugins/confirm/sweetalert.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/adminprofesor.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/alumnocursoshow.css') }}">
 @endsection
 
 <!-- Contenido Principal -->
 @section('imagenprincipal')
   <div class="seccionone">
-  <style type="text/css">
-    #pri1
-    {
-      height: 350px;
-      width: 100%;
-    }
-  </style>
   <img id="pri1" src="/img/pri2.png" alt="">
   </div>
 @endsection
 
 <!-- Contenido -->
 @section('content')
-<style>
-  .perfildiv
-  {
-    background: rgb(244, 246, 246);
-    height: 500px;
-  }
-  #imgperfil
-  {
-    width: 175px;
-    height: 250px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  }
-  .btn-registro
-  {
-    width: 50%;
-    height: 50px;
-    background: rgb(255,255,255);
-    border:none;
-    border: 1px solid rgb(220,220,220);
-    font-size: 20px;
-    color: #666;
-    transition: .7s;
-  }
-  .btn-registro:hover
-  {
-    border: 1px solid rgb(52, 152, 219);
-    background: rgb(52, 152, 219);
-    color: rgb(255,255,255);
-  }
-
-.clave
-{
-  width: 100%;
-  outline: none;
-  padding: 15px;
-  background: none;
-  border: none;
-  border-bottom: 2px solid rgb(220,220,220);
-  font-size: 20px;
-  text-align: center;
-}
-.clave:focus, .clave:active
-{
-  outline: none;
-  border-bottom: 2px solid rgb(52, 152, 219);
-  color: rgb(52, 152, 219);
-}
-.curse
-{
-  border: 1px solid rgb(220,220,220);
-  padding: 10px;
-}
-.unidad
-{
-  border: 1px solid rgb(220,220,220);
-  width: 100%;
-  height: auto;
-  padding: 15px;
-  margin: 5px;
-  font-size: 17px;
-  transition: .7s;
-}
-.unidad:hover
-{
-  border: 1px solid rgb(52, 152, 219);
-  color: rgb(52, 152, 219);
-  border-radius: 5px;
-}
-.starr
-{
-  color: rgb(133, 193, 233);
-  font-size: 20px;
-}
-#profe
-{
-  width: 150px;
-  height: 200px;
-}
-.star
-{
-  color: rgb(245, 176, 65);
-}
-#uninom{
-  width: 100%;
-}
-.separar
-{
-  width: 150%;
-}
-.final
-{
-  width: 95%;
-  margin: 5px;
-  border: none;
-  background: none;
-  border: 1px solid rgb(220,220,220);
-  border-radius: 20px;
-  color: rgb(128, 139, 150);
-}
-.prueba
-{
-  width: 95%;
-  margin: 5px;
-  border: none;
-  background: none;
-  border: 1px solid rgb(220,220,220);
-  border-radius: 20px;
-  color: rgb(128, 139, 150);
-}
-.final:hover{
-  border: 1px solid rgb(46, 204, 113);
-  color: rgb(46, 204, 113);
-}
-.prueba:hover{
-  border: 1px solid rgb(142, 68, 173);
-  color: rgb(142, 68, 173);
-}
-.ancho
-{
-  width: 65%;
-}
-.aprobado
-{
-  color: rgb(46, 204, 113);
-}
-.reprobado
-{
-  color: rgb(231, 76, 60);
-}
-</style>
 <div class="row">
-  <div class="col-sm-4">
-    <br>
-    <div class="container-fluid perfildiv">
-      <center><br>
-        <img id="imgperfil" src="/img/profesor.jpg" alt="">
-      </center>
+<div class="col-sm-3">
+    <div class="card hovercard">
+     @if($alumno->ALU_sexo=="hombre")
+    <div class="cardheader"></div>
+     @else
+      <div class="cardheader2"></div>
+       @endif
+        <div class="avatar">
+        <center>
+             <img id="imgperfil" src="/img/{{$user->foto}}" alt="">
+             </center>
+             </div>
+                <div class="info">
+             <div class="title">
+             <center>
+            <h4> {{$alumno->ALU_nombre}} {{$alumno->ALU_apellido_p}} {{$alumno->ALU_apellido_m}}</h4>
+            </center>
+          </div>
+          <hr>
+          <table  style="width: 80%;">
+            <tr>
+          <td colspan="2"><label for="">Usuario</label></td>
+        </tr>
+        <tr>
+          <td><h5> </h5></td>
+          <td>
+            <center>
+              <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            </center>
+          </td>
+        </tr>
+        <td colspan="2"><label for="">Matricula</label></td>
+        </tr>
+        <tr>
+          <td><h5>{{$alumno->ALU_metricula}}</h5></td>
+          <td>
+            <center>
+              <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
+            </center>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"><label for="">Calle</label></td>
+        </tr>
+        <tr>
+          <td><p>  </p></td>
+          <td>
+            <center>
+              <span class="glyphicon glyphicon-road " aria-hidden="true"></span>
+            </center>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"><label for="">Colonia</label></td>
+        </tr>
+        <tr>
+          <td><p>  </p></td>
+          <td>
+            <center>
+              <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+            </center>
+          </td>
+        </tr>      
+          </table>
+          <center>
+          <hr>
+          <h3>Redes sociales</h3>
+          <a href="https://www.facebook.com/"><img src="/img/facebook.png" alt="" id="redes"></a>
+          <a href="https://twitter.com"><img src="/img/twiter.png" alt="" id="redes"></a>
+          <a href="https://login.live.com"><img src="/img/hotmail.png" alt="" id="redes"></a>
+          </center>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="col-sm-8 ">
-    <br>
+         
+  <div class="col-sm-9">
+  <br>
     <div class="curse">
-    <center><h1>{{ $curso->CUR_nombre }}<img src="/img/foto.png" alt=""></h1></center>
+    <center><h2>{{ $curso->CUR_nombre }}</h2>
+    <img id="tamanofoto" src="/img/{{ $curso->CUR_foto }}" alt="" style="width: 100px; height: 100px; border-radius: 50%;">
+    </center>
   </div>
   <div class="col-sm-12">
-    <h2>Descripción</h2>
-      <p>{{ $curso->CUR_descripcion }}
-      </p>
-    <hr>
+    <h3>Descripción</h3>
+      <h4>{{ $curso->CUR_descripcion }}
+      </h4>
   </div>
   <div class="col-sm-12">
-    <h2>Unidades</h2>
+    <h3>Unidades</h3>
     @foreach($unidad as $uni)
 <div class="unidad">
 <div class="table-responsive">
 <table  style="width: 100%;">
+<tr>
+  <td colspan="5">
+    <center><h3>{{$uni->UNI_nombre}}</h3></center>
+  </td>
+</tr>
   <tr>
-    <td><center><h3>Nombre</h3></center></td>
-    <td><center><h3>Intentos</h3></center></td>
-    <td><center><h3>Fecha</h3></center></td>
-    <td><center><h3>Calificación</h3></center></td>
-    <td><center><h3>Tiempo</h3></center></td>
+    <td><center><h4>Intentos</h4></center></td>
+    <td><center><h4>Fecha inicio</h4></center></td>
+    <td><center><h4>Fecha final</h4></center></td>
+    <td><center><h4>Calificiacion</h4></center></td>
   </tr>
   <tr>
-    <td>
-      <center>{{$uni->UNI_nombre}}</center>
-    </td>
+  <!-- aqui -->
+  @php
+    $a=0;
+    $b=0
+  @endphp
+  @if ($unialu->count())
+  @foreach($unialu as $unii)
+  @if($unii->UNI_id==$uni->UNI_id)
+    @if($unii->UNAL_intentos>=1)
     <td>
       <center>
-        @if($uni->UNI_intento=="")
-        0
-        @else
-        {{$uni->UNI_intento}}
-        @endif
-      </center>
+        {{$unii->UNAL_intentos}}
+      </ceter>
+    </td>
+    @endif
+        @php
+          $b=$unii->UNAL_intentos;
+        @endphp
+      @break;
+    @endif
+@endforeach
+@endif
+@if($a>=$b)
+<td><center>0</center></td>
+@endif
+    <td>
+      <center>{{$uni->UNI_fecha_inicio}}</center>
     </td>
     <td>
       <center>{{$uni->UNI_fecha_final}}</center>
     </td>
     <td>
       <center>
-        @if($uni->UNI_calificacion=="")
-          Pendiente
-        @elseif($uni->UNI_calificacion>=7)
-           <h2 class="aprobado">{{$uni->UNI_calificacion}}</h2>
-        @elseif($uni->UNI_calificacion<=6)
-           <h2 class="reprobado">{{$uni->UNI_calificacion}}</h2>
+      @if ($unialu->count())
+      @if($unii->UNI_id == $uni->UNI_id)
+      
+      @if($unii->UNAL_calificacion>=1)
+        {{$unii->UNAL_calificacion}}
+      @elseif($unii->UNAL_calificacion === 0)
+        0
+      @else
+        pendiente
+      @endif
 
-        @endif
+      @endif
+      
+      @else
+        Pendiente
+      @endif
       </center>
-    </td>
-    <td>
-       <center>{{$uni->UNI_tiempo}} minutos</center>
     </td>
   </tr>
 </table>
 </div>
 <hr>
 <center>
-  @if($uni->UNI_fecha_final>$fecha)
+@if($uni->UNI_fecha_inicio<=$fecha &&  $uni->UNI_fecha_final>=$fecha)
   <a href="{{ route('examenprueba', $uni->UNI_id) }}" style="text-decoration: none;">
     <span class="label label-success">Examen de prueba</span>
   </a>
+
+  @if($b<3)
+    <span class="label label-success" style="cursor:pointer" onclick="Envio({{$uni->UNI_id}});">Examen final</span>
   @else
+    <span class="label label-default">Examen final</span>
+  @endif
+
+
+
+@else
   <span class="label label-default">Examen de prueba</span>
-  @endif
-
-  @if($uni->UNI_intento>=3)
   <span class="label label-default">Examen final</span>
-  @else
-    @if($uni->UNI_fecha_final==$fecha )
-       <span class="label label-success" style="cursor:pointer" onclick="Envio({{$uni->UNI_id}});">Examen finall</span>
-
-    @else
-  <span class="label label-default">Examen final</span>
-
-    @endif
-  @endif
+@endif
   <a href="{{ route('detalleunidad', $uni->UNI_id) }}">
     <span class="label label-primary">Ver detalles</span>
   </a>
-
+@if($uni->UNI_material_apoyo=="")
+  <span class="label label-default label-circle">Material
+    <span class="glyphicon glyphicon-download" aria-hidden="true"></span>
+  </span>
+@else
+  <a href="{{ route('descargafiles', $uni->UNI_id) }}">
+    <span class="label label-success label-circle">Material
+      <span class="glyphicon glyphicon-download" aria-hidden="true"></span>
+    </span>
+  </a>
+  @endif
 </center>
    </div>
 @endforeach
+
+<!--Global -->
+<div class="unidad">
+<div class="table-responsive">
+<table  style="width: 100%;">
+<tr>
+  <td colspan="5">
+    <center><h2>Examen Global</h2></center>
+  </td>
+</tr>
+  <tr>
+    <td><center><h3>Intentos</h3></center></td>
+    <td><center><h3>Fecha inicio</h3></center></td>
+    <td><center><h3>Fecha final</h3></center></td>
+    <td><center><h3>Calificación</h3></center></td>
+  </tr>
+  <tr>
+    <td>
+      <center>
+        @if($cursoo->CUAL_intentos)
+          {{ $cursoo->CUAL_intentos }}
+        @else
+          0
+        @endif
+      </center>
+    </td>
+    <td>
+      <center>
+        @if($curso->CUR_fecha_inicio)
+          {{ $curso->CUR_fecha_inicio }}
+        @else
+          pendiente
+        @endif
+      </center>
+    </td>
+    <td>
+       <center>
+        @if($curso->CUR_fecha_final)
+          {{ $curso->CUR_fecha_final }}
+        @else
+          pendiente
+        @endif
+      </center>
+    </td>
+    <td>
+      <center>
+        @if($cursoo->CUAL_calificacion)
+       {{$cursoo->CUAL_calificacion}}
+       @else
+        pendiente
+       @endif
+      </center>
+    </td>
+  </tr>
+</table>
+</div>
+<hr>
+<center>
+@if($curso->CUR_estatus_examen=="habilitado")
+  @if($cursoo->CUAL_intentos<3)
+   <span class="label label-success" style="cursor:pointer" onclick="Global({{$curso->CUR_id}});">
+    Relaizar examen global
+  </span>
+  @else
+     <span class="label label-default">Relaizar examen global</span>
+  @endif
+
+@else
+  <span class="label label-default">Relaizar examen global</span>
+@endif
+</center>
+   </div>
       <br>
       <br>
     </div>
   </div>
 </div>
-<!--  AQUI ESTOY-->
+
+<!--Fin global-->
 @endsection
 
 <!-- subcontenido -->
@@ -271,30 +312,48 @@
 <!--  AQUI tambien -->
 
 <script type="text/javascript">
-
 var Envio=function(id){
+swal({
+  title: "Relizar Examen?",
+  text: "empezar ahora!",
+  type: "success",
+  showCancelButton: true,
+  confirmButtonColor: '#2ECC71',
+  confirmButtonText: 'Confirmar',
+  cancelButtonText: "Cancelar!",
+  closeOnConfirm: false,
+  closeOnCancel: false
+},
+function(isConfirm) {
+  if (isConfirm) {
+    window.location.href = "{{url('alumno/examenfinal')}}/"+id+"";
+  }
+  else {
+  swal("Cancelado", ":)", "error");
+  }
+});
+}
 
-  swal({
-                title: "Relizar Examen?",
-                text: "empezar ahora!",
-                type: "success",
-                showCancelButton: true,
-                confirmButtonColor: '#2ECC71',
-                confirmButtonText: 'Confirmar',
-                cancelButtonText: "Cancelar!",
-                closeOnConfirm: false,
-                closeOnCancel: false
-            },
-            function(isConfirm) {
-                if (isConfirm) {
-
-                         window.location.href = "{{url('alumno/examenfinal')}}/"+id+"";
-
-
-                } else {
-                    swal("Cancelado", ":)", "error");
-                }
-            });
+var Global=function(id){
+swal({
+  title: "Presentar Examen Global?",
+  text: "empezar ahora!",
+  type: "success",
+  showCancelButton: true,
+  confirmButtonColor: '#2ECC71',
+  confirmButtonText: 'Confirmar',
+  cancelButtonText: "Cancelar!",
+  closeOnConfirm: false,
+  closeOnCancel: false
+},
+function(isConfirm) {
+  if (isConfirm) {
+    window.location.href = "{{url('alumno/globalshow')}}/"+id+"";
+  }
+  else {
+  swal("Cancelado", ":(", "error");
+  }
+});
 }
 </script>
 @endsection

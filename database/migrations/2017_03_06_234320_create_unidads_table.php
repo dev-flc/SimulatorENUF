@@ -18,6 +18,7 @@ class CreateUnidadsTable extends Migration
             $table->string('UNI_nombre')->nullable();
             $table->string('UNI_material_apoyo')->nullable();
             $table->date('UNI_fecha_final')->nullable();
+            $table->date('UNI_fecha_inicio')->nullable();
             $table->string('UNI_tiempo')->nullable();
             $table->string('UNI_calificacion')->nullable();
             $table->string('UNI_intento')->nullable();

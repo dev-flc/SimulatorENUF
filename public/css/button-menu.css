@@ -154,7 +154,8 @@ span{
   border: 1px solid rgb(93, 109, 126);;
  /* background-color: rgb(93, 109, 126);Color de fondo*/
   border-radius: 5px;
-  color: rgb(52, 152, 219);
+  
+  color:rgb(93, 109, 126);
   content: attr(data-tooltip);
   font-size: 14px;
   line-height: 1.2;

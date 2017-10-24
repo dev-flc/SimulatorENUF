@@ -1,0 +1,25 @@
+ #imgcursos
+  {
+    width: 40;
+    height: 40;
+    border-radius: 60%;
+    border: 2px solid rgb(52, 152, 219);
+    background: rgb(255,255,255);
+  }
+  .cursos
+  {
+    border: 1px solid rgb(52, 152, 219);
+    padding: auto;
+    margin: auto;
+    transition: .7s;
+    color: rgb(0, 51, 102);
+  }
+  .cursos:hover
+  {
+    background: rgb(214, 234, 248);
+    color: black;
+  }
+  .estatus
+  {
+    border: 1px solid rgb(200,200,200);
+  }

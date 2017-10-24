@@ -23,7 +23,7 @@ class Alumno
      */
     public function handle($request, Closure $next)
     {
-      /* Admin */
+      /* Alumno */
       if($this->auth->user()->alumnologin())
       {
         return $next($request);
@@ -33,10 +33,10 @@ class Alumno
       {
         return redirect()->route('principalprofesor.index');
       }
-      /* Alumno */
+      /* Admin */
       elseif($this->auth->user()->adminlogin())
       {
-        return redirect()->route('cursos.index');
+        return redirect()->route('profesores.index');
       }
     }
 }

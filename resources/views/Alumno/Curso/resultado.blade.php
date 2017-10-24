@@ -1,3 +1,5 @@
+
+<!--
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,39 +8,9 @@
   <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.min.css') }}">
   <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('css/alumnocursofinal.css') }}">
 </head>
 <body>
-<style type="text/css">
-  .divcal
-  {
-    border:1px solid rgb(46, 204, 113);
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-  }
-  img
-  {
-    width: 100px;
-    height: 100px;
-  }
-  h1,h2,h3,p,#tiempo
-{
-  font-family: 'Poiret One', cursive;
-}
-h2
-{
-  font-size: 40px;
-  color: rgb(46, 204, 113);
-}
-p
-{
-  font-size: 20px;
-}
-#tiempo
-{
-  font-size: 20px;
-}
-</style>
 <br>
 <br>
 <div class="texto">
@@ -62,7 +34,7 @@ p
 <div class="tiempo">
   <center>
       <p>
-        retornara en... <div id="tiempo">10</div>
+        retornara en... <div id="tiempo">05</div>
       </p>
   </center>
 </div>
@@ -72,11 +44,19 @@ p
 
 <script  src="{{ asset('plugins/jQuery/jquery-3.1.1.js') }}"></script>
 <script  src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+<script type="text/javascript">
 
+
+
+</script>
 <script type="text/javascript">
 $(document).ready(function(){
+  window.location.hash="no-back-button";
+   window.location.hash="Again-No-back-button" //chrome
+   window.onhashchange=function(){window.location.hash="no-back-button";}
+
   var tiempo = {
-    segundo:11
+    segundo:5
   };
   var tiempo_corriendo = null;
   tiempo_corriendo = setInterval(function(){
@@ -94,3 +74,47 @@ $(document).ready(function(){
 </script>
 </body>
 </html>
+-->
+
+
+
+@extends('Main.main')
+
+@section('title', 'Examenes')
+
+@section('styles')
+  <link rel="stylesheet" href="{{ asset('css/alumnocursoprueba.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
+@endsection
+
+<!-- Contenido Principal -->
+@section('imagenprincipal')
+  <div class="seccionone">
+  <img id="pri1" src="/img/pri2.png" alt="">
+   <h1 class="titulo">Resultado de evaluacion</h1>
+  </div>
+@endsection
+
+<!-- Contenido -->
+@section('content')
+
+    
+@endsection
+
+<!-- subcontenido -->
+@section('subcontenido')
+
+@endsection
+
+
+
+
+
+<!--Script -->
+@section('script')
+
+
+
+@endsection
+
+

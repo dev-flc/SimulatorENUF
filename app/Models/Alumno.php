@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Alumno extends Model
 {
     protected $table = 'alumnos';
-	protected $primaryKey = 'ALU_id';
+	  protected $primaryKey = 'ALU_id';
     protected $fillable = [
         'ALU_nombre',
         'ALU_apellido_p',
@@ -37,6 +37,6 @@ class Alumno extends Model
 
     public function curalu()
     {
-        return $this->belongsTo('SimulatorENUF\Models\CurAlu');
+        return $this->belongsTo(CurAlu::class);
     }
 }

@@ -19,6 +19,18 @@ class AlumnoRegistroController extends Controller
 
     public function registeruser(Request $request)
     {
+
+      $this->validate($request,[
+        'nombre' => 'required|max:30|alpha',
+        'apellido_paterno' => 'required|alpha',
+        'apellido_materno' => 'required|alpha',
+        'edad' => 'required|min:18|max:110|integer',
+        'matricula' => 'required|digits:9|integer',
+        'usuario' => 'required|unique:users,name|max:30',
+        'email' => 'required|unique:users,email|max:50',
+        'password' => 'required|alpha_dash|min:7|confirmed',
+        'password_confirmation' => 'required|min:3'
+        ]);
       #nueva direccion
       $direccion=new Direccion;
       $direccion->save();
@@ -28,8 +40,8 @@ class AlumnoRegistroController extends Controller
 
       #nuevo usuario
       $user=new User;
-      $user->name=($request->user);
-      $user->foto="foto.png";
+      $user->name=($request->usuario);
+      $user->foto="file.png";
       $user->email=($request->email);
       $user->password=bcrypt($request->password);
       $user->save();
@@ -40,8 +52,8 @@ class AlumnoRegistroController extends Controller
       #nuevo alumno
       $alu=new Alumno;
       $alu->ALU_nombre=($request->nombre);
-      $alu->ALU_apellido_p=($request->apellido_p);
-      $alu->ALU_apellido_m=($request->apellido_m);
+      $alu->ALU_apellido_p=($request->apellido_paterno);
+      $alu->ALU_apellido_m=($request->apellido_materno);
       $alu->ALU_edad=($request->edad);
       $alu->ALU_sexo=($request->sexo);
       $alu->ALU_metricula=($request->matricula);
@@ -50,7 +62,7 @@ class AlumnoRegistroController extends Controller
       $alu->save();
 
       $data=[
-            'name' =>($request->user),
+            'name' =>($request->usuario),
             'password' => ($request->password)
         ];
 
@@ -73,7 +85,6 @@ class AlumnoRegistroController extends Controller
         {
             return Redirect::route('principal.index');
         }
-
-        return Redirect::back()->with('error_message', 'Invalid data')->withInput();
+        return Redirect::back()->with('error_message', 'Usuario ó contraseña incorrectos')->withInput();
     }
 }

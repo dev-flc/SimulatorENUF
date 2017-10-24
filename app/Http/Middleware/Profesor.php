@@ -25,20 +25,20 @@ class Profesor
      */
     public function handle($request, Closure $next)
     {
-      /* Admin */
+      /* Profesor */
       if($this->auth->user()->profesorlogin())
       {
         return $next($request);
       }
-      /* Profesor */
+      /* Alumno */
       elseif($this->auth->user()->alumnologin())
       {
         return redirect()->route('principal.index');
       }
-      /* Alumno */
+      /* Admin */
       elseif($this->auth->user()->adminlogin())
       {
-        return redirect()->route('cursos.index');
+        return redirect()->route('profesores.index');
       }
     }
 }

@@ -23,15 +23,10 @@
   </style>
 	{!! Form::open(['route'=>'cursos.store','method'=>'POST']) !!}
   <div class="form-group">
-  <select title="Select your surfboard" class="selectpicker">
-  <option id="d" data-thumbnail="/img/curso/img1.png">tecnologia</option>
-  <option id="d" data-thumbnail="/img/curso/img2.png">amviente</option>
-  <option id="d" data-thumbnail="/img/curso/img3.png">Ciencia</option>
-</select>
   </div>
 	<div class="form-group">
 		{!! Form::label('nombre','Nombre ') !!}
-		{{ Form::text('nombre',null,['class'=>'form-control','required']) }}
+		{{ Form::text('nombre',null,['class'=>'nom','required']) }}
 	</div>
   <div class="form-group">
     {{ Form::label('Descripcion','Descripcion ') }}
@@ -51,8 +46,6 @@
         <option value="{{ $pro->PRO_id}}">{{ $pro->PRO_nombre}} {{ $pro->PRO_apellido_p}} {{ $pro->PRO_apellido_m }}  </option>
         @endforeach
     </select>
-
-
 
 	<div class="form-group">
     {{ Form::button('<span class="glyphicon glyphicon-ok"></span> Registrar', array('class'=>'btn btn-success pull-right', 'type'=>'submit')) }}

@@ -2,135 +2,64 @@
 
 @section('title', 'Registro')
 
+@section('styles')
+  <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/alumnocursoindex.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/adminprofesor.css') }}">
+@endsection
+
 <!-- Contenido Principal -->
 @section('imagenprincipal')
   <div class="seccionone">
-  <style type="text/css">
-    #pri1
-    {
-      height: 350px;
-      width: 100%;
-    }
-  </style>
   <img id="pri1" src="/img/pri2.png" alt="">
   </div>
 @endsection
 
 <!-- Contenido -->
 @section('content')
-<style>
-  .perfildiv
-  {
-    background: rgb(244, 246, 246);
-    height: 500px;
-  }
-  #imgperfil
-  {
-    width: 175px;
-    height: 250px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  }
-  .btn-registro
-  {
-    width: 50%;
-    height: 50px;
-    background: rgb(255,255,255);
-    border:none;
-    border: 1px solid rgb(220,220,220);
-    font-size: 20px;
-    color: #666;
-    transition: .7s;
-  }
-  .btn-registro:hover
-  {
-    border: 1px solid rgb(52, 152, 219);
-    background: rgb(52, 152, 219);
-    color: rgb(255,255,255);
-  }
+<!--
+<div class="col-sm-3">
+    <div class="card hovercard">
+     @if($alumno->ALU_sexo=="hombre")
+    <div class="cardheader"></div>
+     @else
+      <div class="cardheader2"></div>
+       @endif
+        <div class="avatar">
+             <img alt="" src="/img/{{$foto}}">
+             </div>
+              <div class="info">
+                    <div class="title">
+                        {{$alumno->ALU_nombre}} {{$alumno->ALU_apellido_p}} {{$alumno->ALU_apellido_m}}
+                    </div>
+                    <div class="title"><h3>Matricula:{{$alumno->ALU_metricula}}</h3></div>
+                    <div class="title"><h3>Edad:{{$alumno->ALU_edad}}</h3></div>
+                    <div class="title"><h3>Sexo:{{$alumno->ALU_sexo}}</h3></div>
 
-.clave
-{
-  width: 100%;
-  outline: none;
-  padding: 15px;
-  background: none;
-  border: none;
-  border-bottom: 2px solid rgb(220,220,220);
-  font-size: 20px;
-  text-align: center;
-}
-.clave:focus, .clave:active
-{
-  outline: none;
-  border-bottom: 2px solid rgb(52, 152, 219);
-  color: rgb(52, 152, 219);
-}
-.curse
-{
-  border: 1px solid rgb(220,220,220);
-  padding: 10px;
-}
-#vertical-bar {
-  border-left: 5px solid #ccc;
-  height:auto;
-  left: 50px;
-  position: relative;
-
-}
-.btn-circle {
-  position: relative;
-  width: 60px;
-  height: 60px;
-  border: 1px solid rgb(133, 193, 233);
-  background: rgb(255,255,255);
-  text-align: center;
-  margin: 5px;
-  padding: 3px;
-  font-size: 12px;
-  line-height: 1.328571429;
-  border-radius: 50%;
-  left: -37px;
-}
-.starr
-{
-  color: rgb(133, 193, 233);
-  font-size: 20px;
-}
-#profe
-{
-  width: 150px;
-  height: 200px;
-}
-.star
-{
-  color: rgb(245, 176, 65);
-}
-</style>
-<div class="row">
-  <div class="col-sm-4">
-    <br>
-    <div class="container-fluid perfildiv">
-      <center><br>
-        <img id="imgperfil" src="/img/profesor.jpg" alt="">
-      </center>
-    </div>
-  </div>
-  <div class="col-sm-8 ">
+                </div>
+            </div>
+         </div>
+         -->
+  <div class="col-sm-12">
     <br>
     <div class="curse">
-    <center><h1>{{ $curso->CUR_nombre }} <img src="/img/foto.png" alt=""></h1></center>
+    <center><h1>{{ $curso->CUR_nombre }}</h1>
+      <img id="tamanofoto" src="/img/{{$curso->CUR_foto}}" alt="" style="width: 200px; height: 150px; border-radius: 5%;">
+    </center>
   </div>
   <div class="col-sm-12">
-    <h2>Descripción</h2>
+    <h3>Descripción</h3>
       <p>{{ $curso->CUR_descripcion }}
       </p>
     <hr>
   </div>
-  <div class="col-sm-8">
+  <div class="col-sm-9">
+  <div class="container-fluid">
 @if ($unidad->count())
-    <h2>Contenido</h2>
+    <h3>Contenido del tema</h3>
     @foreach($unidad as $uni)
-    <div id="vertical-bar">
+    <div id="vertical-bar" table-responsive>
+
         <table>
           <tr>
             <td>
@@ -139,7 +68,7 @@
               </div>
             </td>
             <td class="separador"></td>
-            <td><p>{{ $uni->UNI_nombre }}</p></td>
+            <td><h5>{{ $uni->UNI_nombre }}</h5></td>
           </tr>
         </table>
       </div>
@@ -150,14 +79,34 @@
   <strong>Lo sentimos!</strong> Por el momento el curso no tiene contenido
 </div>
 @endif
+</div>
     </div>
-  <div class="col-sm-4">
-  <h2>Profesor</h2>
-    <div class="thumbnail">
-      <img src="/img/profesor.jpg" id="profe" alt="...">
-      <div class="caption">
-        <center>
-          <h3>Nombre Profesor Ahora</h3>
+    <div class="col-sm-3">
+            <div class="card hovercard">
+            @if($pro->PRO_sexo=="hombre")
+                <div class="cardheader">
+
+                </div>
+            @else
+                <div class="cardheader2">
+
+                </div>
+            @endif
+                <div class="avatar">
+                <center>
+                    <img alt="" src="/img/{{$pro->foto}}">
+                </div>
+                <div class="info">
+                    <div class="title">
+                    <center>
+                        {{ $pro->PRO_nombre }} {{ $pro->PRO_apellido_p }} {{ $pro->PRO_apellido_m }}
+                        </center>
+                    </div>
+                    <center>
+                    <div class="title"><h3>Profesor asignado</h3></div>
+                    </center>
+                </div>
+                <center>
           <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
           <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
           <span class="glyphicon glyphicon-star-empty star" aria-hidden="true"></span>
@@ -174,11 +123,11 @@
         @include('flash::message')
       </div>
     <hr>
-    <h2>Registrarme</h2>
+    <h3>Registrarme en Tema:</h3>
     {!! Form::open(['route'=>'curos_registro.store','method'=>'POST']) !!}
       {{ Form::hidden('idcurso',$curso->CUR_id)}}
       {{ Form::hidden('idalumno',$alumno->ALU_id)}}
-      {{ Form::text('clave',null,['class'=>'clave','placeholder'=>'Ingrese la cleve del curso','required'])}}<br><br>
+      {{ Form::text('clave',null,['class'=>'clave','placeholder'=>'Ingresa la clave del tema','required'])}}<br><br>
       <center>
       {{ Form::button('Registrarme', array('class'=>'btn-registro', 'type'=>'submit')) }}<br><br>
       </center>

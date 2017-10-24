@@ -4,48 +4,27 @@
 
 <!-- Contenido Principal -->
 @section('imagenprincipal')
-  <div class="seccionone">
-  <style type="text/css">
-    #pri1
-    {
-      height: 350px;
-      width: 100%;
-    }
-    .divclass
-    {
-        background: none;
-        border: 1px solid rgb(222,222,222);
-        padding: 10px;
-    }
-    .numero{
-        width: 85px;
-        height: 85px;
-        border-radius: 50%;
-        background: red;
-        position: relative;
-    }
-    .panel .boder-uno
-    {
-       background: url(https://s-media-cache-ak0.pinimg.com/600x315/ab/47/7e/ab477e7a84ef700e14e78a77cc3032af.jpg);
-       color:rgb(255,255,255);
-    }
-    .panel .boder-dos
-    {
-       background: url(https://elandroidelibre.elespanol.com/wp-content/uploads/2014/12/fondo-pantalla-android-material-9.jpg);
-       color:rgb(255,255,255);
-    }
-    .panel-default{
-        border: 1px solid rgb(222,222,222);
-    }
 
-  </style>
+@section('styles')
+ <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
+<link rel="stylesheet" href="{{ asset('css/alumcursodetalle.css') }}">
+@endsection
+
+  <div class="seccionone">
   <img id="pri1" src="/img/pri2.png" alt="">
   </div>
 @endsection
 
 <!-- Contenido -->
 @section('content')
-<center><h1>Mis Evaluaciones</h1></center><br>
+<center>
+    <h1>{{ $unidad->UNI_nombre }}</h1>
+    <h3>Mis Evaluaciones</h3>
+</center><br>
+
+<a href="{{ route('cursos_examen.show', $unidad->CUR_id) }}">
+    <p style="text-align: center; text-decoration: none;">&larr; regreza</p>
+</a>
 <div class="container-fluid">
     <div class="row">
     <div class="col-sm-6">
@@ -63,6 +42,8 @@
                 <th><center>Calificación</center></th>
             </tr>
             @foreach($prueba as $pru)
+            @if($pru->UNI_id==$id)
+
             @if($pru->EXA_calificacion>=7)
             <tr class="success">
                 <td>
@@ -100,6 +81,7 @@
                 </td>
             </tr>
             @endif
+            @endif
             @endforeach
             </table>
         @else
@@ -125,6 +107,7 @@
                 <th><center>Calificación</center></th>
             </tr>
             @foreach($final as $fin)
+            @if($fin->UNI_id==$id)
             @if($fin->EXA_calificacion>=7)
             <tr class="success">
                 <td>
@@ -162,6 +145,8 @@
                 </td>
             </tr>
             @endif
+            @endif
+
             @endforeach
             </table>
         @else
@@ -192,6 +177,15 @@
 
 <!--Script -->
 @section('script')
+<script type="text/javascript">
 
+  $(document).ready(function(){
+     window.location.hash="no-back-button";
+   window.location.hash="Again-No-back-button" //chrome
+   window.onhashchange=function(){window.location.hash="no-back-button";}
+
+ });
+
+</script>
 @endsection
 

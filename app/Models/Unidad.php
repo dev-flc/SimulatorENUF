@@ -13,6 +13,7 @@ class Unidad extends Model
         'UNI_foto',
         'UNI_material_apoyo',
         'UNI_fecha_final',
+        'UNI_fecha_inicio',
         'UNI_tiempo',
         'UNI_calificacion',
         'UNI_intento',

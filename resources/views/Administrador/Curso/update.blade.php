@@ -1,18 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>actualizar curso</title>
-</head>
-<body>
-	<h1>actualizar curso</h1>
-   <ul>
-    <li><a href="{{ route('cursos.index') }}">cursos</a></li>
-    <li><a href="{{ route('cursos.create') }}">Crear cursos</a></li>
-    <li><a href="{{ route('profesores.index') }}">profesores</a></li>
-    <li><a href="{{ route('profesores.create') }}">Create profesores</a></li>
-  </ul>
-	{!! Form::open(['route' => ['cursos.update', $curso->CUR_id],'method' => 'put']) !!}
+@extends('Main.mainadmin')
+
+@section('title', 'Cursos')
+@section('styles')
+  <link rel="stylesheet" href="{{ asset('css/button-menu.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/admincursoupdate.css') }}">
+@endsection
+
+@section('imagenprincipal')
+  <div class="seccionone">
+  <img id="pri1" src="/img/pri2.png" alt="">
+  <h1 class="titulo">Editar curso</h1>
+  </div>
+@endsection
+
+@section('content')
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 subfinal">
+    <div class="container-fluid panelimg"><br>
+    <center><h3>Datos del curso</h3></center>
+  {!! Form::open(['route' => ['cursos.update', $curso->CUR_id],'method' => 'put']) !!}
     <div class="form-group">
         {!! Form::label('nombre','Nombre') !!}
         {!! Form::text('nombre',$curso->CUR_nombre,['class'=>'form-control','required'])!!}
@@ -34,20 +42,34 @@
         <option value="{{ $profesor->PRO_id}}">{{ $profesor->PRO_nombre }} {{ $profesor->PRO_apellido_p }} {{ $profesor->PRO_apellido_m }}*</option>
         @foreach ($profesores as $pro)
         @if($profesor->PRO_id==$pro->PRO_id)
-
         @else if
         <option value="{{ $pro->PRO_id}}">{{ $pro->PRO_nombre}} {{ $pro->PRO_apellido_p}} {{ $pro->PRO_apellido_m}} </option>
         @endif
         @endforeach
     </select>
+<br>
+<div class="form-group">
+  {{ Form::button('<span class="glyphicon glyphicon-ok"></span> Actualizar', array('class'=>'btn-button-a pull-right', 'type'=>'submit')) }}
+<a href="{{ route('cursos.index') }}">
+  <button type="button" class="btn-button-c pull-right">
+    Cancelar
+    <span class="glyphicon glyphicon-remove"></span>
+  </button>
+</a>
+</div>
+{!! Form::close() !!}
+</div>
+</div>
+</div>
+</div>
+<br>
+<br>
+@endsection
 
 
-  <div class="form-group">
-    {{ Form::button('<span class="glyphicon glyphicon-ok"></span> Registrar', array('class'=>'btn btn-success pull-right', 'type'=>'submit')) }}
-    </div>
+@section('subcontenido')
+
+@endsection
 
 
-
-    {!! Form::close() !!}
-</body>
-</html>
+@section('script')

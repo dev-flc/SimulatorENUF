@@ -1,21 +1,115 @@
 /* modal login */
-
-.user, .pass
+.alert-login
 {
+  width: 90%;
+}
+.imgheader
+{
+  background: url("/img/desing/12.jpg");
+  height: 100px;
+}
+.imgheader h2
+{
+  color: rgb(255,255,255);
+  font-size: 30px;
+}
+.us, .pa
+{ 
+  width: 80%;
+  outline: none;
+  padding: 15px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid rgb(231, 76, 60);
+  color: rgb(231, 76, 60);
+  font-size: 15px;
+}
+.us:focus, .us:active ,.pa:focus, .pa:active
+{
+  outline: none;
+  border-bottom: 2px solid rgb(231, 76, 60);
+  color: rgb(231, 76, 60);
+}
+.user, .pass
+{ 
   width: 80%;
   outline: none;
   padding: 15px;
   background: none;
   border: none;
   border-bottom: 2px solid rgb(220,220,220);
+  color: rgb(52, 152, 219);
+  font-size: 15px;
 }
 .user:focus, .user:active ,.pass:focus, .pass:active
 {
   outline: none;
-  border-bottom: 2px solid pink;
+  border-bottom: 2px solid rgb(52, 152, 219);
+  color: rgb(52, 152, 219);
 }
 
-/* modal login fin */
+ .btn-button-c
+    {
+      background: rgb(255,255,255);
+      border: none;
+      border: 1px solid rgb(192, 57, 43) ;
+      width: 150px;
+      height: 40px;
+      margin: 5px;
+      padding: 5px;
+      color: rgb(192, 57, 43);
+      transition: .6s;
+    }
+    .btn-button-a
+    {
+      background: rgb(255,255,255);
+      border: none;
+      border: 1px solid rgb(39, 174, 96) ;
+      width: 150px;
+      height: 40px;
+      margin: 5px;
+      padding: 5px;
+      color: rgb(39, 174, 96);
+      transition: .6s;
+    }
+    .btn-button-c:hover
+    {
+      background: rgb(192, 57, 43);
+      color: rgb(255,255,255);
+    }
+    .btn-button-a:hover
+    {
+      background: rgb(39, 174, 96);
+      color: rgb(255,255,255);
+    }
+
+/* Modal login Fin */
+
+/*Modal register inicio */
+.nom, .ap, .am, .edad, .mat, .email, .userr, .passs
+{
+  width: 90%;
+  outline: none;
+  padding: 15px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid rgb(220,220,220);
+  color: rgb(52, 152, 219);
+  font-size: 15px;
+}
+.nom:focus, .nom:active ,.ap:focus, .ap:active,
+.am:focus, .am:active ,.edad:focus, .edad:active,
+.mat:focus, .mat:active ,.email:focus, .email:active,
+.userr:focus,.userr:active, .passs:focus,.passs:active
+{
+  outline: none;
+  border-bottom: 2px solid rgb(52, 152, 219);
+  color: rgb(52, 152, 219);
+}
+
+/* modal register fin */
+
+
 h1.responsive{
      word-wrap: break-word;
      -webkit-hyphens: auto;
@@ -34,11 +128,17 @@ h1.responsive{
 }
 .seccionone
 {
-  height: 300px;
+  height: 150px;
  /*background: rgb(52, 73, 94);*/
- background: url(/img/pri1.jpg);
-
+  background: url(/img/pri1.jpg);
 }
+
+#pri1
+{
+  height:200px;
+  width: 100%;
+}
+
 .subpanelhistoria
 {
   background: rgb(255,255,255);
@@ -55,19 +155,47 @@ h1.responsive{
 }
 .contenerdor1
 {
-  background: rgb(52, 152, 219); /* colores no me gusta */
+  background: rgb(0, 99, 168); /* colores no me gusta */
   z-index: 3;
   position: relative;
-  height: 300px;
+  height: 150px;
   top: -40px;
 }
-
-h1,h2
+h1
 {
   font-family: 'Poiret One', cursive;
+  font-size: 40px;
+ 
 }
-h1{
-  font-size: 60px;
+h2
+{
+  font-family: 'Poiret One', cursive;
+  font-size: 30px;
+  
+}
+h3
+{
+  font-family: 'Poiret One', cursive;
+  font-size: 25px;
+ 
+}
+h4
+{
+ font-family: 'Josefin Sans', sans-serif;
+ font-size: 20px;
+ 
+}
+h5
+{
+ font-family: 'Josefin Sans', sans-serif;
+ font-size: 17px;
+
+}
+h6
+{
+ font-family: 'Josefin Sans', sans-serif;
+ font-size: 15px;
+ color: rgb(163, 16, 24  );
 }
 #centradop
 {
@@ -75,13 +203,14 @@ h1{
 }
 #divimg
 {
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
 }
 .panelimg
 {
   background: rgb(242, 243, 244);
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  color: rgb(36, 60, 75);
 }
 .panelcursos
 {
