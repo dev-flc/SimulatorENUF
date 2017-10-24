@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-108507917-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-108507917-1');
+</script>
+
   <meta charset="UTF-8">
   <title>@yield('title','Default')</title>
   <link rel="icon" href="/img/curso.png">
@@ -10,6 +20,7 @@
   <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
   <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
   <link rel="stylesheet" href="{{ asset('css/welcomee.css') }}">
+  
   @yield('styles')
 </head>
 
